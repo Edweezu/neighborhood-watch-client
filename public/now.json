@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "neighborhood-watch-client",
+    "name": "neighborhood-watch-client",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+}
