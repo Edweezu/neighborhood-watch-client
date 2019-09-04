@@ -3,3 +3,12 @@
 }
 
 
+body {
+    margin: 0;
+    font-family: 'Lato', 'Roboto', 'sans-serif';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    line-height: 1.5rem;
+    text-align: center;
+    color: #373a36;
+}
