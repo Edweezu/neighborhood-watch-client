@@ -10,15 +10,16 @@ class LoginForm extends React.Component {
     }
     
     render () {
-        const { error, username, password } = this.state
+        // const { error, username, password } = this.state
+        const { error } = this.state
 
         return (
-            <form className='login-form' onSubmit={this.handleSubmit}>
+            <form className='LoginForm' onSubmit={this.handleSubmit}>
             <div role='alert'>
                 {error && <p className='red'>{error}</p>}
             </div>
-            <div className='signup-element'>
-                <div className='signup-label'>
+            <div className='LoginForm__signupElement'>
+                <div className='LoginForm__signupLabel'>
                     <label htmlFor='username'>
                         Username    
                     </label>
@@ -26,20 +27,20 @@ class LoginForm extends React.Component {
                         *
                     </span>
                 </div>
-                <div className='signup-input'>
+                <div className='LoginForm__signupInput'>
                     {/* <input id='username' name='username' type='text' placeholder='demo' value={username} onChange={this.handleChangeUser} required/> */}
                     <input id='username' name='username' type='text' placeholder='demo' required/>
                 </div>
                 
             </div>
-            <div className='signup-element'>
-                <div className='signup-label'>
+            <div className='LoginForm__signupElement'>
+                <div className='LoginForm__signupLabel'>
                     <label htmlFor='password'>
                         Password    
                     </label>
                     <span className='astrik'>*</span>
                 </div>
-                <div className='signup-input'>
+                <div className='LoginForm__signupInput'>
                     {/* <input id='password' name='password' type='password' placeholder='Testing123!' value={password} onChange={this.handleChangePassword} required/> */}
                     <input id='password' name='password' type='password' placeholder='Testing123!'  required/>
                 </div> 
@@ -50,12 +51,12 @@ class LoginForm extends React.Component {
                 </button>
             </div> */}
             <Link to='/dashboard'>Sign In</Link>
-            <div className='login-demo'>
+            <div className='LoginForm__loginDemo'>
                 <h4>Demo Account</h4>
                 <p>Username: demo</p>
                 <p>Password: Testing123!</p>
             </div>
-            <div className='login-form-redirect'>
+            <div className='LoginForm__redirect'>
                 <Link to='/register'>Don't have an account? Create one.</Link>
             </div>
         </form>

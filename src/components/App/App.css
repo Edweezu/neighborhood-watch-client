@@ -12,3 +12,7 @@ body {
     text-align: center;
     color: #373a36;
 }
+
+.Nav__HeaderSpace {
+    margin: 0.5rem;
+}

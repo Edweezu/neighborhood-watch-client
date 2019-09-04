@@ -19,12 +19,12 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <main className='LoginPage'>
+      <section className='LoginPage'>
         <h2>Login</h2>
         <LoginForm
           onLoginSuccess={this.handleLoginSuccess}
         />
-      </main>
+      </section>
     )
   }
 }

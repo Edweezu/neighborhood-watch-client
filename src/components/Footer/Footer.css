@@ -6,7 +6,7 @@ a {
     color: rgb(0, 0, 238);
 }
 
-.contact-item {
+.contactItem {
     display: inline-block;
     padding-right: 0.8rem;
     margin: 0 auto;
@@ -20,11 +20,11 @@ a {
     padding-left: 0.9rem;
 }
 
-.copyright {
+.copyRight {
     text-align: center;
 }
 
-.copyright p {
+.copyRight p {
     font-size: 0.7rem;
 }
 

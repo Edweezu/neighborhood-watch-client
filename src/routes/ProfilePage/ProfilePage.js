@@ -1,20 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-class CreateAccount extends React.Component {
+class ProfilePage extends React.Component {
 
     state = {
         error: null
     }
 
     render () {
-
         const { error } = this.state
 
         return (
-            <section className='CreateAccount'>
-                <h2>
-                    Create an Account
+            <section className='ProfilePage'> 
+                 <h2>
+                    Create a Profile
                 </h2>
                 <form className='LoginForm' onSubmit={this.handleSubmit}>
                     <div role='alert'>
@@ -22,39 +21,41 @@ class CreateAccount extends React.Component {
                     </div>
                     <div className='LoginForm__signupElement'>
                         <div className='LoginForm__signupLabel'>
-                            <label htmlFor='username'>
-                                Username    
+                            <label htmlFor='firstName'>
+                                First Name    
                             </label>
                             <span className='astrik'>
                                 *
                             </span>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            <input id='username' name='username' type='text'
-                            required/>
-                        </div>
-                    </div>
-                    <div className='LoginForm__signupElement'>
-                        <div className='LoginForm__signupLabel'> 
-                            <label htmlFor='password'>
-                                Password    
-                            </label>
-                            <span className='astrik'>*</span>
-                        </div>
-                        <div className='LoginForm__signupLabel'>
-                            <input id='password' name='password' type='password'
+                            <input id='firstName' name='firstName' type='text'
                             required/>
                         </div>
                     </div>
                     <div className='LoginForm__signupElement'>
                         <div className='LoginForm__signupLabel'>
-                            <label htmlFor='confirm-pw'>
-                                Confirm Password    
+                            <label htmlFor='lastName'>
+                                Last Name    
                             </label>
-                            <span className='astrik'>*</span>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            <input id='confirm-pw' name='confirm-pw' type='password' required/>
+                            <input id='lastName' name='lastName' type='text'
+                            />
+                        </div>
+                    </div>
+                    <div className='LoginForm__signupElement'>
+                        <div className='LoginForm__signupLabel'>
+                            <label htmlFor='lastName'>
+                                City   
+                            </label>
+                            <span className='astrik'>
+                                *
+                            </span>
+                        </div>
+                        <div className='LoginForm__signupLabel'>
+                            <input id='lastName' name='lastName' type='text'
+                            required/>
                         </div>
                     </div>
                     {/* <div className='signin-button'>
@@ -62,17 +63,11 @@ class CreateAccount extends React.Component {
                             Create an Account
                         </button>
                     </div> */}
-                    <Link to='/profile'>Continue</Link>
-                    <div className='LoginForm__signupDemo'>
-                        <p>Password must be longer than 8 characters and contain one upper case, lower case, number and special character.</p>
-                    </div>
-                    <div className='LoginForm__redirect'>
-                        <Link to='/login'>Already have an Account?</Link>
-                    </div>
+                    <Link to='/dashboard'>Log In</Link>
                 </form>
-            </section>   
+            </section>
         )
     }
 }
 
-export default CreateAccount
+export default ProfilePage
