@@ -22,6 +22,18 @@ class Nav extends React.Component {
                     to='/login'>
                     Login
                   </Link>
+                  <span className='Nav__HeaderSpace'>  
+                  </span>
+                  <Link
+                    to='/mem-profiles'>
+                    Member Profiles
+                  </Link>
+                  <span className='Nav__HeaderSpace'>  
+                  </span>
+                  <Link
+                    to='/my-profile'>
+                    My Profile
+                  </Link>
                 </div>   
               </div>  
             </nav>
