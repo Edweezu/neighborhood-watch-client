@@ -1,7 +1,9 @@
 import React from 'react'
 
 const MainContext = React.createContext({
-    store : []
+    users: [],
+    posts: [],
+    comments: []
 })
 
 export default MainContext

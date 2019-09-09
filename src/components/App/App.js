@@ -10,27 +10,66 @@ import ProfilePage from '../../routes/ProfilePage/ProfilePage'
 import Dashboard from '../../routes/Dashboard/Dashboard'
 import MemberProfiles from '../../routes/MemberProfiles/MemberProfiles'
 import MyProfile from '../../routes/MyProfile/MyProfile'
-import store from '../../store'
+import posts from '../../data/posts'
+import comments from '../../data/posts'
+import users from '../../data/users'
+import cities from '../../data/cities'
+import categories from '../../data/categories'
 import MainContext from '../../contexts/MainContext'
+
 
 class App extends React.Component {
 
   state = {
-    store : []
+    posts : [],
+    comments: [],
+    users: [],
+    cities: [],
+    categories: []
   }
 
   componentDidMount() {
     this.setState({
-      store
+      posts,
+      users,
+      comments,
+      cities,
+      categories
     })
   }
 
+  // renderDashNavRoutes() {
+  //   return (
+  //     <>
+  //       <Route path={'/all-posts'} component={}/>
+  //     </>
+  //   )
+  // }
+
+  // renderMainRoutes () {
+  //   return (
+  //     <>
+  //       <Route exact path={'/'} component={LandingPage}/>
+  //       <Route path ={'/register'} component ={CreateAccount}/>
+  //       <Route path ={'/login'} component ={LoginPage}/>
+  //       <Route path ={'/create-profile'} component ={ProfilePage}/>
+  //       <Route path ={'/dashboard'} component ={Dashboard}/>
+  //       <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
+  //       <Route path ={'/my-profile'} component ={MyProfile}/>
+  //     </>
+  //   )
+  // }
+
   render () {
 
-    const { store } = this.state
+    const { posts, comments, users, cities } = this.state
 
     const contextValue = {
-      store
+      posts,
+      users,
+      comments,
+      cities,
+      categories
     }
 
     return (
