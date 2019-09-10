@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import '../../components/App/App.css'
 import DashNav from '../../components/DashNav/DashNav'
 import cities from '../../data/cities'
+import AddPost from '../../components/AddPost/AddPost'
 
 class Dashboard extends React.Component {
     render () {
@@ -23,34 +24,12 @@ class Dashboard extends React.Component {
                         <input type='text' id='add-city' name='add-city'/>
                     </div>
                 </section>
-                {/* <section className='DashContainer'> */}
+                <section className='DashContainer'>
                     <DashNav />
-                    <div className='DashMainPosts'>
-                        <div className='DashMainPosts__addPost'>
-                            <div>
-                               Post a new message
-                            </div>
-                            <div>
-                                <label htmlFor='category'>Category</label>
-                                <select id='category'>
-                                    <option value='crime'>Crime and Safety </option>
-                                    <option value='events'>Upcoming Events </option>
-                                    <option value='lost'>Lost and Found</option>
-                                </select> 
-                            </div>
-                            <div>
-                                <label htmlFor='subject'>Subject</label>
-                                <input type='text' id='subject' name='subject'></input>
-                            </div>
-                            
-                                <label htmlFor='message'>Message</label>
-                                <textarea id='message' name='message' rows='5' cols='30'>
-
-                                </textarea>
-                            
-                        </div>
-                    </div>
-                {/* </section> */}
+                    <section className='DashMainPosts'>
+                        <AddPost />
+                    </section>
+                </section>
             </section>           
         )
     }

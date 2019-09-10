@@ -8,6 +8,7 @@ import CreateAccount from '../../routes/CreateAccount/CreateAccount'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import ProfilePage from '../../routes/ProfilePage/ProfilePage'
 import Dashboard from '../../routes/Dashboard/Dashboard'
+import Crime from '../../routes/Crime/Crime'
 import MemberProfiles from '../../routes/MemberProfiles/MemberProfiles'
 import MyProfile from '../../routes/MyProfile/MyProfile'
 import posts from '../../data/posts'
@@ -84,6 +85,7 @@ class App extends React.Component {
             <Route path ={'/dashboard'} component ={Dashboard}/>
             <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
             <Route path ={'/my-profile'} component ={MyProfile}/>
+            <Route path={'/crime'} component={Crime}/>
           </Switch>
         </MainContext.Provider>
         <Footer />

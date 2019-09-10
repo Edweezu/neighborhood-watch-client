@@ -4,13 +4,26 @@
 
 
 body {
-    margin: 0;
+    margin: 0 auto;
     font-family: 'Lato', 'Roboto', 'sans-serif';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
     line-height: 1.5rem;
     text-align: center;
     color: #373a36;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    width: 90%;
+
+}
+
+/* .Nav {
+    display: flex;
+    flex-flow: row nowrap;
+} */
+
+.Nav__HeaderNotIn {
+    flex: 1 0 auto;
 }
 
 .Nav__HeaderSpace {
@@ -18,58 +31,97 @@ body {
 }
 
 .DashContainer {
-    width: 70%;
-    /* display: inline-block;
-    text-align: left; */
-    /* display: flex;
-    margin: 0 auto; */
-    border: 1px solid #EEE; 
-
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: 100vh;
+    margin-top: 2rem;
+    border: 1px solid #EEE;
 }
 
-/* .DashNav {
-    width: 20%;
-    text-align: left; 
-    flex-basis: 30%;
-} */
+.Dashboard {
+    overflow-y: hidden;
+}
 
-.DashNav__list {
-    list-style-type: none;
-    margin: 0 1rem;
-    padding: 0;
-    width: 25%;
-    background-color: #f1f1f1;
-    position: fixed;
+.DashNav {
+    display: flex;
+    flex: 0 0 25%;
+    flex-flow: column nowrap;
+    text-align: center;
+    z-index: 30;
+    background: #061e2a;
+    background: linear-gradient(to right,#fefefe, 99%, #8c8c8d);
+    padding: 1rem 0 0 0;
+    justify-content: flex-start;
+}
+
+.menu-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+.main-nav-link {
+    transition: opacity .2s, visibility .2s;
+    flex: 1 1 auto;
+    align-self: center;
+    display: flex;
+    position: relative;
+}
+
+.DashNav__folderLink {
+    font-weight: 500;
+    font-size: 0.66rem;
+    letter-spacing: 0.04rem;
+    color: #03A9F4;
+    padding: 0.75rem 0.5rem;
+    text-transform: uppercase;
+}
+
+.DashMainPosts {
+    flex: 1 1 600px;
+    overflow-y: auto;
+}
+
+html {
     height: 100%;
-    overflow: auto;
-  }
-  
- .DashNav__folderLink {
+}
+
+.post_btn {
+    /* color: white; */
+    margin: 0.8rem;
+    font-weight: 500;
+    border-radius: 3px;
+    width: auto;
+    border-width: 2px;
+    padding: 1rem;
+    font-size: 1.15rem;
+}
+
+  /* .DashNav__folderLink {
     display: block;
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
   }
-  
-  .DashNav__folderLink:active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .DashNav__folderLink:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
 
-.DashMainPosts {
-    /* display: inline-block; */
-    /* flex: 0 0 70%;
-    margin: 1rem; */
-    /* margin-left:25%;padding:1px 16px;height:1000px; */
-    margin-left: 25%;
-    padding: 1px 1rem;
-    height: 1000px;
-}
+  .DashNav__folderLink:hover {
+      color: #f1f1f1;
+  } */
+
+
+ /* .DashNav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+ } */
+
+ /* .DashMainPosts {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+ } */
+
 
 
 
