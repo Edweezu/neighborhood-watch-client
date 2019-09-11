@@ -235,7 +235,16 @@ article h2 {
   font-size: 1.5em;
 }
 
+.user__image {
+    border-radius: 50%;
+}
 
+
+.MemberProfiles__user {
+    border: 1px solid #EEE;
+    margin: 1rem;
+    padding: 1rem;
+}
 
 
 

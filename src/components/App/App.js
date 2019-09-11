@@ -52,27 +52,7 @@ class App extends React.Component {
     })
   }
 
-  // renderDashNavRoutes() {
-  //   return (
-  //     <>
-  //       <Route path={'/all-posts'} component={}/>
-  //     </>
-  //   )
-  // }
-
-  // renderMainRoutes () {
-  //   return (
-  //     <>
-  //       <Route exact path={'/'} component={LandingPage}/>
-  //       <Route path ={'/register'} component ={CreateAccount}/>
-  //       <Route path ={'/login'} component ={LoginPage}/>
-  //       <Route path ={'/create-profile'} component ={ProfilePage}/>
-  //       <Route path ={'/dashboard'} component ={Dashboard}/>
-  //       <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
-  //       <Route path ={'/my-profile'} component ={MyProfile}/>
-  //     </>
-  //   )
-  // }
+ 
 
   render () {
 

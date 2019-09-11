@@ -46,7 +46,7 @@ class ProfilePage extends React.Component {
                     </div>
                     <div className='LoginForm__signupElement'>
                         <div className='LoginForm__signupLabel'>
-                            <label htmlFor='lastName'>
+                            <label htmlFor='city'>
                                 City   
                             </label>
                             <span className='astrik'>
@@ -54,7 +54,21 @@ class ProfilePage extends React.Component {
                             </span>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            <input id='lastName' name='lastName' type='text'
+                            <input id='city' name='city' type='text'
+                            required/>
+                        </div>
+                    </div>
+                    <div className='LoginForm__signupElement'>
+                        <div className='LoginForm__signupLabel'>
+                            <label htmlFor='email'>
+                                Email   
+                            </label>
+                            <span className='astrik'>
+                                *
+                            </span>
+                        </div>
+                        <div className='LoginForm__signupLabel'>
+                            <input id='email' name='email' type='text'
                             required/>
                         </div>
                     </div>
