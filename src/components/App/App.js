@@ -26,7 +26,8 @@ class App extends React.Component {
     comments: [],
     users: [],
     cities: [],
-    categories: []
+    categories: [],
+    menuOpen: false
   }
 
   componentDidMount() {
@@ -36,6 +37,18 @@ class App extends React.Component {
       comments,
       cities,
       categories
+    })
+  }
+
+  handleMenuClick = () => {
+    this.setState({
+      menuOpen: !this.state.menuOpen
+    })
+  }
+
+  handleLinkClick = () => {
+    this.setState({
+      menuOpen: false
     })
   }
 
@@ -63,14 +76,17 @@ class App extends React.Component {
 
   render () {
 
-    const { posts, comments, users, cities } = this.state
+    const { posts, comments, users, cities, menuOpen } = this.state
 
     const contextValue = {
       posts,
       users,
       comments,
       cities,
-      categories
+      categories,
+      menuOpen,
+      handleMenuClick: this.handleMenuClick,
+      handleLinkClick: this.handleLinkClick
     }
 
     return (

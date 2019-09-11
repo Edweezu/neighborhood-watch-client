@@ -38,8 +38,12 @@ class AddPost extends React.Component {
                 <textarea id='message' name='message' rows='5' cols='30'>
                 </textarea>
             </div>
+            <div>
+                <input type='file'/>
+            </div>
             <button type='submit'>Submit</button>
             </form>
+
     ) : null}
      </section>
         )    
