@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import '../../components/App/App.css'
 import DashNav from '../../components/DashNav/DashNav'
 import cities from '../../data/cities'

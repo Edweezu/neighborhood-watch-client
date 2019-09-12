@@ -1,14 +1,18 @@
 export default [
     {
         id: 1,
-        name: 'Crime and Safety'
+        name:'All Posts'
     },
     {
         id: 2,
-        name: 'Upcoming Events'
+        name:'Crime and Alerts'
     },
     {
         id: 3,
-        name: 'Lost and Found'
+        name:'Upcoming Events'
+    },
+    {
+        id: 4,
+        name:'Lost and Found'
     },
 ]

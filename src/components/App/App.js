@@ -78,10 +78,10 @@ class App extends React.Component {
             <Route path ={'/register'} component ={CreateAccount}/>
             <Route path ={'/login'} component ={LoginPage}/>
             <Route path ={'/create-profile'} component ={ProfilePage}/>
-            <Route path ={'/dashboard'} component ={Dashboard}/>
+            <Route path ={'/category/:categoryId'} component ={Dashboard}/>
             <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
             <Route path ={'/my-profile'} component ={MyProfile}/>
-            <Route path={'/crime'} component={Crime}/>
+            {/* <Route path={'/crime'} component={Crime}/> */}
           </Switch>
         </MainContext.Provider>
         <Footer />

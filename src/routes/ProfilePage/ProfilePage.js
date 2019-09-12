@@ -77,7 +77,7 @@ class ProfilePage extends React.Component {
                             Create an Account
                         </button>
                     </div> */}
-                    <Link to='/dashboard'>Log In</Link>
+                    <Link to='/category/1'>Log In</Link>
                 </form>
             </section>
         )

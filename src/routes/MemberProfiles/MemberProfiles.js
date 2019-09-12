@@ -8,8 +8,8 @@ class MemberProfiles extends React.Component {
             <section className='MemberProfiles'>
                 {users.map(user => (
                     
-                    <div className='MemberProfiles__user'>
-                    <img className='user__image' src={userIcon} alt='user-icon' width='150'/>
+                    <div key= {user.id}className='MemberProfiles__user'>
+                    <img className='user__image' src={userIcon} alt='user-icon' width='100'/>
                     <div className='MemberProfiles__info'>
                      <h3>{user.first_name}</h3> <p>Username: {user.username}</p>
                      <p>{user.city}</p>
@@ -18,9 +18,7 @@ class MemberProfiles extends React.Component {
                         </a>
                     </div>
                     </div>
-                ))}
-                    
-              
+                ))} 
             </section>
         )
     }

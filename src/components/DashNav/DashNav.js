@@ -9,13 +9,24 @@ class DashNav extends React.Component {
 
     render () {
 
+        const { categories } = this.context
+
      return (
             <section className='DashNav'>
-                <div className='menu-container'>
+                {/* <div className='menu-container'>
+                    <div className='main-nav-link'>
+                        {categories.map(category => (
+                            <NavLink className='DashNav__folderLink' to={`/category/${category.id}`}>
+                                {category.name}
+                            </NavLink>
+                        ))}
+                    </div>
+                </div> */}
+                 <div className='menu-container'>
                     <div className='main-nav-link'>
                         <NavLink
                             className='DashNav__folderLink'
-                            to={`/all-posts`}
+                            to={`/category/1`}
                         >
                             All Posts
                         </NavLink>
@@ -25,7 +36,7 @@ class DashNav extends React.Component {
                     <div className='main-nav-link'> 
                         <NavLink
                             className='DashNav__folderLink'
-                            to={`/crime`}
+                            to={`/category/2`}
                         >
                             Crime and Alerts
                         </NavLink>
@@ -35,7 +46,7 @@ class DashNav extends React.Component {
                     <div className='main-nav-link'>
                         <NavLink
                             className='DashNav__folderLink'
-                            to={`/events`}
+                            to={`/category/3`}
                         >
                             Upcoming Events
                         </NavLink>
@@ -45,7 +56,7 @@ class DashNav extends React.Component {
                     <div className='main-nav-link'>
                         <NavLink
                             className='DashNav__folderLink'
-                            to={`/lost`}
+                            to={`/category/4`}
                         >
                             Lost and Found
                         </NavLink>
@@ -60,7 +71,7 @@ class DashNav extends React.Component {
                             Logout
                         </NavLink>
                     </div>
-                </div>
+                </div> 
             </section>             
         )
     }

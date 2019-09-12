@@ -12,19 +12,20 @@ class Nav extends React.Component {
 
     render () {
 
+      const { categories } = this.context 
+
         return (
-          <header class='Nav__header'>
+          <header className='Nav__header'>
           <a href="#main-menu"
              id="main-menu-toggle"
              className="menu-toggle"
           >
             <span className="fa fa-bars" aria-hidden="true"></span>
-          </a>
-          
+          </a>         
           <h3 className='logo'>
-              <Link to ='/'><i className="fas fa-home"></i>
+              <NavLink to ='/'><i className="fas fa-home"></i>
                   Neighborhood Watch
-              </Link>
+              </NavLink>
           </h3>
           
           <nav id="main-menu" className="main-menu" aria-label="Main menu">
@@ -36,66 +37,75 @@ class Nav extends React.Component {
             </a>
             <ul className='main__ul'>
               <li> 
-                <Link
+                <NavLink
                   to='/register'>
                   Create an Account
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to='/login'>
                   Login
-                 </Link>
+                 </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to='/mem-profiles'>
                   Member Profiles
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to='/my-profile'>
                   My Profile
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to='/'>
                   Logout
-                </Link>
+                </NavLink>
               </li>
             </ul>
-            <ul className='second__ul'>
+            {/* <ul className='second__ul'>
               <li>
-                <Link
-                  to='/all-posts'>
+                <NavLink
+                  to='/dashboard'>
                   All Posts
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to='/crime'>
                   Crime and Alerts
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to='/events'>
                   Upcoming Events
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to='/lost'>
                   Lost and Found
-                </Link>
+                </NavLink>
               </li>
+            </ul> */}
+            <ul className='second__ul'>
+              {categories.map(category => (
+                <li key={category.id}>
+                  <NavLink to={`/category/${category.id}`}>
+                    {category.name}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </nav>
           <a href="#main-menu-toggle"
              className="backdrop"
-             tabindex="-1"
+             tabIndex="-1"
              aria-hidden="true" hidden></a>
         </header> 
         )
