@@ -1,7 +1,7 @@
 import React from 'react'
 import MainContext from '../../contexts/MainContext';
 import { getPostsForCategory } from '../../helpers'
-
+import Post from '../Post/Post'
 
 //NoteListMain
 class PostList extends React.Component {
@@ -22,9 +22,15 @@ class PostList extends React.Component {
             <section className='PostList'>
                 {postList.map(post => (
                     <li key={post.id}>
-                        City: {post.city_id}
-                        Category: {post.categoryId}
-                        {post.subject}
+                        <Post 
+                            id={post.id}
+                            subject={post.subject}
+                            message={post.message}
+                            date_created={post.date_created}
+                            category_id={post.category_id}
+                            city_id={post.city_id}
+                            user_id={post.user_id}
+                        />
                     </li>
                 ))}
             </section>

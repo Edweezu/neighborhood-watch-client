@@ -13,8 +13,12 @@ body {
     color: #373a36;
     box-sizing: border-box;
     /* overflow-y: hidden; */
-    width: 90%;
+    /* width: 90%; */
 
+}
+
+.LandingPage, .CreateAccount, .LoginPage, .ProfilePage, .MemberProfiles, .MyProfile {
+    margin-top: 6rem;
 }
 
 /* .Nav {
@@ -32,9 +36,9 @@ body {
 
 
 
-/* .Dashboard {
-    overflow-y: hidden;
-} */
+.Dashboard {
+   margin-top: 5.8rem;
+}
 
 
 
@@ -87,7 +91,6 @@ html {
     visibility: visible;
     opacity: 1;
 }
-
 
 
 
@@ -237,7 +240,12 @@ html {
 .Nav__header {
   padding: 20px;
   display: flex;
-  align-items: baseline;
+  /* align-items: baseline; */
+  position: fixed;
+  top: 0;
+  background-color: lightgrey;
+  width: 100%;
+  z-index: 999;
 }
 
 article {
@@ -268,11 +276,25 @@ article h2 {
     padding: 1rem;
 }
 
+.Post {
+    text-align: left;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+
+figcaption {
+    font-size: 0.7rem;
+}
 
 
 
 @media only screen and (min-width: 768px) {
-  
+    
+    body {
+        overflow-y: hidden;
+    }
+
+
     .DashContainer {
         display: flex;
         flex-flow: row nowrap;
@@ -328,6 +350,7 @@ article h2 {
 
     .main-menu ul {
         width: auto;
+        background: lightgrey;
     }
   
     .main-menu {

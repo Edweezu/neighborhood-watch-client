@@ -17,6 +17,7 @@ import users from '../../data/users'
 import cities from '../../data/cities'
 import categories from '../../data/categories'
 import MainContext from '../../contexts/MainContext'
+import PostPage from '../PostPage/PostPage';
 
 
 class App extends React.Component {
@@ -92,6 +93,7 @@ class App extends React.Component {
             <Route path ={'/category/:categoryId'} component ={Dashboard}/>
             <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
             <Route path ={'/my-profile'} component ={MyProfile}/>
+            <Route path ={'/post-page'} component ={PostPage}/>
             {/* <Route path={'/crime'} component={Crime}/> */}
           </Switch>
         </MainContext.Provider>

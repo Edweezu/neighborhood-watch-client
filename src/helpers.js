@@ -1,3 +1,4 @@
+
 export const getPostsForCategory = (posts=[], categoryId, cityId) => {
     
     if (categoryId == 1) {
@@ -5,4 +6,8 @@ export const getPostsForCategory = (posts=[], categoryId, cityId) => {
     } else {
         return posts.filter(post => post.category_id == categoryId && post.city_id == cityId)
     }
+}
+
+export const findUser = (users=[], userId) => {
+    return users.find(user => user.id == userId)
 }

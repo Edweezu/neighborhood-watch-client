@@ -1,18 +1,18 @@
 export default [
     {
-        id: 1,
+        id: 3,
         name: 'San Francisco'
     },
     {
-        id: 2,
+        id: 4,
         name: 'Santa Monica'
     },
     {
-        id: 3,
+        id: 2,
         name: 'New York'
     },
     {
-        id: 4,
+        id: 1,
         name: 'London'
     },
 ]

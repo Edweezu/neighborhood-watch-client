@@ -16,9 +16,9 @@ class Dashboard extends React.Component {
 
         const { city_id, handleCityChange, cities, posts } = this.context
 
-        console.log('city_id state', city_id)
-        console.log('params', this.props.match.params)
-        console.log('dash posts', posts)
+        // console.log('city_id state', city_id)
+        // console.log('params', this.props.match.params)
+        // console.log('dash posts', posts)
 
         return (
             <section className='Dashboard'>
