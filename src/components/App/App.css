@@ -66,6 +66,28 @@ html {
 }
 
 
+.image-upload > input {
+    display: none;
+}
+
+.image-upload {
+    text-align: center;
+    position: relative;
+}
+
+.image-text {
+    visibility: hidden;
+    position: absolute;
+    top: 33%;
+    left: 40%;
+    opacity: 0;
+}
+
+.image-upload:hover .image-text {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 
 
