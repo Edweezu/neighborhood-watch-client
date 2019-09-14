@@ -11,3 +11,7 @@ export const getPostsForCategory = (posts=[], categoryId, cityId) => {
 export const findUser = (users=[], userId) => {
     return users.find(user => user.id == userId)
 }
+
+export const findPost = (posts=[], postId) => {
+    return posts.find(post => post.id == postId)
+}

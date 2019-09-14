@@ -22,10 +22,10 @@ class Post extends React.Component {
                     {user.username}, {user.city}
                 </div>
                 <div>
-                    <h4><Link to='/post-page'>{subject}</Link></h4>
+                    <h4><Link to={`/post-page/${id}`}>{subject}</Link></h4>
                     <p>{message}</p>
                     <figure>
-                        <img src={fileImage} alt='image-icon' width='100'/>
+                        <img src={fileImage} alt='default icon' width='100'/>
                         <figcaption>User uploaded image is going to replace this.</figcaption> 
                     </figure>
                     <div>

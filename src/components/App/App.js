@@ -93,7 +93,7 @@ class App extends React.Component {
             <Route path ={'/category/:categoryId'} component ={Dashboard}/>
             <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
             <Route path ={'/my-profile'} component ={MyProfile}/>
-            <Route path ={'/post-page'} component ={PostPage}/>
+            <Route path ={'/post-page/:postId'} component ={PostPage}/>
             {/* <Route path={'/crime'} component={Crime}/> */}
           </Switch>
         </MainContext.Provider>
