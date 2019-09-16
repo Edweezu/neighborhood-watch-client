@@ -301,7 +301,11 @@ ul {
         overflow-y: hidden;
     }
 
-
+    .PostPage {
+        height: calc(100vh - 210px);
+        overflow-y: auto;
+    }
+   
     .DashContainer {
         display: flex;
         flex-flow: row nowrap;
