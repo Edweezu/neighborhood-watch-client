@@ -3,7 +3,7 @@ import MainContext from '../../contexts/MainContext';
 import { getPostsForCategory } from '../../helpers'
 import Post from '../Post/Post'
 
-//NoteListMain
+
 class PostList extends React.Component {
 
     static contextType = MainContext

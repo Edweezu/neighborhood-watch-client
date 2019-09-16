@@ -92,6 +92,10 @@ html {
     opacity: 1;
 }
 
+.PostPage__postContainer {
+    border-bottom: 1px solid #EEE;
+}
+
 
 
   /* .menu__toggle {
@@ -286,6 +290,9 @@ figcaption {
     font-size: 0.7rem;
 }
 
+ul {
+    padding: 0;
+}
 
 
 @media only screen and (min-width: 768px) {
@@ -299,8 +306,8 @@ figcaption {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        height: 100vh;
-        margin-top: 2rem;
+        height: calc(100vh - 280px);
+        margin-top: 1rem;
         border: 1px solid #EEE;
     }
 

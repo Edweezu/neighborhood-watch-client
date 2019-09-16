@@ -4,14 +4,14 @@ import MainContext from '../../contexts/MainContext';
 import fileImage from '../../app-images/file-image-icon.png'
 import { Link } from 'react-router-dom'
 
-//Note
+
 class Post extends React.Component {
 
     static contextType = MainContext
 
     render () {
         const { users=[] } = this.context
-        const { id, subject, message, date_created, category_id, city_id, user_id } = this.props
+        const { id, subject, message, date_created, user_id } = this.props
         const user = findUser(users, user_id) || []
         // console.log('users', users)
         // console.log('user id', user_id)
@@ -29,7 +29,16 @@ class Post extends React.Component {
                         <figcaption>User uploaded image is going to replace this.</figcaption> 
                     </figure>
                     <div>
-                        <p>Posted on {date_created}</p>
+                        <p>Posted on {date_created}
+                        </p>
+                        <button type='button'>
+                            Edit
+                        </button>
+                        <button type='button'>
+                            Delete
+                        </button>      
+                    </div>
+                    <div>
                         <button type='button'><i className="fas fa-thumbs-up"></i></button>
                         <button type='button'><i className="fas fa-thumbs-down"></i></button>
                     </div>

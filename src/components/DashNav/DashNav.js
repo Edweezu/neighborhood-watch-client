@@ -9,7 +9,7 @@ class DashNav extends React.Component {
 
     render () {
 
-        const { categories } = this.context
+        // const { categories } = this.context
 
      return (
             <section className='DashNav'>

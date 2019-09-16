@@ -8,16 +8,15 @@ import CreateAccount from '../../routes/CreateAccount/CreateAccount'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import ProfilePage from '../../routes/ProfilePage/ProfilePage'
 import Dashboard from '../../routes/Dashboard/Dashboard'
-import Crime from '../../routes/Crime/Crime'
 import MemberProfiles from '../../routes/MemberProfiles/MemberProfiles'
 import MyProfile from '../../routes/MyProfile/MyProfile'
 import posts from '../../data/posts'
-import comments from '../../data/posts'
+import comments from '../../data/comments'
 import users from '../../data/users'
 import cities from '../../data/cities'
 import categories from '../../data/categories'
 import MainContext from '../../contexts/MainContext'
-import PostPage from '../PostPage/PostPage';
+import PostPage from '../../routes/PostPage/PostPage'
 
 
 class App extends React.Component {
@@ -94,7 +93,6 @@ class App extends React.Component {
             <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
             <Route path ={'/my-profile'} component ={MyProfile}/>
             <Route path ={'/post-page/:postId'} component ={PostPage}/>
-            {/* <Route path={'/crime'} component={Crime}/> */}
           </Switch>
         </MainContext.Provider>
         <Footer />

@@ -15,3 +15,11 @@ export const findUser = (users=[], userId) => {
 export const findPost = (posts=[], postId) => {
     return posts.find(post => post.id == postId)
 }
+
+export const findCommentUser = (users, commentUserId) => {
+    return users.find(user => user.id == commentUserId)
+}
+
+export const findComments = (comments, postId) => {
+    return comments.filter(comment => comment.posts_id == postId)
+}
