@@ -17,8 +17,8 @@ body {
 
 }
 
-.LandingPage, .CreateAccount, .LoginPage, .ProfilePage, .MemberProfiles, .MyProfile, .PostPage {
-    margin-top: 6rem;
+.LandingPage, .CreateAccount, .LoginPage, .ProfilePage, .MemberProfiles, .MyProfile, .PostPage, .Dashboard {
+    margin-top: 5rem;
 }
 
 /* .Nav {
@@ -36,13 +36,13 @@ body {
 
 
 
-.Dashboard {
+/* .Dashboard {
    margin-top: 5.8rem;
-}
+} */
 
 .LoginForm {
     width: 100%;
-    max-width: 330px;
+    max-width: 420px;
     padding: 1.3rem;
     padding-bottom: 0rem;
     margin: auto;
@@ -102,12 +102,15 @@ html {
      margin: 0;
  }
 
-.Dashboard__browseContainer {
-    padding: 1rem;
-}
+
 
 
 .Dashboard__addSelect {
+    width: 30%;
+    margin-right: 0.5rem;
+}
+
+.ProfilePage__addSelect {
     width: 30%;
     margin-right: 0.5rem;
 }
@@ -286,11 +289,13 @@ html {
 }
 
 .Nav__header {
-  padding: 1rem;
+  padding: 0.8rem;
   display: flex;
-  /* align-items: baseline; */
+  align-items: baseline;
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   background-color: lightgrey;
   width: 100%;
   z-index: 999;
@@ -310,7 +315,8 @@ article h2 {
 
 .logo {
   margin: 0 auto;
-  font-size: 1.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
 }
 
 .user__image {
@@ -342,12 +348,44 @@ ul {
     margin: 1rem;
 }
 
+select {
+    margin: auto;
+}
+
 
 @media only screen and (min-width: 768px) {
+
+    select {
+        margin: 0;
+        margin-top: 3px;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .main-menu li:first-child a {
+        padding: 0.5rem;
+    }
+
+    .main-menu li a {
+        padding: 0.5rem;
+    }
 
     .Dashboard__browseContainer {
         display: flex;
         justify-content: space-between;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        
+    }
+
+    .Dashboard__browseInput {
+        display: flex
+    }
+
+    .Dashboard__browseInput h4 {
+        margin-right: 0.5rem;
     }
 
     .Dashboard__addCity h4 {
@@ -359,11 +397,12 @@ ul {
     }
 
     .Dashboard__addSelect {
-        width: 26%;
+        width: 22%;
     }
 
     .Dashboard__addCity {
         display: flex;
+        justify-content: flex-end;
     }
     
     
@@ -372,7 +411,7 @@ ul {
     }
 
     .PostPage {
-        height: calc(100vh - 210px);
+        height: calc(100vh - 175px);
         overflow-y: auto;
     }
    
@@ -380,7 +419,7 @@ ul {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        height: calc(100vh - 280px);
+        height: calc(100vh - 120px);
         margin-top: 1rem;
         border: 1px solid #EEE;
     }
@@ -395,6 +434,7 @@ ul {
         background: linear-gradient(to right,#fefefe, 99%, #8c8c8d);
         padding: 1rem 0 0 0;
         justify-content: flex-start;
+        overflow-y: auto;
     }
 
     .menu-container {

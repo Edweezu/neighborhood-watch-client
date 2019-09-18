@@ -24,7 +24,8 @@ class Dashboard extends React.Component {
             <section className='Dashboard'>
                 <section className='Dashboard__browseContainer'>
                     <div className='Dashboard__browseInput'>
-                        <label htmlFor='browse-cities'><strong>Browse Cities</strong></label>
+                        {/* <label htmlFor='browse-cities'><strong>Browse Cities</strong></label> */}
+                        <h4>Browse Cities</h4>
                         <select value={city_id}id='browse-cities' onChange={handleCityChange}>
                             {cities.map(city => {
                                 return <option key={city.id} value={city.id}>{city.name}</option>

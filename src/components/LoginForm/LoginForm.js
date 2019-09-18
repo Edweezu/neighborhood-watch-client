@@ -26,12 +26,11 @@ class LoginForm extends React.Component {
                     <span className='astrik'>
                         *
                     </span>
-                </div>
-                <div className='LoginForm__signupInput'>
-                    {/* <input id='username' name='username' type='text' placeholder='demo' value={username} onChange={this.handleChangeUser} required/> */}
-                    <input id='username' name='username' type='text' placeholder='demo' required/>
-                </div>
                 
+                
+                    {/* <input id='username' name='username' type='text' placeholder='demo' value={username} onChange={this.handleChangeUser} required/> */}
+                    <input id='username' name='username' type='text' placeholder='demo' required/> 
+                </div> 
             </div>
             <div className='LoginForm__signupElement'>
                 <div className='LoginForm__signupLabel'>
@@ -39,11 +38,10 @@ class LoginForm extends React.Component {
                         Password    
                     </label>
                     <span className='astrik'>*</span>
-                </div>
-                <div className='LoginForm__signupInput'>
+                     
                     {/* <input id='password' name='password' type='password' placeholder='Testing123!' value={password} onChange={this.handleChangePassword} required/> */}
-                    <input id='password' name='password' type='password' placeholder='Testing123!'  required/>
-                </div> 
+                    <input id='password' name='password' type='password' placeholder='Testing123!'  required/> 
+                </div>
             </div>
             {/* <div className='signin-button'>
                 <button className="btn btn-sign-in" type='submit'>

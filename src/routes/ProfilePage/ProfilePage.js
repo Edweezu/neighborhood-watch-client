@@ -73,13 +73,13 @@ class ProfilePage extends React.Component {
                             required/> */}
                             {/* <AutoComplete onPlaceChanged={onPlaceChanged} /> */}
                             {/* <AddressDetails place={place} />  */}
-                            <select name="country" className="Dashboard__addSelect countries" id="countryId">
+                            <select name="country" className="ProfilePage__addSelect countries" id="countryId">
                                 <option value="">Select Country</option>
                             </select>
-                            <select name="state" className="Dashboard__addSelect states" id="stateId">
+                            <select name="state" className="ProfilePage__addSelect states" id="stateId">
                                 <option value="">Select State</option>
                             </select>
-                            <select name="city" className="Dashboard__addSelect cities" id="cityId">
+                            <select name="city" className="ProfilePage__addSelect cities" id="cityId">
                                 <option value="">Select City</option>
                             </select>
                         </div>
