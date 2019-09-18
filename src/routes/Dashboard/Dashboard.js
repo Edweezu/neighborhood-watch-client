@@ -5,6 +5,7 @@ import DashNav from '../../components/DashNav/DashNav'
 import AddPost from '../../components/AddPost/AddPost'
 import MainContext from '../../contexts/MainContext';
 import PostList from '../../components/PostList/PostList';
+import { findCity } from '../../helpers'
 
 
 class Dashboard extends React.Component {
@@ -31,6 +32,8 @@ class Dashboard extends React.Component {
         // console.log('city_id state', city_id)
         // console.log('params', this.props.match.params)
         // console.log('dash posts', posts)
+
+        const city = findCity (cities, city_id) || {}
 
         return (
             <section className='Dashboard'>
@@ -71,11 +74,15 @@ class Dashboard extends React.Component {
                         ) : null}
                     </div>
                 </section>
+                <section className='DashMainPosts__header'>
+                    <AddPost />
+                    <h2>{city.name}</h2>
+                </section>
                 <section className='DashContainer'>
                    
                     <DashNav />
                     <section className='DashMainPosts'>
-                        <AddPost />
+                       
                         <PostList 
                             categoryid={this.props.match.params.categoryId}
                             posts={posts}

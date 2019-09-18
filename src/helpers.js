@@ -20,6 +20,10 @@ export const findCommentUser = (users, commentUserId) => {
     return users.find(user => user.id == commentUserId)
 }
 
+export const findCity = (cities, cityId) => {
+    return cities.find(city => city.id == cityId)
+}
+
 export const findComments = (comments, postId) => {
     return comments.filter(comment => comment.posts_id == postId)
 }

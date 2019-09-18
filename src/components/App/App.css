@@ -93,12 +93,13 @@ html {
 
 .post_btn {
     /* color: white; */
-    margin: 0.8rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
     font-weight: 500;
     border-radius: 3px;
     width: auto;
     border-width: 2px;
-    padding: 1rem;
+    /* padding: 1rem; */
     font-size: 1.15rem;
 }
 
@@ -298,7 +299,7 @@ html {
 }
 
 .Nav__header {
-  padding: 0.8rem;
+  padding: 0.8rem 0.5rem;
   display: flex;
   align-items: baseline;
   position: fixed;
@@ -440,10 +441,29 @@ select {
 
 @media only screen and (min-width: 768px) {
 
+    .DashMainPosts__header {
+        display: flex;
+    }
 
+    .AddPost {
+        margin-top: 1rem;
+    }
+
+    .DashMainPosts__header h2 {
+        margin: 0;
+        margin-top: 2rem;
+        font-size: 3rem;
+        margin-left: 15.5rem;
+    }
 
     .AddPost__form {
-        margin-bottom: 2.5rem;
+        /* margin-bottom: 2.5rem; */
+        background-color: lightgrey;
+        border-radius: 5px;
+        position: fixed;
+        left: 0.5rem;
+        z-index: 999;
+        padding: 1rem;
     }
 
 
@@ -468,7 +488,7 @@ select {
         display: flex;
         /* justify-content: space-between; */
         margin: 0;
-        margin-left: 1rem;
+        margin-left: 0.5rem;
         /* padding-right: 1rem;
         padding-left: 1rem; */
         
@@ -523,20 +543,20 @@ select {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        height: calc(100vh - 120px);
+        height: calc(100vh - 142px);
         margin-top: 1rem;
         border: 1px solid #EEE;
     }
 
     .DashNav {
         display: flex;
-        flex: 0 0 100px;
+        flex: 0 0 135px;
         flex-flow: column nowrap;
         text-align: center;
         z-index: 30;
         background: #061e2a;
         background: linear-gradient(to right,#fefefe, 99%, #8c8c8d);
-        padding: 1rem 0 0 0;
+        /* padding: 1rem 0 0 0; */
         justify-content: flex-start;
         overflow-y: auto;
     }

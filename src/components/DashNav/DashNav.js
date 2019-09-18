@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext'
+import Footer from '../Footer/Footer'
 
 class DashNav extends React.Component {
 
@@ -72,7 +73,9 @@ class DashNav extends React.Component {
                         </NavLink>
                     </div>
                 </div> 
-            </section>             
+                <Footer />   
+            </section>
+                      
         )
     }
 }
