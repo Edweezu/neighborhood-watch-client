@@ -17,8 +17,12 @@ body {
 
 }
 
-.LandingPage, .CreateAccount, .LoginPage, .ProfilePage, .MemberProfiles, .MyProfile, .PostPage, .Dashboard {
+.LandingPage, .CreateAccount, .LoginPage, .ProfilePage, .MemberProfiles, .MyProfile, .PostPage{
     margin-top: 5rem;
+}
+
+.Dashboard {
+    margin-top: 4.5rem;
 }
 
 /* .Nav {
@@ -106,12 +110,17 @@ html {
 
 
 .Dashboard__addSelect {
-    width: 30%;
-    margin-right: 0.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    display:block;
+    /* margin-right: 0.5rem; */
 }
 
 .ProfilePage__addSelect {
     width: 30%;
+}
+
+.ProfilePage__addSelect:not(:last-child) {
     margin-right: 0.5rem;
 }
 
@@ -334,6 +343,10 @@ article h2 {
     text-align: left;
     border-top: 1px solid #EEE;
     border-bottom: 1px solid #EEE;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.8rem;
 }
 
 figcaption {
@@ -345,15 +358,94 @@ ul {
 }
 
 .Dashboard__browseInput {
-    margin: 1rem;
+    /* margin: 1rem; */
+    flex: 1 1;
 }
 
 select {
     margin: auto;
+    display: inline-block;
+}
+
+.Dashboard__browseContainer {
+    display: flex;
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Dashboard__addCity {
+    flex: 1 1;
+}
+
+.Dashboard__addCity h4, .Dashboard__browseInput h4 {
+    margin-bottom: 0.4rem;
+}
+
+
+
+
+@media only screen and (min-width: 640px) {
+    .AddPost__formContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    
+    
+    .messageAdd input {
+        flex: 1
+    }
+
+    .AddPost__formDiv label {
+        margin-right: 0.6rem;
+    }
+
+    .AddPost__form {
+        width: 95%;
+        margin: 0 auto;
+        margin-bottom: 5rem;
+    }
+
+    .AddPost__formContainer {
+        margin-bottom: 0.7rem;
+    }
+
+    .AddPost__formDiv {
+        flex: 1;
+        display: flex;
+    }
+
+    .AddPost__formDiv select, .AddPost__formDiv input {
+        flex: 1
+    }
+
+    .AddPost__formDiv:not(:last-child) {
+        margin-right: 1.5rem;
+    }
+
+    .messageAdd {
+        text-align: left;
+        display: flex;
+        margin-bottom: 0.7rem;
+        margin-right: 0;
+    }
+
+    .messageAdd label {
+        margin-right: 0.6rem;
+    }
+    
 }
 
 
 @media only screen and (min-width: 768px) {
+
+
+
+    .AddPost__form {
+        margin-bottom: 2.5rem;
+    }
+
 
     select {
         margin: 0;
@@ -374,14 +466,21 @@ select {
 
     .Dashboard__browseContainer {
         display: flex;
-        justify-content: space-between;
-        padding-right: 1rem;
-        padding-left: 1rem;
+        /* justify-content: space-between; */
+        margin: 0;
+        margin-left: 1rem;
+        /* padding-right: 1rem;
+        padding-left: 1rem; */
         
     }
 
+    .Dashboard__addCityForm {
+        display: flex;
+    }
+
     .Dashboard__browseInput {
-        display: flex
+        /* display: flex */
+        margin-right: 5rem;
     }
 
     .Dashboard__browseInput h4 {
@@ -396,13 +495,18 @@ select {
         margin: 0;
     }
 
-    .Dashboard__addSelect {
+    /* .Dashboard__addSelect {
         width: 22%;
-    }
+    } */
 
     .Dashboard__addCity {
-        display: flex;
-        justify-content: flex-end;
+        flex: 2 1;
+        /* display: flex;
+        justify-content: flex-end; */
+    }
+
+    .selectContainer {
+        padding-right: 0.8rem;
     }
     
     
@@ -462,6 +566,11 @@ select {
     .DashMainPosts {
         flex: 1 1 75%;
         overflow-y: auto;
+    }
+
+    .MemberProfiles {
+        overflow-y: auto;
+        height: calc(100vh - 120px);
     }
 
     .menu-toggle,

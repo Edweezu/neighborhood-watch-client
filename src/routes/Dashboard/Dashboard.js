@@ -12,10 +12,22 @@ class Dashboard extends React.Component {
     
     static contextType = MainContext
 
+    state = {
+        showForm: false
+    }
+
+    handleClick = () => {
+        this.setState({
+            showForm: !this.state.showForm
+        })
+    }
+
+
     render () {
 
         const { city_id, handleCityChange, cities, posts } = this.context
 
+        const { showForm } = this.state
         // console.log('city_id state', city_id)
         // console.log('params', this.props.match.params)
         // console.log('dash posts', posts)
@@ -34,16 +46,29 @@ class Dashboard extends React.Component {
                     </div>
                     <div className='Dashboard__addCity'>
                         {/* <h4>Add a City <i className="fas fa-plus-circle"></i></h4> */}
-                        <h4>Add a City</h4>
-                        <select name="country" className="Dashboard__addSelect countries" id="countryId">
-                                <option value="">Select Country</option>
-                            </select>
+                        <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4>
+                        {showForm ? (
+                            <form className='Dashboard__addCityForm'>
+                                <div className='selectContainer'>
+                            <select name="country" className="Dashboard__addSelect countries" id="countryId">
+                                    <option value="">Select Country</option>
+                                </select>
+                        </div>
+                        <div className='selectContainer'>
                             <select name="state" className="Dashboard__addSelect states" id="stateId">
-                                <option value="">Select State</option>
-                            </select>
+                                    <option value="">Select State</option>
+                                </select>
+                        </div>
+                        <div className='selectContainer'>
                             <select name="city" className="Dashboard__addSelect cities" id="cityId">
-                                <option value="">Select City</option>
-                            </select>
+                                    <option value="">Select City</option>
+                                </select>
+                        </div>  
+                        <div>
+                            <button type='submit'>Submit</button>
+                        </div>  
+                        </form>
+                        ) : null}
                     </div>
                 </section>
                 <section className='DashContainer'>
