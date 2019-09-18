@@ -6,7 +6,7 @@ class MyProfile extends React.Component {
     render () {
         const user = users[0]
         return (
-            <section class='MyProfile'>
+            <section className='MyProfile'>
                 <div className="image-upload">
                     <label htmlFor="file-input">
                             <img className='user__image' src={userIcon} alt='user-icon' width='200'/>

@@ -23,20 +23,26 @@ class Dashboard extends React.Component {
         return (
             <section className='Dashboard'>
                 <section className='Dashboard__browseContainer'>
-                    <div>
-                        <label htmlFor='browse-cities'>Browse Cities</label>
+                    <div className='Dashboard__browseInput'>
+                        <label htmlFor='browse-cities'><strong>Browse Cities</strong></label>
                         <select value={city_id}id='browse-cities' onChange={handleCityChange}>
                             {cities.map(city => {
                                 return <option key={city.id} value={city.id}>{city.name}</option>
                             })}
                         </select>
                     </div>
-                    <div>
-                        <h4>Add a City <i className="fas fa-plus-circle"></i></h4>
-                        <label htmlFor='add-city'>
-                            City Name
-                        </label>
-                        <input type='text' id='add-city' name='add-city'/>
+                    <div className='Dashboard__addCity'>
+                        {/* <h4>Add a City <i className="fas fa-plus-circle"></i></h4> */}
+                        <h4>Add a City</h4>
+                        <select name="country" className="Dashboard__addSelect countries" id="countryId">
+                                <option value="">Select Country</option>
+                            </select>
+                            <select name="state" className="Dashboard__addSelect states" id="stateId">
+                                <option value="">Select State</option>
+                            </select>
+                            <select name="city" className="Dashboard__addSelect cities" id="cityId">
+                                <option value="">Select City</option>
+                            </select>
                     </div>
                 </section>
                 <section className='DashContainer'>

@@ -28,7 +28,8 @@ class App extends React.Component {
     cities: [],
     categories: [],
     menuOpen: false,
-    city_id: 1
+    city_id: 1,
+    place: {}
   }
 
   componentDidMount() {
@@ -53,6 +54,12 @@ class App extends React.Component {
     })
   }
 
+  showPlaceDetails = (place) => {
+    this.setState({
+      place
+    })
+  }
+
   handleCityChange = (e) => {
     this.setState({
         city_id: e.target.value
@@ -62,7 +69,7 @@ class App extends React.Component {
 
   render () {
 
-    const { posts, comments, users, cities, menuOpen,city_id } = this.state
+    const { place, posts, comments, users, cities, menuOpen,city_id } = this.state
 
     // console.log('app post', posts)
     // console.log('app cities', cities)
@@ -77,7 +84,9 @@ class App extends React.Component {
       city_id,
       handleMenuClick: this.handleMenuClick,
       handleLinkClick: this.handleLinkClick,
-      handleCityChange: this.handleCityChange
+      handleCityChange: this.handleCityChange,
+      place,
+      onPlaceChanged: this.showPlaceDetails
     }
 
     return (

@@ -22,7 +22,7 @@ body {
 }
 
 /* .Nav {
-    display: flex;
+    display: flex;≈
     flex-flow: row nowrap;
 } */
 
@@ -40,6 +40,45 @@ body {
    margin-top: 5.8rem;
 }
 
+.LoginForm {
+    width: 100%;
+    max-width: 330px;
+    padding: 1.3rem;
+    padding-bottom: 0rem;
+    margin: auto;
+}
+
+.LoginForm__signupLabel {
+    text-align: left;
+    /* display: inline-block; */
+    margin-bottom: 0.3rem;
+}
+
+.LoginForm__signupLabel > input {
+    width: 100%;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.2rem;
+}
+
+.LoginForm__signupElement {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.LoginForm__redirect {
+    margin-top: 1rem;
+}
+
+.LoginForm__loginDemo p  {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.LoginForm__signupDemo p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: red;
+}
 
 
 
@@ -64,10 +103,15 @@ html {
  }
 
 .Dashboard__browseContainer {
-    display: flex;
-    justify-content: center;
     padding: 1rem;
 }
+
+
+.Dashboard__addSelect {
+    width: 30%;
+    margin-right: 0.5rem;
+}
+
 
 
 .image-upload > input {
@@ -242,7 +286,7 @@ html {
 }
 
 .Nav__header {
-  padding: 20px;
+  padding: 1rem;
   display: flex;
   /* align-items: baseline; */
   position: fixed;
@@ -294,8 +338,34 @@ ul {
     padding: 0;
 }
 
+.Dashboard__browseInput {
+    margin: 1rem;
+}
+
 
 @media only screen and (min-width: 768px) {
+
+    .Dashboard__browseContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Dashboard__addCity h4 {
+        margin-right: 0.5rem;
+    }
+
+    .Dashboard__browseInput {
+        margin: 0;
+    }
+
+    .Dashboard__addSelect {
+        width: 26%;
+    }
+
+    .Dashboard__addCity {
+        display: flex;
+    }
+    
     
     body {
         overflow-y: hidden;

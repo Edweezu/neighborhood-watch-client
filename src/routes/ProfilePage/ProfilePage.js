@@ -1,7 +1,13 @@
+/* global google */
 import React from 'react'
 import { Link } from 'react-router-dom'
+import MainContext from '../../contexts/MainContext';
+import AutoComplete from '../../components/AutoComplete/AutoComplete'
+/* global google */
 
 class ProfilePage extends React.Component {
+
+    static contextType = MainContext
 
     state = {
         error: null
@@ -9,6 +15,15 @@ class ProfilePage extends React.Component {
 
     render () {
         const { error } = this.state
+        const { place, onPlaceChanged } = this.context
+
+        const AddressDetails = props => {
+            return (
+                <div>
+                  <pre>{JSON.stringify(props.place, null, 2)}</pre>
+                </div>
+            )
+          };
 
         return (
             <section className='ProfilePage'> 
@@ -54,8 +69,19 @@ class ProfilePage extends React.Component {
                             </span>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            <input id='city' name='city' type='text'
-                            required/>
+                            {/* <input id='city' name='city' type='text'
+                            required/> */}
+                            {/* <AutoComplete onPlaceChanged={onPlaceChanged} /> */}
+                            {/* <AddressDetails place={place} />  */}
+                            <select name="country" className="Dashboard__addSelect countries" id="countryId">
+                                <option value="">Select Country</option>
+                            </select>
+                            <select name="state" className="Dashboard__addSelect states" id="stateId">
+                                <option value="">Select State</option>
+                            </select>
+                            <select name="city" className="Dashboard__addSelect cities" id="cityId">
+                                <option value="">Select City</option>
+                            </select>
                         </div>
                     </div>
                     <div className='LoginForm__signupElement'>
@@ -77,7 +103,8 @@ class ProfilePage extends React.Component {
                             Create an Account
                         </button>
                     </div> */}
-                    <Link to='/category/1'>Log In</Link>
+                    {/* <Link to='/category/1'>Log In</Link> */}
+                    <a href='/category/1'>Log In</a>
                 </form>
             </section>
         )
