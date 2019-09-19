@@ -2,6 +2,7 @@ import React from 'react'
 // import { Link } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext'
 import { NavLink } from 'react-router-dom'
+import Footer from '../../components/Footer/Footer'
 
 class Nav extends React.Component {
 
@@ -102,6 +103,9 @@ class Nav extends React.Component {
                 </li>
               ))}
             </ul>
+            <div className='Nav__footer'>
+              <Footer />
+            </div>
           </nav>
           <a href="#main-menu-toggle"
              className="backdrop"

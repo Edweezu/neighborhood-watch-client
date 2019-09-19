@@ -104,7 +104,6 @@ class App extends React.Component {
             <Route path ={'/post-page/:postId'} component ={PostPage}/>
           </Switch>
         </MainContext.Provider>
-        <Footer />
       </main>
     );
   }

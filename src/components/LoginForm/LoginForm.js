@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Footer from '../../components/Footer/Footer'
 
 class LoginForm extends React.Component {
 
@@ -14,6 +15,7 @@ class LoginForm extends React.Component {
         const { error } = this.state
 
         return (
+            <section>
             <form className='LoginForm' onSubmit={this.handleSubmit}>
             <div role='alert'>
                 {error && <p className='red'>{error}</p>}
@@ -58,6 +60,8 @@ class LoginForm extends React.Component {
                 <Link to='/register'>Don't have an account? Create one.</Link>
             </div>
         </form>
+        <Footer />
+        </section>
         )
     }
 }

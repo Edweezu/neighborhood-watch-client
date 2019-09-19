@@ -63,8 +63,8 @@ class DashNav extends React.Component {
                         </NavLink>
                     </div>
                 </div>
-                <div className='menu-container'>
-                    <div className='main-nav-link'>
+                <div className='Nav__logout'>
+                    <div className='main-nav-link '>
                         <NavLink
                             className='DashNav__folderLink'
                             to={`/`}

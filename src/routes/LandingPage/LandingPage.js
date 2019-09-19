@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Footer from '../../components/Footer/Footer'
 
 class LandingPage extends React.Component {
     render () {
         return (
+            <section>
             <section className='LandingPage'
             >
                     <header className='LandingPage__header'>
@@ -32,6 +34,8 @@ class LandingPage extends React.Component {
                 <section className='LandingPage__reminder'>
                     <Link className="link btn" to='/register'>Get Started</Link>
                 </section>
+            </section>
+            <Footer />
             </section>
         )
     }

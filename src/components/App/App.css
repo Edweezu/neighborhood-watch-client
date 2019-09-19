@@ -92,15 +92,19 @@ html {
 }
 
 .post_btn {
-    /* color: white; */
-    margin-top: 1rem;
-    margin-left: 0.5rem;
-    font-weight: 500;
+    color: white;
+    /* margin-top: 1rem;
+    margin-left: 0.5rem; */
+    font-weight: 400;
     border-radius: 3px;
     width: auto;
     border-width: 2px;
-    /* padding: 1rem; */
-    font-size: 1.15rem;
+    padding: 0.6rem 1.3rem;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(23, 162, 184);
+    font-size: 1rem;
+    margin-right: 1rem;
 }
 
  h4 {
@@ -216,7 +220,8 @@ html {
 }
 
 .second__ul {
-    padding: 0.8rem 0 0;
+    padding: 0.8rem;
+    border-bottom: 2px solid #EEE;
 }
 
 .main-menu a {
@@ -383,6 +388,9 @@ select {
     margin-bottom: 0.4rem;
 }
 
+a {
+    text-decoration: none;
+}
 
 
 
@@ -392,6 +400,8 @@ select {
         justify-content: space-between;
     }
 
+
+   
     
     
     .messageAdd input {
@@ -438,32 +448,101 @@ select {
     
 }
 
+#AddPost__cover {
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    z-index: 100;
+    width:100%;
+    height:100%;
+    display:none;
+}
+
+
+
+
+#createPostForm {
+  /* height:380px;
+  width:340px; */
+  /* top: 10%;
+  left: 10%; */
+  width: 100%;
+  background-color: white;
+  padding: 3rem 1.5rem 1.5rem;
+  margin:0 auto;
+  position:relative;
+  z-index:999;
+  display:none;
+  border:5px solid #cccccc;
+  border-radius:10px;
+}
+
+#createPostForm:target, #createPostForm:target + #AddPost__cover{
+    display:block;
+    opacity:2;
+    overflow-y: hidden;
+}
+
+.cancelForm {
+  display:block;
+  position:absolute;
+  top:3px;
+  right:2px;
+  /* background:rgb(245,245,245); */
+  color:#373a36;
+  /* height:30px;
+  width:35px; */
+  font-size:1.25rem;
+  text-decoration:none;
+  text-align:center;
+  font-weight:bold;
+  padding: .75rem;
+  line-height: 1rem;
+}
+
+.cancelForm:hover, .cancelForm:focus {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+.AddPost {
+    margin: 2rem 0.5rem 1rem;
+}
+
+
 
 @media only screen and (min-width: 768px) {
 
-    .DashMainPosts__header {
-        display: flex;
-    }
-
-    .AddPost {
-        margin-top: 1rem;
-    }
-
-    .DashMainPosts__header h2 {
-        margin: 0;
-        margin-top: 2rem;
-        font-size: 3rem;
-        margin-left: 15.5rem;
-    }
-
-    .AddPost__form {
-        /* margin-bottom: 2.5rem; */
+      /* .AddPost__form {
         background-color: lightgrey;
         border-radius: 5px;
         position: fixed;
         left: 0.5rem;
         z-index: 999;
         padding: 1rem;
+    } */
+
+
+    .Nav__footer {
+        display: none;
+    }
+
+    .DashMainPosts__header {
+        display: flex;
+    }
+
+    .DashMainPosts__header h2 {
+        margin: 0;
+        margin-top: 2rem;
+        font-size: 3rem;
+        flex: 1 1;
+        text-align: left;
+    }
+  
+
+    #createPostForm {
+      top: 100%;
+      /* left: 30%; */
     }
 
 
@@ -535,18 +614,33 @@ select {
     }
 
     .PostPage {
-        height: calc(100vh - 175px);
+        height: calc(100vh - 152px);
         overflow-y: auto;
+    }
+
+    .Nav__logout {
+        display: none;
     }
    
     .DashContainer {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        height: calc(100vh - 142px);
-        margin-top: 1rem;
+        height: calc(100vh - 198px);
+        /* margin-top: 1rem; */
         border: 1px solid #EEE;
     }
+
+    .MemberContainer, .MyProfile__userContainer {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        height: calc(100vh - 124px);
+        /* margin-top: 5rem; */
+        border: 1px solid #EEE;
+    }
+
+
 
     .DashNav {
         display: flex;
@@ -565,20 +659,27 @@ select {
         display: flex;
         flex-flow: column wrap;
         justify-content: space-between;
+        padding: 0.75rem;
     }
+
+    .menu-container:hover, .menu-container:focus {
+        background: rgba(0, 0, 0, 0.10);
+    }
+
     .main-nav-link {
         transition: opacity .2s, visibility .2s;
         flex: 1 1 auto;
-        align-self: center;
+        /* align-self: center; */
+        text-align: left;
         display: flex;
         position: relative;
     }
 
     .DashNav__folderLink {
         font-weight: 500;
-        font-size: 0.66rem;
+        font-size: 0.85rem;
         letter-spacing: 0.04rem;
-        color: #03A9F4;
+        color: rgb(0, 123, 255);
         padding: 0.75rem 0.5rem;
         text-transform: uppercase;
     }
@@ -588,9 +689,18 @@ select {
         overflow-y: auto;
     }
 
-    .MemberProfiles {
+    .MemberProfiles__userList {
+        flex: 1 1 75%;
         overflow-y: auto;
-        height: calc(100vh - 120px);
+        /* height: calc(100vh - 124px); */
+        margin-top: 0;
+    }
+
+    .MyProfile__userInfo {
+        flex: 1 1 75%;
+        overflow-y: auto;
+        /* height: calc(100vh - 124px); */
+        margin-top: 1rem;
     }
 
     .menu-toggle,
@@ -627,7 +737,7 @@ select {
     }
     
     .main-menu a {
-        color: #06c;
+        color: rgb(0, 123, 255);
         border: 0 !important; 
     }
     

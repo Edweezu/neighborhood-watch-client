@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext';
 import AutoComplete from '../../components/AutoComplete/AutoComplete'
+import Footer from '../../components/Footer/Footer'
 /* global google */
 
 class ProfilePage extends React.Component {
@@ -106,6 +107,7 @@ class ProfilePage extends React.Component {
                     {/* <Link to='/category/1'>Log In</Link> */}
                     <a href='/category/1'>Log In</a>
                 </form>
+                <Footer />
             </section>
         )
     }

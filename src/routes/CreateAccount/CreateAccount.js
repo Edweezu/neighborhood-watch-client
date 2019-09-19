@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Footer from '../../components/Footer/Footer'
 
 class CreateAccount extends React.Component {
 
@@ -12,6 +13,7 @@ class CreateAccount extends React.Component {
         const { error } = this.state
 
         return (
+            <section>
             <section className='CreateAccount'>
                 <h2>
                     Create an Account
@@ -71,7 +73,9 @@ class CreateAccount extends React.Component {
                         <Link to='/login'>Already have an Account?</Link>
                     </div>
                 </form>
-            </section>   
+            </section>
+             <Footer />
+            </section>  
         )
     }
 }
