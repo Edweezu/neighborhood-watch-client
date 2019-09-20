@@ -50,7 +50,8 @@ class LoginForm extends React.Component {
                     Sign In 
                 </button>
             </div> */}
-            <Link to='/category/1'>Sign In</Link>
+            {/* <Link to='/category/1'>Sign In</Link> */}
+            <a href={`/category/1`}>Sign In</a>
             <div className='LoginForm__loginDemo'>
                 <h4>Demo Account</h4>
                 <p>Username: demo</p>

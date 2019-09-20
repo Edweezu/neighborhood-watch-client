@@ -8,7 +8,7 @@ class MemberProfiles extends React.Component {
         return (
             <section className='MemberProfiles'>
                 <h2>Member Profiles</h2>
-                <section class='MemberContainer '>
+                <section className='MemberContainer '>
                     <DashNav />
                     <section className='MemberProfiles__userList'>
                         {users.map(user => (

@@ -11,12 +11,35 @@ class ProfilePage extends React.Component {
     static contextType = MainContext
 
     state = {
-        error: null
+        error: null,
+        country: '',
+        state: '',
+        cityInput: ''
     }
 
+    handleChangeCountry = (e) => {
+        this.setState({
+            country : e.target.value
+        })
+    }
+
+    handleChangeState = (e) => {
+        this.setState({
+            state : e.target.value
+        })
+    }
+
+    handleChangeCity = (e) => {
+        this.setState({
+            cityInput : e.target.value
+        })
+    }
+
+
     render () {
-        const { error } = this.state
+        const { error, country, state, cityInput } = this.state
         const { place, onPlaceChanged } = this.context
+
 
         const AddressDetails = props => {
             return (
@@ -74,14 +97,14 @@ class ProfilePage extends React.Component {
                             required/> */}
                             {/* <AutoComplete onPlaceChanged={onPlaceChanged} /> */}
                             {/* <AddressDetails place={place} />  */}
-                            <select name="country" className="ProfilePage__addSelect countries" id="countryId">
-                                <option value="">Select Country</option>
+                            <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.handleChangeCountry} required>
+                                <option value={country}>Select Country</option>
                             </select>
-                            <select name="state" className="ProfilePage__addSelect states" id="stateId">
-                                <option value="">Select State</option>
+                            <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.handleChangeState} required>
+                                <option value={state}>Select State</option>
                             </select>
-                            <select name="city" className="ProfilePage__addSelect cities" id="cityId">
-                                <option value="">Select City</option>
+                            <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.handleChangeCity} required>
+                                <option value={cityInput}>Select City</option>
                             </select>
                         </div>
                     </div>

@@ -97,9 +97,10 @@ class Nav extends React.Component {
             <ul className='second__ul'>
               {categories.map(category => (
                 <li key={category.id}>
-                  <NavLink to={`/category/${category.id}`}>
+                  {/* <NavLink to={`/category/${category.id}`}>
                     {category.name}
-                  </NavLink>
+                  </NavLink> */}
+                  <a href={`/category/${category.id}`}>{category.name}</a>
                 </li>
               ))}
             </ul>
