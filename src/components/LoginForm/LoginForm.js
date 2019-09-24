@@ -1,13 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
+import UsersApiService from '../../services/users-api-service'
 
 class LoginForm extends React.Component {
 
     state = {
         error: null,
-        password: 'Testing123!',
-        username: 'demo'
+        password: '',
+        username: ''
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        this.setState({
+            error: null
+        })
+
+        const { username, password } = e.target
+        console.log('user', username.value)
+        console.log('pw', password.value)
+
+        return UsersApiService.postLogin({
+            username: username.value,
+            password: password.value
+        })
+            .then(responseJson => {
+                username.value = ''
+                password.value = ''
+                this.context.loggedIn()
+                this.props.onLoginSuccess()
+            })
+            .catch(responseJson => {
+                this.setState({
+                    error: responseJson.error
+                })
+            })
+
+
     }
     
     render () {
@@ -45,13 +75,13 @@ class LoginForm extends React.Component {
                     <input id='password' name='password' type='password' placeholder='Testing123!'  required/> 
                 </div>
             </div>
-            {/* <div className='signin-button'>
+            <div className='signin-button'>
                 <button className="btn btn-sign-in" type='submit'>
                     Sign In 
                 </button>
-            </div> */}
+            </div>
             {/* <Link to='/category/1'>Sign In</Link> */}
-            <a href={`/category/1`}>Sign In</a>
+            {/* <a href={`/category/1`}>Sign In</a> */}
             <div className='LoginForm__loginDemo'>
                 <h4>Demo Account</h4>
                 <p>Username: demo</p>

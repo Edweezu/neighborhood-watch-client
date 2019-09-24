@@ -29,7 +29,9 @@ class App extends React.Component {
     categories: [],
     menuOpen: false,
     city_id: 1,
-    place: {}
+    place: {},
+    login: null,
+    expired: false
   }
 
   componentDidMount() {
@@ -39,6 +41,13 @@ class App extends React.Component {
       comments,
       cities,
       categories
+    })
+  }
+
+  isLoggedIn = () => {
+    this.setState({
+      login: true,
+      expired: false
     })
   }
 
@@ -86,7 +95,8 @@ class App extends React.Component {
       handleLinkClick: this.handleLinkClick,
       handleCityChange: this.handleCityChange,
       place,
-      onPlaceChanged: this.showPlaceDetails
+      onPlaceChanged: this.showPlaceDetails,
+      loggedIn: this.isLoggedIn
     }
 
     return (

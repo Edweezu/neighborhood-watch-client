@@ -70,7 +70,7 @@ class Dashboard extends React.Component {
                 <section className='Dashboard__browseContainer'>
                     <div className='Dashboard__browseInput'>
                         {/* <label htmlFor='browse-cities'><strong>Browse Cities</strong></label> */}
-                        <h4>Browse Active Cities</h4>
+                        <h4>Browse Active Pages</h4>
                         <select value={city_id}id='browse-cities' onChange={handleCityChange}>
                             {cities.map(city => {
                                 return <option key={city.id} value={city.id}>{city.name}</option>
@@ -79,7 +79,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className='Dashboard__addCity'>
                         {/* <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4> */}
-                        <h4>Add a City</h4>
+                        <h4>Add a City Page</h4>
                                    <form id='addCityForm' className='Dashboard__addCityForm'>
                                    <div className='selectContainer'>
                                        <select name="country" className="Dashboard__addSelect countries" id="countryId" onChange={this.handleChangeCountry}>
