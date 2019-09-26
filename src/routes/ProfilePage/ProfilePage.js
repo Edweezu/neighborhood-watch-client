@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext';
 import AutoComplete from '../../components/AutoComplete/AutoComplete'
 import Footer from '../../components/Footer/Footer'
+import config from '../../config'
+import TokenService from '../../services/token-service'
+import UsersApiService from '../../services/users-api-service'
 /* global google */
 
 class ProfilePage extends React.Component {
@@ -12,9 +15,32 @@ class ProfilePage extends React.Component {
 
     state = {
         error: null,
+        first_name: '',
+        last_name: '',
+        email: '',
         country: '',
         state: '',
-        cityInput: ''
+        cityinput: ''
+    }
+
+    
+
+    handleChangeFirst = (e) => {
+        this.setState({
+            first_name : e.target.value
+        })
+    }
+
+    handleChangeLast = (e) => {
+        this.setState({
+            last_name : e.target.value
+        })
+    }
+
+    handleChangeEmail = (e) => {
+        this.setState({
+            email : e.target.value
+        })
     }
 
     handleChangeCountry = (e) => {
@@ -31,23 +57,62 @@ class ProfilePage extends React.Component {
 
     handleChangeCity = (e) => {
         this.setState({
-            cityInput : e.target.value
+            cityinput : e.target.value
         })
     }
 
+    componentDidMount () {
+        // console.log('hash outside func', window.location.hash)
+        if(!window.location.hash) {
+            // console.log('hash in func', window.location.hash)
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const { userId } = this.props.match.params
+        const { country, state, cityinput, first_name, last_name, email } = this.state
+        //get user details from userId
+
+        let userInfo = {
+
+            first_name,
+            last_name,
+            email,
+            country,
+            state,
+            cityinput
+        }
+
+        return UsersApiService.updateUserInfo(userInfo, userId)
+            .then(responseJson => {
+                console.log('ProfilePage user resJson', responseJson)
+                this.props.history.push(`/category/1`)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+
+
+    }
+
+    
+
+
 
     render () {
-        const { error, country, state, cityInput } = this.state
-        const { place, onPlaceChanged } = this.context
-
-
-        const AddressDetails = props => {
-            return (
-                <div>
-                  <pre>{JSON.stringify(props.place, null, 2)}</pre>
-                </div>
-            )
-          };
+        const { error, country, state, cityinput, first_name, last_name, email } = this.state
+        // const { place, onPlaceChanged } = this.context
+    
+        // const AddressDetails = props => {
+        //     return (
+        //         <div>
+        //           <pre>{JSON.stringify(props.place, null, 2)}</pre>
+        //         </div>
+        //     )
+        //   };
 
         return (
             <section className='ProfilePage'> 
@@ -68,7 +133,7 @@ class ProfilePage extends React.Component {
                             </span>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            <input id='firstName' name='firstName' type='text'
+                            <input id='firstName' name='firstName' type='text' value={first_name} onChange={this.handleChangeFirst}
                             required/>
                         </div>
                     </div>
@@ -79,7 +144,7 @@ class ProfilePage extends React.Component {
                             </label>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            <input id='lastName' name='lastName' type='text'
+                            <input id='lastName' name='lastName' type='text' value={last_name} onChange={this.handleChangeLast}
                             />
                         </div>
                     </div>
@@ -104,7 +169,7 @@ class ProfilePage extends React.Component {
                                 <option value={state}>Select State</option>
                             </select>
                             <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.handleChangeCity} required>
-                                <option value={cityInput}>Select City</option>
+                                <option value={cityinput}>Select City</option>
                             </select>
                         </div>
                     </div>
@@ -118,17 +183,17 @@ class ProfilePage extends React.Component {
                             </span>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            <input id='email' name='email' type='text'
+                            <input id='email' name='email' type='text' value={email} onChange={this.handleChangeEmail}
                             required/>
                         </div>
                     </div>
-                    {/* <div className='signin-button'>
+                    <div className='signin-button'>
                         <button className="btn btn-sign-in" type='submit'>
                             Create an Account
                         </button>
-                    </div> */}
+                    </div>
                     {/* <Link to='/category/1'>Log In</Link> */}
-                    <a href='/category/1'>Log In</a>
+                    {/* <a href='/category/1'>Log In</a> */}
                 </form>
                 <Footer />
             </section>

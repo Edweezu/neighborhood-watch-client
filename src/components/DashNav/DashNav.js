@@ -25,46 +25,46 @@ class DashNav extends React.Component {
                 </div> */}
                  <div className='menu-container'>
                     <div className='main-nav-link'>
-                        {/* <NavLink
+                        <NavLink
                             className='DashNav__folderLink'
                             to={`/category/1`}
                         >
                             All Posts
-                        </NavLink> */}
-                        <a className='DashNav__folderLink' href={`/category/1`}>All Posts</a>
+                        </NavLink>
+                        {/* <a className='DashNav__folderLink' href={`/category/1`}>All Posts</a> */}
                     </div>
                 </div>
                 <div className='menu-container'>
                     <div className='main-nav-link'> 
-                        {/* <NavLink
+                        <NavLink
                             className='DashNav__folderLink'
                             to={`/category/2`}
                         >
                             Crime and Alerts
-                        </NavLink> */}
-                        <a className='DashNav__folderLink' href={`/category/2`}>Crime and Alerts</a>
+                        </NavLink>
+                        {/* <a className='DashNav__folderLink' href={`/category/2`}>Crime and Alerts</a> */}
                     </div>
                 </div>
                 <div className='menu-container'>
                     <div className='main-nav-link'>
-                        {/* <NavLink
+                        <NavLink
                             className='DashNav__folderLink'
                             to={`/category/3`}
                         >
                             Upcoming Events
-                        </NavLink> */}
-                        <a className='DashNav__folderLink' href={`/category/3`}>Upcoming Events</a>
+                        </NavLink>
+                        {/* <a className='DashNav__folderLink' href={`/category/3`}>Upcoming Events</a> */}
                     </div>
                 </div>
                 <div className='menu-container'>
                     <div className='main-nav-link'>
-                        {/* <NavLink
+                        <NavLink
                             className='DashNav__folderLink'
                             to={`/category/4`}
                         >
                             Lost and Found
-                        </NavLink> */}
-                        <a className='DashNav__folderLink' href={`/category/4`}>Lost and Found</a>
+                        </NavLink>
+                        {/* <a className='DashNav__folderLink' href={`/category/4`}>Lost and Found</a> */}
                     </div>
                 </div>
                 <div className='Nav__logout'>

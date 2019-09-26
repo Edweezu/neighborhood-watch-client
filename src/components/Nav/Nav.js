@@ -8,9 +8,6 @@ class Nav extends React.Component {
 
   static contextType = MainContext
 
-
-
-
     render () {
 
       const { categories } = this.context 
@@ -97,10 +94,10 @@ class Nav extends React.Component {
             <ul className='second__ul'>
               {categories.map(category => (
                 <li key={category.id}>
-                  {/* <NavLink to={`/category/${category.id}`}>
+                  <NavLink to={`/category/${category.id}`}>
                     {category.name}
-                  </NavLink> */}
-                  <a href={`/category/${category.id}`}>{category.name}</a>
+                  </NavLink>
+                  {/* <a href={`/category/${category.id}`}>{category.name}</a> */}
                 </li>
               ))}
             </ul>

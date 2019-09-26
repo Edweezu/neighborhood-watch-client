@@ -45,6 +45,12 @@ class Dashboard extends React.Component {
         })
     }
 
+    componentDidMount () {
+        if (!window.location.hash) {
+            window.location = window.location + '#loaded'
+            window.location.reload()
+        }
+    }
    
 
 

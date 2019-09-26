@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 import UsersApiService from '../../services/users-api-service'
 
@@ -23,16 +23,19 @@ class CreateAccount extends React.Component {
 
         return UsersApiService.registerAccount(registeredUser)
             .then(responseJson => {
+                console.log('responseJson', responseJson)
+                console.log('responseJson', responseJson.id)
                 username.value = ''
                 password.value = ''
-                this.handleLoginSuccessful()
+                this.props.history.push(`/create-profile/${responseJson.id}`)
             })  
             .catch(responseJson => {
-                console.log(' Error responseJson', responseJson)
-                this.setState({
-                    // error: responseJson.error
-                    error: responseJson
-                })
+                // console.log(' Error responseJson', responseJson)
+                // this.setState({
+                //     // error: responseJson.error
+                //     error: responseJson
+                // })
+                console.error(responseJson)
             })
 
 
@@ -40,10 +43,10 @@ class CreateAccount extends React.Component {
 
     }
 
-    handleLoginSuccessful = () => {
-        const { history } = this.props
-        history.push('/create-profile')
-    }
+    // handleLoginSuccessful = () => {
+    //     const { history } = this.props
+    //     history.push(`/create-profile/${}`)
+    // }
 
 
     render () {

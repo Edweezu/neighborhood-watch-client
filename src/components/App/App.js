@@ -17,7 +17,9 @@ import cities from '../../data/cities'
 import categories from '../../data/categories'
 import MainContext from '../../contexts/MainContext'
 import PostPage from '../../routes/PostPage/PostPage'
-
+import TokenService from '../../services/token-service'
+import UsersService from '../../services/users-api-service'
+import IdleService from '../../services/idle-service'
 
 class App extends React.Component {
 
@@ -35,6 +37,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    IdleService.setIdleCallback(this.logoutFromIdle)
+    if (TokenService.hasAuthToken()) {
+      IdleService.registerIdleTimerResets()
+      TokenService.queueCallbackBeforeExpiry(() => {
+        UsersService.postRefreshToken()
+      })
+    }
     this.setState({
       posts,
       users,
@@ -43,6 +52,20 @@ class App extends React.Component {
       categories
     })
   }
+
+  componentWillUnmount() {
+    IdleService.unRegisterIdleResets()
+    TokenService.clearCallbackBeforeExpiry()
+  }
+
+  logoutFromIdle = () => {
+    TokenService.clearAuthToken()
+    TokenService.clearCallbackBeforeExpiry()
+    IdleService.unRegisterIdleResets()
+   
+    this.forceUpdate()
+  }
+
 
   isLoggedIn = () => {
     this.setState({
@@ -107,7 +130,7 @@ class App extends React.Component {
             <Route exact path={'/'} component={LandingPage}/>
             <Route path ={'/register'} component ={CreateAccount}/>
             <Route path ={'/login'} component ={LoginPage}/>
-            <Route path ={'/create-profile'} component ={ProfilePage}/>
+            <Route path ={'/create-profile/:userId'} component ={ProfilePage}/>
             <Route path ={'/category/:categoryId'} component ={Dashboard}/>
             <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
             <Route path ={'/my-profile'} component ={MyProfile}/>
