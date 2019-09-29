@@ -28,13 +28,14 @@ class LoginForm extends React.Component {
             .then(responseJson => {
                 username.value = ''
                 password.value = ''
-                this.context.loggedIn()
+                // this.context.loggedIn()
                 this.props.onLoginSuccess()
             })
-            .catch(responseJson => {
-                this.setState({
-                    error: responseJson.error
-                })
+            .catch(err => {
+                // this.setState({
+                //     error: responseJson.error
+                // })
+                console.error(err)
             })
 
 

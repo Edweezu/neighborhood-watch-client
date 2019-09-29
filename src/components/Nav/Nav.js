@@ -3,10 +3,19 @@ import React from 'react'
 import MainContext from '../../contexts/MainContext'
 import { NavLink } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
+import TokenService from '../../services/token-service'
+import IdleService from '../../services/idle-service'
 
 class Nav extends React.Component {
 
   static contextType = MainContext
+
+  handleLogoutClick = () => {
+    // this.context.loggedOut()
+    TokenService.clearAuthToken()
+    TokenService.clearCallbackBeforeExpiry()
+    IdleService.unRegisterIdleResets()
+}
 
     render () {
 
@@ -65,32 +74,6 @@ class Nav extends React.Component {
                 </NavLink>
               </li>
             </ul>
-            {/* <ul className='second__ul'>
-              <li>
-                <NavLink
-                  to='/dashboard'>
-                  All Posts
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to='/crime'>
-                  Crime and Alerts
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to='/events'>
-                  Upcoming Events
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to='/lost'>
-                  Lost and Found
-                </NavLink>
-              </li>
-            </ul> */}
             <ul className='second__ul'>
               {categories.map(category => (
                 <li key={category.id}>

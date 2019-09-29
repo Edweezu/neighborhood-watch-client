@@ -30,10 +30,12 @@ const TokenService = {
     return TokenService.parseJwt(TokenService.getAuthToken())
   },
 
+  //payload.exp is time expressed in seconds since epoch 
   _getMsUntilExpiry(payload) {
     return (payload.exp * 1000) - Date.now()
   },
 
+  //
   queueCallbackBeforeExpiry(callback) {
     const msUntilExpiry = TokenService._getMsUntilExpiry(
       TokenService.readJwtToken()

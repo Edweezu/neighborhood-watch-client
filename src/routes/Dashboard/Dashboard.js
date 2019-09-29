@@ -6,6 +6,8 @@ import AddPost from '../../components/AddPost/AddPost'
 import MainContext from '../../contexts/MainContext';
 import PostList from '../../components/PostList/PostList';
 import { findCity } from '../../helpers'
+import config from '../../config'
+import TokenService from '../../services/token-service'
 
 
 class Dashboard extends React.Component {
@@ -15,9 +17,7 @@ class Dashboard extends React.Component {
 
     state = {
         showForm: false,
-        country: '',
-        state: '',
-        cityInput: ''
+        
     }
 
     handleClick = () => {
@@ -27,41 +27,58 @@ class Dashboard extends React.Component {
         })
     }
 
-    handleChangeCountry = (e) => {
-        this.setState({
-            country : e.target.value
-        })
-    }
-
-    handleChangeState = (e) => {
-        this.setState({
-            state : e.target.value
-        })
-    }
-
-    handleChangeCity = (e) => {
-        this.setState({
-            cityInput : e.target.value
-        })
-    }
-
+  
     componentDidMount () {
         if (!window.location.hash) {
             window.location = window.location + '#loaded'
             window.location.reload()
         }
     }
+
+    handleSubmitNewCity = (e) => {
+        e.preventDefault()
+
+        const { country, state, city} = this.context
+
+        const newPlace = {
+            country, 
+            state,
+            city
+        }
+
+        return fetch(`${config.API_ENDPOINT}/places`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify(newPlace)
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(e => Promise.reject(e))
+            }
+            return res.json()
+        })
+        .then(responseJson => {
+            console.log('resp', responseJson)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+       
+    }
    
 
 
     render () {
 
-        const { city_id, handleCityChange, cities, posts } = this.context
+        const { city_id, handleCityChange, cities, posts, country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
 
-        const {  country, state, cityInput } = this.state
+        // const {  country, state, city } = this.state
         // console.log('country', country)
         // console.log('state', state)
-        // console.log('cityyy', cityInput)
+        // console.log('cityyy', city)
         
         // console.log('city_id state', city_id)
         // console.log('params', this.props.match.params)
@@ -69,7 +86,7 @@ class Dashboard extends React.Component {
         
         // console.log('form state', showForm)
 
-        const city = findCity (cities, city_id) || {}
+        const place = findCity (cities, city_id) || {}
 
         return (
             <section className='Dashboard'>
@@ -86,21 +103,21 @@ class Dashboard extends React.Component {
                     <div className='Dashboard__addCity'>
                         {/* <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4> */}
                         <h4>Add a City Page</h4>
-                                   <form id='addCityForm' className='Dashboard__addCityForm'>
+                                   <form id='addCityForm' className='Dashboard__addCityForm' onSubmit={this.handleSubmitNewCity}>
                                    <div className='selectContainer'>
-                                       <select name="country" className="Dashboard__addSelect countries" id="countryId" onChange={this.handleChangeCountry}>
+                                       <select name="country" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry}>
                                            <option value={country} >Select Country</option>
                                        </select>
                                        {/* <a href='#addCityForm' className='refresh'>Refresh</a> */}
                                    </div>
                                    <div className='selectContainer'>
-                                       <select name="state" className="Dashboard__addSelect states" id="stateId" onChange={this.handleChangeState}>
+                                       <select name="state" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState}>
                                            <option value={state}>Select State</option>
                                        </select>
                                    </div>
                                    <div className='selectContainer'>
-                                       <select name="city" className="Dashboard__addSelect cities" id="cityId" onChange={this.handleChangeCity}>
-                                           <option value={cityInput}>Select City</option>
+                                       <select name="city" className="Dashboard__addSelect cities" id="cityId" onChange={handleChangeCity}>
+                                           <option value={city}>Select City</option>
                                        </select>
                                    </div>  
                                    <div>
@@ -111,7 +128,7 @@ class Dashboard extends React.Component {
                 </section>
                 <section className='DashMainPosts__header'>
                     <AddPost />
-                    <h2>{city.name}</h2>
+                    <h2>{place.name}</h2>
                 </section>
                 <section className='DashContainer'>
                    

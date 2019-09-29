@@ -33,7 +33,10 @@ class App extends React.Component {
     city_id: 1,
     place: {},
     login: null,
-    expired: false
+    expired: false,
+    country: '',
+    state: '',
+    city: ''
   }
 
   componentDidMount() {
@@ -59,12 +62,32 @@ class App extends React.Component {
   }
 
   logoutFromIdle = () => {
+    console.log('logging out')
     TokenService.clearAuthToken()
     TokenService.clearCallbackBeforeExpiry()
     IdleService.unRegisterIdleResets()
    
     this.forceUpdate()
   }
+
+  handleChangeCountry = (e) => {
+    this.setState({
+        country : e.target.value
+    })
+  }
+
+  handleChangeState = (e) => {
+      this.setState({
+          state : e.target.value
+      })
+  }
+
+  handleChangeCity = (e) => {
+      this.setState({
+          city : e.target.value
+      })
+  }
+
 
 
   isLoggedIn = () => {
@@ -96,12 +119,21 @@ class App extends React.Component {
     this.setState({
         city_id: e.target.value
     })
-}
+  }
+
+  addPost = (post) => {
+    this.setState({
+      posts: [
+        ...this.state.posts,
+        post
+      ]
+    })
+  }
  
 
   render () {
 
-    const { place, posts, comments, users, cities, menuOpen,city_id } = this.state
+    const { place, posts, comments, users, cities, menuOpen,city_id, country, state, city } = this.state
 
     // console.log('app post', posts)
     // console.log('app cities', cities)
@@ -119,7 +151,14 @@ class App extends React.Component {
       handleCityChange: this.handleCityChange,
       place,
       onPlaceChanged: this.showPlaceDetails,
-      loggedIn: this.isLoggedIn
+      loggedIn: this.isLoggedIn,
+      addPost: this.addPost,
+      country,
+      state,
+      city,
+      handleChangeCity: this.handleChangeCity,
+      handleChangeState: this.handleChangeState,
+      handleChangeCountry: this.handleChangeCountry
     }
 
     return (
