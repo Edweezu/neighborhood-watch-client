@@ -5,7 +5,7 @@ import DashNav from '../../components/DashNav/DashNav'
 import AddPost from '../../components/AddPost/AddPost'
 import MainContext from '../../contexts/MainContext';
 import PostList from '../../components/PostList/PostList';
-import { findCity } from '../../helpers'
+import { findPlace } from '../../helpers'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 
@@ -33,6 +33,60 @@ class Dashboard extends React.Component {
             window.location = window.location + '#loaded'
             window.location.reload()
         }
+
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/places`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+            
+            fetch(`${config.API_ENDPOINT}/posts`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+
+            fetch(`${config.API_ENDPOINT}/comments`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+        ])
+        .then(([placesRes, postsRes, commentsRes]) => {
+            if (!placesRes.ok) {
+                return placesRes.json().then(e => Promise.reject(e))
+            }
+
+            if (!postsRes.ok) {
+                return postsRes.json().then(e => Promise.reject(e))
+            }
+
+            if (!commentsRes.ok) {
+                return commentsRes.json().then(e => Promise.reject(e))
+            }
+
+            return Promise.all([
+                placesRes.json(),
+                postsRes.json(),
+                commentsRes.json()
+            ])
+        })
+        .then(([placesRespJson, postsRespJson, commentsRespJson]) => {
+            console.log('places', placesRespJson)
+             this.context.setPlaces(placesRespJson)
+             this.context.setPosts(postsRespJson)
+             this.context.setComments(commentsRespJson)
+        })
+        .catch(err => {
+            console.error(err)
+        })
     }
 
     handleSubmitNewCity = (e) => {
@@ -62,6 +116,7 @@ class Dashboard extends React.Component {
         })
         .then(responseJson => {
             console.log('resp', responseJson)
+            this.context.addPlace(responseJson)
         })
         .catch(err => {
             console.error(err)
@@ -73,7 +128,7 @@ class Dashboard extends React.Component {
 
     render () {
 
-        const { city_id, handleCityChange, cities, posts, country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
+        const { city_id, handleCityChange, places = [], posts = [], country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
 
         // const {  country, state, city } = this.state
         // console.log('country', country)
@@ -85,18 +140,19 @@ class Dashboard extends React.Component {
         // console.log('dash posts', posts)
         
         // console.log('form state', showForm)
+        console.log('places state', this.context.places)
 
-        const place = findCity (cities, city_id) || {}
+        const place = findPlace (places, city_id) || {}
 
         return (
             <section className='Dashboard'>
                 <section className='Dashboard__browseContainer'>
                     <div className='Dashboard__browseInput'>
-                        {/* <label htmlFor='browse-cities'><strong>Browse Cities</strong></label> */}
+                        {/* <label htmlFor='browse-places'><strong>Browse places</strong></label> */}
                         <h4>Browse Active Pages</h4>
                         <select value={city_id}id='browse-cities' onChange={handleCityChange}>
-                            {cities.map(city => {
-                                return <option key={city.id} value={city.id}>{city.name}</option>
+                            {places.map(place => {
+                                return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
                             })}
                         </select>
                     </div>

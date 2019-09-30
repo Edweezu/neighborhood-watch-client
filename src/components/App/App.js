@@ -27,7 +27,7 @@ class App extends React.Component {
     posts : [],
     comments: [],
     users: [],
-    cities: [],
+    places: [],
     categories: [],
     menuOpen: false,
     city_id: 1,
@@ -51,8 +51,26 @@ class App extends React.Component {
       posts,
       users,
       comments,
-      cities,
+      // cities,
       categories
+    })
+  }
+
+  setPosts = (posts) => {
+    this.setState({
+      posts
+    })
+  }
+
+  setComments = (comments) => {
+    this.setState({
+      comments
+    })
+  }
+
+  setPlaces = (places) => {
+    this.setState({
+      places
     })
   }
 
@@ -130,10 +148,19 @@ class App extends React.Component {
     })
   }
  
+  addPlace = (place) => {
+    this.setState({
+      places: [
+        ...this.state.places,
+        place
+      ]
+    })
+  }
+ 
 
   render () {
 
-    const { place, posts, comments, users, cities, menuOpen,city_id, country, state, city } = this.state
+    const { place, posts, comments, users, cities, menuOpen,city_id, country, state, city, places } = this.state
 
     // console.log('app post', posts)
     // console.log('app cities', cities)
@@ -158,7 +185,12 @@ class App extends React.Component {
       city,
       handleChangeCity: this.handleChangeCity,
       handleChangeState: this.handleChangeState,
-      handleChangeCountry: this.handleChangeCountry
+      handleChangeCountry: this.handleChangeCountry,
+      addPlace: this.addPlace,
+      setPosts: this.setPosts,
+      setComments: this.setComments,
+      setPlaces: this.setPlaces,
+      places
     }
 
     return (
