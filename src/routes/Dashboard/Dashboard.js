@@ -27,6 +27,7 @@ class Dashboard extends React.Component {
         })
     }
 
+   
   
     componentDidMount () {
         if (!window.location.hash) {
@@ -79,7 +80,7 @@ class Dashboard extends React.Component {
             ])
         })
         .then(([placesRespJson, postsRespJson, commentsRespJson]) => {
-            console.log('places', placesRespJson)
+            // console.log('places', placesRespJson)
              this.context.setPlaces(placesRespJson)
              this.context.setPosts(postsRespJson)
              this.context.setComments(commentsRespJson)
@@ -93,6 +94,11 @@ class Dashboard extends React.Component {
         e.preventDefault()
 
         const { country, state, city} = this.context
+
+        const pageExists = {
+            id: 99999999,
+            text: 'Page already exists'
+        }
 
         const newPlace = {
             country, 
@@ -115,8 +121,11 @@ class Dashboard extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('resp', responseJson)
-            this.context.addPlace(responseJson)
+            // console.log('resp', responseJson)
+            if (JSON.stringify(responseJson) !== JSON.stringify(pageExists)) {
+                console.log('hi')
+                this.context.addPlace(responseJson)
+            }
         })
         .catch(err => {
             console.error(err)
@@ -130,16 +139,9 @@ class Dashboard extends React.Component {
 
         const { city_id, handleCityChange, places = [], posts = [], country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
 
-        // const {  country, state, city } = this.state
-        // console.log('country', country)
-        // console.log('state', state)
-        // console.log('cityyy', city)
         
-        // console.log('city_id state', city_id)
-        // console.log('params', this.props.match.params)
-        // console.log('dash posts', posts)
-        
-        // console.log('form state', showForm)
+
+       
         console.log('places state', this.context.places)
 
         const place = findPlace (places, city_id) || {}
