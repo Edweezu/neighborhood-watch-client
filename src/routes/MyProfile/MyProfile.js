@@ -2,9 +2,15 @@ import React from 'react'
 import userIcon from '../../app-images/user icon.png'
 import users from '../../data/users'
 import DashNav from '../../components/DashNav/DashNav'
+// import MainContext from '../../contexts/MainContext'
 
 class MyProfile extends React.Component {
+
+    // static contextType = MainContext
+  
+
     render () {
+        // console.log('comments', this.context.comments)
         const user = users[0]
         return (
             <section className='MyProfile'>

@@ -20,6 +20,7 @@ import PostPage from '../../routes/PostPage/PostPage'
 import TokenService from '../../services/token-service'
 import UsersService from '../../services/users-api-service'
 import IdleService from '../../services/idle-service'
+import config from '../../config'
 
 class App extends React.Component {
 
@@ -47,13 +48,60 @@ class App extends React.Component {
         UsersService.postRefreshToken()
       })
     }
-    // this.setState({
-    //   posts,
-    //   users,
-    //   comments,
-    //   cities,
-    //   categories
-    // })
+   
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/places`, {
+          method: 'GET',
+          headers: {
+              'content-type': 'application/json',
+              'authorization': `bearer ${TokenService.getAuthToken()}`
+          }
+      }),
+      
+      fetch(`${config.API_ENDPOINT}/posts`, {
+          method: 'GET',
+          headers: {
+              'content-type': 'application/json',
+              'authorization': `bearer ${TokenService.getAuthToken()}`
+          }
+      }),
+
+      fetch(`${config.API_ENDPOINT}/comments`, {
+          method: 'GET',
+          headers: {
+              'content-type': 'application/json',
+              'authorization': `bearer ${TokenService.getAuthToken()}`
+          }
+      }),
+  ])
+  .then(([placesRes, postsRes, commentsRes]) => {
+      if (!placesRes.ok) {
+          return placesRes.json().then(e => Promise.reject(e))
+      }
+
+      if (!postsRes.ok) {
+          return postsRes.json().then(e => Promise.reject(e))
+      }
+
+      if (!commentsRes.ok) {
+          return commentsRes.json().then(e => Promise.reject(e))
+      }
+
+      return Promise.all([
+          placesRes.json(),
+          postsRes.json(),
+          commentsRes.json()
+      ])
+  })
+  .then(([placesRespJson, postsRespJson, commentsRespJson]) => {
+      // console.log('places', placesRespJson)
+       this.setPlaces(placesRespJson)
+       this.setPosts(postsRespJson)
+       this.setComments(commentsRespJson)
+  })
+  .catch(err => {
+      console.error(err)
+  })
   }
 
   setPosts = (posts) => {
@@ -162,6 +210,15 @@ class App extends React.Component {
       ]
     })
   }
+
+  addComment = (comment) => {
+    this.setState({
+      comments: [
+        ...this.state.comments,
+        comment
+      ]
+    })
+  }
  
 
   render () {
@@ -193,6 +250,7 @@ class App extends React.Component {
       handleChangeState: this.handleChangeState,
       handleChangeCountry: this.handleChangeCountry,
       addPlace: this.addPlace,
+      addComment: this.addComment,
       setPosts: this.setPosts,
       setComments: this.setComments,
       setPlaces: this.setPlaces,

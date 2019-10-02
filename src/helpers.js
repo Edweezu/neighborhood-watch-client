@@ -26,5 +26,5 @@ export const findPlace = (places, placeId) => {
 }
 
 export const findComments = (comments, postId) => {
-    return comments.filter(comment => comment.posts_id == postId)
+    return comments.filter(comment => comment.post_id == postId)
 }
