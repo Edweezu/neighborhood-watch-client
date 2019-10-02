@@ -38,7 +38,7 @@ class DashNav extends React.Component {
                     <div className='main-nav-link'> 
                         <NavLink
                             className='DashNav__folderLink'
-                            to={`/category/2`}
+                            to={`/category/Crime and Alerts`}
                         >
                             Crime and Alerts
                         </NavLink>
@@ -49,7 +49,7 @@ class DashNav extends React.Component {
                     <div className='main-nav-link'>
                         <NavLink
                             className='DashNav__folderLink'
-                            to={`/category/3`}
+                            to={`/category/Upcoming Events`}
                         >
                             Upcoming Events
                         </NavLink>
@@ -60,7 +60,7 @@ class DashNav extends React.Component {
                     <div className='main-nav-link'>
                         <NavLink
                             className='DashNav__folderLink'
-                            to={`/category/4`}
+                            to={`/category/Lost and Found`}
                         >
                             Lost and Found
                         </NavLink>

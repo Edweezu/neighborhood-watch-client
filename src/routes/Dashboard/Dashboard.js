@@ -137,14 +137,14 @@ class Dashboard extends React.Component {
 
     render () {
 
-        const { city_id, handleCityChange, places = [], posts = [], country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
+        const { place_id, handleCityChange, places = [], posts = [], country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
 
         
 
        
-        console.log('places state', this.context.places)
+        // console.log('places state', this.context.places)
 
-        const place = findPlace (places, city_id) || {}
+        const place = findPlace (places, place_id) || {}
 
         return (
             <section className='Dashboard'>
@@ -152,7 +152,7 @@ class Dashboard extends React.Component {
                     <div className='Dashboard__browseInput'>
                         {/* <label htmlFor='browse-places'><strong>Browse places</strong></label> */}
                         <h4>Browse Active Pages</h4>
-                        <select value={city_id}id='browse-cities' onChange={handleCityChange}>
+                        <select value={place.id}id='browse-cities' onChange={handleCityChange}>
                             {places.map(place => {
                                 return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
                             })}
@@ -186,7 +186,8 @@ class Dashboard extends React.Component {
                 </section>
                 <section className='DashMainPosts__header'>
                     <AddPost />
-                    <h2>{place.name}</h2>
+                    {/* <h2>{place.city}, {place.state}</h2> */}
+                    <h2>{place.city}</h2>
                 </section>
                 <section className='DashContainer'>
                    

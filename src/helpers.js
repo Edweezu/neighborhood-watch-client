@@ -1,10 +1,11 @@
+/* eslint-disable eqeqeq */
 
-export const getPostsForCategory = (posts=[], categoryId, cityId) => {
+export const getPostsForCategory = (posts=[], categoryId, placeId) => {
     
     if (categoryId == 1) {
-        return posts.filter(post => post.city_id == cityId)
+        return posts.filter(post => post.place_id == placeId)
     } else {
-        return posts.filter(post => post.category_id == categoryId && post.city_id == cityId)
+        return posts.filter(post => post.post_category == categoryId && post.place_id == placeId)
     }
 }
 

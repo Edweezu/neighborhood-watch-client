@@ -69,7 +69,7 @@ class AddPost extends React.Component {
                     <a href='#createPostForm' className='post_btn'>Create Post</a>
                 </div>
                 <div id='createPostForm' className='AddPost__form'>
-                    {}<form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit}>
                         <a href='#' className='cancelForm'><span className="fas fa-times" aria-hidden="true"></span></a>
                         <div className='AddPost__formContainer'>
                             <div className='AddPost__formDiv'>

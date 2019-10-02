@@ -1,11 +1,11 @@
 /* global google */
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext';
-import AutoComplete from '../../components/AutoComplete/AutoComplete'
+// import AutoComplete from '../../components/AutoComplete/AutoComplete'
 import Footer from '../../components/Footer/Footer'
-import config from '../../config'
-import TokenService from '../../services/token-service'
+// import config from '../../config'
+// import TokenService from '../../services/token-service'
 import UsersApiService from '../../services/users-api-service'
 /* global google */
 

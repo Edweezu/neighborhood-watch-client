@@ -11,15 +11,19 @@ class Post extends React.Component {
 
     render () {
         const { users=[] } = this.context
-        const { id, subject, message, date_created, user_id } = this.props
-        const user = findUser(users, user_id) || []
+        const { id, subject, message, date_created, user_id, user } = this.props
+        // const user = findUser(users, user_id) || []
+        
         // console.log('users', users)
         // console.log('user id', user_id)
         // console.log('user', user)
+
+        const nameCapitalized = user.username.charAt(0).toUpperCase() + user.username.slice(1)
+
         return (
             <section className='Post'>
                 <div className='Post__userInfo'>
-                    {user.username}, {user.city}
+                    {nameCapitalized}, {user.city}
                 </div>
                 <div>
                     <h4><Link to={`/post-page/${id}`}>{subject}</Link></h4>
@@ -40,7 +44,6 @@ class Post extends React.Component {
                     </div>
                     <div>
                         <button type='button'><i className="fas fa-thumbs-up"></i></button>
-                        <button type='button'><i className="fas fa-thumbs-down"></i></button>
                     </div>
                 </div>
 

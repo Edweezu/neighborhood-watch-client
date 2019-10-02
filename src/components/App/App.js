@@ -3,17 +3,17 @@ import { Switch, Route } from 'react-router-dom'
 import Nav from '../Nav/Nav'
 import LandingPage from '../../routes/LandingPage/LandingPage'
 import './App.css'
-import Footer from '../Footer/Footer'
+// import Footer from '../Footer/Footer'
 import CreateAccount from '../../routes/CreateAccount/CreateAccount'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import ProfilePage from '../../routes/ProfilePage/ProfilePage'
 import Dashboard from '../../routes/Dashboard/Dashboard'
 import MemberProfiles from '../../routes/MemberProfiles/MemberProfiles'
 import MyProfile from '../../routes/MyProfile/MyProfile'
-import posts from '../../data/posts'
-import comments from '../../data/comments'
-import users from '../../data/users'
-import cities from '../../data/cities'
+// import posts from '../../data/posts'
+// import comments from '../../data/comments'
+// import users from '../../data/users'
+// import cities from '../../data/cities'
 import categories from '../../data/categories'
 import MainContext from '../../contexts/MainContext'
 import PostPage from '../../routes/PostPage/PostPage'
@@ -30,7 +30,7 @@ class App extends React.Component {
     places: [],
     categories: [],
     menuOpen: false,
-    city_id: 1,
+    place_id: 1,
     place: {},
     login: null,
     expired: false,
@@ -47,13 +47,13 @@ class App extends React.Component {
         UsersService.postRefreshToken()
       })
     }
-    this.setState({
-      posts,
-      users,
-      comments,
-      // cities,
-      categories
-    })
+    // this.setState({
+    //   posts,
+    //   users,
+    //   comments,
+    //   cities,
+    //   categories
+    // })
   }
 
   setPosts = (posts) => {
@@ -73,6 +73,12 @@ class App extends React.Component {
       places
     })
   }
+  
+  // setUsers = (users) => {
+  //   this.setState({
+  //     users
+  //   })
+  // }
 
   componentWillUnmount() {
     IdleService.unRegisterIdleResets()
@@ -135,7 +141,7 @@ class App extends React.Component {
 
   handleCityChange = (e) => {
     this.setState({
-        city_id: e.target.value
+        place_id: e.target.value
     })
   }
 
@@ -160,7 +166,7 @@ class App extends React.Component {
 
   render () {
 
-    const { place, posts, comments, users, cities, menuOpen,city_id, country, state, city, places } = this.state
+    const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places } = this.state
 
     // console.log('app post', posts)
     // console.log('app cities', cities)
@@ -172,7 +178,7 @@ class App extends React.Component {
       cities,
       categories,
       menuOpen,
-      city_id,
+      place_id,
       handleMenuClick: this.handleMenuClick,
       handleLinkClick: this.handleLinkClick,
       handleCityChange: this.handleCityChange,
@@ -190,6 +196,7 @@ class App extends React.Component {
       setPosts: this.setPosts,
       setComments: this.setComments,
       setPlaces: this.setPlaces,
+      // setUsers: this.setUsers,
       places
     }
 
