@@ -10,17 +10,16 @@ class Nav extends React.Component {
 
   static contextType = MainContext
 
-  handleLogoutClick = () => {
-    // this.context.loggedOut()
-    TokenService.clearAuthToken()
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
-}
+    handleLogoutClick = () => {
+      // this.context.loggedOut()
+      TokenService.clearAuthToken()
+      TokenService.clearCallbackBeforeExpiry()
+      IdleService.unRegisterIdleResets()
+    } 
+
+
 
     render () {
-
-      const { categories } = this.context 
-
         return (
           <header className='Nav__header'>
           <a href="#main-menu"
@@ -44,45 +43,77 @@ class Nav extends React.Component {
             </a>
             <ul className='main__ul'>
               <li> 
-                <NavLink
+                {/* <NavLink
                   to='/register'>
                   Create an Account
-                </NavLink>
+                </NavLink> */}
+                <a href='/register#main-menu-toggle'>Create an Account</a>
               </li>
               <li>
-                <NavLink
-                  to='/login'>
+                {/* <NavLink
+                  to={{
+                    pathname: '/login',
+                    hash: '#main-menu-toggle'
+                  }}>
                   Login
-                 </NavLink>
+                 </NavLink> */}
+                 <a href='/login#main-menu-toggle'>Login</a>
               </li>
               <li>
-                <NavLink
+                {/* <NavLink
                   to='/mem-profiles'>
                   Member Profiles
-                </NavLink>
+                </NavLink> */}
+                <a href='/mem-profiles#main-menu-toggle'>Member Profiles</a>
               </li>
               <li>
-                <NavLink
+                {/* <NavLink
                   to='/my-profile'>
                   My Profile
-                </NavLink>
+                </NavLink> */}
+                <a href='/my-profile#main-menu-toggle'>My Profile</a>
               </li>
               <li>
-                <NavLink
+                {/* <NavLink
                   to='/'>
                   Logout
-                </NavLink>
+                </NavLink> */}
+                <a href='/#main-menu-toggle'>Logout</a>
               </li>
             </ul>
             <ul className='second__ul'>
-              {categories.map(category => (
-                <li key={category.id}>
-                  <NavLink to={`/category/${category.id}`}>
-                    {category.name}
-                  </NavLink>
-                  {/* <a href={`/category/${category.id}`}>{category.name}</a> */}
-                </li>
-              ))}
+              <li>
+                {/* <NavLink
+                    to={`/category/1`}
+                >
+                    All Posts
+                </NavLink> */}
+                <a href='/category/1#main-menu-toggle'>All Posts</a>
+              </li>
+              <li>
+                {/* <NavLink
+                    to={`/category/Crime and Alerts`}
+                >
+                    Crime and Alerts
+                </NavLink> */}
+                <a href='/category/Crime and Alerts#main-menu-toggle'>Crime and Alerts</a>
+              </li>
+              <li>
+                {/* <NavLink
+                    to={`/category/Upcoming Events`}
+                >
+                    Upcoming Events
+                </NavLink> */}
+                <a href='/category/Upcoming Events#main-menu-toggle'>Upcoming Events</a>
+              </li>
+              <li>
+                {/* <NavLink
+                    to={`/category/Lost and Found`}
+                >
+                    Lost and Found
+                </NavLink> */}
+                <a href='/category/Lost and Found#main-menu-toggle'>Lost and Found</a>
+              </li>
             </ul>
             <div className='Nav__footer'>
               <Footer />

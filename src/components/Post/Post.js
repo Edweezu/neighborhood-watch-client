@@ -1,5 +1,5 @@
 import React from 'react'
-import { findUser } from '../../helpers'
+// import { findUser } from '../../helpers'
 import MainContext from '../../contexts/MainContext';
 import fileImage from '../../app-images/file-image-icon.png'
 import { Link } from 'react-router-dom'
@@ -10,8 +10,8 @@ class Post extends React.Component {
     static contextType = MainContext
 
     render () {
-        const { users=[] } = this.context
-        const { id, subject, message, date_created, user_id, user } = this.props
+        // const { users=[] } = this.context
+        const { id, subject, message, date_created, user } = this.props
         // const user = findUser(users, user_id) || []
         
         // console.log('users', users)
