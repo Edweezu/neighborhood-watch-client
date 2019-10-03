@@ -35,7 +35,59 @@ class Dashboard extends React.Component {
             window.location.reload()
         }
 
-        
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/places`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+            
+            fetch(`${config.API_ENDPOINT}/posts`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+      
+            fetch(`${config.API_ENDPOINT}/comments`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+        ])
+        .then(([placesRes, postsRes, commentsRes]) => {
+            if (!placesRes.ok) {
+                return placesRes.json().then(e => Promise.reject(e))
+            }
+      
+            if (!postsRes.ok) {
+                return postsRes.json().then(e => Promise.reject(e))
+            }
+      
+            if (!commentsRes.ok) {
+                return commentsRes.json().then(e => Promise.reject(e))
+            }
+      
+            return Promise.all([
+                placesRes.json(),
+                postsRes.json(),
+                commentsRes.json()
+            ])
+        })
+        .then(([placesRespJson, postsRespJson, commentsRespJson]) => {
+            // console.log('places', placesRespJson)
+             this.context.setPlaces(placesRespJson)
+             this.context.setPosts(postsRespJson)
+             this.context.setComments(commentsRespJson)
+        })
+        .catch(err => {
+            console.error(err)
+        })
     }
 
     handleSubmitNewCity = (e) => {

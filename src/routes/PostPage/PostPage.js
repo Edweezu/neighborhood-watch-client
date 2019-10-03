@@ -1,11 +1,12 @@
 import React from 'react'
-import { findPost, findUser, findCommentUser, findComments } from '../../helpers'
+import { findPost, findComments } from '../../helpers'
 import { Link } from 'react-router-dom'
 import fileImage from '../../app-images/file-image-icon.png'
 import MainContext from '../../contexts/MainContext';
 import CommentTextBox from '../../components/CommentTextBox/CommentTextBox'
 import Footer from '../../components/Footer/Footer'
-import config from '../../config'
+import config from '../../config'   
+import TokenService from '../../services/token-service'
 
 class PostPage extends React.Component {
     static defaultProps = {
@@ -27,7 +28,7 @@ class PostPage extends React.Component {
     errorHandler = () => {
         const { error } = this.state
         if (error) {
-            if (error == `Post does not exist`) {
+            if (error === `Post does not exist`) {
                 return <p className='error'><strong>Error! Post does not exist</strong></p>
             } else {
                 return <p className='error'><strong>Error! You have been logged out. Please log back in to continue.</strong></p>
@@ -41,6 +42,50 @@ class PostPage extends React.Component {
         }
         return name.charAt(0).toUpperCase() + name.slice(1) 
     }
+
+    componentDidMount () {
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/posts`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+      
+            fetch(`${config.API_ENDPOINT}/comments`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+        ])
+        .then(([postsRes, commentsRes]) => {
+            if (!postsRes.ok) {
+                return postsRes.json().then(e => Promise.reject(e))
+            }
+      
+            if (!commentsRes.ok) {
+                return commentsRes.json().then(e => Promise.reject(e))
+            }
+      
+            return Promise.all([
+                postsRes.json(),
+                commentsRes.json()
+            ])
+        })
+        .then(([postsRespJson, commentsRespJson]) => {
+             this.context.setPosts(postsRespJson)
+             this.context.setComments(commentsRespJson)
+        })
+        .catch(error => {
+            this.setState({
+                error
+            })
+        })
+    }
+
 
     render () {
 
@@ -60,15 +105,13 @@ class PostPage extends React.Component {
         console.log('comments', comments)
         console.log('postid', postId)
         console.log('correct comment', correctComments)
+        console.log("error", this.state.error)
 
         
 
         return (
             <section>
-                <section>
-                    {this.errorHandler}
-                </section>
-                <section className='PostPage'>
+                {(post.hasOwnProperty('message')) ? (<section className='PostPage'>
                     <div className='back-btn'>
                         <button type='button' onClick={() => this.props.history.goBack()}>Go Back</button>
                     </div>
@@ -114,7 +157,16 @@ class PostPage extends React.Component {
                         />
                     </section>
                     
+                </section>) : 
+                <section className='PostPage'>
+                    <div className='back-btn'>
+                        <button type='button' onClick={() => this.props.history.goBack()}>Go Back</button>
+                    </div>
+                    <p className='error'>
+                        <strong>Error! Post does not exist</strong>
+                    </p>
                 </section>
+               }
                 <Footer />
             </section>   
         )
