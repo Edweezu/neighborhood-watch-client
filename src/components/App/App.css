@@ -401,7 +401,10 @@ a {
         justify-content: space-between;
     }
 
-
+    .Dashboard__browseContainer {
+        display: flex;
+        text-align: left;
+    }
    
     
     
