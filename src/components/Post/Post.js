@@ -3,11 +3,39 @@ import React from 'react'
 import MainContext from '../../contexts/MainContext';
 import fileImage from '../../app-images/file-image-icon.png'
 import { Link } from 'react-router-dom'
-
+import config from '../../config'
+import TokenService from '../../services/token-service'
 
 class Post extends React.Component {
 
     static contextType = MainContext
+
+    handleDeletePost = () => {
+
+        //forgot you can just take postid from props in any function in the component. don't need to pass it into the function
+        let { id } = this.props
+
+        return fetch(`${config.API_ENDPOINT}/posts/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(e => Promise.reject(e))
+            }
+        })
+        .then(resp => {
+            this.context.deletePost(id)
+            //reset state with updated posts, one less post
+            window.location.reload()
+        })
+        .catch(err => {
+            console.error(err)
+        })
+    }
 
     render () {
         // const { users=[] } = this.context
@@ -38,7 +66,7 @@ class Post extends React.Component {
                         <button type='button'>
                             Edit
                         </button>
-                        <button type='button'>
+                        <button type='button' onClick={this.handleDeletePost}>
                             Delete
                         </button>      
                     </div>

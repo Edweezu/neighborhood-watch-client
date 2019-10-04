@@ -139,9 +139,7 @@ class Dashboard extends React.Component {
 
         const { place_id, handleCityChange, places = [], posts = [], country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
 
-        
-
-       
+        // console.log('showform', this.state.showForm)
         // console.log('places state', this.context.places)
 
         const place = findPlace (places, place_id) || {}
@@ -160,28 +158,28 @@ class Dashboard extends React.Component {
                     </div>
                     <div className='Dashboard__addCity'>
                         {/* <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4> */}
-                        <h4>Add a City Page</h4>
-                                   <form id='addCityForm' className='Dashboard__addCityForm' onSubmit={this.handleSubmitNewCity}>
-                                   <div className='selectContainer'>
-                                       <select name="country" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry}>
-                                           <option value={country} >Select Country</option>
-                                       </select>
-                                       {/* <a href='#addCityForm' className='refresh'>Refresh</a> */}
-                                   </div>
-                                   <div className='selectContainer'>
-                                       <select name="state" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState}>
-                                           <option value={state}>Select State</option>
-                                       </select>
-                                   </div>
-                                   <div className='selectContainer'>
-                                       <select name="city" className="Dashboard__addSelect cities" id="cityId" onChange={handleChangeCity}>
-                                           <option value={city}>Select City</option>
-                                       </select>
-                                   </div>  
-                                   <div>
-                                       <button type='submit'>Submit</button>
-                                   </div>  
-                               </form>                    
+                        <h4>Add a New Page</h4>
+                             <form id='addCityForm' className='Dashboard__addCityForm' onSubmit={this.handleSubmitNewCity}>
+                             <div className='selectContainer'>
+                                 <select name="country" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry}>
+                                     <option value={country} >Select Country</option>
+                                 </select>
+                                 {/* <a href='#addCityForm' className='refresh'>Refresh</a> */}
+                             </div>
+                             <div className='selectContainer'>
+                                 <select name="state" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState}>
+                                     <option value={state}>Select State</option>
+                                 </select>
+                             </div>
+                             <div className='selectContainer'>
+                                 <select name="city" className="Dashboard__addSelect cities" id="cityId" onChange={handleChangeCity}>
+                                     <option value={city}>Select City</option>
+                                 </select>
+                             </div>  
+                             <div>
+                                 <button type='submit'>Submit</button>
+                             </div>  
+                         </form>                    
                     </div>
                 </section>
                 <section className='DashMainPosts__header'>

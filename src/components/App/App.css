@@ -366,6 +366,7 @@ ul {
 .Dashboard__browseInput {
     /* margin: 1rem; */
     flex: 1 1;
+    margin-bottom: 1rem;
 }
 
 select {
@@ -374,8 +375,8 @@ select {
 }
 
 .Dashboard__browseContainer {
-    display: flex;
-    text-align: left;
+    /* display: flex;
+    text-align: left; */
     width: 90%;
     margin: 0 auto;
 }

@@ -86,6 +86,11 @@ class PostPage extends React.Component {
         })
     }
 
+    // goBack = () => {
+    //     // this.props.history.goBack()
+    //     // window.location.reload()
+    // }
+
 
     render () {
 
@@ -113,7 +118,8 @@ class PostPage extends React.Component {
             <section>
                 {(post.hasOwnProperty('message')) ? (<section className='PostPage'>
                     <div className='back-btn'>
-                        <button type='button' onClick={() => this.props.history.goBack()}>Go Back</button>
+                        {/* <button type='button' onClick={this.goBack}>Go Back</button> */}
+                        <a href='/category/1'>Go Back</a>
                     </div>
                     <section className='PostPage__postContainer'>
                         <div className='PostPage__userInfo'>
@@ -160,7 +166,8 @@ class PostPage extends React.Component {
                 </section>) : 
                 <section className='PostPage'>
                     <div className='back-btn'>
-                        <button type='button' onClick={() => this.props.history.goBack()}>Go Back</button>
+                        {/* <button type='button' onClick={this.goBack}>Go Back</button> */}
+                        <a href='/category/1'>Go Back</a>
                     </div>
                     <p className='error'>
                         <strong>Error! Post does not exist</strong>

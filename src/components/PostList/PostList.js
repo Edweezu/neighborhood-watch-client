@@ -14,8 +14,8 @@ class PostList extends React.Component {
         const { categoryid } = this.props
         const postList = getPostsForCategory(posts, categoryid, place_id) || []
         console.log('posts', posts)
-        console.log('place_id', place_id)
-        console.log('categoryid', categoryid)
+        // console.log('place_id', place_id)
+        // console.log('categoryid', categoryid)
         console.log('postlist', postList)
 
         return (

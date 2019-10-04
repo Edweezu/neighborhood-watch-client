@@ -20,7 +20,7 @@ import PostPage from '../../routes/PostPage/PostPage'
 import TokenService from '../../services/token-service'
 import UsersService from '../../services/users-api-service'
 import IdleService from '../../services/idle-service'
-import config from '../../config'
+// import config from '../../config'
 
 class App extends React.Component {
 
@@ -168,13 +168,21 @@ class App extends React.Component {
       ]
     })
   }
+
+  deletePost = (postId) => {
+    this.setState({
+      posts: this.state.posts.filter(post => {
+        return post.id !== postId
+      })
+    })
+  }
  
 
   render () {
 
     const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places } = this.state
 
-    // console.log('app post', posts)
+    console.log('app post', posts)
     // console.log('app cities', cities)
 
     const contextValue = {
@@ -203,6 +211,7 @@ class App extends React.Component {
       setPosts: this.setPosts,
       setComments: this.setComments,
       setPlaces: this.setPlaces,
+      deletePost: this.deletePost,
       // setUsers: this.setUsers,
       places
     }
