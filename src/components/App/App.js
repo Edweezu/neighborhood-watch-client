@@ -176,6 +176,14 @@ class App extends React.Component {
       })
     })
   }
+
+  deleteComment = (commentId) => {
+    this.setState({
+      comments: this.state.comments.filter(comment => {
+        return comment.id !== commentId
+      })
+    })
+  }
  
 
   render () {
@@ -212,7 +220,7 @@ class App extends React.Component {
       setComments: this.setComments,
       setPlaces: this.setPlaces,
       deletePost: this.deletePost,
-      // setUsers: this.setUsers,
+      deleteComment: this.deleteComment,
       places
     }
 

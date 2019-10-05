@@ -5,6 +5,7 @@
   "dependencies": {
     "jwt-decode": "^2.2.0",
     "react": "^16.9.0",
+    "react-confirm-alert": "^2.4.1",
     "react-devtools": "^3.6.3",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",

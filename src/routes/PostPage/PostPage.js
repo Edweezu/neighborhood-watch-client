@@ -7,6 +7,7 @@ import CommentTextBox from '../../components/CommentTextBox/CommentTextBox'
 import Footer from '../../components/Footer/Footer'
 import config from '../../config'   
 import TokenService from '../../services/token-service'
+import Comment from '../../components/Comment/Comment'
 
 class PostPage extends React.Component {
     static defaultProps = {
@@ -23,18 +24,6 @@ class PostPage extends React.Component {
       }
 
     static contextType = MainContext
-
-
-    errorHandler = () => {
-        const { error } = this.state
-        if (error) {
-            if (error === `Post does not exist`) {
-                return <p className='error'><strong>Error! Post does not exist</strong></p>
-            } else {
-                return <p className='error'><strong>Error! You have been logged out. Please log back in to continue.</strong></p>
-            }
-        }
-    }
 
     nameCapitalized = (name) => {
         if (!name) {
@@ -86,11 +75,7 @@ class PostPage extends React.Component {
         })
     }
 
-    // goBack = () => {
-    //     // this.props.history.goBack()
-    //     // window.location.reload()
-    // }
-
+   
 
     render () {
 
@@ -143,17 +128,14 @@ class PostPage extends React.Component {
                         <ul className='PostPage__commentList'>
                             {correctComments.map(comment => {
                                 return (<li key={comment.id}>
-                                <p>
-                                {this.nameCapitalized(comment.user.username)}, {comment.user.city}
-                                </p>
-                                <p>{comment.text}</p>
-                                <p>{comment.date_created}</p>
-                                <button type='button'>
-                                    Edit
-                                </button>
-                                <button type='button'>
-                                    Delete
-                                </button>    
+                                
+                                <Comment 
+                                    id={comment.id}
+                                    user={comment.user}
+                                    text={comment.text}
+                                    date_created={comment.date_created}
+                                    nameCapitalized={this.nameCapitalized}
+                                />
                             </li>)
                             } 
                             )}
