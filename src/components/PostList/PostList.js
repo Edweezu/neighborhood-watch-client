@@ -13,10 +13,10 @@ class PostList extends React.Component {
         const { place_id, posts=[] } = this.context
         const { categoryid } = this.props
         const postList = getPostsForCategory(posts, categoryid, place_id) || []
-        console.log('posts', posts)
+        // console.log('posts', posts)
         // console.log('place_id', place_id)
         // console.log('categoryid', categoryid)
-        console.log('postlist', postList)
+        // console.log('postlist', postList)
 
         return (
             <section className='PostList'>
@@ -31,6 +31,7 @@ class PostList extends React.Component {
                             place_id={post.place_id}
                             user_id={post.user_id}
                             user={post.user}
+                            image={post.image}
                         />
                     </li>
                 ))}

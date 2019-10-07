@@ -5,6 +5,8 @@ import fileImage from '../../app-images/file-image-icon.png'
 import { Link } from 'react-router-dom'
 import config from '../../config'
 import TokenService from '../../services/token-service'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 class Post extends React.Component {
 
@@ -30,16 +32,39 @@ class Post extends React.Component {
         .then(resp => {
             this.context.deletePost(id)
             //reset state with updated posts, one less post
-            window.location.reload()
+            // window.location.reload()
         })
         .catch(err => {
             console.error(err)
         })
     }
 
+    handleDeleteForm = () => {
+        confirmAlert({
+            title: '',
+            message: 'Are you sure you want to delete this?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick : () => {
+                        this.handleDeletePost()
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick : () => {
+                        this.setState({
+                            error: null
+                        })
+                    }
+                }
+            ]
+        })
+    }
+
     render () {
         // const { users=[] } = this.context
-        const { id, subject, message, date_created, user } = this.props
+        const { id, subject, message, date_created, user, image } = this.props
         // const user = findUser(users, user_id) || []
         
         // console.log('users', users)
@@ -56,17 +81,19 @@ class Post extends React.Component {
                 <div>
                     <h4><Link to={`/post-page/${id}`}>{subject}</Link></h4>
                     <p>{message}</p>
-                    <figure>
-                        <img src={fileImage} alt='default icon' width='100'/>
+                    {image ? (
+                        <figure>
+                        <img src={image} alt='default icon' width='100'/>
                         <figcaption>User uploaded image is going to replace this.</figcaption> 
-                    </figure>
+                        </figure>
+                    ): null}
                     <div>
                         <p>Posted on {date_created}
                         </p>
                         <button type='button'>
                             Edit
                         </button>
-                        <button type='button' onClick={this.handleDeletePost}>
+                        <button type='button' onClick={this.handleDeleteForm}>
                             Delete
                         </button>      
                     </div>

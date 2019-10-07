@@ -190,7 +190,7 @@ class App extends React.Component {
 
     const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places } = this.state
 
-    console.log('app post', posts)
+    // console.log('app post', posts)
     // console.log('app cities', cities)
 
     const contextValue = {

@@ -68,6 +68,7 @@ const UsersApiService =  {
         })
         .then(responseJson => {
             TokenService.saveAuthToken(responseJson.authToken)
+            console.log('bearer token', responseJson.authToken)
             IdleService.registerIdleTimerResets()
             TokenService.queueCallbackBeforeExpiry(() => {
               UsersApiService.postRefreshToken()

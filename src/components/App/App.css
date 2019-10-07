@@ -17,6 +17,10 @@ body {
 
 }
 
+/* input[type=file] {
+    visibility: hidden;
+} */
+
 .LandingPage, .CreateAccount, .LoginPage, .ProfilePage, .MemberProfiles, .MyProfile, .PostPage{
     margin-top: 5rem;
 }
