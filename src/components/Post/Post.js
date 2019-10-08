@@ -6,11 +6,28 @@ import { Link } from 'react-router-dom'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 import { confirmAlert } from 'react-confirm-alert'
-import 'react-confirm-alert/src/react-confirm-alert.css'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import EditModal from '../EditModal/EditModal'
 
 class Post extends React.Component {
 
     static contextType = MainContext
+
+    state = {
+        show: false
+    }
+
+    showModal = () => {
+        this.setState({
+            show: true
+        })
+    }
+
+    hideModal = () => {
+        this.setState({
+            show: false
+        })
+    }
 
     handleDeletePost = () => {
 
@@ -90,7 +107,11 @@ class Post extends React.Component {
                     <div>
                         <p>Posted on {date_created}
                         </p>
-                        <button type='button'>
+                        <EditModal
+                            show={this.state.show}
+                            hideModal={this.hideModal}
+                        />
+                        <button type='button' onClick={this.showModal}>
                             Edit
                         </button>
                         <button type='button' onClick={this.handleDeleteForm}>

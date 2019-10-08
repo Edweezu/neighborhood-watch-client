@@ -37,7 +37,8 @@ class App extends React.Component {
     expired: false,
     country: '',
     state: '',
-    city: ''
+    city: '',
+    showAddForm: false
   }
 
   componentDidMount() {
@@ -147,9 +148,16 @@ class App extends React.Component {
       posts: [
         ...this.state.posts,
         post
-      ]
+      ],
+      showAddForm: false
     })
   }
+
+  handleAddPostClick = () => {
+    this.setState({
+        showAddForm: !this.state.showAddForm
+    })
+}
  
   addPlace = (place) => {
     this.setState({
@@ -188,7 +196,7 @@ class App extends React.Component {
 
   render () {
 
-    const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places } = this.state
+    const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places, showAddForm } = this.state
 
     // console.log('app post', posts)
     // console.log('app cities', cities)
@@ -221,7 +229,9 @@ class App extends React.Component {
       setPlaces: this.setPlaces,
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
-      places
+      places,
+      showAddForm,
+      handleAddPostClick: this.handleAddPostClick
     }
 
     return (

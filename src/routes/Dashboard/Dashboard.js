@@ -142,7 +142,7 @@ class Dashboard extends React.Component {
         // console.log('showform', this.state.showForm)
         // console.log('places state', this.context.places)
 
-        console.log('posts', posts)
+        // console.log('posts', posts)
 
         const place = findPlace (places, place_id) || {}
 
