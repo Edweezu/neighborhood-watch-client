@@ -4,16 +4,31 @@ import TokenService from '../../services/token-service'
 import { withRouter } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext'
 // import { findPlace } from '../../helpers'
+import Spinner from '../Spinner/Spinner'
 
 class AddPost extends React.Component {
 
     state = {
-        // showForm: false,
+        showAddForm: false,
         image: null,
         uploading: false
     }
 
-  
+    handleAddPostOpen = () => {
+        document.body.style.overflowY = 'hidden'
+        this.setState({
+            showAddForm: true
+        })
+    }
+      handleAddPostClose = () => {
+        document.body.style.overflowY = 'auto'
+        this.setState({
+            showAddForm: false,
+            uploading: false
+        })
+    }
+
+
 
     static contextType = MainContext
 
@@ -25,6 +40,10 @@ class AddPost extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+
+        this.setState({
+            uploading: true
+        })
        
         let { subject, message, post_category, browse_cities } = e.target
         let formData = new FormData()
@@ -61,7 +80,8 @@ class AddPost extends React.Component {
             //     showForm: false
             // })
             this.context.addPost(responseJson)
-            this.props.history.push(`/category/${responseJson.post_category}#main-menu-toggle`)
+            this.handleAddPostClose()
+            // this.props.history.push(`/category/${responseJson.post_category}#main-menu-toggle`)
             // window.location.reload()
             
         })
@@ -82,58 +102,63 @@ class AddPost extends React.Component {
 
     render () {
         // const { showForm } = this.state
-        const { places, showAddForm, handleAddPostClick } = this.context
+        const { places } = this.context
 
-      
-        //   console.log('showform', showAddForm)
+        const { uploading, showAddForm } = this.state
+
+        const showHideClassName = showAddForm ? 'modal display-block' : 'modal display-none'
 
         return (
             <section className='AddPost'>
-                <div>
-                    {/* <button className='post_btn' type='button' onClick={this.handleClick}>Create Post</button> */}
-                    <a href='#createPostForm' onClick={handleAddPostClick}className='post_btn'>Create Post</a>
-                </div>
-                {showAddForm ? (
-                     <div id='createPostForm' className='AddPost__form'>
-                     <form onSubmit={this.handleSubmit} action='#'>
-                         <a href='#' className='cancelForm' onClick={handleAddPostClick}><span className="fas fa-times" aria-hidden="true"></span></a>
-                         <div className='AddPost__formContainer'>
-                             <div className='AddPost__formDiv'>
-                                 <label htmlFor='browse_cities'>Active Page</label>
-                                 <select id='browse_cities' required>
-                                     {places.map(place => {
-                                         return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
-                                     })}
-                                 </select>
-                             </div>
-                             <div className='AddPost__formDiv'>
-                                 <label htmlFor='post_category'>Category</label>
-                                 <select id='post_category' required>
-                                     <option value='Crime and Alerts'>Crime and Safety </option>
-                                     <option value='Upcoming Events'>Upcoming Events </option>
-                                     <option value='Lost and Found'>Lost and Found</option>
-                                 </select>  
-                             </div>
-                             <div className='AddPost__formDiv'>
-                                 <label htmlFor='subject'>Subject</label>
-                                 <input type='text' id='subject' name='subject'required></input>
-                             </div>
-                         </div>
-                         <div className='messageAdd'>
-                             <label htmlFor='message'>Message</label>
-                             <input type='text' id='message' name='message' required></input>
-                         </div>
-                         <div className='AddPost__formContainer'>
-                             <div className='AddPost__formDiv'>
-                                     <input type='file' id='image' name='image' onChange={this.handleImageChange}/>
-                             </div>
-                             {/* <a href='#' type="submit">Submit</a> */}
-                             <button type='submit'>Submit</button>
-                         </div>
-                     </form>
-                 </div>
-                ) : null}
-              
+                { uploading ? 
+                    <div className={showHideClassName}>
+                        <Spinner />
+                    </div> 
+                : ( <div className={showHideClassName}>
+                        <section className='modal-main'>
+                            <form className='EditModal__form' onSubmit={this.handleSubmit}>
+                                <button type='button' onClick={this.handleAddPostClose}>
+                                    <span className="fas fa-times" aria-hidden="true"></span>
+                                </button>
+                                <div className='AddPost__formContainer'>
+                                    <div className='AddPost__formDiv'>
+                                        <label htmlFor='browse_cities'>Active Page</label>
+                                        <select id='browse_cities' required>
+                                            {places.map(place => {
+                                                return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
+                                            })}
+                                        </select>
+                                    </div>
+                                    <div className='AddPost__formDiv'>
+                                        <label htmlFor='post_category'>Category</label>
+                                        <select id='post_category' required>
+                                            <option value='Crime and Alerts'>Crime and Safety </option>
+                                            <option value='Upcoming Events'>Upcoming Events </option>
+                                            <option value='Lost and Found'>Lost and Found</option>
+                                        </select>  
+                                    </div>
+                                    <div className='AddPost__formDiv'>
+                                        <label htmlFor='subject'>Subject</label>
+                                        <input type='text' id='subject' name='subject'required></input>
+                                    </div>
+                                </div>
+                                <div className='messageAdd'>
+                                    <label htmlFor='message'>Message</label>
+                                    <input type='text' id='message' name='message' required></input>
+                                </div>
+                                <div className='AddPost__formContainer'>
+                                    <div className='AddPost__formDiv'>
+                                            <input type='file' id='image' name='image' onChange={this.handleImageChange}/>
+                                    </div>
+                                    <button type='submit'>Submit</button>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                )}
+                 <button type='button' onClick={this.handleAddPostOpen} className='post_btn'>
+                     Create Post
+                </button>
                 <div id='AddPost__cover'></div>        
             </section>
         )    

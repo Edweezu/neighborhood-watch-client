@@ -38,7 +38,6 @@ class App extends React.Component {
     country: '',
     state: '',
     city: '',
-    showAddForm: false
   }
 
   componentDidMount() {
@@ -144,20 +143,16 @@ class App extends React.Component {
   }
 
   addPost = (post) => {
+    document.body.style.overflowY = 'auto'
     this.setState({
       posts: [
         ...this.state.posts,
         post
       ],
-      showAddForm: false
     })
   }
 
-  handleAddPostClick = () => {
-    this.setState({
-        showAddForm: !this.state.showAddForm
-    })
-}
+  
  
   addPlace = (place) => {
     this.setState({
@@ -214,7 +209,7 @@ class App extends React.Component {
 
   render () {
 
-    const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places, showAddForm } = this.state
+    const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places } = this.state
 
     // console.log('app post', posts)
     // console.log('app cities', cities)
@@ -248,8 +243,8 @@ class App extends React.Component {
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
       places,
-      showAddForm,
-      handleAddPostClick: this.handleAddPostClick,
+      // handleAddPostOpen: this.handleAddPostOpen,
+      // handleAddPostClose: this.handleAddPostClose,
       updatePost: this.updatePost
     }
 

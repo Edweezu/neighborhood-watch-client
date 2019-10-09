@@ -14,11 +14,15 @@
     position:fixed;
     background: white;
     width: 100%;
-    height: auto;
+    height: 80%;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    }
+}
+
+/* .EditModal__form {
+    
+} */
 
 .display-block {
     display: block;
@@ -31,6 +35,10 @@
 .rolling {
     animation: move 6s ease-out;
     filter: drop-shadow(4px 4px 4px #999);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow-y: hidden;
 }
 
 .spinner {
@@ -39,6 +47,39 @@
 
 .fadein {
     animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+  
+@-webkit-keyframes spin {
+    0%  {
+        -webkit-transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg)
+    }   
+}
+
+.fa-bowling-ball {
+    font-size: 32px;
+    animation: spin 1.2s infinite linear;
 }
 
 

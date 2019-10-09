@@ -3,6 +3,7 @@ import MainContext from '../../contexts/MainContext'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 import Spinner from '../Spinner/Spinner'
+import { confirmAlert } from 'react-confirm-alert'
 
 class EditModal extends React.Component {
 
@@ -20,12 +21,14 @@ class EditModal extends React.Component {
 
 
     showModal = () => {
+        document.body.style.overflowY = 'hidden'
         this.setState({
             show: true
         })
     }
 
     hideModal = () => {
+        document.body.style.overflowY = 'auto'
         this.setState({
             show: false,
             uploading: false
@@ -33,8 +36,6 @@ class EditModal extends React.Component {
     }
 
     componentDidMount () {
-        //get the post's current fields
-        //set state with returned post's fields
         const { postid } = this.props
         return fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
             method: 'GET',
@@ -63,6 +64,56 @@ class EditModal extends React.Component {
             console.error(err)
         })
 
+    }
+
+    handleDeletePost = () => {
+
+        //forgot you can just take postid from props in any function in the component. don't need to pass it into the function
+        let { postid } = this.props
+
+        return fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(e => Promise.reject(e))
+            }
+        })
+        .then(resp => {
+            this.context.deletePost(postid)
+            //reset state with updated posts, one less post
+            // window.location.reload()
+        })
+        .catch(err => {
+            console.error(err)
+        })
+    }
+
+    handleDeleteForm = () => {
+        confirmAlert({
+            title: '',
+            message: 'Are you sure you want to delete this?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick : () => {
+                        this.handleDeletePost()
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick : () => {
+                        this.setState({
+                            error: null
+                        })
+                    }
+                }
+            ]
+        })
     }
 
     handleSubmit = (e) => {
@@ -154,17 +205,15 @@ class EditModal extends React.Component {
             <section className='EditModal'>
                 {uploading ? 
                 <div className={showHideClassName}>
-                    <section className='modal-main'>
                         <Spinner />
-                    </section>
                 </div> : (
                     <div className={showHideClassName}>    
                     <section className='modal-main'>
+                        
+                        <form className='EditModal__form' onSubmit={this.handleSubmit}>
                         <button onClick={this.hideModal}>
                                 <span className="fas fa-times" aria-hidden="true"></span>
                             </button>
-                        <form onSubmit={this.handleSubmit}>
-                            
                             <div className='AddPost__formContainer'>
                                 <div className='AddPost__formDiv'>
                                     <label htmlFor='browse_cities'>Active Page</label>
@@ -206,8 +255,8 @@ class EditModal extends React.Component {
                     Edit
                 </button>
                 <button type='button' onClick={this.handleDeleteForm}>
-                    Delete
-                </button>      
+                        Delete
+                </button>  
             </section>
         )
     }

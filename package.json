@@ -5,12 +5,15 @@
   "dependencies": {
     "cloudinary": "^1.15.0",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
     "react": "^16.9.0",
     "react-confirm-alert": "^2.4.1",
     "react-devtools": "^3.6.3",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "unix-timestamp": "^0.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
