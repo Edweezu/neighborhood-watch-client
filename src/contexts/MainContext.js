@@ -3,7 +3,8 @@ import React from 'react'
 const MainContext = React.createContext({
     users: [],
     posts: [],
-    comments: []
+    comments: [],
+    places: []
 })
 
 export default MainContext

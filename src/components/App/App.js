@@ -192,6 +192,24 @@ class App extends React.Component {
       })
     })
   }
+
+  // updatePost = (responseJson) => {
+  //   this.setState({
+  //     posts: this.state.posts.map(post => (responseJson.id !== post.id) ? post : responseJson)
+  //   })
+  // }
+
+  updatePost = (responseJson) => {
+    this.setState({
+      posts: this.state.posts.map(post => {
+        if (responseJson.id !== post.id) {
+          return post
+        } else {
+          return responseJson
+        }
+      })
+    })
+  }
  
 
   render () {
@@ -231,7 +249,8 @@ class App extends React.Component {
       deleteComment: this.deleteComment,
       places,
       showAddForm,
-      handleAddPostClick: this.handleAddPostClick
+      handleAddPostClick: this.handleAddPostClick,
+      updatePost: this.updatePost
     }
 
     return (

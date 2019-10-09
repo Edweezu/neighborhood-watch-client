@@ -13,21 +13,6 @@ class Post extends React.Component {
 
     static contextType = MainContext
 
-    state = {
-        show: false
-    }
-
-    showModal = () => {
-        this.setState({
-            show: true
-        })
-    }
-
-    hideModal = () => {
-        this.setState({
-            show: false
-        })
-    }
 
     handleDeletePost = () => {
 
@@ -81,9 +66,10 @@ class Post extends React.Component {
 
     render () {
         // const { users=[] } = this.context
+        // const { places } = this.context
         const { id, subject, message, date_created, user, image } = this.props
         // const user = findUser(users, user_id) || []
-        
+        // console.log('places', places)
         // console.log('users', users)
         // console.log('user id', user_id)
         // console.log('user', user)
@@ -108,15 +94,11 @@ class Post extends React.Component {
                         <p>Posted on {date_created}
                         </p>
                         <EditModal
-                            show={this.state.show}
-                            hideModal={this.hideModal}
+                            // show={this.state.show}
+                            // hideModal={this.hideModal}
+                            postid={id}
                         />
-                        <button type='button' onClick={this.showModal}>
-                            Edit
-                        </button>
-                        <button type='button' onClick={this.handleDeleteForm}>
-                            Delete
-                        </button>      
+                       
                     </div>
                     <div>
                         <button type='button'><i className="fas fa-thumbs-up"></i></button>

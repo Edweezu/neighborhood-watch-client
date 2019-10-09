@@ -28,6 +28,18 @@
     display: none;
 }
 
+.rolling {
+    animation: move 6s ease-out;
+    filter: drop-shadow(4px 4px 4px #999);
+}
+
+.spinner {
+    animation: spin 1.2s infinite linear;
+}
+
+.fadein {
+    animation: fadein 2s;
+}
 
 
 body {
