@@ -79,6 +79,7 @@ class AddPost extends React.Component {
             // this.setState({
             //     showForm: false
             // })
+            console.log('new post', responseJson)
             this.context.addPost(responseJson)
             this.handleAddPostClose()
             // this.props.history.push(`/category/${responseJson.post_category}#main-menu-toggle`)

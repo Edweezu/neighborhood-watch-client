@@ -180,6 +180,12 @@ class App extends React.Component {
     })
   }
 
+  updateComment = (responseJson) => {
+    this.setState({
+      comments: this.state.comments.map(comment => (comment.id !== responseJson.id) ? comment : responseJson)
+    })
+  }
+
   deleteComment = (commentId) => {
     this.setState({
       comments: this.state.comments.filter(comment => {
@@ -245,7 +251,8 @@ class App extends React.Component {
       places,
       // handleAddPostOpen: this.handleAddPostOpen,
       // handleAddPostClose: this.handleAddPostClose,
-      updatePost: this.updatePost
+      updatePost: this.updatePost,
+      updateComment: this.updateComment
     }
 
     return (

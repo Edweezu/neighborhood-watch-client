@@ -8,6 +8,7 @@ import Footer from '../../components/Footer/Footer'
 import config from '../../config'   
 import TokenService from '../../services/token-service'
 import Comment from '../../components/Comment/Comment'
+import moment from 'moment'
 
 class PostPage extends React.Component {
     static defaultProps = {
@@ -75,6 +76,33 @@ class PostPage extends React.Component {
         })
     }
 
+    dateDiff = () => {
+        const { posts } = this.context
+        
+        const { postId } = this.props.match.params
+        const post = findPost(posts, postId) || {}
+
+        let formattedDate = moment(post.date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
+        let niceDate = moment(post.date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("MMM DD, YYYY")
+
+        //how to change from provided server UTC time to local time so calculations are correct
+        let daysAgo = moment.utc(post.date_created).local().fromNow()
+
+        let todayUnix = moment().unix()
+        
+        let dateUnix = moment(new Date(post.date_created)).unix()
+        //need to divide unix time by 86400 seconds in a day to find day diff
+        let dateDiff = (todayUnix - dateUnix)/86400
+
+        // console.log('date diff', dateDiff)
+        if (dateDiff > 6) {
+            return `Posted on ${niceDate}`
+        } else {
+            return `Posted ${daysAgo}`
+        }
+    } 
+
+
    
 
     render () {
@@ -90,12 +118,12 @@ class PostPage extends React.Component {
 
        
 
-        console.log('posts', posts)
-        console.log('post', post)
+        // console.log('posts', posts)
+        // console.log('post', post)
         console.log('comments', comments)
-        console.log('postid', postId)
-        console.log('correct comment', correctComments)
-        console.log("error", this.state.error)
+        // console.log('postid', postId)
+        // console.log('correct comment', correctComments)
+        // console.log("error", this.state.error)
 
         
 
@@ -113,12 +141,11 @@ class PostPage extends React.Component {
                         <div>
                             <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
                             <p>{post.message}</p>
-                            <figure>
-                                <img src={fileImage} alt='default icon' width='100'/>
-                                <figcaption>User uploaded image is going to replace this.</figcaption> 
+                            <figure className={ post.image ? null : 'display-none'}>
+                                <img src={post.image} alt='default icon' width='100'/>
                             </figure>
                             <div>
-                                <p>Posted on {post.date_created}</p>
+                                <p>{this.dateDiff()}</p>
                                 <button type='button'><i className="fas fa-thumbs-up"></i></button>
                                 {/* <button type='button'><i className="fas fa-thumbs-down"></i></button> */}
                             </div>

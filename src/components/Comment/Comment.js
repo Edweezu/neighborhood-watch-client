@@ -1,66 +1,46 @@
 import React from 'react'
-import config from '../../config'
-import TokenService from '../../services/token-service'
+// import config from '../../config'
+// import TokenService from '../../services/token-service'
 import MainContext from '../../contexts/MainContext'
-import { confirmAlert } from 'react-confirm-alert'
-import 'react-confirm-alert/src/react-confirm-alert.css'; 
+// import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import moment from 'moment'
+import EditCommentModal from '../EditCommentModal/EditCommentModal'
 
 
 class Comment extends React.Component {
 
     static contextType = MainContext    
 
-    handleDeleteComment = () => {
-        const { id } = this.props
+    
 
-        return fetch(`${config.API_ENDPOINT}/comments/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `bearer ${TokenService.getAuthToken()}`
-            }
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(e => Promise.reject(e))
-            }
-        })
-        .then(data => {
-            this.context.deleteComment(id)
-            // window.location.reload()
-        })
-        .catch(err => {
-            console.error(err)
-        })
-    }
+    dateDiff = () => {
+        let { date_created } = this.props
 
-    handleDeleteForm = () => {
-        confirmAlert({
-            title: '',
-            message: 'Are you sure you want to delete this?',
-            buttons: [
-                {
-                    label: 'Yes',
-                    onClick : () => {
-                        this.handleDeleteComment()
-                    }
-                },
-                {
-                    label: 'No',
-                    onClick : () => {
-                        this.setState({
-                            error: null
-                        })
-                    }
-                }
-            ]
-        })
-    }
+        let formattedDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
+        let niceDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("MMM DD, YYYY")
+
+        //how to change from provided server UTC time to local time so calculations are correct
+        let daysAgo = moment.utc(date_created).local().fromNow()
+
+        let todayUnix = moment().unix()
+        
+        let dateUnix = moment(new Date(date_created)).unix()
+        //need to divide unix time by 86400 seconds in a day to find day diff
+        let dateDiff = (todayUnix - dateUnix)/86400
+
+        // console.log('date diff', dateDiff)
+        if (dateDiff > 6) {
+            return `Posted on ${niceDate}`
+        } else {
+            return `Posted ${daysAgo}`
+        }
+    } 
 
 
     render () {
 
-        const { user, text, date_created, nameCapitalized } = this.props
+        const { id, user, text, nameCapitalized } = this.props
 
         return (
             <section>
@@ -68,13 +48,12 @@ class Comment extends React.Component {
                     {nameCapitalized(user.username)}, {user.city}
                     </p>
                     <p>{text}</p>
-                    <p>{date_created}</p>
-                    <button type='button'>
-                        Edit
-                    </button>
-                    <button type='button' onClick={this.handleDeleteForm}>
-                        Delete
-                    </button>
+                    <p>{this.dateDiff()}</p>
+                    <EditCommentModal
+                        commentId={id}
+
+                    />
+                    
             </section>
         )
     }

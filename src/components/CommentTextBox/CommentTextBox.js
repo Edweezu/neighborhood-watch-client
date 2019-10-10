@@ -26,6 +26,7 @@ class CommentTextBox extends React.Component {
             body: JSON.stringify(newComment)
         })
         .then(res => {
+            console.log('intial res', res)
             if (!res.ok) {
                 return res.json().then(e => Promise.reject(e))
             }
@@ -33,6 +34,7 @@ class CommentTextBox extends React.Component {
         })
         .then(responseJson => {
             //forgot how to erase the value
+            console.log('comment responsejson', responseJson)
             text.value = ''
             this.context.addComment(responseJson)
         })
@@ -67,3 +69,4 @@ class CommentTextBox extends React.Component {
 }
 
 export default CommentTextBox
+
