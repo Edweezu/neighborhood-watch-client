@@ -120,7 +120,7 @@ class EditModal extends React.Component {
         e.preventDefault()
 
         let { postid } = this.props
-        let { image, message, post_category, subject, place_id } = this.state
+        let { message, post_category, subject, place_id } = this.state
 
         this.setState({
             uploading: true
@@ -194,7 +194,7 @@ class EditModal extends React.Component {
         // const { hideModal, show } = this.props
         
 
-        const { image, message, post_category, subject, place_id, show, uploading } = this.state
+        const { message, post_category, subject, place_id, show, uploading } = this.state
 
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
 

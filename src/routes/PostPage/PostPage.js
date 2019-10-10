@@ -1,7 +1,6 @@
 import React from 'react'
 import { findPost, findComments } from '../../helpers'
 import { Link } from 'react-router-dom'
-import fileImage from '../../app-images/file-image-icon.png'
 import MainContext from '../../contexts/MainContext';
 import CommentTextBox from '../../components/CommentTextBox/CommentTextBox'
 import Footer from '../../components/Footer/Footer'
@@ -82,7 +81,7 @@ class PostPage extends React.Component {
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}
 
-        let formattedDate = moment(post.date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
+        // let formattedDate = moment(post.date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
         let niceDate = moment(post.date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("MMM DD, YYYY")
 
         //how to change from provided server UTC time to local time so calculations are correct

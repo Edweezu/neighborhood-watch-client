@@ -1,11 +1,10 @@
 import React from 'react'
 // import { findUser } from '../../helpers'
 import MainContext from '../../contexts/MainContext';
-import fileImage from '../../app-images/file-image-icon.png'
 import { Link } from 'react-router-dom'
-import config from '../../config'
-import TokenService from '../../services/token-service'
-import { confirmAlert } from 'react-confirm-alert'
+// import config from '../../config'
+// import TokenService from '../../services/token-service'
+// import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import EditModal from '../EditModal/EditModal'
 import moment from 'moment'
@@ -20,7 +19,7 @@ class Post extends React.Component {
         let { date_created } = this.props
 
 
-        let formattedDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
+        // let formattedDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
         let niceDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("MMM DD, YYYY")
 
         //how to change from provided server UTC time to local time so calculations are correct

@@ -17,7 +17,7 @@ class Comment extends React.Component {
     dateDiff = () => {
         let { date_created } = this.props
 
-        let formattedDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
+        // let formattedDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
         let niceDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("MMM DD, YYYY")
 
         //how to change from provided server UTC time to local time so calculations are correct
