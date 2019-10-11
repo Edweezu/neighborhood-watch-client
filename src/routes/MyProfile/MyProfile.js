@@ -62,8 +62,8 @@ class MyProfile extends React.Component {
                 city: responseJson.city,
                 email: responseJson.email,
                 occupation: responseJson.occupation,
-                interests: responseJson.interests
-
+                interests: responseJson.interests,
+                image: responseJson.image
             })
         })
     }
@@ -243,10 +243,6 @@ class MyProfile extends React.Component {
     handleImageSubmit = (e) => {
         e.preventDefault()
 
-        e.preventDefault()
-
-        let { message, post_category, subject, place_id } = this.state
-
         this.setState({
             uploading: true
         })
@@ -276,7 +272,6 @@ class MyProfile extends React.Component {
                 uploading: false,
                 image: responseJson.image
             })
-            this.hideModal()
         })
 
     }
@@ -301,7 +296,7 @@ class MyProfile extends React.Component {
 
     handleImageChange = (e) => {
         this.setState({
-            image: e.target.files[0]
+            image: URL.createObjectURL(e.target.files[0])
         })
     }
   
@@ -333,6 +328,7 @@ class MyProfile extends React.Component {
                                 </label>}
                                 
                                 <input type='file' id='image' name='image' onChange={this.handleImageChange} />
+                                <button type='submit'>Submit Profile Picture</button>
                             </div> 
                         </form>
                       
