@@ -75,12 +75,14 @@ class EditCommentModal extends React.Component {
     }
 
     showCommentModal = () => {
+        document.body.style.overflowY = 'hidden'
         this.setState({
             showCommentForm: true
         })
     }
 
     hideCommentModal = () => {
+        document.body.style.overflowY = 'auto'
         this.setState({
             showCommentForm: false,
             uploading: false

@@ -69,6 +69,12 @@ const UsersApiService =  {
         .then(responseJson => {
             TokenService.saveAuthToken(responseJson.authToken)
             console.log('bearer token', responseJson.authToken)
+            /*
+              whenever a login is performed:
+              1. save the token in local storage
+              2. queue auto logout when the user goes idle
+              3. queue a call to the refresh endpoint based on the JWT's exp value
+            */
             IdleService.registerIdleTimerResets()
             TokenService.queueCallbackBeforeExpiry(() => {
               UsersApiService.postRefreshToken()
@@ -89,6 +95,11 @@ const UsersApiService =  {
               : res.json()
           )
           .then(res => {
+             /*
+              similar logic to whenever a user logs in, the only differences are:
+              - we don't need to queue the idle timers again as the user is already logged in.
+              - we'll catch the error here as this refresh is happening behind the scenes
+            */
             TokenService.saveAuthToken(res.authToken)
             TokenService.queueCallbackBeforeExpiry(() => {
               UsersApiService.postRefreshToken()

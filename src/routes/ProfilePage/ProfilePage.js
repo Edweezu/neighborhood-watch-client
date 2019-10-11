@@ -103,7 +103,7 @@ class ProfilePage extends React.Component {
 
 
     render () {
-        const { error, country, state, cityinput, first_name, last_name, email } = this.state
+        const { error, first_name, last_name, email } = this.state
         // const { place, onPlaceChanged } = this.context
     
         // const AddressDetails = props => {
@@ -151,7 +151,7 @@ class ProfilePage extends React.Component {
                     <div className='LoginForm__signupElement'>
                         <div className='LoginForm__signupLabel'>
                             <label htmlFor='city'>
-                                City   
+                                Location   
                             </label>
                             <span className='astrik'>
                                 *
@@ -163,13 +163,13 @@ class ProfilePage extends React.Component {
                             {/* <AutoComplete onPlaceChanged={onPlaceChanged} /> */}
                             {/* <AddressDetails place={place} />  */}
                             <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.handleChangeCountry} required>
-                                <option value={country}>Select Country</option>
+                                <option value=''>Select Country</option>
                             </select>
                             <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.handleChangeState} required>
-                                <option value={state}>Select State</option>
+                                <option value=''>Select State</option>
                             </select>
                             <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.handleChangeCity} required>
-                                <option value={cityinput}>Select City</option>
+                                <option value=''>Select City</option>
                             </select>
                         </div>
                     </div>

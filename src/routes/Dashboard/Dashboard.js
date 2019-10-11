@@ -15,9 +15,12 @@ class Dashboard extends React.Component {
     
     static contextType = MainContext
 
-    state = {
-        showForm: false,
-        
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            showForm: false,
+        }
     }
 
     handleClick = () => {
@@ -94,6 +97,7 @@ class Dashboard extends React.Component {
         e.preventDefault()
 
         const { country, state, city} = this.context
+        // const { cityId, stateId, countryId } = e.target
 
         const pageExists = {
             id: 99999999,
@@ -105,6 +109,10 @@ class Dashboard extends React.Component {
             state,
             city
         }
+
+        console.log('new place', newPlace)
+       
+        // console.log('option', countryId.option[0])
 
         return fetch(`${config.API_ENDPOINT}/places`, {
             method: 'POST',
@@ -122,9 +130,10 @@ class Dashboard extends React.Component {
         })
         .then(responseJson => {
             // console.log('resp', responseJson)
+            
             if (JSON.stringify(responseJson) !== JSON.stringify(pageExists)) {
-                console.log('hi')
                 this.context.addPlace(responseJson)
+                window.location.reload()
             }
         })
         .catch(err => {
@@ -137,7 +146,7 @@ class Dashboard extends React.Component {
 
     render () {
 
-        const { place_id, handleCityChange, places = [], posts = [], country, state, city, handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
+        const { place_id, handleCityChange, places = [], posts = [], handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
 
         // console.log('showform', this.state.showForm)
         // console.log('places state', this.context.places)
@@ -160,22 +169,22 @@ class Dashboard extends React.Component {
                     </div>
                     <div className='Dashboard__addCity'>
                         {/* <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4> */}
-                        <h4>Add a New Page</h4>
+                        <h4>Dont See Your City? Start a New Page</h4>
                              <form id='addCityForm' className='Dashboard__addCityForm' onSubmit={this.handleSubmitNewCity}>
                              <div className='selectContainer'>
-                                 <select name="country" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry}>
-                                     <option value={country} >Select Country</option>
+                                 <select name="countryId" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry} required>
+                                     <option value="">Select Country</option>
                                  </select>
                                  {/* <a href='#addCityForm' className='refresh'>Refresh</a> */}
                              </div>
                              <div className='selectContainer'>
-                                 <select name="state" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState}>
-                                     <option value={state}>Select State</option>
+                                 <select name="stateId" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState} required>
+                                     <option value="">Select State</option>
                                  </select>
                              </div>
                              <div className='selectContainer'>
-                                 <select name="city" className="Dashboard__addSelect cities" id="cityId" onChange={handleChangeCity}>
-                                     <option value={city}>Select City</option>
+                                 <select name="cityId" className="Dashboard__addSelect cities" id="cityId" onChange={handleChangeCity} required>
+                                     <option value="">Select City</option>
                                  </select>
                              </div>  
                              <div>

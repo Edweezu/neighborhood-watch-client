@@ -77,6 +77,7 @@ class App extends React.Component {
   // }
 
   componentWillUnmount() {
+    console.log("App unmounted")
     IdleService.unRegisterIdleResets()
     TokenService.clearCallbackBeforeExpiry()
   }
@@ -159,7 +160,10 @@ class App extends React.Component {
       places: [
         ...this.state.places,
         place
-      ]
+      ],
+      country: '',
+      state: '',
+      city: ''
     })
   }
 
@@ -219,6 +223,9 @@ class App extends React.Component {
 
     // console.log('app post', posts)
     // console.log('app cities', cities)
+    // console.log('country', country)
+    // console.log('state', state)
+    // console.log('city', city)
 
     const contextValue = {
       posts,
