@@ -211,7 +211,7 @@ class EditModal extends React.Component {
                     <section className='modal-main'>
                         
                         <form className='EditModal__form' onSubmit={this.handleSubmit}>
-                        <button onClick={this.hideModal}>
+                        <button type='button' onClick={this.hideModal}>
                                 <span className="fas fa-times" aria-hidden="true"></span>
                             </button>
                             <div className='AddPost__formContainer'>

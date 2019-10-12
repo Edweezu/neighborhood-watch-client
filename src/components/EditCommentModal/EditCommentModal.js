@@ -159,7 +159,7 @@ class EditCommentModal extends React.Component {
                             <div className='modal display-block'>
                                 <section className='modal-main'>
                                     <form onSubmit={this.handleSubmit}>
-                                        <button onClick={this.hideCommentModal}>
+                                        <button type='button' onClick={this.hideCommentModal}>
                                         <span className="fas fa-times" aria-hidden="true"></span>
                                         </button>
                                         <div className='AddPost__formDiv'>

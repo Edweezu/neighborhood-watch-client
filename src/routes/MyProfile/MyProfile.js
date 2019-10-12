@@ -7,6 +7,8 @@ import config from '../../config'
 import TokenService from '../../services/token-service'
 import Spinner from '../../components/Spinner/Spinner'
 import EditProfileForm from '../../components/EditProfileForm/EditProfileForm'
+import EditProfileImage from '../../components/EditImageModal/EditImageModal'
+import addPhotoIcon from '../../app-images/profile-add-photo.png'
 
 class MyProfile extends React.Component {
 
@@ -25,7 +27,8 @@ class MyProfile extends React.Component {
         uploading: false,
         image: null,
         //need to use eval here b/c getItem returns 'false' as a string which shows the modal because 'false' is converted to true
-        showLocationForm: eval(localStorage.getItem('showLocationForm')) || false
+        showLocationForm: eval(localStorage.getItem('showLocationForm')) || false,
+        showImageModal: false
     }
 
     componentDidMount () {
@@ -271,7 +274,8 @@ class MyProfile extends React.Component {
              console.log('patch responsejson', responseJson)
             this.setState({
                 uploading: false,
-                image: responseJson.image
+                image: responseJson.image,
+                imageCopy: responseJson.image
             })
         })
 
@@ -301,115 +305,155 @@ class MyProfile extends React.Component {
         })
     }
 
-   
-  
+    updateProfileAbout = (responseJson) => {
+        this.setState({
+            first_name: responseJson.first_name,
+            last_name: responseJson.last_name,
+            email: responseJson.email,
+            occupation: responseJson.occupation,
+            interests: responseJson.interests,
+        })
+    }
+
+    updateProfileImage = (responseJson) => {
+        this.setState({
+           image: responseJson.image,
+           showImageModal: false
+        })
+    }
+
+   handleShowImageModal = () => {
+       this.setState({
+        showImageModal: true
+       })
+   }
+
+   handleHideImageModal = () => {
+       this.setState({
+        showImageModal: false
+       })
+   }
+
+   handleMouseOver = () => {
+       this.setState({
+           image: addPhotoIcon
+       })
+   }
+
+   handleMouseLeave = () => {
+       this.setState({
+           image: this.state.imageCopy2
+       })
+   }
 
     render () {
       
         console.log('state', this.state)
-        let { username, first_name, last_name, country, state, city, email, occupation, interests, uploading, showLocationForm, image } = this.state
+        let { username, first_name, last_name, country, state, city, email, occupation, interests, uploading, showLocationForm, image , showImageModal } = this.state
         
         return (
             <section className='MyProfile'>
                 
                 <section className='MyProfile__userContainer'>
-                    <h2>My Profile</h2>
+                    
                     <DashNav />
                     <section className='MyProfile__userInfo'>
                         <form onSubmit={this.handleImageSubmit}>
                             <div className="image-upload">
                                 {!image ? <label htmlFor="image" className='LoginForm__signupLabel'>
                                         <img className='user__image' src={userIcon} alt='user-icon' width='200'/>
-                                        <p className='image-text'>
+                                        {/* <p className='image-text'>
                                             Add a Photo
-                                        </p>
+                                        </p> */}
                                 </label> : <label htmlFor="image" className='LoginForm__signupLabel'>
                                         <img className='user__image' src={image} alt='user-icon' width='200'/>
-                                        <p className='image-text'>
+                                        {/* <p className='image-text'>
                                             Add a Photo
-                                        </p>
+                                        </p> */}
                                 </label>}
-                                
-                                <input type='file' id='image' name='image' onChange={this.handleImageChange} />
-                                <button type='submit'>Submit Profile Picture</button>
-                            </div> 
+                                <button type='button' onClick={this.handleShowImageModal}>Update Photo</button> 
+                                {/* <input type='file' id='image' name='image' onChange={this.handleImageChange} /> */}
+                                {/* <button type='submit'>Submit Profile Picture</button> */}
+                            </div>
                         </form>
-                            <div className='MyProfile__headers'>
-                                <h3>{this.capitalizeName(username)}</h3>
-                                <h4>{city}, {state}</h4>
-                                <button type='button' onClick={this.showLocationModal}>
-                                    Edit
-                                </button>
-                            </div>
-                            <section>
-                                {uploading ? (
-                                    <div>
-                                        <Spinner />
-                                    </div>
-                                ) : (
-                                            <div className={this.showHideClassName()}>
-                                                <section className='modal-main'>
-                                                    <form onSubmit={this.handleLocationSubmit}>
-                                                        <button type='button' onClick={this.hideLocationModal}>
-                                                            <span className="fas fa-times" aria-hidden="true"></span>
-                                                        </button>
-                                                        <div className='LoginForm__signupElement'>
-                                                            <div className='LoginForm__signupLabel'>
-                                                                <label className='LoginForm__signupLabel'> Update Location</label>
-                                                            </div>
-                                                            <div className='LoginForm__signupLabel'>
-                                                                <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.changeCountry} required>
-                                                                    <option value="">Select Country</option>
-                                                                </select>
-                                                                <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.changeState} required>
-                                                                    <option value="">Select State</option>
-                                                                </select>
-                                                                <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.changeCity} required>
-                                                                    <option value="">Select City</option>
-                                                                </select>
-                                                            </div>      
-                                                        </div>
-                                                        <button type='submit'>Submit</button>
-                                                    </form>
-                                                </section> 
+                        {showImageModal ? 
+                            <EditProfileImage  
+                                showImageModal={showImageModal}
+                                handleHideImageModal={this.handleHideImageModal}
+                                updateProfileImage={this.updateProfileImage}
+                            /> 
+                            : null
+                        }
+                        <div className='MyProfile__headers'>
+                            <h2>{this.capitalizeName(first_name)} {this.capitalizeName(last_name)}</h2>
+                            <h4> Located in {city}, {state}</h4>
+                            <button type='button' onClick={this.showLocationModal}>
+                                Edit
+                            </button>
+                        </div>
+                        <section>
+                            <div className={this.showHideClassName()}>
+                                <section className='modal-main'>
+                                    <form onSubmit={this.handleLocationSubmit}>
+                                        <button type='button' onClick={this.hideLocationModal}>
+                                            <span className="fas fa-times" aria-hidden="true"></span>
+                                        </button>
+                                        <div className='LoginForm__signupElement'>
+                                            <div className='LoginForm__signupLabel'>
+                                                <label className='LoginForm__signupLabel'> Update Location</label>
                                             </div>
-                                        )
-                                }
-                            </section>
-                            <div className='list-section'>
-                                <h3>About Me</h3>
-                                <div className={'list-info-div ' +  (!email ? 'display-none' : '') }>
-                                    <i className="fas fa-envelope"></i>
-                                    <span className='trip-details'>
-                                        {email}
-                                    </span>
-                                </div>
-                                <div className={'list-info-div ' +  (!occupation ? 'display-none' : '') }>
-                                    <i className="fas fa-suitcase"></i>
-                                    <span className='trip-details'>
-                                        {occupation}
-                                    </span>
-                                </div>
-                                <div className={'list-info-div ' +  (!interests ? 'display-none' : '') }>
-                                    <i className="far fa-futbol"></i>
-                                    <span className='trip-details'>
-                                        Enjoys {interests}
-                                    </span>
-                                </div>
+                                            <div className='LoginForm__signupLabel'>
+                                                <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.changeCountry} required>
+                                                    <option value="">Select Country</option>
+                                                </select>
+                                                <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.changeState} required>
+                                                    <option value="">Select State</option>
+                                                </select>
+                                                <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.changeCity} required>
+                                                    <option value="">Select City</option>
+                                                </select>
+                                            </div>      
+                                        </div>
+                                        <button type='submit'>Submit</button>
+                                    </form>
+                                </section> 
+                            </div>    
+                        </section>
+                        <div className='list-section'>
+                            <h3>About Me</h3>
+                            <div className={'list-info-div ' +  (!email ? 'display-none' : '') }>
+                                <i className="fas fa-envelope"></i>
+                                <span className='trip-details'>
+                                    {email}
+                                </span>
                             </div>
-                            <EditProfileForm 
-                                first_name={first_name}
-                                last_name={last_name}
-                                email={email}
-                                occupation={occupation}
-                                interests={interests}
-                                handleBasicSubmit={this.handleBasicSubmit}
-                                changeFirstName={this.changeFirstName}
-                                changeLastName={this.changeLastName}
-                                changeEmail={this.changeEmail}
-                                changeOccupation={this.changeOccupation}
-                                changeInterests={this.changeInterests}
-                            />    
+                            <div className={'list-info-div ' +  (!occupation ? 'display-none' : '') }>
+                                <i className="fas fa-suitcase"></i>
+                                <span className='trip-details'>
+                                    {occupation}
+                                </span>
+                            </div>
+                            <div className={'list-info-div ' +  (!interests ? 'display-none' : '') }>
+                                <i className="far fa-futbol"></i>
+                                <span className='trip-details'>
+                                    Enjoys {interests}
+                                </span>
+                            </div>
+                        </div>
+                        <EditProfileForm 
+                            first_name={first_name}
+                            last_name={last_name}
+                            email={email}
+                            occupation={occupation}
+                            interests={interests}
+                            handleBasicSubmit={this.handleBasicSubmit}
+                            changeFirstName={this.changeFirstName}
+                            changeLastName={this.changeLastName}
+                            changeEmail={this.changeEmail}
+                            changeOccupation={this.changeOccupation}
+                            changeInterests={this.changeInterests}
+                            updateProfileAbout={this.updateProfileAbout}
+                        />    
                     </section> 
                 </section>
             </section>       
