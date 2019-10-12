@@ -6,6 +6,7 @@ import MainContext from '../../contexts/MainContext'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 import Spinner from '../../components/Spinner/Spinner'
+import EditProfileForm from '../../components/EditProfileForm/EditProfileForm'
 
 class MyProfile extends React.Component {
 
@@ -299,6 +300,8 @@ class MyProfile extends React.Component {
             image: URL.createObjectURL(e.target.files[0])
         })
     }
+
+   
   
 
     render () {
@@ -331,8 +334,6 @@ class MyProfile extends React.Component {
                                 <button type='submit'>Submit Profile Picture</button>
                             </div> 
                         </form>
-                      
-                        <div>
                             <div className='MyProfile__headers'>
                                 <h3>{this.capitalizeName(username)}</h3>
                                 <h4>{city}, {state}</h4>
@@ -372,90 +373,46 @@ class MyProfile extends React.Component {
                                                     </form>
                                                 </section> 
                                             </div>
-                                        ) 
-                                    
+                                        )
                                 }
                             </section>
-                            <form className='MyProfile__form' onSubmit={this.handleBasicSubmit}>
-                                <div className='form-flex-container'>
-                                        <div className='LoginForm__signupElement'>
-                                            <div className='LoginForm__signupLabel'>
-                                                <label htmlFor="first-name" >First Name </label>
-                                                <span className='astrik'>
-                                                    *
-                                                </span>
-                                            </div>
-                                            <div className='LoginForm__signupLabel'>
-                                                <input className='form-input' type="text" name="first-name" id="first-name"
-                                                required value={this.capitalizeName(first_name)} onChange={this.changeFirstName}/>
-                                            </div>
-                                        </div>
-                                        <div className='LoginForm__signupElement'>
-                                            <div className='LoginForm__signupLabel'>
-                                                <label htmlFor="last-name" className='LoginForm__signupLabel'>Last Name</label>
-                                            </div>
-                                            <div className='LoginForm__signupLabel'>
-                                                <input className='form-input' type="text" name="last-name" id="last-name" value={this.capitalizeName(last_name)} onChange={this.changeLastName}/>
-                                            </div>      
-                                        </div>
+                            <div className='list-section'>
+                                <h3>About Me</h3>
+                                <div className={'list-info-div ' +  (!email ? 'display-none' : '') }>
+                                    <i className="fas fa-envelope"></i>
+                                    <span className='trip-details'>
+                                        {email}
+                                    </span>
                                 </div>
-                                <div className='form-flex-container'>
-                                    {/* <div className='LoginForm__signupElement'>
-                                        <div className='LoginForm__signupLabel'>
-                                            <label className='LoginForm__signupLabel'> Update Location</label>
-                                        </div>
-                                        <div className='LoginForm__signupLabel'>
-                                            <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.changeCountry} required>
-                                                <option value={country}>Select Country</option>
-                                            </select>
-                                            <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.changeState} required>
-                                                <option value={state}>Select State</option>
-                                            </select>
-                                            <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.changeCity} required>
-                                                <option value={city}>Select City</option>
-                                            </select>
-                                        </div>      
-                                    </div> */}
-                                    <div className='LoginForm__signupElement'>
-                                        <div className='LoginForm__signupLabel'>
-                                            <label htmlFor="email" className='LoginForm__signupLabel'>Email</label>
-                                            <span className='astrik'>
-                                                *
-                                            </span>
-                                        </div>
-                                        <div className='LoginForm__signupLabel'>
-                                            <input className='form-input' type="text" name="email" id="email" required value={this.capitalizeName(email)} onChange={this.changeEmail}/>
-                                        </div>
-                                    </div>
+                                <div className={'list-info-div ' +  (!occupation ? 'display-none' : '') }>
+                                    <i className="fas fa-suitcase"></i>
+                                    <span className='trip-details'>
+                                        {occupation}
+                                    </span>
                                 </div>
-                                <div className='form-flex-container'>
-                                    <div className='LoginForm__signupElement'>
-                                        <div className='LoginForm__signupLabel'>
-                                            <label htmlFor="occupation" className='LoginForm__signupLabel'>Occupation </label>
-                                        </div>
-                                        <div className='LoginForm__signupLabel'>
-                                            <input className='form-input' type="text" name="occupation" id="occupation" value={this.capitalizeName(occupation)} onChange={this.changeOccupation}/>
-                                        </div>
-                                    </div>
-                                    <div className='LoginForm__signupElement'>
-                                        <div className='LoginForm__signupLabel'>
-                                            <label htmlFor="interest" className='LoginForm__signupLabel'>Interests</label>
-                                        </div>
-                                        <div className='LoginForm__signupLabel'>
-                                            <input className='form-input' type="text" name="interests" id="interests" value={this.capitalizeName(interests)} onChange={this.changeInterests}/>
-                                        </div>     
-                                    </div>
+                                <div className={'list-info-div ' +  (!interests ? 'display-none' : '') }>
+                                    <i className="far fa-futbol"></i>
+                                    <span className='trip-details'>
+                                        Enjoys {interests}
+                                    </span>
                                 </div>
-                                <div className='button-container'>
-                                    <button className='submit-button' type="submit">Update Profile</button>
-                                </div>    
-                            </form>
-                        </div>
-                    </section>
-                  
+                            </div>
+                            <EditProfileForm 
+                                first_name={first_name}
+                                last_name={last_name}
+                                email={email}
+                                occupation={occupation}
+                                interests={interests}
+                                handleBasicSubmit={this.handleBasicSubmit}
+                                changeFirstName={this.changeFirstName}
+                                changeLastName={this.changeLastName}
+                                changeEmail={this.changeEmail}
+                                changeOccupation={this.changeOccupation}
+                                changeInterests={this.changeInterests}
+                            />    
+                    </section> 
                 </section>
-            </section>
-           
+            </section>       
         )
     }
 }

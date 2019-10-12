@@ -32,6 +32,10 @@
     display: none;
 }
 
+.MyProfile {
+    text-align: left;
+}
+
 .rolling {
     animation: move 6s ease-out;
     filter: drop-shadow(4px 4px 4px #999);
