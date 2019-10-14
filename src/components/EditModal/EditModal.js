@@ -16,7 +16,9 @@ class EditModal extends React.Component {
         subject: '',
         place_id: 1,
         show: false,
-        uploading: false
+        uploading: false,
+        user_logged_in: null,
+        post_user: null
     }
 
 
@@ -51,13 +53,15 @@ class EditModal extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            // console.log('post responsejson', responseJson)
+            console.log('post responsejson', responseJson)
             this.setState({
                 image: responseJson.image,
                 message: responseJson.message,
                 post_category: responseJson.post_category,
                 subject: responseJson.subject,
                 place_id: responseJson.place_id,
+                user_logged_in: responseJson.user_logged_in,
+                post_user: responseJson.user.id
             })
         })
         .catch(err => {
@@ -194,11 +198,11 @@ class EditModal extends React.Component {
         // const { hideModal, show } = this.props
         
 
-        const { message, post_category, subject, place_id, show, uploading } = this.state
+        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user } = this.state
 
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
 
-        // console.log('show', this.props.show)
+        console.log('user logged', this.state.user_logged_in)
         // console.log('image', image)
 
         return (
@@ -251,12 +255,20 @@ class EditModal extends React.Component {
                     </section>
                 </div>
                 )}
-                <button type='button' onClick={this.showModal}>
-                    Edit
-                </button>
-                <button type='button' onClick={this.handleDeleteForm}>
-                        Delete
-                </button>  
+                <div>
+                    {user_logged_in === post_user ? (
+                        <div>
+                            <button type='button' onClick={this.showModal}>
+                                Edit
+                            </button>
+                            <button type='button' onClick={this.handleDeleteForm}>
+                                Delete
+                            </button>  
+                        </div> 
+                    ) : null}                   
+                </div>
+                
+               
             </section>
         )
     }
