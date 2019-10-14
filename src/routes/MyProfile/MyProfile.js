@@ -67,7 +67,7 @@ class MyProfile extends React.Component {
                 email: responseJson.email,
                 occupation: responseJson.occupation,
                 interests: responseJson.interests,
-                image: responseJson.image
+                image: responseJson.image,
             })
         })
     }

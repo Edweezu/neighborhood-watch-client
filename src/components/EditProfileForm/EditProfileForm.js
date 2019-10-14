@@ -11,7 +11,8 @@ export default class EditProfileForm extends React.Component {
         last_name: '',
         email: '',
         occupation: '',
-        interests: ''
+        interests: '',
+        make_private: false
     }
 
     componentDidMount () {
@@ -32,6 +33,7 @@ export default class EditProfileForm extends React.Component {
             return res.json()
         })
         .then(responseJson => {
+            console.log('resp', responseJson)
             for (let item in responseJson) {
                 if (responseJson[item] === null) {
                     responseJson[item] = ''
@@ -43,6 +45,7 @@ export default class EditProfileForm extends React.Component {
                 email: responseJson.email,
                 occupation: responseJson.occupation,
                 interests: responseJson.interests,
+                make_private: responseJson.make_private
             })
         })
     }
@@ -88,6 +91,12 @@ export default class EditProfileForm extends React.Component {
         })
     }
 
+    changeVisibility = (e) => {
+        this.setState({
+            make_private: !this.state.make_private
+        })
+    }
+
 
     handleBasicSubmit = (e) => {
         const { updateProfileAbout } = this.props
@@ -97,14 +106,17 @@ export default class EditProfileForm extends React.Component {
             uploading: true
         })
 
-        let { first_name, last_name, email, occupation, interests } = this.state
+        let { first_name, last_name, email, occupation, interests, make_private } = this.state
         let updatedProfile = {
             first_name,
             last_name,
             email,
             occupation,
-            interests
+            interests,
+            make_private
         }
+
+        console.log('before send patch', updatedProfile)
 
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'PATCH',
@@ -122,13 +134,21 @@ export default class EditProfileForm extends React.Component {
         })
         .then(responseJson => {
             console.log('response basic', responseJson)
+
+            for (let item in responseJson) {
+                if (responseJson[item] === null) {
+                    responseJson[item] = ''
+                }
+            }
+
             this.setState({
                 first_name: responseJson.first_name,
                 last_name: responseJson.last_name,
                 email: responseJson.email,
                 occupation: responseJson.occupation,
                 interests: responseJson.interests,
-                showProfileForm: false
+                showProfileForm: false,
+                make_private: responseJson.make_private
             }, () =>  updateProfileAbout(responseJson))
           
         })
@@ -140,8 +160,8 @@ export default class EditProfileForm extends React.Component {
 
 
     render () {
-        const { first_name, last_name, email, occupation, interests, showProfileForm } = this.state
-
+        const { first_name, last_name, email, occupation, interests, showProfileForm, make_private } = this.state
+        console.log('make priv', make_private)
         return (
             <section>
                 <button type='button' onClick={this.handleEditProfile}>
@@ -183,8 +203,6 @@ export default class EditProfileForm extends React.Component {
                                  <input className='form-input' type="text" name="email" id="email" required value={this.capitalizeName(email)} onChange={this.changeEmail}/>
                              </div>
                          </div>
-                     </div>
-                     <div className='form-flex-container'>
                          <div className='LoginForm__signupElement'>
                              <div className='LoginForm__signupLabel'>
                                  <label htmlFor="occupation" className='LoginForm__signupLabel'>Occupation </label>
@@ -193,6 +211,8 @@ export default class EditProfileForm extends React.Component {
                                  <input className='form-input' type="text" name="occupation" id="occupation" value={this.capitalizeName(occupation)} onChange={this.changeOccupation}/>
                              </div>
                          </div>
+                     </div>
+                     <div className='form-flex-container'>
                          <div className='LoginForm__signupElement'>
                              <div className='LoginForm__signupLabel'>
                                  <label htmlFor="interest" className='LoginForm__signupLabel'>Interests</label>
@@ -200,6 +220,13 @@ export default class EditProfileForm extends React.Component {
                              <div className='LoginForm__signupLabel'>
                                  <input className='form-input' type="text" name="interests" id="interests" value={this.capitalizeName(interests)} onChange={this.changeInterests}/>
                              </div>     
+                         </div>
+                         <div className='LoginForm__signupElement'>
+                             <div className='ProfileForm__checkbox'>
+                                 <label htmlFor="showProfile" className='LoginForm__signupLabel'><strong>Make Profile Private?</strong></label>
+                                 <input className='form-input' type="checkbox" name="showProfiles" id="showProfiles" value={make_private} onChange={this.changeVisibility} defaultChecked={make_private}/>
+                             </div>
+                             
                          </div>
                      </div>
                      <div className='button-container'>

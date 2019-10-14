@@ -249,6 +249,30 @@ html {
     display: none;
 } */
 
+.MemberProfiles__info {
+    font-size: 14px;
+}
+
+.MemberProfiles__info h2 {
+    margin: 0;
+}
+
+.MemberProfiles__locationCite {
+    margin: 0;
+    font-size: 12px;
+}
+
+.MemberProfiles__flexBox {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.MemberProfiles__image {
+    display: flex;
+    align-items: center;
+}
+
 .image-upload {
     text-align: center;
     position: relative;
