@@ -13,8 +13,6 @@ class Post extends React.Component {
 
     static contextType = MainContext
 
-
-
     dateDiff = () => {
         let { date_created } = this.props
 
@@ -38,8 +36,6 @@ class Post extends React.Component {
             return `Posted ${daysAgo}`
         }
     } 
-
-     
 
     render () {
         // const { users=[] } = this.context

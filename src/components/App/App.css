@@ -20,6 +20,25 @@
     transform: translate(-50%,-50%);
 }
 
+.scroll-up-div a {
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999999999;
+    color: #eee;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all .25s ease;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.scroll-up-div a:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
 
 /* .EditModal__form {
     
@@ -116,7 +135,7 @@ body {
 }
 
 .Dashboard {
-    margin-top: 4.5rem;
+    padding-top: 4.5rem;
 }
 
 /* .Nav {
@@ -654,6 +673,11 @@ a {
 
 
 @media only screen and (min-width: 768px) {
+
+    .scroll-up-div a {
+        bottom: 15px;
+        right: 15px;
+    }
 
       /* .AddPost__form {
         background-color: lightgrey;

@@ -156,7 +156,7 @@ class Dashboard extends React.Component {
         const place = findPlace (places, place_id) || {}
 
         return (
-            <section className='Dashboard'>
+            <section id='dashboard_top'  className='Dashboard'>
                 <section className='Dashboard__browseContainer'>
                     <div className='Dashboard__browseInput'>
                         {/* <label htmlFor='browse-places'><strong>Browse places</strong></label> */}
@@ -209,6 +209,11 @@ class Dashboard extends React.Component {
                         />
                     </section>
                 </section>
+                <div className='scroll-up-div'>
+                    <a href="#dashboard_top">
+                       <i className="fa fa-chevron-up"></i>          
+                    </a>                   
+                </div>
             </section>           
         )
     }

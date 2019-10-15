@@ -53,7 +53,7 @@ class EditModal extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('post responsejson', responseJson)
+            // console.log('post responsejson', responseJson)
             this.setState({
                 image: responseJson.image,
                 message: responseJson.message,
@@ -202,7 +202,7 @@ class EditModal extends React.Component {
 
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
 
-        console.log('user logged', this.state.user_logged_in)
+        // console.log('user logged', this.state.user_logged_in)
         // console.log('image', image)
 
         return (
@@ -215,7 +215,7 @@ class EditModal extends React.Component {
                     <section className='modal-main'>
                         
                         <form className='EditModal__form' onSubmit={this.handleSubmit}>
-                        <button type='button' onClick={this.hideModal}>
+                            <button type='button' onClick={this.hideModal}>
                                 <span className="fas fa-times" aria-hidden="true"></span>
                             </button>
                             <div className='AddPost__formContainer'>
