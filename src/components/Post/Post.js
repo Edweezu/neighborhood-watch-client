@@ -43,6 +43,7 @@ class Post extends React.Component {
     componentDidMount () {
         //grabs total lieks from server and displays in state
         const { id } = this.props
+        // console.log('postid', id)
 
         Promise.all([
             fetch(`${config.API_ENDPOINT}/posts/${id}/`, {
@@ -149,20 +150,21 @@ class Post extends React.Component {
         let whoLiked = {}
 
         let usersFilter = () => {
+            console.log('userlist', usersList)
             return usersList.filter(user => {
                 return user.user_id === user_logged_in
-            })
+            }).length
         }
 
-        console.log('usersFilter', usersFilter)
+        console.log('usersFilter', usersFilter())
 
-        if (!usersFilter) {
-            newBody = {
-                likes: likes + 1
-            }
-        } else {
+        if (usersFilter()) {
             newBody = {
                 likes: likes - 1
+            }  
+        } else {
+            newBody = {
+                likes: likes + 1
             }
         }
 
@@ -170,55 +172,101 @@ class Post extends React.Component {
             newBody.likes = 0
         }
 
-        whoLiked.action = (!usersFilter ? 'like': 'unlike')
+        whoLiked.action = (usersFilter().length ? 'like': 'unlike')
 
         //if logged in user is contained in users array, then don't patch or post user in likes route
         console.log('likes body', newBody)
         console.log('whoLiked', whoLiked)
 
-        Promise.all([
-            fetch(`${config.API_ENDPOINT}/posts/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `bearer ${TokenService.getAuthToken()}`
-                },
-                body: JSON.stringify(newBody)
-            }),
-
-            fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `bearer ${TokenService.getAuthToken()}`
-                },
-                body: JSON.stringify(whoLiked)
-            })
-        ])
-        .then(([totalLikesRes, whoLikedRes]) => {
-            if (!totalLikesRes.ok) {
-                return totalLikesRes.json().then(e => Promise.reject(e))
-            }
-
-            if (!whoLikedRes.ok) {
-                return whoLikedRes.json().then(e => Promise.reject(e))
-            }
-
-            return Promise.all([
-                totalLikesRes.json(),
-                whoLikedRes.json()
+        if (usersFilter()) {
+            Promise.all([
+                fetch(`${config.API_ENDPOINT}/posts/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(newBody)
+                }),
+    
+                fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                })
             ])
-        })
-        .then(([totalLikesResJson, whoLikedResJson]) => {
-            this.setState({
-                likes: totalLikesResJson.likes,
-                usersList: this.state.usersList.map(user => whoLikedResJson)
-
+            .then(([totalLikesRes, whoLikedRes]) => {
+                if (!totalLikesRes.ok) {
+                    return totalLikesRes.json().then(e => Promise.reject(e))
+                }
+    
+                if (!whoLikedRes.ok) {
+                    return whoLikedRes.json().then(e => Promise.reject(e))
+                }
+    
+                return Promise.all([
+                    totalLikesRes.json(),
+                    whoLikedRes.json()
+                ])
             })
-        })
-        .catch(err => {
-            console.error(err)
-        })
+            .then(([totalLikesResJson, whoLikedResJson]) => {
+                this.setState({
+                    likes: totalLikesResJson.likes,
+                    usersList: whoLikedResJson
+                })
+            })
+            .catch(err => {
+                console.error(err)
+            })
+        } else {
+            Promise.all([
+                fetch(`${config.API_ENDPOINT}/posts/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(newBody)
+                }),
+    
+                fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(whoLiked)
+                })
+            ])
+            .then(([totalLikesRes, whoLikedRes]) => {
+                if (!totalLikesRes.ok) {
+                    return totalLikesRes.json().then(e => Promise.reject(e))
+                }
+    
+                if (!whoLikedRes.ok) {
+                    return whoLikedRes.json().then(e => Promise.reject(e))
+                }
+    
+                return Promise.all([
+                    totalLikesRes.json(),
+                    whoLikedRes.json()
+                ])
+            })
+            .then(([totalLikesResJson, whoLikedResJson]) => {
+                this.setState({
+                    likes: totalLikesResJson.likes,
+                    usersList: whoLikedResJson
+                    // usersList: this.state.usersList.map(user => whoLikedResJson)
+                })
+            })
+            .catch(err => {
+                console.error(err)
+            })
+        }
+
+       
         
     }
 
@@ -256,7 +304,7 @@ class Post extends React.Component {
                     />  
                 </div>
                  <div>
-                     {(usersList.filter(user => user.user_id === user_logged_in)) ? 
+                     {(usersList.filter(user => user.user_id === user_logged_in).length) ? 
                      (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-down"></i>{likes > 0 ? likes : null}</button>) :
                      (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-up"></i>{likes > 0 ? likes : null}</button>) }
                     
