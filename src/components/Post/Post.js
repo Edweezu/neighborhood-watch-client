@@ -1,10 +1,6 @@
 import React from 'react'
-// import { findUser } from '../../helpers'
 import MainContext from '../../contexts/MainContext';
 import { Link } from 'react-router-dom'
-// import config from '../../config'
-// import TokenService from '../../services/token-service'
-// import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import EditModal from '../EditModal/EditModal'
 import moment from 'moment'
@@ -17,7 +13,7 @@ class Post extends React.Component {
 
     state = {
         likes: 0,
-        showLike: true
+        usersList: []
     }
 
     dateDiff = () => {
@@ -48,23 +44,42 @@ class Post extends React.Component {
         //grabs total lieks from server and displays in state
         const { id } = this.props
 
-        return fetch(`${config.API_ENDPOINT}/posts/${id}/`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `bearer ${TokenService.getAuthToken()}`
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/posts/${id}/`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+
+            fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                },
+            })
+        ])
+        .then(([totalLikesRes, usersListRes]) => {
+            if (!totalLikesRes.ok) {
+                return totalLikesRes.json().then(e => Promise.reject(e))
             }
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(e => Promise.reject(e))
+            if (!usersListRes.ok) {
+                return usersListRes.json().then(e => Promise.reject(e))
             }
-            return res.json()
+
+            return Promise.all([
+                totalLikesRes.json(),
+                usersListRes.json()
+            ])
         })
-        .then(responseJson => {
+        .then(([totalLikesResJson, usersListResJson]) => {
+            //retrieve users who liked this post in state when component mounts in users array
             this.setState({
-                likes: responseJson.likes,
-                showLike: eval(localStorage.getItem('showLike'))
+                likes: totalLikesResJson.likes,
+                usersList: usersListResJson
+                // showLike: eval(localStorage.getItem('showLike'))
             })
         })  
         .catch(err => {
@@ -73,16 +88,75 @@ class Post extends React.Component {
 
     }
 
+    // handleLike = () => {
+    //     //restrict user to one like per post
+    //     //on click, sends patch to post route to increase by 1
+    //     //on click again, sends patch to  Post route to decrease by 1
+    //         //cant go below 0
+    //     let { id } = this.props
+    //     let { likes, showLike } = this.state
+    //     let newBody = {}
+
+    //     if (showLike) {
+    //         newBody = {
+    //             likes: likes + 1
+    //         }
+    //     } else {
+    //         newBody = {
+    //             likes: likes - 1
+    //         }
+    //     }
+
+    //     if (newBody.likes < 0 ) {
+    //         newBody.likes = 0
+    //     }
+
+    //     console.log('likes body', newBody)
+
+    //     return fetch(`${config.API_ENDPOINT}/posts/${id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'content-type': 'application/json',
+    //             'authorization': `bearer ${TokenService.getAuthToken()}`
+    //         },
+    //         body: JSON.stringify(newBody)
+    //     })
+    //     .then(res => {
+    //         if (!res.ok) {
+    //             return res.json().then(e => Promise.reject(e))
+    //         }
+    //         return res.json()
+    //     })
+    //     .then(responseJson => {
+    //         this.setState({
+    //             likes: responseJson.likes,
+    //             showLike: (showLike ? false : true)
+    //         }, () => localStorage.setItem('showLike', this.state.showLike))
+    //     })
+    //     .catch(err => {
+    //         console.error(err)
+    //     })
+    // }
+
     handleLike = () => {
         //restrict user to one like per post
         //on click, sends patch to post route to increase by 1
         //on click again, sends patch to  Post route to decrease by 1
             //cant go below 0
-        let { id } = this.props
-        let { likes, showLike } = this.state
+        let { id, user_logged_in } = this.props
+        let { likes, usersList } = this.state
         let newBody = {}
+        let whoLiked = {}
 
-        if (showLike) {
+        let usersFilter = () => {
+            return usersList.filter(user => {
+                return user.user_id === user_logged_in
+            })
+        }
+
+        console.log('usersFilter', usersFilter)
+
+        if (!usersFilter) {
             newBody = {
                 likes: likes + 1
             }
@@ -96,47 +170,67 @@ class Post extends React.Component {
             newBody.likes = 0
         }
 
+        whoLiked.action = (!usersFilter ? 'like': 'unlike')
+
+        //if logged in user is contained in users array, then don't patch or post user in likes route
         console.log('likes body', newBody)
-        
-        return fetch(`${config.API_ENDPOINT}/posts/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `bearer ${TokenService.getAuthToken()}`
-            },
-            body: JSON.stringify(newBody)
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(e => Promise.reject(e))
+        console.log('whoLiked', whoLiked)
+
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/posts/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                },
+                body: JSON.stringify(newBody)
+            }),
+
+            fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                },
+                body: JSON.stringify(whoLiked)
+            })
+        ])
+        .then(([totalLikesRes, whoLikedRes]) => {
+            if (!totalLikesRes.ok) {
+                return totalLikesRes.json().then(e => Promise.reject(e))
             }
-            return res.json()
+
+            if (!whoLikedRes.ok) {
+                return whoLikedRes.json().then(e => Promise.reject(e))
+            }
+
+            return Promise.all([
+                totalLikesRes.json(),
+                whoLikedRes.json()
+            ])
         })
-        .then(responseJson => {
+        .then(([totalLikesResJson, whoLikedResJson]) => {
             this.setState({
-                likes: responseJson.likes,
-                showLike: (showLike ? false : true)
-            }, () => localStorage.setItem('showLike', this.state.showLike))
+                likes: totalLikesResJson.likes,
+                usersList: this.state.usersList.map(user => whoLikedResJson)
+
+            })
         })
         .catch(err => {
             console.error(err)
         })
-
+        
     }
 
     render () {
-        // const { users=[] } = this.context
-        // const { places } = this.context
-        const { id, subject, message, user, image, number_of_comments } = this.props
-        // const user = findUser(users, user_id) || []
-        // console.log('places', places)
-        // console.log('users', users)
-        // console.log('user id', user_id)
-        // console.log('user', user)
+        
+        const { id, subject, message, user, image, number_of_comments, user_logged_in } = this.props
+       
 
         const nameCapitalized = user.username.charAt(0).toUpperCase() + user.username.slice(1)
-        const { likes, showLike } = this.state
+        const { likes, usersList } = this.state
         console.log('post state', this.state)
+
         
         return (
             <section className='Post'>
@@ -162,9 +256,9 @@ class Post extends React.Component {
                     />  
                 </div>
                  <div>
-                     {showLike ? 
-                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-up"></i>{likes > 0 ? likes : null}</button>) : 
-                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-down"></i>{likes > 0 ? likes : null}</button>)}
+                     {(usersList.filter(user => user.user_id === user_logged_in)) ? 
+                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-down"></i>{likes > 0 ? likes : null}</button>) :
+                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-up"></i>{likes > 0 ? likes : null}</button>) }
                     
                     <span className='Post__commentContainer'>
                         <i className="fas fa-comment"></i>

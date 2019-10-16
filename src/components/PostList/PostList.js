@@ -33,6 +33,7 @@ class PostList extends React.Component {
                             user={post.user}
                             image={post.image}
                             number_of_comments={post.number_of_comments}
+                            user_logged_in={post.user_logged_in}
                         />
                     </li>
                 ))}
