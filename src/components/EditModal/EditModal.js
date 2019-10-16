@@ -140,6 +140,8 @@ class EditModal extends React.Component {
         formData.append('subject', subject)
         formData.append('place_id', place_id)
 
+        
+
         return fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
             method: 'PATCH',
             headers: {

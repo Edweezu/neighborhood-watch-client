@@ -246,7 +246,7 @@ class PostPage extends React.Component {
         const correctComments = findComments(comments, postId) || []
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
        
-        console.log('post', post)
+        // console.log('post', post)
         console.log('places', places)
         // console.log('posts', posts)
         // console.log('post', post)
@@ -254,7 +254,7 @@ class PostPage extends React.Component {
         // console.log('postid', postId)
         // console.log('correct comment', correctComments)
         // console.log("error", this.state.error)
-        console.log('post page state', this.state)
+        // console.log('post page state', this.state)
 
         
 

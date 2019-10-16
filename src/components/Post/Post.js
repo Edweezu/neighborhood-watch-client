@@ -8,10 +8,17 @@ import { Link } from 'react-router-dom'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import EditModal from '../EditModal/EditModal'
 import moment from 'moment'
+import config from '../../config'
+import TokenService from '../../services/token-service';
 
 class Post extends React.Component {
 
     static contextType = MainContext
+
+    state = {
+        likes: 0,
+        showLike: true
+    }
 
     dateDiff = () => {
         let { date_created } = this.props
@@ -35,23 +42,101 @@ class Post extends React.Component {
         } else {
             return `Posted ${daysAgo}`
         }
-    } 
+    }
+
+    componentDidMount () {
+        //grabs total lieks from server and displays in state
+        const { id } = this.props
+
+        return fetch(`${config.API_ENDPOINT}/posts/${id}/`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(e => Promise.reject(e))
+            }
+            return res.json()
+        })
+        .then(responseJson => {
+            this.setState({
+                likes: responseJson.likes,
+                showLike: eval(localStorage.getItem('showLike'))
+            })
+        })  
+        .catch(err => {
+            console.error(err)
+        })
+
+    }
+
+    handleLike = () => {
+        //restrict user to one like per post
+        //on click, sends patch to post route to increase by 1
+        //on click again, sends patch to  Post route to decrease by 1
+            //cant go below 0
+        let { id } = this.props
+        let { likes, showLike } = this.state
+        let newBody = {}
+
+        if (showLike) {
+            newBody = {
+                likes: likes + 1
+            }
+        } else {
+            newBody = {
+                likes: likes - 1
+            }
+        }
+
+        if (newBody.likes < 0 ) {
+            newBody.likes = 0
+        }
+
+        console.log('likes body', newBody)
+        
+        return fetch(`${config.API_ENDPOINT}/posts/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify(newBody)
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(e => Promise.reject(e))
+            }
+            return res.json()
+        })
+        .then(responseJson => {
+            this.setState({
+                likes: responseJson.likes,
+                showLike: (showLike ? false : true)
+            }, () => localStorage.setItem('showLike', this.state.showLike))
+        })
+        .catch(err => {
+            console.error(err)
+        })
+
+    }
 
     render () {
         // const { users=[] } = this.context
         // const { places } = this.context
-        const { id, subject, message, user, image } = this.props
+        const { id, subject, message, user, image, number_of_comments } = this.props
         // const user = findUser(users, user_id) || []
         // console.log('places', places)
         // console.log('users', users)
         // console.log('user id', user_id)
         // console.log('user', user)
-      
-        
 
-        
         const nameCapitalized = user.username.charAt(0).toUpperCase() + user.username.slice(1)
-
+        const { likes, showLike } = this.state
+        console.log('post state', this.state)
         
         return (
             <section className='Post'>
@@ -77,8 +162,16 @@ class Post extends React.Component {
                     />  
                 </div>
                  <div>
-                    <button type='button'><i className="fas fa-thumbs-up"></i></button>
+                     {showLike ? 
+                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-up"></i>{likes > 0 ? likes : null}</button>) : 
+                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-down"></i>{likes > 0 ? likes : null}</button>)}
+                    
+                    <span className='Post__commentContainer'>
+                        <i className="fas fa-comment"></i>
+                        <span className='Post__commentNumber'>{number_of_comments}</span>
+                    </span>
                 </div>
+
                 </div>
 
             </section>

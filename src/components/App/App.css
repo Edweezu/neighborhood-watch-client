@@ -38,7 +38,25 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+.Post__commentContainer {
+    float: right;
+    position: relative;
+}
 
+.fa-comment {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 1rem;
+    font-size: 1.5rem;
+}
+
+.Post__commentNumber {
+    position: absolute;
+    color: white;
+    right: 1.7rem;
+    font-weight: bold;
+}
 
 /* .EditModal__form {
     
