@@ -5,6 +5,12 @@ import UsersApiService from '../../services/users-api-service'
 
 class LoginForm extends React.Component {
 
+    static defaultProps = {
+        onLoginSuccess: () => {
+            
+        }
+    }
+
     state = {
         error: null,
         password: '',

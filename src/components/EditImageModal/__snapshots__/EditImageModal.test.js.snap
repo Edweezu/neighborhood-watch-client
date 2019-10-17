@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditImageModal component renders the component's given props 1`] = `
+<section>
+  <div />
+</section>
+`;
+
+exports[`EditImageModal component renders the given component 1`] = `
+<section>
+  <div />
+</section>
+`;

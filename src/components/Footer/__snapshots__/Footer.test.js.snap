@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component renders the given component 1`] = `
+<footer>
+  <ul>
+    <li
+      className="copyRight"
+    >
+      <p>
+        <i
+          className="fas fa-copyright"
+        />
+        2019 Edwin Qiu
+      </p>
+    </li>
+    <li
+      className="contactItem  mail"
+    >
+      <a
+        aria-label="Email Edwin Qiu"
+        href="mailto:edwinqiu93@gmail.com?subject=Hi"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i
+          className="far fa-envelope"
+          title="Email"
+        />
+      </a>
+    </li>
+    <li
+      className="contactItem"
+    >
+      <a
+        aria-label="Edwin Qiu's Linkedin Profile"
+        href="https://www.linkedin.com/in/edwinqiu/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i
+          className="fab fa-linkedin"
+          title="Linkedin"
+        />
+      </a>
+    </li>
+    <li
+      className="contactItem"
+    >
+      <a
+        aria-label="Edwin Qiu's Github Profile"
+        href="https://github.com/Edweezu"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i
+          className="fab fa-github"
+          title="Github"
+        />
+      </a>
+    </li>
+  </ul>
+</footer>
+`;

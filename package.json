@@ -7,6 +7,7 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-confirm-alert": "^2.4.1",
     "react-devtools": "^3.6.3",

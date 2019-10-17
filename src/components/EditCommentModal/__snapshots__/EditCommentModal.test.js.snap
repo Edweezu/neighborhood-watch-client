@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditCommentModal component renders the component's given props 1`] = `
+<section>
+  <div />
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Edit
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
+  </div>
+</section>
+`;
+
+exports[`EditCommentModal component renders the given component 1`] = `
+<section>
+  <div />
+  <div>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Edit
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
+  </div>
+</section>
+`;

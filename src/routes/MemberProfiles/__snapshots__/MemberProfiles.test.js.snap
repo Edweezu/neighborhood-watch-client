@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberProfiles component renders the given component 1`] = `
+<section
+  className="MemberProfiles"
+>
+  <h2>
+    Member Profiles
+  </h2>
+  <section
+    className="MemberContainer "
+  >
+    <DashNav />
+    <section
+      className="MemberProfiles__userList"
+    />
+  </section>
+</section>
+`;

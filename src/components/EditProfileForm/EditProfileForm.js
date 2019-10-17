@@ -5,6 +5,12 @@ import TokenService from '../../services/token-service'
 
 export default class EditProfileForm extends React.Component {
 
+    static defaultProps = {
+        updateProfileAbout: () => {
+ 
+        }
+     }
+
     state = {
         showProfileForm: false,
         first_name: '',

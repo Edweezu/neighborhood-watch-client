@@ -13,7 +13,9 @@ class EditCommentModal extends React.Component {
     state = {
         text: '',
         uploading: false,
-        showCommentForm : false
+        showCommentForm : false,
+        user_logged_in : null,
+        comment_user: null
     }
 
     componentDidMount () {
@@ -35,7 +37,9 @@ class EditCommentModal extends React.Component {
         .then(responseJson => {
             console.log('get response', responseJson)
             this.setState({
-                text: responseJson.text
+                text: responseJson.text,
+                user_logged_in: responseJson.user_logged_in,
+                comment_user: responseJson.user_id
             })
         })
         
@@ -144,7 +148,7 @@ class EditCommentModal extends React.Component {
 
     render () {
 
-        const { uploading, showCommentForm, text } = this.state
+        const { uploading, showCommentForm, text, comment_user, user_logged_in } = this.state
         // const showHideClassName = showCommentForm ? 'modal display-block' : 'modal display-none'
 
         return (
@@ -173,12 +177,18 @@ class EditCommentModal extends React.Component {
                          ) : null}
                     </div>
                 )}
-                <button type='button' onClick={this.showCommentModal}>
-                    Edit
-                </button>
-                <button type='button' onClick={this.handleDeleteForm}>
-                        Delete
-                </button>
+                
+                {user_logged_in === comment_user ? (
+                    <div>
+                        <button type='button' onClick={this.showCommentModal}>
+                            Edit
+                        </button>
+                        <button type='button' onClick={this.handleDeleteForm}>
+                                Delete
+                        </button>
+                     </div>
+                ) : null}
+              
             </section>
         )
     }

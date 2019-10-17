@@ -6,12 +6,18 @@ import MainContext from '../../contexts/MainContext'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import moment from 'moment'
 import EditCommentModal from '../EditCommentModal/EditCommentModal'
+import PropTypes from 'prop-types'
 
 
 class Comment extends React.Component {
 
     static contextType = MainContext    
+    static defaultProps = {
+       user: {},
+       nameCapitalized: () => {
 
+       }
+    }
     
 
     dateDiff = () => {
@@ -43,7 +49,7 @@ class Comment extends React.Component {
         const { id, user, text, nameCapitalized } = this.props
 
         return (
-            <section>
+            <section className='Comment'>
                 <p>
                     {nameCapitalized(user.username)}, {user.city}
                     </p>
@@ -57,6 +63,10 @@ class Comment extends React.Component {
             </section>
         )
     }
+}
+
+Comment.propTypes = {
+    nameCapitalized: PropTypes.func
 }
 
 export default Comment

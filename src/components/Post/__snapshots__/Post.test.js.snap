@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post component renders the component's given props 1`] = `
+<section
+  className="Post"
+>
+  <div
+    className="Post__userInfo"
+  >
+    Random user
+    , 
+  </div>
+  <div>
+    <h4>
+      <Link
+        to="/post-page/1"
+      >
+        random subject
+      </Link>
+    </h4>
+    <p>
+      random message
+    </p>
+    <figure>
+      <img
+        alt="default icon"
+        src="random iamge text"
+        width="100"
+      />
+      <figcaption>
+        User uploaded image is going to replace this.
+      </figcaption>
+    </figure>
+    <div>
+      <p>
+        Posted on Sep 25, 2019
+      </p>
+      <EditModal
+        postid={1}
+      />
+    </div>
+    <div>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-thumbs-up"
+        />
+      </button>
+      <span
+        className="Post__commentContainer"
+      >
+        <i
+          className="fas fa-comment"
+        />
+        <span
+          className="Post__commentNumber"
+        >
+          1
+        </span>
+      </span>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Post component renders the given component 1`] = `
+<section
+  className="Post"
+>
+  <div
+    className="Post__userInfo"
+  >
+    , 
+  </div>
+  <div>
+    <h4>
+      <Link
+        to="/post-page/undefined"
+      />
+    </h4>
+    <p />
+    <div>
+      <p>
+        Posted a few seconds ago
+      </p>
+      <EditModal />
+    </div>
+    <div>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-thumbs-up"
+        />
+      </button>
+      <span
+        className="Post__commentContainer"
+      >
+        <i
+          className="fas fa-comment"
+        />
+        <span
+          className="Post__commentNumber"
+        />
+      </span>
+    </div>
+  </div>
+</section>
+`;

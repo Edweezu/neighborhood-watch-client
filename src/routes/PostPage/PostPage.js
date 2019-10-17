@@ -235,8 +235,8 @@ class PostPage extends React.Component {
 
     render () {
 
-        const { posts, comments, places } = this.context
-        const { uploading, show, image, subject, message, post_category, place_id } = this.state
+        const { posts, comments=[], places } = this.context
+        const { uploading, show, subject, message, post_category, place_id } = this.state
         
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}

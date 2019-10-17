@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostList component renders the component's given props 1`] = `
+<section
+  className="PostList"
+/>
+`;
+
+exports[`PostList component renders the given component 1`] = `
+<section
+  className="PostList"
+/>
+`;

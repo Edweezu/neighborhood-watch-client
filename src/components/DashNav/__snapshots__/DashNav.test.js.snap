@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashNav component renders the given component 1`] = `
+<section
+  className="DashNav"
+>
+  <div
+    className="menu-container"
+  >
+    <div
+      className="main-nav-link"
+    >
+      <NavLink
+        className="DashNav__folderLink"
+        to="/category/1"
+      >
+        All Posts
+      </NavLink>
+    </div>
+  </div>
+  <div
+    className="menu-container"
+  >
+    <div
+      className="main-nav-link"
+    >
+      <NavLink
+        className="DashNav__folderLink"
+        to="/category/Crime and Alerts"
+      >
+        Crime and Alerts
+      </NavLink>
+    </div>
+  </div>
+  <div
+    className="menu-container"
+  >
+    <div
+      className="main-nav-link"
+    >
+      <NavLink
+        className="DashNav__folderLink"
+        to="/category/Upcoming Events"
+      >
+        Upcoming Events
+      </NavLink>
+    </div>
+  </div>
+  <div
+    className="menu-container"
+  >
+    <div
+      className="main-nav-link"
+    >
+      <NavLink
+        className="DashNav__folderLink"
+        to="/category/Lost and Found"
+      >
+        Lost and Found
+      </NavLink>
+    </div>
+  </div>
+  <div
+    className="Nav__logout"
+  >
+    <div
+      className="main-nav-link "
+    >
+      <NavLink
+        className="DashNav__folderLink"
+        to="/"
+      >
+        Logout
+      </NavLink>
+    </div>
+  </div>
+  <Footer />
+</section>
+`;

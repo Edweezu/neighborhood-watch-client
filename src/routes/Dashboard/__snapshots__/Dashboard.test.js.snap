@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard component renders the given component 1`] = `
+<section
+  className="Dashboard"
+  id="dashboard_top"
+>
+  <section
+    className="Dashboard__browseContainer"
+  >
+    <div
+      className="Dashboard__browseInput"
+    >
+      <h4>
+        Browse Active Pages
+      </h4>
+      <select
+        id="browse-cities"
+      />
+    </div>
+    <div
+      className="Dashboard__addCity"
+    >
+      <h4>
+        Dont See Your City? Start a New Page
+      </h4>
+      <form
+        className="Dashboard__addCityForm"
+        id="addCityForm"
+        onSubmit={[Function]}
+      >
+        <div
+          className="selectContainer"
+        >
+          <select
+            className="Dashboard__addSelect countries"
+            id="countryId"
+            name="countryId"
+            required={true}
+          >
+            <option
+              value=""
+            >
+              Select Country
+            </option>
+          </select>
+        </div>
+        <div
+          className="selectContainer"
+        >
+          <select
+            className="Dashboard__addSelect states"
+            id="stateId"
+            name="stateId"
+            required={true}
+          >
+            <option
+              value=""
+            >
+              Select State
+            </option>
+          </select>
+        </div>
+        <div
+          className="selectContainer"
+        >
+          <select
+            className="Dashboard__addSelect cities"
+            id="cityId"
+            name="cityId"
+            required={true}
+          >
+            <option
+              value=""
+            >
+              Select City
+            </option>
+          </select>
+        </div>
+        <div>
+          <button
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section
+    className="DashMainPosts__header"
+  >
+    <withRouter(AddPost) />
+    <h2 />
+  </section>
+  <section
+    className="DashContainer"
+  >
+    <DashNav />
+    <section
+      className="DashMainPosts"
+    >
+      <PostList
+        categoryid={1}
+        posts={Array []}
+      />
+    </section>
+  </section>
+  <div
+    className="scroll-up-div"
+  >
+    <a
+      href="#dashboard_top"
+    >
+      <i
+        className="fa fa-chevron-up"
+      />
+    </a>
+  </div>
+</section>
+`;

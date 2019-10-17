@@ -12,6 +12,14 @@ import UsersApiService from '../../services/users-api-service'
 class ProfilePage extends React.Component {
 
     static contextType = MainContext
+    static defaultProps = {
+        history: {
+          
+        },
+        match: {
+          params: {}
+        }
+      }
 
     state = {
         error: null,

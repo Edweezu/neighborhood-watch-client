@@ -11,6 +11,12 @@ class Post extends React.Component {
 
     static contextType = MainContext
 
+    static defaultProps = {
+        user: {
+            username: ''
+        }
+    }
+
     state = {
         likes: 0,
         usersList: []
@@ -89,56 +95,6 @@ class Post extends React.Component {
 
     }
 
-    // handleLike = () => {
-    //     //restrict user to one like per post
-    //     //on click, sends patch to post route to increase by 1
-    //     //on click again, sends patch to  Post route to decrease by 1
-    //         //cant go below 0
-    //     let { id } = this.props
-    //     let { likes, showLike } = this.state
-    //     let newBody = {}
-
-    //     if (showLike) {
-    //         newBody = {
-    //             likes: likes + 1
-    //         }
-    //     } else {
-    //         newBody = {
-    //             likes: likes - 1
-    //         }
-    //     }
-
-    //     if (newBody.likes < 0 ) {
-    //         newBody.likes = 0
-    //     }
-
-    //     console.log('likes body', newBody)
-
-    //     return fetch(`${config.API_ENDPOINT}/posts/${id}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'content-type': 'application/json',
-    //             'authorization': `bearer ${TokenService.getAuthToken()}`
-    //         },
-    //         body: JSON.stringify(newBody)
-    //     })
-    //     .then(res => {
-    //         if (!res.ok) {
-    //             return res.json().then(e => Promise.reject(e))
-    //         }
-    //         return res.json()
-    //     })
-    //     .then(responseJson => {
-    //         this.setState({
-    //             likes: responseJson.likes,
-    //             showLike: (showLike ? false : true)
-    //         }, () => localStorage.setItem('showLike', this.state.showLike))
-    //     })
-    //     .catch(err => {
-    //         console.error(err)
-    //     })
-    // }
-
     handleLike = () => {
         //restrict user to one like per post
         //on click, sends patch to post route to increase by 1
@@ -156,7 +112,7 @@ class Post extends React.Component {
             }).length
         }
 
-        console.log('usersFilter', usersFilter())
+        // console.log('usersFilter', usersFilter())
 
         if (usersFilter()) {
             newBody = {
@@ -175,8 +131,8 @@ class Post extends React.Component {
         whoLiked.action = (usersFilter().length ? 'like': 'unlike')
 
         //if logged in user is contained in users array, then don't patch or post user in likes route
-        console.log('likes body', newBody)
-        console.log('whoLiked', whoLiked)
+        // console.log('likes body', newBody)
+        // console.log('whoLiked', whoLiked)
 
         if (usersFilter()) {
             Promise.all([

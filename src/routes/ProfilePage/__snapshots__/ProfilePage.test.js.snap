@@ -1,0 +1,349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfilePage component renders the component's given props 1`] = `
+<section
+  className="ProfilePage"
+>
+  <h2>
+    Create a Profile
+  </h2>
+  <form
+    className="LoginForm"
+    onSubmit={[Function]}
+  >
+    <div
+      role="alert"
+    />
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="firstName"
+        >
+          First Name
+        </label>
+        <span
+          className="astrik"
+        >
+          *
+        </span>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <input
+          id="firstName"
+          name="firstName"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="lastName"
+        >
+          Last Name
+        </label>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <input
+          id="lastName"
+          name="lastName"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="city"
+        >
+          Location
+        </label>
+        <span
+          className="astrik"
+        >
+          *
+        </span>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <select
+          className="ProfilePage__addSelect countries"
+          id="countryId"
+          name="country"
+          onChange={[Function]}
+          required={true}
+        >
+          <option
+            value=""
+          >
+            Select Country
+          </option>
+        </select>
+        <select
+          className="ProfilePage__addSelect states"
+          id="stateId"
+          name="state"
+          onChange={[Function]}
+          required={true}
+        >
+          <option
+            value=""
+          >
+            Select State
+          </option>
+        </select>
+        <select
+          className="ProfilePage__addSelect cities"
+          id="cityId"
+          name="city"
+          onChange={[Function]}
+          required={true}
+        >
+          <option
+            value=""
+          >
+            Select City
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <span
+          className="astrik"
+        >
+          *
+        </span>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <input
+          id="email"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="signin-button"
+    >
+      <button
+        className="btn btn-sign-in"
+        type="submit"
+      >
+        Create an Account
+      </button>
+    </div>
+  </form>
+  <Footer />
+</section>
+`;
+
+exports[`ProfilePage component renders the given component 1`] = `
+<section
+  className="ProfilePage"
+>
+  <h2>
+    Create a Profile
+  </h2>
+  <form
+    className="LoginForm"
+    onSubmit={[Function]}
+  >
+    <div
+      role="alert"
+    />
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="firstName"
+        >
+          First Name
+        </label>
+        <span
+          className="astrik"
+        >
+          *
+        </span>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <input
+          id="firstName"
+          name="firstName"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="lastName"
+        >
+          Last Name
+        </label>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <input
+          id="lastName"
+          name="lastName"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="city"
+        >
+          Location
+        </label>
+        <span
+          className="astrik"
+        >
+          *
+        </span>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <select
+          className="ProfilePage__addSelect countries"
+          id="countryId"
+          name="country"
+          onChange={[Function]}
+          required={true}
+        >
+          <option
+            value=""
+          >
+            Select Country
+          </option>
+        </select>
+        <select
+          className="ProfilePage__addSelect states"
+          id="stateId"
+          name="state"
+          onChange={[Function]}
+          required={true}
+        >
+          <option
+            value=""
+          >
+            Select State
+          </option>
+        </select>
+        <select
+          className="ProfilePage__addSelect cities"
+          id="cityId"
+          name="city"
+          onChange={[Function]}
+          required={true}
+        >
+          <option
+            value=""
+          >
+            Select City
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="LoginForm__signupElement"
+    >
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <label
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <span
+          className="astrik"
+        >
+          *
+        </span>
+      </div>
+      <div
+        className="LoginForm__signupLabel"
+      >
+        <input
+          id="email"
+          name="email"
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="signin-button"
+    >
+      <button
+        className="btn btn-sign-in"
+        type="submit"
+      >
+        Create an Account
+      </button>
+    </div>
+  </form>
+  <Footer />
+</section>
+`;

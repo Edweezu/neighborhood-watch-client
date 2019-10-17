@@ -14,6 +14,13 @@ class Dashboard extends React.Component {
 
     
     static contextType = MainContext
+    static defaultProps = {
+        match: {
+            params: {
+                categoryId: 1
+            }
+        }
+      }
 
     constructor (props) {
         super(props);

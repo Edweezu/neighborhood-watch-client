@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditModal component renders the component's given props 1`] = `
+<section
+  className="EditModal"
+>
+  <div
+    className="modal display-none"
+  >
+    <section
+      className="modal-main"
+    >
+      <form
+        className="EditModal__form"
+        onSubmit={[Function]}
+      >
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            className="fas fa-times"
+          />
+        </button>
+        <div
+          className="AddPost__formContainer"
+        >
+          <div
+            className="AddPost__formDiv"
+          >
+            <label
+              htmlFor="browse_cities"
+            >
+              Active Page
+            </label>
+            <select
+              id="browse_cities"
+              onChange={[Function]}
+              required={true}
+              value={1}
+            />
+          </div>
+          <div
+            className="AddPost__formDiv"
+          >
+            <label
+              htmlFor="post_category"
+            >
+              Category
+            </label>
+            <select
+              id="post_category"
+              onChange={[Function]}
+              required={true}
+              value=""
+            >
+              <option
+                value="Crime and Alerts"
+              >
+                Crime and Safety 
+              </option>
+              <option
+                value="Upcoming Events"
+              >
+                Upcoming Events 
+              </option>
+              <option
+                value="Lost and Found"
+              >
+                Lost and Found
+              </option>
+            </select>
+          </div>
+          <div
+            className="AddPost__formDiv"
+          >
+            <label
+              htmlFor="subject"
+            >
+              Subject
+            </label>
+            <input
+              id="subject"
+              name="subject"
+              onChange={[Function]}
+              required={true}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="messageAdd"
+        >
+          <label
+            htmlFor="message"
+          >
+            Message
+          </label>
+          <input
+            id="message"
+            name="message"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="AddPost__formContainer"
+        >
+          <div
+            className="AddPost__formDiv"
+          >
+            <input
+              id="image"
+              name="image"
+              onChange={[Function]}
+              type="file"
+            />
+          </div>
+          <button
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <div>
+    <div>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Edit
+      </button>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`EditModal component renders the given component 1`] = `
+<section
+  className="EditModal"
+>
+  <div
+    className="modal display-none"
+  >
+    <section
+      className="modal-main"
+    >
+      <form
+        className="EditModal__form"
+        onSubmit={[Function]}
+      >
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            className="fas fa-times"
+          />
+        </button>
+        <div
+          className="AddPost__formContainer"
+        >
+          <div
+            className="AddPost__formDiv"
+          >
+            <label
+              htmlFor="browse_cities"
+            >
+              Active Page
+            </label>
+            <select
+              id="browse_cities"
+              onChange={[Function]}
+              required={true}
+              value={1}
+            />
+          </div>
+          <div
+            className="AddPost__formDiv"
+          >
+            <label
+              htmlFor="post_category"
+            >
+              Category
+            </label>
+            <select
+              id="post_category"
+              onChange={[Function]}
+              required={true}
+              value=""
+            >
+              <option
+                value="Crime and Alerts"
+              >
+                Crime and Safety 
+              </option>
+              <option
+                value="Upcoming Events"
+              >
+                Upcoming Events 
+              </option>
+              <option
+                value="Lost and Found"
+              >
+                Lost and Found
+              </option>
+            </select>
+          </div>
+          <div
+            className="AddPost__formDiv"
+          >
+            <label
+              htmlFor="subject"
+            >
+              Subject
+            </label>
+            <input
+              id="subject"
+              name="subject"
+              onChange={[Function]}
+              required={true}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="messageAdd"
+        >
+          <label
+            htmlFor="message"
+          >
+            Message
+          </label>
+          <input
+            id="message"
+            name="message"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="AddPost__formContainer"
+        >
+          <div
+            className="AddPost__formDiv"
+          >
+            <input
+              id="image"
+              name="image"
+              onChange={[Function]}
+              type="file"
+            />
+          </div>
+          <button
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <div>
+    <div>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Edit
+      </button>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</section>
+`;

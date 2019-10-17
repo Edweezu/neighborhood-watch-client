@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment component renders the component's given props 1`] = `
+<section
+  className="Comment"
+>
+  <p>
+    , 
+    Santa Monica
+  </p>
+  <p>
+    random text
+  </p>
+  <p>
+    Posted a few seconds ago
+  </p>
+  <EditCommentModal
+    commentId={1}
+  />
+</section>
+`;
+
+exports[`Comment component renders the given component 1`] = `
+<section
+  className="Comment"
+>
+  <p>
+    , 
+  </p>
+  <p />
+  <p>
+    Posted a few seconds ago
+  </p>
+  <EditCommentModal />
+</section>
+`;

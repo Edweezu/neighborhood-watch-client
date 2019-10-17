@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentTextBox component renders the component's given props 1`] = `
+<form
+  className="CommentTextBox"
+  onSubmit={[Function]}
+>
+  <div>
+    <textarea
+      aria-label="Type a comment..."
+      cols="30"
+      id="CommentTextBox__text"
+      name="CommentTextBox__text"
+      placeholder="Type a comment..."
+      required={true}
+      rows="3"
+    />
+    <div>
+      <button
+        type="submit"
+      >
+        Post Comment
+      </button>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`CommentTextBox component renders the given component 1`] = `
+<form
+  className="CommentTextBox"
+  onSubmit={[Function]}
+>
+  <div>
+    <textarea
+      aria-label="Type a comment..."
+      cols="30"
+      id="CommentTextBox__text"
+      name="CommentTextBox__text"
+      placeholder="Type a comment..."
+      required={true}
+      rows="3"
+    />
+    <div>
+      <button
+        type="submit"
+      >
+        Post Comment
+      </button>
+    </div>
+  </div>
+</form>
+`;

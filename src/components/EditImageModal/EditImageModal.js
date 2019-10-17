@@ -7,6 +7,16 @@ import userIcon from '../../app-images/user icon.png'
 
 export default class EditProfileImage extends React.Component {
     static contextType = MainContext
+    static defaultProps = {
+        updateProfileImage: () => {
+
+        },
+        showImageModal: false,
+        handleHideImageModal: () => {
+            
+        }
+    }
+
 
     state = {
         image: null,

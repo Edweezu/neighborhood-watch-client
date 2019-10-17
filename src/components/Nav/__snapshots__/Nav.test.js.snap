@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component renders the given component 1`] = `
+<section
+  className="NavSection"
+>
+  <header
+    className="Nav__header"
+  >
+    <a
+      className="menu-toggle"
+      href="#main-menu"
+      id="main-menu-toggle"
+    >
+      <span
+        aria-hidden="true"
+        className="fa fa-bars"
+      />
+    </a>
+    <h3
+      className="logo"
+    >
+      <NavLink
+        to="/"
+      >
+        <i
+          className="fas fa-home"
+        />
+        Neighborhood Watch
+      </NavLink>
+    </h3>
+    <nav
+      aria-label="Main menu"
+      className="main-menu"
+      id="main-menu"
+    >
+      <a
+        className="menu-close"
+        href="#main-menu-toggle"
+        id="main-menu-close"
+      >
+        <span
+          aria-hidden="true"
+          className="fas fa-times"
+        />
+      </a>
+      <ul
+        className="main__ul"
+      >
+        <li>
+          <a
+            href="/register#main-menu-toggle"
+          >
+            Create an Account
+          </a>
+        </li>
+        <li>
+          <a
+            href="/login#main-menu-toggle"
+          >
+            Login
+          </a>
+        </li>
+      </ul>
+      <div
+        className="Nav__footer"
+      >
+        <Footer />
+      </div>
+    </nav>
+    <a
+      aria-hidden="true"
+      className="backdrop"
+      hidden={true}
+      href="#main-menu-toggle"
+      tabIndex="-1"
+    />
+  </header>
+</section>
+`;

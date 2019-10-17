@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostPage component renders the component's given props 1`] = `
+<section>
+  <section
+    className="PostPage"
+  >
+    <div
+      className="back-btn"
+    >
+      <a
+        href="/category/1"
+      >
+        Go Back
+      </a>
+    </div>
+    <p
+      className="error"
+    >
+      <strong>
+        Error! Post does not exist
+      </strong>
+    </p>
+  </section>
+  <Footer />
+</section>
+`;
+
+exports[`PostPage component renders the given component 1`] = `
+<section>
+  <section
+    className="PostPage"
+  >
+    <div
+      className="back-btn"
+    >
+      <a
+        href="/category/1"
+      >
+        Go Back
+      </a>
+    </div>
+    <p
+      className="error"
+    >
+      <strong>
+        Error! Post does not exist
+      </strong>
+    </p>
+  </section>
+  <Footer />
+</section>
+`;

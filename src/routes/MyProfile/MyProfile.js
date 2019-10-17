@@ -5,7 +5,7 @@ import DashNav from '../../components/DashNav/DashNav'
 import MainContext from '../../contexts/MainContext'
 import config from '../../config'
 import TokenService from '../../services/token-service'
-import Spinner from '../../components/Spinner/Spinner'
+// import Spinner from '../../components/Spinner/Spinner'
 import EditProfileForm from '../../components/EditProfileForm/EditProfileForm'
 import EditProfileImage from '../../components/EditImageModal/EditImageModal'
 import addPhotoIcon from '../../app-images/profile-add-photo.png'
@@ -349,7 +349,7 @@ class MyProfile extends React.Component {
     render () {
       
         console.log('state', this.state)
-        let { username, first_name, last_name, country, state, city, email, occupation, interests, uploading, showLocationForm, image , showImageModal } = this.state
+        let { first_name, last_name,  state, city, email, occupation, interests, image , showImageModal } = this.state
         
         return (
             <section className='MyProfile'>
@@ -441,17 +441,6 @@ class MyProfile extends React.Component {
                             </div>
                         </div>
                         <EditProfileForm 
-                            first_name={first_name}
-                            last_name={last_name}
-                            email={email}
-                            occupation={occupation}
-                            interests={interests}
-                            handleBasicSubmit={this.handleBasicSubmit}
-                            changeFirstName={this.changeFirstName}
-                            changeLastName={this.changeLastName}
-                            changeEmail={this.changeEmail}
-                            changeOccupation={this.changeOccupation}
-                            changeInterests={this.changeInterests}
                             updateProfileAbout={this.updateProfileAbout}
                         />    
                     </section> 

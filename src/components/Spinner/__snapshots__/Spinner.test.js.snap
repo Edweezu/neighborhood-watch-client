@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner component renders the given component 1`] = `
+<div
+  className="rolling"
+>
+  <div
+    className="spinner"
+  >
+    <i
+      className="fas fa-bowling-ball spinner"
+      color="#1D3C4C"
+      size="5x"
+    />
+  </div>
+</div>
+`;

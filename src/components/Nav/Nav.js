@@ -52,16 +52,36 @@ class Nav extends React.Component {
           </ul>
           <ul className='second__ul'>
             <li>
-              <a href='/category/1#main-menu-toggle'>All Posts</a>
+              {/* <a href='/category/1#main-menu-toggle'>All Posts</a> */}
+              <NavLink
+                  to={`/category/1#main-menu-toggle`}
+              >
+                All Posts
+              </NavLink>
             </li>
             <li>
-              <a href='/category/Crime and Alerts#main-menu-toggle'>Crime and Alerts</a>
+              {/* <a href='/category/Crime and Alerts#main-menu-toggle'>Crime and Alerts</a> */}
+              <NavLink
+                  to={`/category/Crime and Alerts#main-menu-toggle`}
+              >
+                Crime and Alerts
+              </NavLink>
             </li>
             <li>
-              <a href='/category/Upcoming Events#main-menu-toggle'>Upcoming Events</a>
+              {/* <a href='/category/Upcoming Events#main-menu-toggle'>Upcoming Events</a> */}
+              <NavLink
+                  to={`/category/Upcoming Events#main-menu-toggle`}
+              >
+                Upcoming Events
+              </NavLink>
             </li>
             <li>
-              <a href='/category/Lost and Found#main-menu-toggle'>Lost and Found</a>
+              {/* <a href='/category/Lost and Found#main-menu-toggle'>Lost and Found</a> */}
+              <NavLink
+                  to={`/category/Lost and Found#main-menu-toggle`}
+              >
+                Lost and Found
+              </NavLink>
             </li>
           </ul>
           <div className='Nav__footer'>

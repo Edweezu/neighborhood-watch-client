@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyProfile component renders the given component 1`] = `
+<section
+  className="MyProfile"
+>
+  <section
+    className="MyProfile__userContainer"
+  >
+    <DashNav />
+    <section
+      className="MyProfile__userInfo"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="image-upload"
+        >
+          <label
+            className="LoginForm__signupLabel"
+            htmlFor="image"
+          >
+            <img
+              alt="user-icon"
+              className="user__image"
+              src="user icon.png"
+              width="200"
+            />
+          </label>
+          <button
+            onClick={[Function]}
+            type="button"
+          >
+            Update Photo
+          </button>
+        </div>
+      </form>
+      <div
+        className="MyProfile__headers"
+      >
+        <h2>
+           
+        </h2>
+        <h4>
+           Located in 
+          , 
+        </h4>
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          Edit
+        </button>
+      </div>
+      <section>
+        <div
+          className="modal display-none"
+        >
+          <section
+            className="modal-main"
+          >
+            <form
+              onSubmit={[Function]}
+            >
+              <button
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  className="fas fa-times"
+                />
+              </button>
+              <div
+                className="LoginForm__signupElement"
+              >
+                <div
+                  className="LoginForm__signupLabel"
+                >
+                  <label
+                    className="LoginForm__signupLabel"
+                  >
+                     Update Location
+                  </label>
+                </div>
+                <div
+                  className="LoginForm__signupLabel"
+                >
+                  <select
+                    className="ProfilePage__addSelect countries"
+                    id="countryId"
+                    name="country"
+                    onChange={[Function]}
+                    required={true}
+                  >
+                    <option
+                      value=""
+                    >
+                      Select Country
+                    </option>
+                  </select>
+                  <select
+                    className="ProfilePage__addSelect states"
+                    id="stateId"
+                    name="state"
+                    onChange={[Function]}
+                    required={true}
+                  >
+                    <option
+                      value=""
+                    >
+                      Select State
+                    </option>
+                  </select>
+                  <select
+                    className="ProfilePage__addSelect cities"
+                    id="cityId"
+                    name="city"
+                    onChange={[Function]}
+                    required={true}
+                  >
+                    <option
+                      value=""
+                    >
+                      Select City
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <button
+                type="submit"
+              >
+                Submit
+              </button>
+            </form>
+          </section>
+        </div>
+      </section>
+      <div
+        className="list-section"
+      >
+        <h3>
+          About Me
+        </h3>
+        <div
+          className="list-info-div display-none"
+        >
+          <i
+            className="fas fa-envelope"
+          />
+          <span
+            className="trip-details"
+          />
+        </div>
+        <div
+          className="list-info-div display-none"
+        >
+          <i
+            className="fas fa-suitcase"
+          />
+          <span
+            className="trip-details"
+          />
+        </div>
+        <div
+          className="list-info-div display-none"
+        >
+          <i
+            className="far fa-futbol"
+          />
+          <span
+            className="trip-details"
+          >
+            Enjoys 
+          </span>
+        </div>
+      </div>
+      <EditProfileForm
+        updateProfileAbout={[Function]}
+      />
+    </section>
+  </section>
+</section>
+`;
