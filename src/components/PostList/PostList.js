@@ -16,7 +16,7 @@ class PostList extends React.Component {
         // console.log('posts', posts)
         // console.log('place_id', place_id)
         // console.log('categoryid', categoryid)
-        console.log('postlist', postList)
+        // console.log('postlist', postList)
 
         return (
             <section className='PostList'>

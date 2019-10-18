@@ -348,7 +348,7 @@ class MyProfile extends React.Component {
 
     render () {
       
-        console.log('state', this.state)
+        // console.log('state', this.state)
         let { first_name, last_name,  state, city, email, occupation, interests, image , showImageModal } = this.state
         
         return (

@@ -13,7 +13,7 @@ const UsersApiService =  {
         })
         //forgot to json the response
         .then(res => {
-            console.log('initial res', res)
+            // console.log('initial res', res)
             if (!res.ok) {
                 console.log('fetch error resp', res)
                 return res.json()
@@ -40,7 +40,7 @@ const UsersApiService =  {
             return res.json()
         })
         .then(res => {
-          console.log('res auth token', res.authToken)
+          // console.log('res auth token', res.authToken)
           TokenService.saveAuthToken(res.authToken)
           IdleService.registerIdleTimerResets()
           TokenService.queueCallbackBeforeExpiry(() => {

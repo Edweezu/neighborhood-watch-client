@@ -233,7 +233,7 @@ class Post extends React.Component {
 
         const nameCapitalized = user.username.charAt(0).toUpperCase() + user.username.slice(1)
         const { likes, usersList } = this.state
-        console.log('post state', this.state)
+        // console.log('post state', this.state)
 
         
         return (

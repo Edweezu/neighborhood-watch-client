@@ -167,7 +167,7 @@ export default class EditProfileForm extends React.Component {
 
     render () {
         const { first_name, last_name, email, occupation, interests, showProfileForm, make_private } = this.state
-        console.log('make priv', make_private)
+        // console.log('make priv', make_private)
         return (
             <section>
                 <button type='button' onClick={this.handleEditProfile}>

@@ -24,8 +24,8 @@ class LoginForm extends React.Component {
         })
 
         const { username, password } = e.target
-        console.log('user', username.value)
-        console.log('pw', password.value)
+        // console.log('user', username.value)
+        // console.log('pw', password.value)
 
         return UsersApiService.postLogin({
             username: username.value,
