@@ -68,7 +68,7 @@ const UsersApiService =  {
         })
         .then(responseJson => {
             TokenService.saveAuthToken(responseJson.authToken)
-            console.log('bearer token', responseJson.authToken)
+            // console.log('bearer token', responseJson.authToken)
             /*
               whenever a login is performed:
               1. save the token in local storage
