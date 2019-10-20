@@ -247,10 +247,10 @@ class PostPage extends React.Component {
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
        
         // console.log('post', post)
-        console.log('places', places)
+        // console.log('places', places)
         // console.log('posts', posts)
-        // console.log('post', post)
-        console.log('comments', comments)
+        console.log('post', post)
+        // console.log('comments', comments)
         // console.log('postid', postId)
         // console.log('correct comment', correctComments)
         // console.log("error", this.state.error)
@@ -277,7 +277,7 @@ class PostPage extends React.Component {
                             </figure>
                             <div>
                                 <p>{this.dateDiff()}</p>
-                                {post.user_logged_in === post.user.id ?  
+                                {post.user_logged_in == post.user.id ?  
                                     <button type='button' onClick={this.showModal}>
                                         Edit
                                     </button>
@@ -330,7 +330,7 @@ class PostPage extends React.Component {
                                         </section>
                                     </div>
                                 )}
-                                <button type='button'><i className="fas fa-thumbs-up"></i></button>
+                                {/* <button type='button'><i className="fas fa-thumbs-up"></i></button> */}
                                 {/* <button type='button'><i className="fas fa-thumbs-down"></i></button> */}
                             </div>
                         </div>
