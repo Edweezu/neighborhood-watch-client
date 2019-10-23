@@ -41,6 +41,11 @@
     
 } */
 
+.fa-search, .fa-lock, .fa-city {
+    font-size: 4rem;
+    color: rgb(0, 154, 189);
+}
+
 
 .EditModal__form {
     margin: 0.75rem;
@@ -193,7 +198,9 @@ body {
 
 }
 
-
+.LandingPage__descriptOne, .LandingPage__descriptTwo {
+    padding-bottom: 2rem;
+}
 
 
 .astrik {
@@ -247,7 +254,16 @@ label {
     margin-bottom: 0.5rem;
 }
 
-.LoginForm, .MyProfile__userContainer {
+.LoginForm {
+    width: 100%;
+    max-width: 420px;
+    padding: 1rem 1rem 0;
+    /* padding-top: 0rem;
+    padding-bottom: 0rem; */
+    margin: auto;
+}
+
+.MyProfile__userContainer {
     width: 100%;
     max-width: 420px;
     padding: 1.3rem;
@@ -266,6 +282,7 @@ label {
     width: 100%;
     padding: 0.2rem 0.4rem;
     border-radius: 0.2rem;
+    font-size: 1rem;
 }
 
 .LoginForm__signupLabel > label {
@@ -288,7 +305,7 @@ label {
 
 .LoginForm__signupDemo p {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: red;
 }
 
@@ -317,6 +334,33 @@ html {
     margin-right: 1rem;
 }
 
+.btn {
+    display: inline-block;
+    background-color: rgb(0, 154, 189);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 3px;
+    border-width: 2px;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn_signIn {
+    width: 100%;
+    margin: 1.2rem auto;
+}
+
+
+.LoginForm__redirect a {
+    color: rgb(0, 154, 189);
+    font-weight: 500;
+}
+
+
 .register_btn {
     display: inline-block;
     background-color: rgb(0, 154, 189);
@@ -329,7 +373,7 @@ html {
     /* font-size: 1.15rem; */
 }
 
-.register_btn:hover {
+.register_btn:hover, .btn:hover {
     background-color: #006b84;
 }
 

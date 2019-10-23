@@ -4,6 +4,11 @@ import Footer from '../../components/Footer/Footer'
 
 
 class LandingPage extends React.Component {
+
+    componentDidMount () {
+        document.body.style.overflowY = 'auto'
+    }
+
     render () {
         return (
             <section className='LandingPage'>
@@ -23,17 +28,20 @@ class LandingPage extends React.Component {
                     </h2> */}
                     <section className='LandingPage__descriptContainer'>
                         <section className='LandingPage__descriptOne'>
-                            <h3>Secured</h3> 
+                            <i className="fas fa-lock"></i>
+                            <h3>Secure</h3> 
                             <p className='LandingPage__landingDescript'>
                             Create a profile page and join our network with 100% verified members.
                             </p>
                         </section>
                         <section className='LandingPage__descriptTwo'>
+                            <i className="fas fa-search"></i>
                             <h3>Discover</h3>
                             <p className='LandingPage__landingDescript'>Find out about upcoming local events, crimes and statistics, and much more.</p>
                         </section>
                         <section className='LandingPage__descriptTwo'>
-                            <h3>Connected</h3>
+                            <i className="fas fa-city"></i>
+                            <h3>Connect</h3>
                             <p className='LandingPage__landingDescript'>Make Connections with your fellow neighbors and grow your city's page.</p>
                         </section>
                         <div className='LandingPage__btnReminder'>
