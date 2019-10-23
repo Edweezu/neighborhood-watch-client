@@ -615,7 +615,7 @@ html {
   top: 0;
   left: 0;
   right: 0;
-  background-color: lightgrey;
+  background-color: rgb(0, 154, 189);
   width: 100%;
   z-index: 999;
 }
@@ -695,6 +695,10 @@ select {
 
 a {
     text-decoration: none;
+}
+
+h3 a {
+    color: white;
 }
 
 
@@ -1040,7 +1044,7 @@ a {
 
     .main-menu ul {
         width: auto;
-        background: lightgrey;
+        background: rgb(0, 154, 189);
     }
   
     .main-menu {
@@ -1067,7 +1071,8 @@ a {
     }
     
     .main-menu a {
-        color: rgb(0, 123, 255);
+        /* color: rgb(0, 123, 255); */
+        color: white;
         border: 0 !important; 
     }
     
