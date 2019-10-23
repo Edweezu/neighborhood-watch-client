@@ -120,7 +120,7 @@ class Nav extends React.Component {
           </a>
           <ul className='main__ul'>
             <li> 
-                <a href='/register#main-menu-toggle'>Create an Account</a>
+                <a href='/register#main-menu-toggle'>Sign Up</a>
             </li>
             <li>
               <a href='/login#main-menu-toggle'>Login</a>
