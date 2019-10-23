@@ -27,7 +27,7 @@ class Nav extends React.Component {
           <span className="fa fa-bars" aria-hidden="true"></span>
         </a>         
         <h3 className='logo'>
-            <NavLink to ='/'><i className="fas fa-home"></i>
+            <NavLink to ='/category/1'><i className="fas fa-home"></i>
                 Neighborhood Watch
             </NavLink>
         </h3>

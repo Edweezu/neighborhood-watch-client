@@ -118,35 +118,77 @@ class AddPost extends React.Component {
                 : ( <div className={showHideClassName}>
                         <section className='modal-main'>
                             <form className='EditModal__form' onSubmit={this.handleSubmit}>
-                                <button type='button' onClick={this.handleAddPostClose}>
+                                <div className='closeModalDiv'>
+                                    <button type='button'  onClick={this.handleAddPostClose}>
                                     <span className="fas fa-times" aria-hidden="true"></span>
-                                </button>
+                                    </button>
+                                </div>
                                 <div className='AddPost__formContainer'>
-                                    <div className='AddPost__formDiv'>
+                                    {/* <div className='AddPost__formDiv selectBox' >
                                         <label htmlFor='browse_cities'>Active Page</label>
-                                        <select id='browse_cities' required>
-                                            {places.map(place => {
-                                                return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
-                                            })}
-                                        </select>
+                                            <select id='browse_cities' required>
+                                                {places.map(place => {
+                                                    return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
+                                                })}
+                                            </select>
+                                    </div> */}
+                                     <div className='LoginForm__signupElement'>
+                                        <div className='LoginForm__signupLabel'>
+                                            <label htmlFor="browse_cities" className='LoginForm__signupLabel'>Active Page</label>
+                                        </div>
+                                        <div className='LoginForm__signupLabel selectBox'>
+                                            <select id='browse_cities' required>
+                                                {places.map(place => {
+                                                    return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
+                                                })}
+                                            </select>
+                                        </div>      
                                     </div>
-                                    <div className='AddPost__formDiv'>
+                                    <div className='LoginForm__signupElement'>
+                                        <div className='LoginForm__signupLabel'>
+                                            <label htmlFor="post_category" className='LoginForm__signupLabel'>Category</label>
+                                        </div>
+                                        <div className='LoginForm__signupLabel selectBox'>
+                                            <select id='post_category' required>
+                                                <option value='Crime and Alerts'>Crime and Safety </option>
+                                                <option value='Upcoming Events'>Upcoming Events </option>
+                                                <option value='Lost and Found'>Lost and Found</option>
+                                            </select>  
+                                        </div>      
+                                    </div>
+                                    {/* <div className='AddPost__formDiv selectBox'>
                                         <label htmlFor='post_category'>Category</label>
                                         <select id='post_category' required>
                                             <option value='Crime and Alerts'>Crime and Safety </option>
                                             <option value='Upcoming Events'>Upcoming Events </option>
                                             <option value='Lost and Found'>Lost and Found</option>
                                         </select>  
+                                    </div> */}
+                                    <div className='LoginForm__signupElement'>
+                                        <div className='LoginForm__signupLabel'>
+                                            <label htmlFor="subject" className='LoginForm__signupLabel'>Subject</label>
+                                        </div>
+                                        <div className='LoginForm__signupLabel subjectLabel'>
+                                            <input type='text' id='subject' name='subject'required></input>
+                                        </div>      
                                     </div>
-                                    <div className='AddPost__formDiv'>
+                                    {/* <div className='AddPost__formDiv'>
                                         <label htmlFor='subject'>Subject</label>
                                         <input type='text' id='subject' name='subject'required></input>
+                                    </div> */}
+                                </div>
+                                <div className='LoginForm__signupElement'>
+                                    <div className='LoginForm__signupLabel'>
+                                        <label htmlFor="message" className='LoginForm__signupLabel'>Message</label>
                                     </div>
+                                    <div className='LoginForm__signupLabel'>
+                                        <textarea type='text' id='message' name='message' required></textarea>
+                                    </div>      
                                 </div>
-                                <div className='messageAdd'>
+                                {/* <div className='messageAdd'>
                                     <label htmlFor='message'>Message</label>
-                                    <input type='text' id='message' name='message' required></input>
-                                </div>
+                                    <textarea type='text' id='message' name='message' required></textarea>
+                                </div> */}
                                 <div className='AddPost__formContainer'>
                                     <div className='AddPost__formDiv'>
                                             <input type='file' id='image' name='image' onChange={this.handleImageChange}/>

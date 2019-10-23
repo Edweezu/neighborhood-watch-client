@@ -108,7 +108,7 @@ class Post extends React.Component {
         let usersFilter = () => {
             console.log('userlist', usersList)
             return usersList.filter(user => {
-                return user.user_id == user_logged_in
+                return user.user_id === user_logged_in
             }).length
         }
 
@@ -262,9 +262,9 @@ class Post extends React.Component {
                     />  
                 </div>
                  <div>
-                     {(usersList.filter(user => user.user_id == user_logged_in).length) ? 
-                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-down"></i>{likes > 0 ? likes : null}</button>) :
-                     (<button type='button' onClick={this.handleLike}><i className="fas fa-thumbs-up"></i>{likes > 0 ? likes : null}</button>) }
+                     {(usersList.filter(user => user.user_id === user_logged_in).length) ? 
+                     (<button type='button' onClick={this.handleLike}><i className="fas fa-heart heartColor"></i>{likes > 0 ? likes : null}</button>) :
+                     (<button type='button' onClick={this.handleLike}><i className="far fa-heart"></i>{likes > 0 ? likes : null}</button>) }
                     
                     <span className='Post__commentContainer'>
                         <i className="fas fa-comment"></i>
