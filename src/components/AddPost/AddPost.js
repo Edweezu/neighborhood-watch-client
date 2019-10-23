@@ -132,7 +132,7 @@ class AddPost extends React.Component {
                                                 })}
                                             </select>
                                     </div> */}
-                                     <div className='LoginForm__signupElement'>
+                                     <div className='LoginForm__signupElement modalSelect'>
                                         <div className='LoginForm__signupLabel'>
                                             <label htmlFor="browse_cities" className='LoginForm__signupLabel'>Active Page</label>
                                         </div>
@@ -144,7 +144,7 @@ class AddPost extends React.Component {
                                             </select>
                                         </div>      
                                     </div>
-                                    <div className='LoginForm__signupElement'>
+                                    <div className='LoginForm__signupElement modalSelect'>
                                         <div className='LoginForm__signupLabel'>
                                             <label htmlFor="post_category" className='LoginForm__signupLabel'>Category</label>
                                         </div>
@@ -164,18 +164,19 @@ class AddPost extends React.Component {
                                             <option value='Lost and Found'>Lost and Found</option>
                                         </select>  
                                     </div> */}
-                                    <div className='LoginForm__signupElement'>
+                                    
+                                    {/* <div className='AddPost__formDiv'>
+                                        <label htmlFor='subject'>Subject</label>
+                                        <input type='text' id='subject' name='subject'required></input>
+                                    </div> */}
+                                </div>
+                                <div className='LoginForm__signupElement'>
                                         <div className='LoginForm__signupLabel'>
                                             <label htmlFor="subject" className='LoginForm__signupLabel'>Subject</label>
                                         </div>
                                         <div className='LoginForm__signupLabel subjectLabel'>
                                             <input type='text' id='subject' name='subject'required></input>
                                         </div>      
-                                    </div>
-                                    {/* <div className='AddPost__formDiv'>
-                                        <label htmlFor='subject'>Subject</label>
-                                        <input type='text' id='subject' name='subject'required></input>
-                                    </div> */}
                                 </div>
                                 <div className='LoginForm__signupElement'>
                                     <div className='LoginForm__signupLabel'>
