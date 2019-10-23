@@ -196,7 +196,7 @@ class ProfilePage extends React.Component {
                         </div>
                     </div>
                     <div className='signin-button'>
-                        <button className="btn btn-sign-in" type='submit'>
+                        <button className="btn btn_signIn" type='submit'>
                             Create an Account
                         </button>
                     </div>

@@ -261,16 +261,21 @@ class PostPage extends React.Component {
         return (
             <section>
                 {(post.hasOwnProperty('message')) ? (<section className='PostPage'>
-                    <div className='back-btn'>
-                        {/* <button type='button' onClick={this.goBack}>Go Back</button> */}
-                        <a href='/category/1'>Go Back</a>
-                    </div>
+                    
                     <section className='PostPage__postContainer'>
+                            <div className='PostPage__header'>
+                                <div className='back-btn'>
+                                    {/* <button type='button' onClick={this.goBack}>Go Back</button> */}
+                                    <a href='/category/1'><i className="fas fa-arrow-left"></i></a>
+                                    
+                                </div>
+                                <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
+                            </div>
                         <div className='PostPage__userInfo'>
+                            
                             {this.nameCapitalized(post.user.username)}, {post.user.city}
                         </div>
                         <div>
-                            <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
                             <p>{post.message}</p>
                             <figure className={ post.image ? null : 'display-none'}>
                                 <img src={post.image} alt='default icon' width='100'/>

@@ -596,6 +596,37 @@ html {
   /* text-decoration: underline; */
 }
 
+.back-btn {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    margin-right: 3rem;
+}
+
+.PostPage__header {
+    display: inline-block;
+    padding-right: 6rem;
+}
+
+.PostPage__header h4 {
+    display: inline-block;
+}
+
+
+.back-btn a  {
+    display: block;
+    padding: .75em 15px;
+    line-height: 1rem;
+    font-size: 1rem;
+    color: rgb(0, 154, 189);
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.back-btn a:hover {
+    background: rgba(0, 0, 0, 0.10);
+}
+
 .main-menu .menu-close {
   position: absolute;
   right: 0;
