@@ -190,11 +190,20 @@ class AddPost extends React.Component {
                                     <label htmlFor='message'>Message</label>
                                     <textarea type='text' id='message' name='message' required></textarea>
                                 </div> */}
-                                <div className='AddPost__formContainer'>
-                                    <div className='AddPost__formDiv'>
-                                            <input type='file' id='image' name='image' onChange={this.handleImageChange}/>
+                                <div className='AddPost__submitContainer'>
+                                    
+                                    <div className='AddPost__submitDiv'>
+                                        <div>
+                                            <span>
+                                                <i className="fas fa-image"></i>
+                                                Add Photo
+                                            </span>
+                                        </div>
+                                            <label className='AddPost__fileInputLabel'>
+                                                <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange}/>
+                                            </label>
                                     </div>
-                                    <button type='submit'>Submit</button>
+                                    <button className='btn' type='submit'>Submit</button>
                                 </div>
                             </form>
                         </section>

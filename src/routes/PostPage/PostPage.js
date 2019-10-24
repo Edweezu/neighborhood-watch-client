@@ -283,9 +283,10 @@ class PostPage extends React.Component {
                             <div>
                                 <p>{this.dateDiff()}</p>
                                 {post.user_logged_in == post.user.id ?  
-                                    <button type='button' onClick={this.showModal}>
-                                        Edit
-                                    </button>
+                                    // <button type='button' onClick={this.showModal}>
+                                    //     Edit
+                                    // </button>
+                                    <i onClick={this.showModal} className="far fa-edit"></i>
                                     : null}
                                  {uploading ? 
                                     <div>

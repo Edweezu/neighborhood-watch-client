@@ -179,14 +179,18 @@ class EditCommentModal extends React.Component {
                 )}
                 
                 {user_logged_in === comment_user ? (
-                    <div>
-                        <button type='button' onClick={this.showCommentModal}>
-                            Edit
-                        </button>
-                        <button type='button' onClick={this.handleDeleteForm}>
-                                Delete
-                        </button>
-                     </div>
+                    // <div>
+                    //     <button type='button' onClick={this.showCommentModal}>
+                    //         Edit
+                    //     </button>
+                    //     <button type='button' onClick={this.handleDeleteForm}>
+                    //             Delete
+                    //     </button>
+                    //  </div>
+                    <div className='btn-div'>
+                             <i onClick={this.showCommentModal} className="far fa-edit"></i>
+                             <i onClick={this.handleDeleteForm} className="fas fa-trash-alt"></i>
+                    </div> 
                 ) : null}
               
             </section>

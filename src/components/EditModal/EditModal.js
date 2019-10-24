@@ -217,41 +217,66 @@ class EditModal extends React.Component {
                     <section className='modal-main'>
                         
                         <form className='EditModal__form' onSubmit={this.handleSubmit}>
-                            <button type='button' onClick={this.hideModal}>
-                                <span className="fas fa-times" aria-hidden="true"></span>
-                            </button>
-                            <div className='AddPost__formContainer'>
-                                <div className='AddPost__formDiv'>
-                                    <label htmlFor='browse_cities'>Active Page</label>
-                                    <select id='browse_cities' value={place_id} onChange={this.handlePlaceChange}required>
-                                        {places.map(place => {
-                                            return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
-                                        })}
-                                    </select>
-                                </div>
-                                <div className='AddPost__formDiv'>
-                                    <label htmlFor='post_category'>Category</label>
-                                    <select id='post_category' value={post_category} onChange={this.handleCategoryChange} required>
-                                        <option value='Crime and Alerts'>Crime and Safety </option>
-                                        <option value='Upcoming Events'>Upcoming Events </option>
-                                        <option value='Lost and Found'>Lost and Found</option>
-                                    </select>  
-                                </div>
-                                <div className='AddPost__formDiv'>
-                                    <label htmlFor='subject'>Subject</label>
-                                    <input type='text' id='subject' name='subject' required value={subject} onChange={this.handleSubjectChange}></input>
-                                </div>
-                            </div>
-                            <div className='messageAdd'>
-                                <label htmlFor='message'>Message</label>
-                                <input type='text' id='message' name='message' value={message} onChange={this.handleMessageChange} required></input>
+                            <div className='closeModalDiv'>
+                                <button type='button' onClick={this.hideModal}>
+                                    <span className="fas fa-times" aria-hidden="true"></span>
+                                </button>
                             </div>
                             <div className='AddPost__formContainer'>
-                                <div className='AddPost__formDiv'>
-                                        <input type='file' id='image' name='image' onChange={this.handleImageChange} />
+                                <div className='LoginForm__signupElement modalSelect'>
+                                    <div className='LoginForm__signupLabel'>
+                                        <label htmlFor='browse_cities' className='LoginForm__signupLabel'>Active Page</label>
+                                    </div>
+                                    <div className='LoginForm__signupLabel selectBox'>
+                                        <select id='browse_cities' value={place_id} onChange={this.handlePlaceChange}required>
+                                            {places.map(place => {
+                                                return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
+                                            })}
+                                        </select>
+                                    </div>
                                 </div>
-                                {/* <a href='#' type="submit">Submit</a> */}
-                                <button type='submit'>Submit</button>
+                                <div className='LoginForm__signupElement modalSelect'>
+                                    <div className='LoginForm__signupLabel'>
+                                        <label htmlFor='post_category' className='LoginForm__signupLabel'>Category</label>
+                                    </div>
+                                    <div className='LoginForm__signupLabel selectBox'>
+                                        <select id='post_category' value={post_category} onChange={this.handleCategoryChange} required>
+                                            <option value='Crime and Alerts'>Crime and Safety </option>
+                                            <option value='Upcoming Events'>Upcoming Events </option>
+                                            <option value='Lost and Found'>Lost and Found</option>
+                                        </select>  
+                                    </div>           
+                                </div>
+                                <div className='LoginForm__signupElement'>
+                                    <div className='LoginForm__signupLabel'>
+                                        <label htmlFor='subject' className='LoginForm__signupLabel'>Subject</label>
+                                    </div>
+                                    <div className='LoginForm__signupLabel subjectLabel'>
+                                        <input type='text' id='subject' name='subject' required value={subject} onChange={this.handleSubjectChange}></input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='LoginForm__signupElement'>
+                                <div className='LoginForm__signupLabel'>
+                                    <label htmlFor="message" className='LoginForm__signupLabel'>Message</label>
+                                </div>
+                                <div className='LoginForm__signupLabel'>
+                                    <textarea type='text' id='message' name='message' value={message} onChange={this.handleMessageChange} required></textarea>
+                                </div>
+                            </div>
+                            <div className='AddPost__submitContainer'>
+                                <div className='AddPost__submitDiv'>
+                                    <div>
+                                        <span>
+                                            <i className="fas fa-image"></i>
+                                            Add Photo
+                                        </span>
+                                    </div>
+                                    <label className='AddPost__fileInputLabel'>
+                                        <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange}/>
+                                    </label>
+                                </div>
+                                <button className='btn' type='submit'>Submit</button>
                             </div>
                         </form>
                     </section>
@@ -259,13 +284,15 @@ class EditModal extends React.Component {
                 )}
                 <div>
                     {user_logged_in === post_user ? (
-                        <div>
-                            <button type='button' onClick={this.showModal}>
-                                Edit
-                            </button>
-                            <button type='button' onClick={this.handleDeleteForm}>
-                                Delete
-                            </button>  
+                        <div className='btn-div'>
+                            {/* <button type='button' onClick={this.showModal}>
+                                <i className="far fa-edit"></i>
+                            </button> */}
+                             <i onClick={this.showModal} className="far fa-edit"></i>
+                             <i onClick={this.handleDeleteForm} className="fas fa-trash-alt"></i>
+                            {/* <button type='button' onClick={this.handleDeleteForm}>
+                                <i className="fas fa-trash-alt"></i>
+                            </button>   */}
                         </div> 
                     ) : null}                   
                 </div>
