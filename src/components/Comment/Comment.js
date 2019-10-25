@@ -46,7 +46,7 @@ class Comment extends React.Component {
 
     render () {
 
-        const { id, user, text, nameCapitalized } = this.props
+        const { id, user, text, nameCapitalized, deleteNumComment } = this.props
 
         return (
             <section className='Comment'>
@@ -57,6 +57,7 @@ class Comment extends React.Component {
                     <p>{this.dateDiff()}</p>
                     <EditCommentModal
                         commentId={id}
+                        deleteNumComment={deleteNumComment}
 
                     />
                     

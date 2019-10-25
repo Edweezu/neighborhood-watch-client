@@ -94,7 +94,7 @@ class EditCommentModal extends React.Component {
     }
 
     handleDeleteComment = () => {
-        const { commentId } = this.props
+        const { commentId, deleteNumComment } = this.props
 
         return fetch(`${config.API_ENDPOINT}/comments/${commentId}`, {
             method: 'DELETE',
@@ -110,6 +110,7 @@ class EditCommentModal extends React.Component {
         })
         .then(data => {
             this.context.deleteComment(commentId)
+            deleteNumComment()
             // window.location.reload()
         })
         .catch(err => {

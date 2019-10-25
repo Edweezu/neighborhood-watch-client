@@ -124,7 +124,7 @@ class AddPost extends React.Component {
                                     </button>
                                 </div>
                                 <div className='AddPost__formContainer'>
-                                    {/* <div className='AddPost__formDiv selectBox' >
+                                    {/* <div className='AddPost__formDiv selectModalDiv' >
                                         <label htmlFor='browse_cities'>Active Page</label>
                                             <select id='browse_cities' required>
                                                 {places.map(place => {
@@ -136,7 +136,7 @@ class AddPost extends React.Component {
                                         <div className='LoginForm__signupLabel'>
                                             <label htmlFor="browse_cities" className='LoginForm__signupLabel'>Active Page</label>
                                         </div>
-                                        <div className='LoginForm__signupLabel selectBox'>
+                                        <div className='LoginForm__signupLabel selectModalDiv'>
                                             <select id='browse_cities' required>
                                                 {places.map(place => {
                                                     return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
@@ -148,7 +148,7 @@ class AddPost extends React.Component {
                                         <div className='LoginForm__signupLabel'>
                                             <label htmlFor="post_category" className='LoginForm__signupLabel'>Category</label>
                                         </div>
-                                        <div className='LoginForm__signupLabel selectBox'>
+                                        <div className='LoginForm__signupLabel selectModalDiv'>
                                             <select id='post_category' required>
                                                 <option value='Crime and Alerts'>Crime and Alerts</option>
                                                 <option value='Upcoming Events'>Upcoming Events </option>
@@ -156,7 +156,7 @@ class AddPost extends React.Component {
                                             </select>  
                                         </div>      
                                     </div>
-                                    {/* <div className='AddPost__formDiv selectBox'>
+                                    {/* <div className='AddPost__formDiv selectModalDiv'>
                                         <label htmlFor='post_category'>Category</label>
                                         <select id='post_category' required>
                                             <option value='Crime and Alerts'>Crime and Safety </option>

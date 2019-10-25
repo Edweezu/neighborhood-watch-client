@@ -29,7 +29,8 @@ class PostPage extends React.Component {
           subject: '',
           place_id: 1,
           show: false,
-          uploading: false
+          uploading: false,
+          number_of_comments: null
       }
 
     static contextType = MainContext
@@ -109,6 +110,7 @@ class PostPage extends React.Component {
                 post_category: postRes.post_category,
                 subject: postRes.subject,
                 place_id: postRes.place_id,
+                number_of_comments: postRes.number_of_comments
              })
              this.context.setPlaces(placesRes)
         })
@@ -231,12 +233,42 @@ class PostPage extends React.Component {
         })
 
     }
+
+    postCategoryIcon = () => {
+        let { post_category } = this.state
+
+        if (post_category === 'Crime and Alerts') {
+            return <i className="fas fa-exclamation-triangle"></i>
+        } else if (post_category === 'Upcoming Events') {
+            return <i className="fas fa-calendar-alt"></i>
+        } else if (post_category === 'Lost and Found') {
+            return <i className="fas fa-box-open"></i>
+        } else {
+            return null
+        }
+    }
+
+    addNumComment = () => {
+        // console.log('invoked')
+        let { number_of_comments } = this.state
+        this.setState({
+            number_of_comments: parseInt(number_of_comments) + 1
+        })
+    }
+
+    deleteNumComment = () => {
+        console.log('invoked')
+        let { number_of_comments } = this.state
+        this.setState({
+            number_of_comments: parseInt(number_of_comments) - 1
+        })
+    }
    
 
     render () {
 
         const { posts, comments=[], places } = this.context
-        const { uploading, show, subject, message, post_category, place_id } = this.state
+        const { uploading, show, subject, message, post_category, place_id, number_of_comments } = this.state
         
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}
@@ -263,31 +295,38 @@ class PostPage extends React.Component {
                 {(post.hasOwnProperty('message')) ? (<section className='PostPage'>
                     
                     <section className='PostPage__postContainer'>
-                            <div className='PostPage__header'>
-                                <div className='back-btn'>
+                        <div className='back-btn'>
                                     {/* <button type='button' onClick={this.goBack}>Go Back</button> */}
                                     <a href='/category/1'><i className="fas fa-arrow-left"></i></a>
                                     
-                                </div>
-                                <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
-                            </div>
-                        <div className='PostPage__userInfo'>
-                            
-                            {this.nameCapitalized(post.user.username)}, {post.user.city}
+                        </div>
+                        {/* <div className='PostPage__header'>
+                            <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
+                        </div> */}
+                        <div className='Post__userInfo'>
+                            {this.postCategoryIcon()} {this.nameCapitalized(post.user.username)}, {post.user.city}
                         </div>
                         <div>
-                            <p>{post.message}</p>
-                            <figure className={ post.image ? null : 'display-none'}>
-                                <img src={post.image} alt='default icon' width='100'/>
-                            </figure>
+                            <div className='Post__body'> 
+                                <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
+                                <p>{post.message}</p>
+                                <img src={post.image} alt='default icon' className={ post.image ? null : 'display-none'}/>
+                            </div>
                             <div>
-                                <p>{this.dateDiff()}</p>
-                                {post.user_logged_in == post.user.id ?  
-                                    // <button type='button' onClick={this.showModal}>
-                                    //     Edit
-                                    // </button>
-                                    <i onClick={this.showModal} className="far fa-edit"></i>
-                                    : null}
+                                <div className='Post__date'>
+                                    <p>{this.dateDiff()}</p>
+                                </div>
+                                <div className='EditModal__buttonsDiv'>
+                                    <div className='btn-div'>
+                                        {post.user_logged_in == post.user.id ?  
+                                            <i onClick={this.showModal} className="far fa-edit"></i>
+                                        : null}
+                                    </div>
+                                    <span className='Post__commentContainer'>
+                                        <i className="far fa-comment"></i>
+                                        <span className='Post__commentNumber'>{number_of_comments}</span>
+                                    </span>
+                                </div>
                                  {uploading ? 
                                     <div>
                                         <Spinner />
@@ -339,7 +378,13 @@ class PostPage extends React.Component {
                                 {/* <button type='button'><i className="fas fa-thumbs-up"></i></button> */}
                                 {/* <button type='button'><i className="fas fa-thumbs-down"></i></button> */}
                             </div>
+                            <CommentTextBox 
+                                postId ={postId}
+                                addNumComment={() => this.addNumComment()}
+
+                            />
                         </div>
+                        
                     </section>
                     <section className='PostPage__comments'>
                         <ul className='PostPage__commentList'>
@@ -352,14 +397,13 @@ class PostPage extends React.Component {
                                     text={comment.text}
                                     date_created={comment.date_created}
                                     nameCapitalized={this.nameCapitalized}
+                                    deleteNumComment={() => this.deleteNumComment()}
                                 />
                             </li>)
                             } 
                             )}
                         </ul>
-                        <CommentTextBox 
-                            postId ={postId}
-                        />
+                        
                     </section>
                     
                 </section>) : 

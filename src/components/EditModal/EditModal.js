@@ -386,7 +386,7 @@ class EditModal extends React.Component {
                                     <div className='LoginForm__signupLabel'>
                                         <label htmlFor='browse_cities' className='LoginForm__signupLabel'>Active Page</label>
                                     </div>
-                                    <div className='LoginForm__signupLabel selectBox'>
+                                    <div className='LoginForm__signupLabel selectModalDiv'>
                                         <select id='browse_cities' value={place_id} onChange={this.handlePlaceChange}required>
                                             {places.map(place => {
                                                 return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
@@ -398,7 +398,7 @@ class EditModal extends React.Component {
                                     <div className='LoginForm__signupLabel'>
                                         <label htmlFor='post_category' className='LoginForm__signupLabel'>Category</label>
                                     </div>
-                                    <div className='LoginForm__signupLabel selectBox'>
+                                    <div className='LoginForm__signupLabel selectModalDiv'>
                                         <select id='post_category' value={post_category} onChange={this.handleCategoryChange} required>
                                             <option value='Crime and Alerts'>Crime and Safety </option>
                                             <option value='Upcoming Events'>Upcoming Events </option>

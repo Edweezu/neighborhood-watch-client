@@ -3,7 +3,9 @@
 }
 
 .Comment {
-    border-bottom: 2px solid #EEE;
+    /* border-bottom: 2px solid #EEE; */
+    padding-left: 4%;
+    padding-right: 4%;
 }
 
 .modal {
@@ -496,8 +498,8 @@ html {
 
 
 .Dashboard__addSelect {
-    width: 100%;
-    margin-bottom: 0.5rem;
+    /* width: 100%;
+    margin-bottom: 0.5rem; */
     display:block;
     /* margin-right: 0.5rem; */
 }
@@ -559,7 +561,9 @@ html {
 }
 
 .PostPage__postContainer {
-    border-bottom: 1px solid #EEE;
+    border-bottom: 4px solid #EEE;
+    padding-left: 4%;
+    padding-right: 4%;
 }
 
 
@@ -636,7 +640,7 @@ html {
 }
 
 .fa-edit {
-    margin-left: 0.5rem;
+    margin-left: 0.2rem;
     color: rgb(0, 154, 189);
 }
 
@@ -719,10 +723,11 @@ html {
 }
 
 .back-btn {
-    height: 50px;
-    width: 50px;
+    /* height: 50px;
+    width: 50px; */
     display: inline-block;
-    margin-right: 3rem;
+    margin-bottom: 1rem;
+    /* margin-right: 3rem; */
 }
 
 .PostPage__header {
@@ -737,7 +742,7 @@ html {
 
 .back-btn a  {
     display: block;
-    padding: .75em 15px;
+    /* padding: .75em 15px; */
     line-height: 1rem;
     font-size: 1rem;
     color: rgb(0, 154, 189);
@@ -745,7 +750,11 @@ html {
     border-radius: 50%;
 }
 
-.back-btn a:hover {
+/* .back-btn a:hover {
+    background: rgba(0, 0, 0, 0.10);
+} */
+
+.back-btn:hover {
     background: rgba(0, 0, 0, 0.10);
 }
 
@@ -856,6 +865,11 @@ article h2 {
     padding-bottom: 0.8rem;
 }
 
+.PostPage {
+    text-align: left;
+    margin-top: 4rem;
+}
+
 figcaption {
     font-size: 0.7rem;
 }
@@ -867,12 +881,126 @@ ul {
 .Dashboard__browseInput {
     /* margin: 1rem; */
     flex: 1 1;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
+.Dashboard__browseInput h4 {
+    font-size: 1.2rem;
+}
+
+.Dashboard__browseInput div {
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+
+.Dashboard__addCity h4 {
+    font-size: 1.1rem;
+}
+
+.Dashboard__addCityForm {
+    width: 85%;
+    margin: 0 auto;
+}
+
+
 select {
-    margin: auto;
+    /* margin: auto; */
     display: inline-block;
+}
+
+
+.selectContainer {
+    padding: 0;
+    /* margin: 0; */
+    border: 1px solid #ccc;
+    /* width: 120px; */
+    border-radius: 0.2rem;
+    overflow: hidden;
+    background-color: #fff;
+    background: #fff;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.selectContainer:after {
+    top: 50%;
+    left: 90%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 5px;
+    margin-top: -2px;
+    z-index: 100;
+}
+
+.selectContainer select {
+    padding: 5px 8px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.selectContainer select:focus {
+    outline: none;
+}
+
+.selectModalDiv {
+    padding: 0;
+    /* margin: 0; */
+    border: none;
+    border-style: inset;
+    /* border: 1px solid #ccc; */
+    /* width: 120px; */
+    border-radius: 0.2rem;
+    overflow: hidden;
+    background-color: #fff;
+    background: #fff;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.selectModalDiv:after {
+    top: 50%;
+    left: 90%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 5px;
+    margin-top: -2px;
+    z-index: 100;
+}
+
+.selectModalDiv select {
+    padding: 5px 8px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.selectModalDiv select:focus {
+    outline: none;
 }
 
 .Dashboard__browseContainer {
@@ -899,7 +1027,7 @@ a {
     text-decoration: underline;
 }
 
-.Post h4 {
+.Post h4, .PostPage h4 {
     font-size: 1.2rem;
 }
 

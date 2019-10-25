@@ -8,7 +8,7 @@ class CommentTextBox extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const { postId } = this.props
+        const { postId, addNumComment } = this.props
         //forgot this
         const text = e.target['CommentTextBox__text']
 
@@ -37,6 +37,7 @@ class CommentTextBox extends React.Component {
             console.log('comment responsejson', responseJson)
             text.value = ''
             this.context.addComment(responseJson)
+            addNumComment()
         })
         .catch(err => {
             console.error(err)

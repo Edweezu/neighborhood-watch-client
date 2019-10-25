@@ -72,7 +72,7 @@ class Post extends React.Component {
 
         // console.log('post state', this.state)
 
-        console.log('post cat', post_category)
+        // console.log('post cat', post_category)
 
         
         return (
