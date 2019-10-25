@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import EditModal from '../EditModal/EditModal'
 import moment from 'moment'
-import config from '../../config'
-import TokenService from '../../services/token-service';
+// import config from '../../config'
+// import TokenService from '../../services/token-service';
 
 class Post extends React.Component {
 
@@ -46,222 +46,61 @@ class Post extends React.Component {
         }
     }
 
-    componentDidMount () {
-        //grabs total lieks from server and displays in state
-        const { id } = this.props
-        // console.log('postid', id)
+    postCategoryIcon = () => {
+        let { post_category } = this.props
 
-        Promise.all([
-            fetch(`${config.API_ENDPOINT}/posts/${id}/`, {
-                method: 'GET',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `bearer ${TokenService.getAuthToken()}`
-                }
-            }),
-
-            fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
-                method: 'GET',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `bearer ${TokenService.getAuthToken()}`
-                },
-            })
-        ])
-        .then(([totalLikesRes, usersListRes]) => {
-            if (!totalLikesRes.ok) {
-                return totalLikesRes.json().then(e => Promise.reject(e))
-            }
-            if (!usersListRes.ok) {
-                return usersListRes.json().then(e => Promise.reject(e))
-            }
-
-            return Promise.all([
-                totalLikesRes.json(),
-                usersListRes.json()
-            ])
-        })
-        .then(([totalLikesResJson, usersListResJson]) => {
-            //retrieve users who liked this post in state when component mounts in users array
-            this.setState({
-                likes: totalLikesResJson.likes,
-                usersList: usersListResJson
-                // showLike: eval(localStorage.getItem('showLike'))
-            })
-        })  
-        .catch(err => {
-            console.error(err)
-        })
-
+        if (post_category === 'Crime and Alerts') {
+            return <i className="fas fa-exclamation-triangle"></i>
+        } else if (post_category === 'Upcoming Events') {
+            return <i className="fas fa-calendar-alt"></i>
+        } else if (post_category === 'Lost and Found') {
+            return <i className="fas fa-box-open"></i>
+        } else {
+            return null
+        }
     }
 
-    handleLike = () => {
-        //restrict user to one like per post
-        //on click, sends patch to post route to increase by 1
-        //on click again, sends patch to  Post route to decrease by 1
-            //cant go below 0
-        let { id, user_logged_in } = this.props
-        let { likes, usersList } = this.state
-        let newBody = {}
-        let whoLiked = {}
-
-        let usersFilter = () => {
-            console.log('userlist', usersList)
-            return usersList.filter(user => {
-                return user.user_id === user_logged_in
-            }).length
-        }
-
-        // console.log('usersFilter', usersFilter())
-
-        if (usersFilter()) {
-            newBody = {
-                likes: likes - 1
-            }  
-        } else {
-            newBody = {
-                likes: likes + 1
-            }
-        }
-
-        if (newBody.likes < 0 ) {
-            newBody.likes = 0
-        }
-
-        whoLiked.action = (usersFilter().length ? 'like': 'unlike')
-
-        //if logged in user is contained in users array, then don't patch or post user in likes route
-        // console.log('likes body', newBody)
-        // console.log('whoLiked', whoLiked)
-
-        if (usersFilter()) {
-            Promise.all([
-                fetch(`${config.API_ENDPOINT}/posts/${id}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json',
-                        'authorization': `bearer ${TokenService.getAuthToken()}`
-                    },
-                    body: JSON.stringify(newBody)
-                }),
-    
-                fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
-                    method: 'DELETE',
-                    headers: {
-                        'content-type': 'application/json',
-                        'authorization': `bearer ${TokenService.getAuthToken()}`
-                    },
-                })
-            ])
-            .then(([totalLikesRes, whoLikedRes]) => {
-                if (!totalLikesRes.ok) {
-                    return totalLikesRes.json().then(e => Promise.reject(e))
-                }
-    
-                if (!whoLikedRes.ok) {
-                    return whoLikedRes.json().then(e => Promise.reject(e))
-                }
-    
-                return Promise.all([
-                    totalLikesRes.json(),
-                    whoLikedRes.json()
-                ])
-            })
-            .then(([totalLikesResJson, whoLikedResJson]) => {
-                this.setState({
-                    likes: totalLikesResJson.likes,
-                    usersList: whoLikedResJson
-                })
-            })
-            .catch(err => {
-                console.error(err)
-            })
-        } else {
-            Promise.all([
-                fetch(`${config.API_ENDPOINT}/posts/${id}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json',
-                        'authorization': `bearer ${TokenService.getAuthToken()}`
-                    },
-                    body: JSON.stringify(newBody)
-                }),
-    
-                fetch(`${config.API_ENDPOINT}/posts/${id}/likes`, {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                        'authorization': `bearer ${TokenService.getAuthToken()}`
-                    },
-                    body: JSON.stringify(whoLiked)
-                })
-            ])
-            .then(([totalLikesRes, whoLikedRes]) => {
-                if (!totalLikesRes.ok) {
-                    return totalLikesRes.json().then(e => Promise.reject(e))
-                }
-    
-                if (!whoLikedRes.ok) {
-                    return whoLikedRes.json().then(e => Promise.reject(e))
-                }
-    
-                return Promise.all([
-                    totalLikesRes.json(),
-                    whoLikedRes.json()
-                ])
-            })
-            .then(([totalLikesResJson, whoLikedResJson]) => {
-                this.setState({
-                    likes: totalLikesResJson.likes,
-                    usersList: whoLikedResJson
-                    // usersList: this.state.usersList.map(user => whoLikedResJson)
-                })
-            })
-            .catch(err => {
-                console.error(err)
-            })
-        }
-
-       
-        
-    }
-
+   
     render () {
         
-        const { id, subject, message, user, image, number_of_comments, user_logged_in } = this.props
+        const { id, subject, message, user, image, number_of_comments, post_category } = this.props
        
 
         const nameCapitalized = user.username.charAt(0).toUpperCase() + user.username.slice(1)
-        const { likes, usersList } = this.state
+        // const { likes, usersList } = this.state
         // console.log('post state', this.state)
 
-        console.log('post state', this.state)
+        // console.log('post state', this.state)
+
+        console.log('post cat', post_category)
 
         
         return (
             <section className='Post'>
                 <div className='Post__userInfo'>
-                    {nameCapitalized}, {user.city}
+                    {this.postCategoryIcon()} {nameCapitalized}, {user.city}
                 </div>
                 <div>
-                    <h4><Link to={`/post-page/${id}`}>{subject}</Link></h4>
-                    <p>{message}</p>
-                    {image ? (
-                        <figure>
-                        <img src={image} alt='default icon' width='100'/>
-                        <figcaption>User uploaded image is going to replace this.</figcaption> 
-                        </figure>
-                    ): null}
-                <div>
-                    {/* Need to instantiate a function when not using onClick, etc. */}
-                    <p>{this.dateDiff()}</p>
-                    <EditModal
-                        // show={this.state.show}
-                        // hideModal={this.hideModal}
-                        postid={id}
-                    />  
-                </div>
-                 <div>
+                    <div className='Post__body'>   
+                        <h4><Link to={`/post-page/${id}`}>{subject}</Link></h4>
+                        <p>{message}</p>
+                        {image ? (
+                           
+                            <img src={image} alt='default icon'/>
+                            
+                        ): null}
+                    </div>
+                    <div className='Post__date'>
+                        {/* Need to instantiate a function when not using onClick, etc. */}
+                        <p>{this.dateDiff()}</p>
+                        <EditModal
+                            // show={this.state.show}
+                            // hideModal={this.hideModal}
+                            number_of_comments={number_of_comments}
+                            postid={id}
+                        />  
+                    </div>
+                 {/* <div>
                      {(usersList.filter(user => user.user_id === user_logged_in).length) ? 
                      (<button type='button' onClick={this.handleLike}><i className="fas fa-heart heartColor"></i>{likes > 0 ? likes : null}</button>) :
                      (<button type='button' onClick={this.handleLike}><i className="far fa-heart"></i>{likes > 0 ? likes : null}</button>) }
@@ -270,7 +109,7 @@ class Post extends React.Component {
                         <i className="fas fa-comment"></i>
                         <span className='Post__commentNumber'>{number_of_comments}</span>
                     </span>
-                </div>
+                </div> */}
 
                 </div>
 

@@ -150,7 +150,7 @@ class AddPost extends React.Component {
                                         </div>
                                         <div className='LoginForm__signupLabel selectBox'>
                                             <select id='post_category' required>
-                                                <option value='Crime and Alerts'>Crime and Safety </option>
+                                                <option value='Crime and Alerts'>Crime and Alerts</option>
                                                 <option value='Upcoming Events'>Upcoming Events </option>
                                                 <option value='Lost and Found'>Lost and Found</option>
                                             </select>  

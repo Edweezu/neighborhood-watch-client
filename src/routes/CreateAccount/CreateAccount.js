@@ -31,10 +31,10 @@ class CreateAccount extends React.Component {
             })  
             .catch(responseJson => {
                 // console.log(' Error responseJson', responseJson)
-                // this.setState({
-                //     // error: responseJson.error
-                //     error: responseJson
-                // })
+                this.setState({
+                    // error: responseJson.error
+                    error: responseJson.error
+                })
                 console.error(responseJson)
             })
 

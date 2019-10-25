@@ -37,6 +37,11 @@
     cursor: pointer;
 }
 
+.red {
+    color: red;
+    font-weight: bold;
+}
+
 /* .closeModalDiv button:hover {
     
 } */
@@ -50,6 +55,30 @@
 .EditModal__form {
     margin: 0.75rem;
 }
+
+.EditModal__buttonsDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.Post__likeButton {
+    margin-right: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    color: #A6AAB0;
+}
+.Post__likeButton:hover {
+    color: rgb(224, 36, 94);
+}
+
+.Post__userInfo {
+    color: #797C81;
+    font-size: 0.9rem;
+}
+
+
+
 
 /* .selectBox {
     margin: 0.75rem;
@@ -79,6 +108,31 @@
     color: rgb(224, 36, 94);
 }
 
+.heartColor #text {
+    color: rgb(224, 36, 94);
+}
+
+.EditModal__likesDiv {
+    color : #A6AAB0;
+}
+
+/* .fa-heart:hover {
+    color: rgb(224, 36, 94);
+} */
+
+.fa-heart {
+    margin-right: 0.4rem
+}
+
+.fa-comment {
+    /* position: absolute; */
+    top: 0;
+    bottom: 0;
+    right: 1rem;
+    font-size: 20px;
+    margin-right: 0.4rem
+}
+
 .scroll-up-div a {
     display: block;
     position: fixed;
@@ -97,22 +151,16 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.Post__commentContainer {
+/* .Post__commentContainer {
     float: right;
     position: relative;
-}
+} */
 
-.fa-comment {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 1rem;
-    font-size: 1.5rem;
-}
+
 
 .Post__commentNumber {
-    position: absolute;
-    color: white;
+    /* position: absolute;
+    color: white; */
     right: 1.7rem;
     font-weight: bold;
 }
@@ -282,7 +330,7 @@ label {
     width: 100%;
     padding: 0.2rem 0.4rem;
     border-radius: 0.2rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
 }
 
 .LoginForm__signupLabel > label {
@@ -404,7 +452,8 @@ html {
 
 .LandingPage__header {
     /* margin: 0 1rem; */
-    background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.7)), url('../../app-images/neighborhood-background.jpg');
+    /* background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.7)), url('../../app-images/neighborhood-background.jpg'); */
+    background: linear-gradient(rgba(0,0,0, 0.8), rgba(0, 0, 0, 0.8)), url('../../app-images/highway-landing.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -420,16 +469,22 @@ html {
 
 .LandingPage__header h1 {
     font-size: 24px;
+    /* letter-spacing: 1px; */
 }
+
+
 
 .LandingPage__btnContainer {
     margin-bottom: 0.8rem;
-    width: 90%
+    width: 90%;
+    max-width: 250px;
 }
 
 .LandingPage__btnReminder {
     margin-bottom: 0.8rem;
     width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
 }
 
 
@@ -577,7 +632,7 @@ html {
 .btn-div {
     /* padding-left: .8rem; */
     font-size: 20px;
-    margin-top: .3rem;
+    /* margin-top: .3rem; */
 }
 
 .fa-edit {
@@ -590,12 +645,13 @@ html {
 }
 
 .fa-trash-alt {
-    color: rgba(0, 0, 0, 0.3);
+    color: #A6AAB0;
     margin-left: 0.8rem;
 }
 
 .fa-trash-alt:hover {
-    color: rgba(0,0,0,.6);
+    /* color: rgba(0,0,0,.6); */
+    color: #d11a2a;
     cursor: pointer;
 }
 
@@ -792,10 +848,10 @@ article h2 {
 
 .Post {
     text-align: left;
-    border-top: 1px solid #EEE;
-    border-bottom: 1px solid #EEE;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
+    border-top: 0.8rem solid #EEE;
+    border-bottom: 2px solid #C3C3C3;
+    padding-left: 4%;
+    padding-right: 4%;
     padding-top: 0.5rem;
     padding-bottom: 0.8rem;
 }
@@ -836,7 +892,38 @@ select {
 
 a {
     text-decoration: none;
+    color: #373a36;
 }
+
+.Post a:hover {
+    text-decoration: underline;
+}
+
+.Post h4 {
+    font-size: 1.2rem;
+}
+
+.Post__date p {
+    font-size: 13px;
+    color: #797C81;
+}
+
+.Post__body p {
+    font-size: 0.93rem;
+    /* margin-top: 0.3rem; */
+}
+
+.Post__body img {
+    width: 100%;
+}
+
+
+
+/* .Post p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+} */
+
 
 h3 a {
     color: white;

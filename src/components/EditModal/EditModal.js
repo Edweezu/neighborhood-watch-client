@@ -18,7 +18,9 @@ class EditModal extends React.Component {
         show: false,
         uploading: false,
         user_logged_in: null,
-        post_user: null
+        post_user: null,
+        likes: 0,
+        usersList: []
     }
 
 
@@ -38,37 +40,192 @@ class EditModal extends React.Component {
     }
 
     componentDidMount () {
+        //grabs total lieks from server and displays in state
         const { postid } = this.props
-        return fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `bearer ${TokenService.getAuthToken()}`
-            }
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(e => Promise.reject(e))
-            }
-            return res.json()
-        })
-        .then(responseJson => {
-            // console.log('post responsejson', responseJson)
-            this.setState({
-                image: responseJson.image,
-                message: responseJson.message,
-                post_category: responseJson.post_category,
-                subject: responseJson.subject,
-                place_id: responseJson.place_id,
-                user_logged_in: responseJson.user_logged_in,
-                post_user: responseJson.user.id
+        // console.log('postid', id)
+
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/posts/${postid}/`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                }
+            }),
+
+            fetch(`${config.API_ENDPOINT}/posts/${postid}/likes`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `bearer ${TokenService.getAuthToken()}`
+                },
             })
+        ])
+        .then(([totalLikesRes, usersListRes]) => {
+            if (!totalLikesRes.ok) {
+                return totalLikesRes.json().then(e => Promise.reject(e))
+            }
+            if (!usersListRes.ok) {
+                return usersListRes.json().then(e => Promise.reject(e))
+            }
+
+            return Promise.all([
+                totalLikesRes.json(),
+                usersListRes.json()
+            ])
         })
+        .then(([totalLikesResJson, usersListResJson]) => {
+            //retrieve users who liked this post in state when component mounts in users array
+            this.setState({
+                image: totalLikesResJson.image,
+                message: totalLikesResJson.message,
+                post_category: totalLikesResJson.post_category,
+                subject: totalLikesResJson.subject,
+                place_id: totalLikesResJson.place_id,
+                user_logged_in: totalLikesResJson.user_logged_in,
+                post_user: totalLikesResJson.user.id,
+                likes: totalLikesResJson.likes,
+                usersList: usersListResJson
+            })
+        })  
         .catch(err => {
             console.error(err)
         })
-
     }
+
+    handleLike = () => {
+        //restrict user to one like per post
+        //on click, sends patch to post route to increase by 1
+        //on click again, sends patch to  Post route to decrease by 1
+            //cant go below 0
+        let { postid } = this.props
+        let { likes, usersList, user_logged_in } = this.state
+        let newBody = {}
+        let whoLiked = {}
+
+        let usersFilter = () => {
+            console.log('userlist', usersList)
+            return usersList.filter(user => {
+                return user.user_id === user_logged_in
+            }).length
+        }
+
+        // console.log('usersFilter', usersFilter())
+
+        if (usersFilter()) {
+            newBody = {
+                likes: likes - 1
+            }  
+        } else {
+            newBody = {
+                likes: likes + 1
+            }
+        }
+
+        if (newBody.likes < 0 ) {
+            newBody.likes = 0
+        }
+
+        whoLiked.action = (usersFilter().length ? 'like': 'unlike')
+
+        //if logged in user is contained in users array, then don't patch or post user in likes route
+        // console.log('likes body', newBody)
+        // console.log('whoLiked', whoLiked)
+
+        if (usersFilter()) {
+            Promise.all([
+                fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(newBody)
+                }),
+    
+                fetch(`${config.API_ENDPOINT}/posts/${postid}/likes`, {
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                })
+            ])
+            .then(([totalLikesRes, whoLikedRes]) => {
+                if (!totalLikesRes.ok) {
+                    return totalLikesRes.json().then(e => Promise.reject(e))
+                }
+    
+                if (!whoLikedRes.ok) {
+                    return whoLikedRes.json().then(e => Promise.reject(e))
+                }
+    
+                return Promise.all([
+                    totalLikesRes.json(),
+                    whoLikedRes.json()
+                ])
+            })
+            .then(([totalLikesResJson, whoLikedResJson]) => {
+                console.log("delete likes", totalLikesResJson.likes)
+                this.setState({
+                    likes: totalLikesResJson.likes,
+                    usersList: whoLikedResJson
+                })
+            })
+            .catch(err => {
+                console.error(err)
+            })
+        } else {
+            Promise.all([
+                fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(newBody)
+                }),
+    
+                fetch(`${config.API_ENDPOINT}/posts/${postid}/likes`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `bearer ${TokenService.getAuthToken()}`
+                    },
+                    body: JSON.stringify(whoLiked)
+                })
+            ])
+            .then(([totalLikesRes, whoLikedRes]) => {
+                if (!totalLikesRes.ok) {
+                    return totalLikesRes.json().then(e => Promise.reject(e))
+                }
+    
+                if (!whoLikedRes.ok) {
+                    return whoLikedRes.json().then(e => Promise.reject(e))
+                }
+    
+                return Promise.all([
+                    totalLikesRes.json(),
+                    whoLikedRes.json()
+                ])
+            })
+            .then(([totalLikesResJson, whoLikedResJson]) => {
+                this.setState({
+                    likes: totalLikesResJson.likes,
+                    usersList: whoLikedResJson
+                    // usersList: this.state.usersList.map(user => whoLikedResJson)
+                })
+            })
+            .catch(err => {
+                console.error(err)
+            })
+        } 
+    }
+
+
+
+
+
 
     handleDeletePost = () => {
 
@@ -198,11 +355,13 @@ class EditModal extends React.Component {
 
         const { places=[] } = this.context
         // const { hideModal, show } = this.props
-        
+        const { number_of_comments } = this.props
 
-        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user } = this.state
+        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList } = this.state
 
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
+
+        // console.log('edit modal userlists', usersList)
 
         // console.log('user logged', this.state.user_logged_in)
         // console.log('image', image)
@@ -282,22 +441,32 @@ class EditModal extends React.Component {
                     </section>
                 </div>
                 )}
-                <div>
-                    {user_logged_in === post_user ? (
-                        <div className='btn-div'>
-                            {/* <button type='button' onClick={this.showModal}>
-                                <i className="far fa-edit"></i>
-                            </button> */}
-                             <i onClick={this.showModal} className="far fa-edit"></i>
-                             <i onClick={this.handleDeleteForm} className="fas fa-trash-alt"></i>
-                            {/* <button type='button' onClick={this.handleDeleteForm}>
-                                <i className="fas fa-trash-alt"></i>
-                            </button>   */}
-                        </div> 
-                    ) : null}                   
+                <div className='EditModal__buttonsDiv'>
+                    <div>   
+                        {user_logged_in === post_user ? (
+                            <div className='btn-div'>
+                                {/* <button type='button' onClick={this.showModal}>
+                                    <i className="far fa-edit"></i>
+                                </button> */}
+                                <i onClick={this.showModal} className="far fa-edit"></i>
+                                <i onClick={this.handleDeleteForm} className="fas fa-trash-alt"></i>
+                                {/* <button type='button' onClick={this.handleDeleteForm}>
+                                    <i className="fas fa-trash-alt"></i>
+                                </button>   */}
+                            </div> 
+                        ) : null}                     
+                    </div>
+                    <div className='EditModal__likesDiv'>
+                        {(usersList.filter(user => user.user_id === user_logged_in).length) ? 
+                        (<button className='Post__likeButton heartColor' type='button' onClick={this.handleLike}><i className="fas fa-heart heartColor"></i>{likes > 0 ? likes : null}</button>) :
+                        (<button className='Post__likeButton' type='button' onClick={this.handleLike}><i className="far fa-heart"></i>{likes > 0 ? likes : null}</button>) }
+                        
+                        <span className='Post__commentContainer'>
+                            <i className="far fa-comment"></i>
+                            <span className='Post__commentNumber'>{number_of_comments}</span>
+                        </span>
+                    </div>                  
                 </div>
-                
-               
             </section>
         )
     }
