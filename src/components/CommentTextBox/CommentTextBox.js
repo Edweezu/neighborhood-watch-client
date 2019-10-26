@@ -49,19 +49,21 @@ class CommentTextBox extends React.Component {
     render () {
         return (
             <form  onSubmit={this.handleSubmit}className='CommentTextBox'>
-                <div>
+                <div className='CommentTextBox__container'>
                     <textarea
-                        required 
+                        required
+                        className='CommentTextBox__textArea'
                         aria-label='Type a comment...'
                         name='CommentTextBox__text'
                         id='CommentTextBox__text'
                         cols='30'
-                        rows='3'
+                        rows='5'
                         placeholder='Type a comment...'
                     >
                     </textarea>
-                    <div>
-                        <button type='submit'>Post Comment</button>
+                   
+                    <div className='CommentTextBox__buttonDiv'>
+                         <button className='btn' type='submit'>Comment</button>
                     </div>
                 </div>
             </form>

@@ -50,17 +50,19 @@ class Comment extends React.Component {
 
         return (
             <section className='Comment'>
-                <p>
+                <div className='Comment__userInfo'>
                     {nameCapitalized(user.username)}, {user.city}
-                    </p>
-                    <p>{text}</p>
+                </div>
+                <div className='Post__body'>
+                    {text}
+                </div>
+                <div className='Comment__date'>
                     <p>{this.dateDiff()}</p>
                     <EditCommentModal
                         commentId={id}
                         deleteNumComment={deleteNumComment}
-
                     />
-                    
+                </div>  
             </section>
         )
     }

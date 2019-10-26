@@ -188,7 +188,7 @@ class EditCommentModal extends React.Component {
                     //             Delete
                     //     </button>
                     //  </div>
-                    <div className='btn-div'>
+                    <div className='Comment__btn-div'>
                              <i onClick={this.showCommentModal} className="far fa-edit"></i>
                              <i onClick={this.handleDeleteForm} className="fas fa-trash-alt"></i>
                     </div> 
