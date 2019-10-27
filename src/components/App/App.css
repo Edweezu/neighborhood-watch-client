@@ -347,7 +347,11 @@ body {
     margin-right: 4%;
     margin-left: 4%;
     /* padding-right: 4%; */
-    display: block;
+    /* display: block; */
+}
+
+.EditImage__Container {
+    text-align: center;
 }
 
 .MyProfile h3 {
@@ -392,7 +396,7 @@ label {
 
 .MyProfile__userContainer {
     width: 100%;
-    max-width: 420px;
+    /* max-width: 420px; */
     /* padding: 1.3rem; */
     padding-top: 0rem;
     padding-bottom: 0rem;
@@ -955,10 +959,15 @@ article h2 {
   cursor: pointer;
 }
 
-.user__image {
+.MyProfile__userImage {
     /* border-radius: 50%; */
     text-align: left;
     width: 75%;
+}
+
+.user__image {
+    border-radius: 50%;
+    text-align: left;
 }
 
 

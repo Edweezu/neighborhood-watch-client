@@ -361,12 +361,12 @@ class MyProfile extends React.Component {
                         <form onSubmit={this.handleImageSubmit}>
                             <div className="image-upload">
                                 {!image ? <label htmlFor="image" className='MyProfile__image'>
-                                        <img className='user__image' src={userIcon} alt='user-icon' width='200'/>
+                                        <img className='MyProfile__userImage' src={userIcon} alt='user-icon' width='200' height='200px'/>
                                         {/* <p className='image-text'>
                                             Add a Photo
                                         </p> */}
                                 </label> : <label htmlFor="image" className='MyProfile__image'>
-                                        <img className='user__image' src={image} alt='user-icon' width='200'/>
+                                        <img className='MyProfile__userImage' src={image} alt='user-icon' width='200' height='200px'/>
                                         {/* <p className='image-text'>
                                             Add a Photo
                                         </p> */}

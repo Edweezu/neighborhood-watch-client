@@ -21,6 +21,7 @@ export default class EditProfileImage extends React.Component {
     state = {
         image: null,
         uploading: false,
+        formDataImage: null
     }
 
     componentDidMount () {
@@ -51,16 +52,18 @@ export default class EditProfileImage extends React.Component {
     handleImageSubmit = (e) => {
         e.preventDefault()
         const { updateProfileImage } = this.props
+        const { formDataImage } = this.state
         
         this.setState({
             uploading: true
         })
 
-        console.log('event target', e.target['image'].files[0])
+        // console.log('event target', e.target['image'].files[0])
 
         let formData = new FormData()
 
-        formData.append('image', e.target['image'].files[0])
+        // formData.append('image', e.target['image'].files[0])
+        formData.append('image', formDataImage)
 
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'PATCH',
@@ -100,7 +103,15 @@ export default class EditProfileImage extends React.Component {
 
     handleImageChange = (e) => {
         this.setState({
-            image: URL.createObjectURL(e.target.files[0])
+            image: URL.createObjectURL(e.target.files[0]),
+            formDataImage: e.target.files[0]
+        })
+    }
+
+    handleDeleteImage = () => {
+        this.setState({
+            image: null,
+            formDataImage: null
         })
     }
 
@@ -109,6 +120,9 @@ export default class EditProfileImage extends React.Component {
         const { uploading, image } = this.state
         // const showHideClassName = showCommentForm ? 'modal display-block' : 'modal display-none'
         const { showImageModal, handleHideImageModal } = this.props
+
+        console.log('image', image)
+      
 
         return (
             <section>
@@ -121,29 +135,57 @@ export default class EditProfileImage extends React.Component {
                          {showImageModal ? (
                             <div className='modal display-block'>
                                 <section className='modal-main'>
-                                    <form onSubmit={this.handleImageSubmit}>
-                                        <button type='button' onClick={handleHideImageModal}>
-                                            <span className="fas fa-times" aria-hidden="true"></span>
-                                        </button>
+                                    <form className='EditImage__Container' onSubmit={this.handleImageSubmit}>
+                                        <div className='closeModalDiv'>
+                                            <button type='button' onClick={handleHideImageModal}>
+                                                <span className="fas fa-times" aria-hidden="true"></span>
+                                            </button>
+                                        </div>     
                                         <div className='AddPost__formDiv'>
                                                 {!image ? 
                                                     <label htmlFor="image" className='LoginForm__signupLabel'>
-                                                        <img className='user__image' src={userIcon} alt='user-icon' width='200'/>
+                                                        <img className='EditImage__image' src={userIcon} alt='user-icon' width='200'/>
                                                         <p className='image-text'>
                                                             Add a Photo
                                                         </p>
                                                     </label> 
                                                 : 
                                                     <label htmlFor="image" className='LoginForm__signupLabel'>
-                                                        <img className='user__image' src={image} alt='user-icon' width='200'/>
+                                                        <img className='EditImage__image' src={image} alt='user-icon' width='200'/>
                                                         <p className='image-text'>
                                                             Add a Photo
                                                         </p>
                                                     </label>
                                                 }
                                         </div>
-                                        <input type='file' id='image' name='image' onChange={this.handleImageChange} />
-                                        <button type='submit'>Submit Profile Picture</button>
+                                        <div className='AddPost__submitDiv'>
+                                           
+                                            {!image ? 
+                                                <div>
+                                                 <div>
+                                                    <span>
+                                                        <button className='btn' type='button'>Add Photo</button>
+                                                    </span>
+                                                </div>
+                                                <label className='AddPost__fileInputLabel'>
+                                                    <input className='AddPost__fileInput' type='file' id='image'  name='image' onChange={this.handleImageChange}/>
+                                                </label>
+                                                </div>
+                                            :
+                                                <div>
+                                                    {/* <label className='AddPost__fileInputLabel'>
+                                                        <input className='AddPost__fileInput' type='file' id='image'  name='image' onChange={this.handleImageChange}/>
+                                                    </label> */}
+                                                    <button className='btn' type='button' onClick={this.handleDeleteImage}>Remove Photo</button>
+                                                </div>
+                                            }       
+                                        </div>
+                                         {/* <span>
+                                                        <i className="fas fa-image"></i>
+                                                        Add Photo
+                                                    </span> */}
+                                        {/* <input type='file' id='image' name='image' onChange={this.handleImageChange} /> */}
+                                        <button className='btn' type='submit'>Submit</button>
                                     </form>
                                 </section> 
                             </div>
