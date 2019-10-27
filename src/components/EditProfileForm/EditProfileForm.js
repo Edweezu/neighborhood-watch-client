@@ -170,73 +170,76 @@ export default class EditProfileForm extends React.Component {
         // console.log('make priv', make_private)
         return (
             <section>
-                <button type='button' onClick={this.handleEditProfile}>
+                <button className='btn' type='button' onClick={this.handleEditProfile}>
                     Edit Profile
                 </button>
                 {showProfileForm ? (
                      <form className='MyProfile__form' onSubmit={this.handleBasicSubmit}>
-                     <div className='form-flex-container'>
-                         <div className='LoginForm__signupElement'>
-                             <div className='LoginForm__signupLabel'>
-                                 <label htmlFor="first-name" >First Name </label>
-                                 <span className='astrik'>
-                                     *
-                                 </span>
-                             </div>
-                             <div className='LoginForm__signupLabel'>
-                                 <input className='form-input' type="text" name="first-name" id="first-name"
-                                 required value={this.capitalizeName(first_name)} onChange={this.changeFirstName}/>
-                             </div>
+                         <div className='MyProfile__inputContainer'>
+                                <div className='form-flex-container'>
+                                    <div className='LoginForm__signupElement'>
+                                        <div className='LoginForm__signupLabel'>
+                                            <label htmlFor="first-name" >First Name </label>
+                                            <span className='astrik'>
+                                                *
+                                            </span>
+                                        </div>
+                                        <div className='LoginForm__signupLabel'>
+                                            <input className='form-input' type="text" name="first-name" id="first-name"
+                                            required value={this.capitalizeName(first_name)} onChange={this.changeFirstName}/>
+                                        </div>
+                                    </div>
+                                    <div className='LoginForm__signupElement'>
+                                        <div className='LoginForm__signupLabel'>
+                                            <label htmlFor="last-name" className='LoginForm__signupLabel'>Last Name</label>
+                                        </div>
+                                        <div className='LoginForm__signupLabel'>
+                                            <input className='form-input' type="text" name="last-name" id="last-name" value={this.capitalizeName(last_name)} onChange={this.changeLastName}/>
+                                        </div>      
+                                    </div>
+                                </div>
+                                <div className='form-flex-container'>
+                                    <div className='LoginForm__signupElement'>
+                                        <div className='LoginForm__signupLabel'>
+                                            <label htmlFor="email" className='LoginForm__signupLabel'>Email</label>
+                                            <span className='astrik'>
+                                                *
+                                            </span>
+                                        </div>
+                                    <div className='LoginForm__signupLabel'>
+                                        <input className='form-input' type="text" name="email" id="email" required value={this.capitalizeName(email)} onChange={this.changeEmail}/>
+                                    </div>
+                                </div>
+                                    <div className='LoginForm__signupElement'>
+                                        <div className='LoginForm__signupLabel'>
+                                            <label htmlFor="occupation" className='LoginForm__signupLabel'>Occupation </label>
+                                        </div>
+                                        <div className='LoginForm__signupLabel'>
+                                            <input className='form-input' type="text" name="occupation" id="occupation" value={this.capitalizeName(occupation)} onChange={this.changeOccupation}/>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div className='form-flex-container'>
+                                <div className='LoginForm__signupElement'>
+                                    <div className='LoginForm__signupLabel'>
+                                        <label htmlFor="interest" className='LoginForm__signupLabel'>Interests</label>
+                                    </div>
+                                    <div className='LoginForm__signupLabel'>
+                                        <input className='form-input' type="text" name="interests" id="interests" value={this.capitalizeName(interests)} onChange={this.changeInterests}/>
+                                    </div>     
+                                </div>
+                                <div className='LoginForm__signupElement'>
+                                    <div className='ProfileForm__checkbox'>
+                                        <label htmlFor="showProfile" className='LoginForm__signupLabel'><strong>Make Profile Private?</strong></label>
+                                        <input className='form-input' type="checkbox" name="showProfiles" id="showProfiles" value={make_private} onChange={this.changeVisibility} defaultChecked={make_private}/>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                          </div>
-                         <div className='LoginForm__signupElement'>
-                             <div className='LoginForm__signupLabel'>
-                                 <label htmlFor="last-name" className='LoginForm__signupLabel'>Last Name</label>
-                             </div>
-                             <div className='LoginForm__signupLabel'>
-                                 <input className='form-input' type="text" name="last-name" id="last-name" value={this.capitalizeName(last_name)} onChange={this.changeLastName}/>
-                             </div>      
-                         </div>
-                     </div>
-                     <div className='form-flex-container'>
-                         <div className='LoginForm__signupElement'>
-                             <div className='LoginForm__signupLabel'>
-                                 <label htmlFor="email" className='LoginForm__signupLabel'>Email</label>
-                                 <span className='astrik'>
-                                     *
-                                 </span>
-                             </div>
-                             <div className='LoginForm__signupLabel'>
-                                 <input className='form-input' type="text" name="email" id="email" required value={this.capitalizeName(email)} onChange={this.changeEmail}/>
-                             </div>
-                         </div>
-                         <div className='LoginForm__signupElement'>
-                             <div className='LoginForm__signupLabel'>
-                                 <label htmlFor="occupation" className='LoginForm__signupLabel'>Occupation </label>
-                             </div>
-                             <div className='LoginForm__signupLabel'>
-                                 <input className='form-input' type="text" name="occupation" id="occupation" value={this.capitalizeName(occupation)} onChange={this.changeOccupation}/>
-                             </div>
-                         </div>
-                     </div>
-                     <div className='form-flex-container'>
-                         <div className='LoginForm__signupElement'>
-                             <div className='LoginForm__signupLabel'>
-                                 <label htmlFor="interest" className='LoginForm__signupLabel'>Interests</label>
-                             </div>
-                             <div className='LoginForm__signupLabel'>
-                                 <input className='form-input' type="text" name="interests" id="interests" value={this.capitalizeName(interests)} onChange={this.changeInterests}/>
-                             </div>     
-                         </div>
-                         <div className='LoginForm__signupElement'>
-                             <div className='ProfileForm__checkbox'>
-                                 <label htmlFor="showProfile" className='LoginForm__signupLabel'><strong>Make Profile Private?</strong></label>
-                                 <input className='form-input' type="checkbox" name="showProfiles" id="showProfiles" value={make_private} onChange={this.changeVisibility} defaultChecked={make_private}/>
-                             </div>
-                             
-                         </div>
-                     </div>
+                   
                      <div className='button-container'>
-                         <button className='submit-button' type="submit">Update Profile</button>
+                         <button className='ProfileForm__submitButton btn' type="submit">Update Profile</button>
                      </div>    
                  </form>
                 ): null}

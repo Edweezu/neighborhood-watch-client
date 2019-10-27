@@ -355,23 +355,23 @@ class MyProfile extends React.Component {
             <section className='MyProfile'>
                 
                 <section className='MyProfile__userContainer'>
-                    
+                    <h1>My Profile</h1>
                     <DashNav />
                     <section className='MyProfile__userInfo'>
                         <form onSubmit={this.handleImageSubmit}>
                             <div className="image-upload">
-                                {!image ? <label htmlFor="image" className='LoginForm__signupLabel'>
+                                {!image ? <label htmlFor="image" className='MyProfile__image'>
                                         <img className='user__image' src={userIcon} alt='user-icon' width='200'/>
                                         {/* <p className='image-text'>
                                             Add a Photo
                                         </p> */}
-                                </label> : <label htmlFor="image" className='LoginForm__signupLabel'>
+                                </label> : <label htmlFor="image" className='MyProfile__image'>
                                         <img className='user__image' src={image} alt='user-icon' width='200'/>
                                         {/* <p className='image-text'>
                                             Add a Photo
                                         </p> */}
                                 </label>}
-                                <button type='button' onClick={this.handleShowImageModal}>Update Photo</button> 
+                                <button className='btn' type='button' onClick={this.handleShowImageModal}>Update Photo</button> 
                                 {/* <input type='file' id='image' name='image' onChange={this.handleImageChange} /> */}
                                 {/* <button type='submit'>Submit Profile Picture</button> */}
                             </div>
@@ -386,9 +386,9 @@ class MyProfile extends React.Component {
                         }
                         <div className='MyProfile__headers'>
                             <h2>{this.capitalizeName(first_name)} {this.capitalizeName(last_name)}</h2>
-                            <h4> Located in {city}, {state}</h4>
-                            <button type='button' onClick={this.showLocationModal}>
-                                Edit
+                            <p>{city}, {state}</p>
+                            <button className='btn' type='button' onClick={this.showLocationModal}>
+                                Edit Location
                             </button>
                         </div>
                         <section>
@@ -414,7 +414,7 @@ class MyProfile extends React.Component {
                                                 </select>
                                             </div>      
                                         </div>
-                                        <button type='submit'>Submit</button>
+                                        <button className='btn' type='submit'>Submit</button>
                                     </form>
                                 </section> 
                             </div>    
@@ -443,7 +443,7 @@ class MyProfile extends React.Component {
                         <EditProfileForm 
                             updateProfileAbout={this.updateProfileAbout}
                         />    
-                    </section> 
+                    </section>
                 </section>
             </section>       
         )

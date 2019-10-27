@@ -292,7 +292,7 @@ class PostPage extends React.Component {
 
         return (
             <section>
-                {(post.hasOwnProperty('message')) ? (<section className='PostPage'>
+                {(post.hasOwnProperty('message')) ? (<section className='PostPage' id='PostPage__top'>
                     
                     <section className='PostPage__postContainer'>
                         <div className='back-btn'>
@@ -405,7 +405,11 @@ class PostPage extends React.Component {
                         </ul>
                         
                     </section>
-                    
+                    <div className='scroll-up-div'>
+                        <a href="#PostPage__top">
+                            <i className="fa fa-chevron-up"></i>          
+                        </a>                   
+                    </div>
                 </section>) : 
                 <section className='PostPage'>
                     <div className='back-btn'>
