@@ -134,7 +134,7 @@ export default class EditProfileImage extends React.Component {
                     <div>
                          {showImageModal ? (
                             <div className='modal display-block'>
-                                <section className='modal-main'>
+                                <section className='modal-mainTwo'>
                                     <form className='EditImage__Container' onSubmit={this.handleImageSubmit}>
                                         <div className='closeModalDiv'>
                                             <button type='button' onClick={handleHideImageModal}>
@@ -144,14 +144,14 @@ export default class EditProfileImage extends React.Component {
                                         <div className='AddPost__formDiv'>
                                                 {!image ? 
                                                     <label htmlFor="image" className='LoginForm__signupLabel'>
-                                                        <img className='EditImage__image' src={userIcon} alt='user-icon' width='200'/>
+                                                        <img className='EditImage__image' src={userIcon} alt='user-icon' width='200' height='200px'/>
                                                         <p className='image-text'>
                                                             Add a Photo
                                                         </p>
                                                     </label> 
                                                 : 
                                                     <label htmlFor="image" className='LoginForm__signupLabel'>
-                                                        <img className='EditImage__image' src={image} alt='user-icon' width='200'/>
+                                                        <img className='EditImage__image' src={image} alt='user-icon' width='200' height='200px'/>
                                                         <p className='image-text'>
                                                             Add a Photo
                                                         </p>

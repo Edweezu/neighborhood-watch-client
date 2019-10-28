@@ -66,7 +66,7 @@ class MemberProfiles extends React.Component {
                                 </div>
                             </div>
                             
-                            <a href={`mailto:${user.email}?subject=Hi`} target="_blank" aria-label="Email Edwin Qiu" rel='noopener noreferrer'>
+                            <a className='btn' href={`mailto:${user.email}?subject=Hi`} target="_blank" aria-label="Email Edwin Qiu" rel='noopener noreferrer'>
                                         Connect
                                     </a>
                         </div>

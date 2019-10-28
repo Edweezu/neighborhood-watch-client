@@ -41,18 +41,18 @@ class Nav extends React.Component {
           </a>
           <ul className='main__ul'>
             <li>
-              <a href='/mem-profiles#main-menu-toggle'>Member Profiles</a>
+              <a href='/mem-profiles#main-menu-toggle'><i className="fas fa-users"></i>Member Profiles</a>
             </li>
             <li>
-              <a href='/my-profile#main-menu-toggle'>My Profile</a>
+              <a href='/my-profile#main-menu-toggle'><i className="fas fa-user"></i>My Profile</a>
             </li>
             <li>
-              <a href='/#main-menu-toggle' onClick={this.handleLogoutClick}>Logout</a>
+              <a href='/#main-menu-toggle' onClick={this.handleLogoutClick}><i className="fas fa-sign-out-alt"></i>Logout</a>
             </li>
           </ul>
           <ul className='second__ul'>
             <li>
-              <a href='/category/1#main-menu-toggle'>All Posts</a>
+              <a href='/category/1#main-menu-toggle'><i className="fas fa-newspaper"></i>All Posts</a>
               {/* <NavLink
                   to={`/category/1#main-menu-toggle`}
               >
@@ -60,7 +60,7 @@ class Nav extends React.Component {
               </NavLink> */}
             </li>
             <li>
-              <a href='/category/Crime and Alerts#main-menu-toggle'>Crime and Alerts</a>
+              <a href='/category/Crime and Alerts#main-menu-toggle'><i className="fas fa-exclamation-triangle"></i>Crime and Alerts</a>
               {/* <NavLink
                   to={`/category/Crime and Alerts#main-menu-toggle`}
               >
@@ -68,7 +68,7 @@ class Nav extends React.Component {
               </NavLink> */}
             </li>
             <li>
-              <a href='/category/Upcoming Events#main-menu-toggle'>Upcoming Events</a>
+              <a href='/category/Upcoming Events#main-menu-toggle'><i className="fas fa-calendar-alt"></i>Upcoming Events</a>
               {/* <NavLink
                   to={`/category/Upcoming Events#main-menu-toggle`}
               >
@@ -76,7 +76,7 @@ class Nav extends React.Component {
               </NavLink> */}
             </li>
             <li>
-              <a href='/category/Lost and Found#main-menu-toggle'>Lost and Found</a>
+              <a href='/category/Lost and Found#main-menu-toggle'><i className="fas fa-box-open"></i>Lost and Found</a>
               {/* <NavLink
                   to={`/category/Lost and Found#main-menu-toggle`}
               >

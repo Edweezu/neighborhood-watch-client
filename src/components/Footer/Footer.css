@@ -8,7 +8,8 @@ a {
 
 .contactItem {
     display: inline-block;
-    padding-right: 0.8rem;
+    /* padding-right: 0.8rem; */
+    padding: 0.8rem;
     margin: 0 auto;
 }
 
@@ -33,7 +34,7 @@ footer {
     width: 100%;
     /* color: white; */
     font-weight: 500;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     /* padding: 0.5rem 1rem; */
     line-height: 0.6rem;
 }

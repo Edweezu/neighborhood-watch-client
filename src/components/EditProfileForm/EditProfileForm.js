@@ -23,7 +23,6 @@ export default class EditProfileForm extends React.Component {
 
     componentDidMount () {
         // console.log('show', localStorage.getItem('showLocationForm'))
-        console.log('mounting')
 
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'GET',
@@ -39,7 +38,7 @@ export default class EditProfileForm extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('resp', responseJson)
+            // console.log('resp', responseJson)
             for (let item in responseJson) {
                 if (responseJson[item] === null) {
                     responseJson[item] = ''

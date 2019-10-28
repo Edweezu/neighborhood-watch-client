@@ -361,7 +361,7 @@ class MyProfile extends React.Component {
                         <form onSubmit={this.handleImageSubmit}>
                             <div className="image-upload">
                                 {!image ? <label htmlFor="image" className='MyProfile__image'>
-                                        <img className='MyProfile__userImage' src={userIcon} alt='user-icon' width='200' height='200px'/>
+                                        <img src={userIcon} alt='user-icon' width='175px' height='175px'/>
                                         {/* <p className='image-text'>
                                             Add a Photo
                                         </p> */}
@@ -393,22 +393,30 @@ class MyProfile extends React.Component {
                         </div>
                         <section>
                             <div className={this.showHideClassName()}>
-                                <section className='modal-main'>
-                                    <form onSubmit={this.handleLocationSubmit}>
-                                        <button type='button' onClick={this.hideLocationModal}>
-                                            <span className="fas fa-times" aria-hidden="true"></span>
-                                        </button>
-                                        <div className='LoginForm__signupElement'>
-                                            <div className='LoginForm__signupLabel'>
-                                                <label className='LoginForm__signupLabel'> Update Location</label>
-                                            </div>
-                                            <div className='LoginForm__signupLabel'>
+                                <section className='modal-mainTwo'>
+                                    <form className='EditModal__form' onSubmit={this.handleLocationSubmit}>
+                                        <div className='closeModalDiv'>
+                                            <button type='button' onClick={this.hideLocationModal}>
+                                                <span className="fas fa-times" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <div className='LoginForm__signupElement modalSelect'>
+                                            {/* <div className='LoginForm__signupLabel'>
+                                                <label className='LoginForm__signupLabel'>Update Location</label>
+                                            </div> */}
+                                            <h3>Update Location</h3>
+                                            {/* <div className='LoginForm__signupLabel'> */}
+                                            <div className='selectContainer'>
                                                 <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.changeCountry} required>
                                                     <option value="">Select Country</option>
                                                 </select>
+                                            </div>
+                                            <div className='selectContainer'>
                                                 <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.changeState} required>
-                                                    <option value="">Select State</option>
+                                                        <option value="">Select State</option>
                                                 </select>
+                                            </div>
+                                            <div className='selectContainer'>
                                                 <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.changeCity} required>
                                                     <option value="">Select City</option>
                                                 </select>

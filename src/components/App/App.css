@@ -12,9 +12,9 @@
 
 .Comment__userInfo {
     font-size: 0.8rem;
-    /* font-weight: bold; */
-    /* color: rgb(0, 154, 189); */
-    color: #797C81;
+    font-weight: bold;
+    color: rgb(0, 154, 189);
+    /* color: #797C81; */
 }
 
 .Comment__date p {
@@ -45,6 +45,16 @@
     background: #fafafa;
     width: 100%;
     height: 100%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+
+.modal-mainTwo {
+    position:fixed;
+    background: #fafafa;
+    width: 100%;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -97,7 +107,8 @@
 }
 
 .Post__userInfo {
-    color: #797C81;
+    /* color: #797C81; */
+    color: rgb( 0, 154, 189);
     font-size: 0.9rem;
 }
 
@@ -373,7 +384,7 @@ body {
 }
 
 #showProfiles {
-    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 /* .Dashboard {
@@ -462,7 +473,7 @@ html {
     cursor: pointer;
     background-color: rgb(0, 154, 189);
     font-size: 1rem;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
 }
 
 .btn {
@@ -536,7 +547,7 @@ html {
 .LandingPage__header {
     /* margin: 0 1rem; */
     /* background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.7)), url('../../app-images/neighborhood-background.jpg'); */
-    background: linear-gradient(rgba(0,0,0, 0.8), rgba(0, 0, 0, 0.8)), url('../../app-images/highway-landing.jpg');
+    background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.7)), url('../../app-images/highway-landing.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -625,6 +636,7 @@ html {
 
 .MemberProfiles__info {
     font-size: 14px;
+    margin-right: 0.8rem;
 }
 
 .MemberProfiles__info h2 {
@@ -743,9 +755,14 @@ html {
     padding: 2.5rem 0 0;
 }
 
+/* .main__ul li:hover {
+    color: rgb(0, 154, 189);
+} */
+
 .second__ul {
     /* padding: 0.8rem; */
-    border-bottom: 2px solid #EEE;
+    border-bottom: 4px solid #EEE;
+    /* padding: 0.5rem 0; */
 }
 
 .btn-div {
@@ -775,22 +792,45 @@ html {
 }
 
 
+#main-menu-close {
+    padding: 0.5rem;
+}
 
 
 
-
-.main-menu a {
+/* .main-menu a {
   display: block;
-  padding: .75em 15px;
+  padding: 1rem 15px;
   line-height: 1em;
   font-size: 1em;
   color: #373a36;
   text-decoration: none;
-  /* border-bottom: 1px solid #383838; */
+} */
+
+.main__ul a {
+    display: block;
+    /* padding: .75em 15px; */
+    padding: 1.1rem;
+    line-height: 1em;
+    font-size: 1em;
+    color: #373a36;
+    text-decoration: none;
 }
 
+.second__ul a {
+    display: block;
+    /* padding: .75em 15px; */
+    padding: 1rem 15px;
+    line-height: 1em;
+    font-size: 1em;
+    color: #373a36;
+    text-decoration: none;
+}
+
+
+
 .main-menu li:first-child a {
-  border-top: 2px solid #EEE;
+  border-top: 4px solid #EEE;
   padding-top: 1rem;
 }
 
@@ -828,12 +868,16 @@ html {
     justify-content: space-between;
 }
 
-
+.main__ul i, .second__ul i {
+    margin-right: 0.9rem;
+}
 
 .main-menu a:hover,
 .main-menu a:focus {
   /* background: #333; */
+  color: rgb(0, 154, 189);
   background: rgba(0, 0, 0, 0.10);
+  /* background: rgb(0, 154, 189); */
   /* text-decoration: underline; */
 }
 
@@ -962,7 +1006,7 @@ article h2 {
 .MyProfile__userImage {
     /* border-radius: 50%; */
     text-align: left;
-    width: 75%;
+    /* width: 75%; */
 }
 
 .user__image {
@@ -1013,6 +1057,10 @@ ul {
 .Dashboard__browseInput div {
     width: 50%;
     margin: 0 auto;
+}
+
+.MemberProfiles__user a {
+    margin-top: 0.5rem;
 }
 
 
@@ -1165,6 +1213,7 @@ a {
 
 .Post__body img {
     width: 100%;
+    max-height: 270px;
 }
 
 
@@ -1306,13 +1355,31 @@ h3 a {
     background: rgba(0, 0, 0, 0.10);
 }
 
+
 .AddPost {
-    margin: 2rem 0.5rem 1rem;
+    margin: 4rem 0.5rem 1rem;
+}
+
+.Dashboard__submit {
+    padding: 0.2rem 0.4rem;
 }
 
 
 
 @media only screen and (min-width: 768px) {
+
+    .AddPost {
+        margin: 2rem 0.5rem 1rem;
+    }
+    
+
+    .LandingPage__header {
+        background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.6)), url('../../app-images/highway-landing.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
 
     .scroll-up-div a {
         bottom: 15px;

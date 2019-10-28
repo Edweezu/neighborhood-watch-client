@@ -162,16 +162,22 @@ class EditCommentModal extends React.Component {
                     <div>
                          {showCommentForm ? (
                             <div className='modal display-block'>
-                                <section className='modal-main'>
-                                    <form onSubmit={this.handleSubmit}>
-                                        <button type='button' onClick={this.hideCommentModal}>
-                                        <span className="fas fa-times" aria-hidden="true"></span>
-                                        </button>
-                                        <div className='AddPost__formDiv'>
-                                            <label htmlFor='comment_text'>Updated Comment</label>
-                                            <input type='text' id='comment_text' name='comment_text' value={text} onChange={this.handleTextChange}/>
+                                <section className='modal-mainTwo'>
+                                    <form className='EditModal__form' onSubmit={this.handleSubmit}>
+                                        <div className='closeModalDiv'>
+                                            <button type='button' onClick={this.hideCommentModal}>
+                                                <span className="fas fa-times" aria-hidden="true"></span>
+                                            </button> 
                                         </div>
-                                        <button type='submit'>Submit</button>
+                                        <div className='LoginForm__signupElement modalSelect'>
+                                            <div className='LoginForm__signupLabel'>
+                                                <label htmlFor='comment_text' className='LoginForm__signupLabel'>Updated Comment</label>
+                                            </div>
+                                            <div className='LoginForm__signupLabel subjectLabel'>
+                                                <input type='text' id='comment_text' name='comment_text' value={text} onChange={this.handleTextChange}/>
+                                            </div>
+                                        </div>
+                                        <button className='btn' type='submit'>Submit</button>
                                     </form>
                                 </section> 
                             </div>

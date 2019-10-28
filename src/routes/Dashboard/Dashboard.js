@@ -199,7 +199,7 @@ class Dashboard extends React.Component {
                                 </div>  
                            
                              <div>
-                                 <button type='submit'>Submit</button>
+                                 <button className='Dashboard__submit btn' type='submit'>Submit</button>
                              </div>  
                          </form>                    
                     </div>
