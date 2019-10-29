@@ -40,7 +40,7 @@ export default class EditProfileImage extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('get response', responseJson)
+            // console.log('get response', responseJson)
             for (let item in responseJson) {
                 if (responseJson[item] === null || responseJson[item] === 'null') {
                     responseJson[item] = ''
@@ -59,7 +59,7 @@ export default class EditProfileImage extends React.Component {
         e.preventDefault()
         const { updateProfileImage } = this.props
         const { formDataImage } = this.state
-        console.log("submit initiated")
+        // console.log("submit initiated")
         
         this.setState({
             uploading: true
@@ -82,14 +82,13 @@ export default class EditProfileImage extends React.Component {
             body: formData
         })
         .then(res => {
-            console.log("first res")
             if (!res.ok) {
                 return res.json().then(e => Promise.reject(e))
             }
             return res.json()
         })
         .then(responseJson => {
-             console.log('patch responsejson', responseJson)
+            //  console.log('patch responsejson', responseJson)
             this.setState({
                 uploading: false,
                 image: responseJson.image
@@ -112,7 +111,6 @@ export default class EditProfileImage extends React.Component {
     }
 
     handleImageChange = (e) => {
-        console.log('e target', e.target.files[0])
         this.setState({
             image: URL.createObjectURL(e.target.files[0]),
             formDataImage: e.target.files[0]
@@ -136,9 +134,8 @@ export default class EditProfileImage extends React.Component {
         // const showHideClassName = showCommentForm ? 'modal display-block' : 'modal display-none'
         const { showImageModal, handleHideImageModal } = this.props
 
-        console.log('image', image)
-        console.log('formDataImage', formDataImage)
-      
+        // console.log('image', image)
+        // console.log('formDataImage', formDataImage)
 
         return (
             <section>
@@ -150,14 +147,14 @@ export default class EditProfileImage extends React.Component {
                     <div>
                          {showImageModal ? (
                             <div className='modal display-block'>
-                                <section className='modal-mainTwo'>
+                                <section className='modal-main'>
                                     <form className='EditImage__Container' onSubmit={this.handleImageSubmit}>
                                         <div className='closeModalDiv'>
                                             <button type='button' onClick={handleHideImageModal}>
                                                 <span className="fas fa-times" aria-hidden="true"></span>
                                             </button>
                                         </div>     
-                                        <div className='AddPost__formDiv'>
+                                        <div>
                                                 {!image ? 
                                                     <label htmlFor="image" className='LoginForm__signupLabel'>
                                                         <img className='EditImage__image' src={userIcon} alt='user-icon' width='200' height='200px'/>

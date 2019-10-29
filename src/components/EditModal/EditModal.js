@@ -105,7 +105,7 @@ class EditModal extends React.Component {
         let whoLiked = {}
 
         let usersFilter = () => {
-            console.log('userlist', usersList)
+            // console.log('userlist', usersList)
             return usersList.filter(user => {
                 return user.user_id === user_logged_in
             }).length
@@ -167,7 +167,7 @@ class EditModal extends React.Component {
                 ])
             })
             .then(([totalLikesResJson, whoLikedResJson]) => {
-                console.log("delete likes", totalLikesResJson.likes)
+                // console.log("delete likes", totalLikesResJson.likes)
                 this.setState({
                     likes: totalLikesResJson.likes,
                     usersList: whoLikedResJson
@@ -288,7 +288,7 @@ class EditModal extends React.Component {
             uploading: true
         })
 
-        console.log('event target', e.target['image'].files[0])
+        // console.log('event target', e.target['image'].files[0])
 
         let formData = new FormData()
 
@@ -314,7 +314,7 @@ class EditModal extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-             console.log('patch responsejson', responseJson)
+            //  console.log('patch responsejson', responseJson)
             this.context.updatePost(responseJson)
             this.hideModal()
         })
@@ -378,7 +378,7 @@ class EditModal extends React.Component {
         // console.log('edit modal userlists', usersList)
 
         // console.log('user logged', this.state.user_logged_in)
-        console.log('image', image)
+        // console.log('image', image)
 
         return (
             <section className='EditModal'>
@@ -420,14 +420,14 @@ class EditModal extends React.Component {
                                         </select>  
                                     </div>           
                                 </div>
-                                <div className='LoginForm__signupElement'>
+                            </div>
+                            <div className='LoginForm__signupElement'>
                                     <div className='LoginForm__signupLabel'>
                                         <label htmlFor='subject' className='LoginForm__signupLabel'>Subject</label>
                                     </div>
                                     <div className='LoginForm__signupLabel subjectLabel'>
                                         <input type='text' id='subject' name='subject' required value={subject} onChange={this.handleSubjectChange}></input>
                                     </div>
-                                </div>
                             </div>
                             <div className='LoginForm__signupElement'>
                                 <div className='LoginForm__signupLabel'>

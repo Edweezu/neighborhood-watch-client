@@ -28,14 +28,12 @@ class MyProfile extends React.Component {
         image: null,
         //need to use eval here b/c getItem returns 'false' as a string which shows the modal because 'false' is converted to true
         showLocationForm: eval(localStorage.getItem('showLocationForm')) || false,
-        showImageModal: false
+        showImageModal: false,
+        isHovering: false
     }
 
     componentDidMount () {
         // console.log('show', localStorage.getItem('showLocationForm'))
-
-        console.log('component mounted')
-
         if (this.state.showLocationForm) {
             document.body.style.overflowY = 'hidden'
         }
@@ -157,7 +155,7 @@ class MyProfile extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('response basic', responseJson)
+            // console.log('response basic', responseJson)
             this.setState({
                 first_name: responseJson.first_name,
                 last_name: responseJson.last_name,
@@ -189,7 +187,7 @@ class MyProfile extends React.Component {
             uploading: false,
             showLocationForm: false
         }, () => {
-            console.log("hide bool", this.state)
+            // console.log("hide bool", this.state)
             localStorage.setItem('showLocationForm', this.state.showLocationForm)
         })
     }
@@ -203,7 +201,7 @@ class MyProfile extends React.Component {
             state: responseJson.state,
             city: responseJson.city,
         }, () => {
-            console.log("hide bool", this.state)
+            // console.log("hide bool", this.state)
             localStorage.setItem('showLocationForm', this.state.showLocationForm)
         })
     }
@@ -237,7 +235,7 @@ class MyProfile extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('submit response', responseJson)
+            // console.log('submit response', responseJson)
             // this.context.updateComment(responseJson)
             this.hideAndUpdateModal(responseJson)
         })
@@ -253,7 +251,7 @@ class MyProfile extends React.Component {
             uploading: true
         })
 
-        console.log('event target', e.target['image'].files[0])
+        // console.log('event target', e.target['image'].files[0])
 
         let formData = new FormData()
 
@@ -273,7 +271,7 @@ class MyProfile extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-             console.log('patch responsejson', responseJson)
+            //  console.log('patch responsejson', responseJson)
             this.setState({
                 uploading: false,
                 image: responseJson.image,
@@ -318,6 +316,11 @@ class MyProfile extends React.Component {
     }
 
     updateProfileImage = (responseJson) => {
+        for (let item in responseJson) {
+            if (responseJson[item] === null || responseJson[item] === 'null') {
+                responseJson[item] = ''
+            }
+        }
         this.setState({
            image: responseJson.image,
            showImageModal: false
@@ -336,48 +339,75 @@ class MyProfile extends React.Component {
        })
    }
 
-   handleMouseOver = () => {
+  
+   handleMouseLeave = () => {
        this.setState({
-           image: addPhotoIcon
+        isHovering: false
        })
    }
 
-   handleMouseLeave = () => {
+   handleMouseEnter = () => {
        this.setState({
-           image: this.state.imageCopy2
+           isHovering: true
        })
    }
+
+
+//    <label htmlFor="image" className='MyProfile__image'></label>
 
     render () {
       
         // console.log('state', this.state)
-        let { first_name, last_name,  state, city, email, occupation, interests, image , showImageModal } = this.state
+        let { first_name, last_name,  state, city, email, occupation, interests, image , showImageModal, isHovering } = this.state
         
-        console.log('image', image)
+        // console.log('image', image)
 
         return (
             <section className='MyProfile'>
                 
                 <section className='MyProfile__userContainer'>
-                    <h1>My Profile</h1>
+                    {/* <h1>My Profile</h1> */}
                     <DashNav />
                     <section className='MyProfile__userInfo'>
                         <form onSubmit={this.handleImageSubmit}>
-                            <div className="image-upload">
-                                {!image ? <label htmlFor="image" className='MyProfile__image'>
-                                        <img src={userIcon} alt='user-icon' width='175px' height='175px'/>
-                                        {/* <p className='image-text'>
-                                            Add a Photo
-                                        </p> */}
-                                </label> : <label htmlFor="image" className='MyProfile__image'>
-                                        <img className='MyProfile__userImage' src={image} alt='user-icon' width='200' height='200px'/>
-                                        {/* <p className='image-text'>
-                                            Add a Photo
-                                        </p> */}
-                                </label>}
-                                <button className='btn' type='button' onClick={this.handleShowImageModal}>Update Photo</button> 
-                                {/* <input type='file' id='image' name='image' onChange={this.handleImageChange} /> */}
-                                {/* <button type='submit'>Submit Profile Picture</button> */}
+                            <div className="image-upload" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                                {!image ? 
+                                    <div>
+                                        {isHovering ?
+                                            <div className='MyProfile__hoverDiv'>
+                                                {/* <img src={addPhotoIcon} alt='add-icon' width='175px' height='175px'>
+                                                </img> */}
+                                                <div className='MyProfile__hoverCamera'>
+                                                    <i className="fas fa-camera"></i>
+                                                </div>
+                                                <div className='MyProfile__hoverText'>
+                                                    Update Photo
+                                                </div>
+                                                <button className='AddPost__fileInputLabel' type='button' onClick={this.handleShowImageModal}>
+                                                </button> 
+                                            </div>
+                                        :  
+                                            <img src={userIcon} alt='user-icon' width='175px' height='175px'/>
+                                        }
+                                    </div>  : 
+                                    <div>
+                                        {isHovering ? 
+                                        <div className='MyProfile__hoverDiv'>
+                                            <div className='MyProfile__hoverCamera'>
+                                                    <i className="fas fa-camera"></i>
+                                                </div>
+                                                <div className='MyProfile__hoverText'>
+                                                    Update Photo
+                                                </div>
+                                            <button className='AddPost__fileInputLabel' type='button' onClick={this.handleShowImageModal}>
+                                            
+                                        </button> 
+                                        </div>
+                                        :  
+                                            <img className='MyProfile__userImage' src={image} alt='user-icon' width='175px' height='175px' />
+                                        }
+                                    </div>
+                                }
                             </div>
                         </form>
                         {showImageModal ? 
@@ -397,7 +427,7 @@ class MyProfile extends React.Component {
                         </div>
                         <section>
                             <div className={this.showHideClassName()}>
-                                <section className='modal-mainTwo'>
+                                <section className='modal-main'>
                                     <form className='EditModal__form' onSubmit={this.handleLocationSubmit}>
                                         <div className='closeModalDiv'>
                                             <button type='button' onClick={this.hideLocationModal}>
@@ -426,7 +456,7 @@ class MyProfile extends React.Component {
                                                 </select>
                                             </div>      
                                         </div>
-                                        <button className='btn' type='submit'>Submit</button>
+                                        <button className='Profile__locationBtn btn' type='submit'>Submit</button>
                                     </form>
                                 </section> 
                             </div>    

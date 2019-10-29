@@ -74,6 +74,8 @@ class Post extends React.Component {
 
         // console.log('post cat', post_category)
 
+        // console.log('image', image)
+
         
         return (
             <section className='Post'>
@@ -85,7 +87,7 @@ class Post extends React.Component {
                         <h4><Link to={`/post-page/${id}`}>{subject}</Link></h4>
                         <p>{message}</p>
                         {image ? (
-                           
+
                             <img src={image} alt='default icon'/>
                             
                         ): null}

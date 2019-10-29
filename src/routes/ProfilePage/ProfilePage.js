@@ -166,19 +166,21 @@ class ProfilePage extends React.Component {
                             </span>
                         </div>
                         <div className='LoginForm__signupLabel'>
-                            {/* <input id='city' name='city' type='text'
-                            required/> */}
-                            {/* <AutoComplete onPlaceChanged={onPlaceChanged} /> */}
-                            {/* <AddressDetails place={place} />  */}
-                            <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.handleChangeCountry} required>
-                                <option value=''>Select Country</option>
-                            </select>
-                            <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.handleChangeState} required>
-                                <option value=''>Select State</option>
-                            </select>
-                            <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.handleChangeCity} required>
-                                <option value=''>Select City</option>
-                            </select>
+                            <div className='selectContainer'>
+                                <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.handleChangeCountry} required>
+                                    <option value=''>Select Country</option>
+                                </select>
+                            </div>
+                            <div className='selectContainer'>
+                                <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.handleChangeState} required>
+                                    <option value=''>Select State</option>
+                                </select>
+                            </div>
+                            <div className='selectContainer'>
+                                <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.handleChangeCity} required>
+                                    <option value=''>Select City</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div className='LoginForm__signupElement'>

@@ -65,6 +65,7 @@
 }
 
 .closeModalDiv button {
+    background: #fafafa;
     border: 0;
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
@@ -87,7 +88,9 @@
 
 
 .EditModal__form {
-    margin: 0.75rem;
+    max-width: 480px;
+    padding: 0.75rem;
+    margin: 0 auto;
 }
 
 .EditModal__buttonsDiv {
@@ -218,7 +221,7 @@
 }
 
 .MyProfile {
-    text-align: left;
+    text-align: center;
 }
 
 .MyProfile h1 {
@@ -353,12 +356,17 @@ body {
 }
 
 .MyProfile button {
-    margin-bottom: 0.8rem;
-    margin-top: 0.3rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
     margin-right: 4%;
     margin-left: 4%;
     /* padding-right: 4%; */
     /* display: block; */
+}
+
+.Profile__locationBtn {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .EditImage__Container {
@@ -368,12 +376,18 @@ body {
 .MyProfile h3 {
     font-size: 20px;
     margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .list-section {
     padding-left: 4%;
     padding-right: 4%;
     border-top: 8px solid #EEE;
+    padding-top: 1rem;
+}
+
+.list-section i {
+    margin-right: 0.7rem;
 }
 
 
@@ -659,9 +673,10 @@ html {
 
 .image-upload {
     /* text-align: center; */
+    margin: 0 auto;
     position: relative;
-    /* padding-left: 4%;
-    padding-right: 4%; */
+    /* padding-left: 4%; */
+    /* padding-right: 4%; */ 
 }
 
 .MyProfile__image {
@@ -722,7 +737,7 @@ html {
 
 .menu-toggle:hover,
 .menu-toggle:focus {
-  color: #c00;
+  color: #c3c3c3;
 }
 
 
@@ -1053,7 +1068,7 @@ ul {
 }
 
 .Dashboard__browseInput div {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
 }
 
@@ -1211,7 +1226,8 @@ a {
 
 .Post__body img {
     width: 100%;
-    max-height: 270px;
+    max-height: 400px;
+    max-width: 480px;
 }
 
 
@@ -1237,6 +1253,10 @@ h3 a {
     display:none;
 }
 
+
+.main__ul {
+    border-bottom: 4px solid #EEE;
+}
 
 
 
@@ -1296,6 +1316,80 @@ h3 a {
     text-align: left;
 }
 
+.MyProfile__userInfo {
+    margin-top: 2rem;
+}
+
+.image-upload button, .image-upload {
+    width: 175px;
+    height: 175px;
+}
+
+
+.MyProfile__hoverDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 3px dotted #EEE;
+    height: 175px;
+    width: 175px;
+    color: rgb(0, 154, 189);
+}
+
+.MyProfile__hoverCamera {
+    margin-bottom: 0.5rem;
+}
+
+
+/* .MyProfile__hoverCamera, .MyProfile__hoverText {
+    display: inline-block;
+} */
+
+.fa-camera {
+    font-size: 32px;
+}
+
+
+@media only screen and (min-width: 480px) {
+    .Dashboard__browseInput h4 {
+        font-size: 1.4rem;
+    }
+
+    .Dashboard__browseInput div {
+        width: 50%;
+    }
+
+    .Dashboard__addCity {
+        margin-top: 2.5rem;
+    }
+
+    .Dashboard__addCity h4 {
+        font-size: 1.2rem;
+    }
+
+    .Dashboard__browseInput h4, .Dashboard__addCity h4 {
+        margin-bottom: 0.6rem;
+    }
+
+    .Dashboard__addCityForm {
+        width: 75%;
+    }
+
+    .DashMainPosts__header h2 {
+        font-size: 28px;
+    }
+
+    .selectModalDiv select {
+        font-size: 13px;
+    }
+
+    .selectContainer select {
+        font-size: 12px;
+    }
+}
+
 
 
 @media only screen and (min-width: 640px) {
@@ -1304,7 +1398,50 @@ h3 a {
         justify-content: space-between;
     }
 
+    .Dashboard__addCity {
+        margin-top: 0;
+    }
+
+    .Dashboard__addCity h4 {
+        font-size: 1.1rem;
+    }
+
+    .Dashboard__browseInput h4 {
+        font-size: 1.25rem;
+    }
+
+    .DashMainPosts__header {
+        text-align: left;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+
+    .AddPost {
+        margin: 0;
+    }
+
+    .EditModal__form {
+        padding: 0;
+        padding-top: 0.8rem !important;
+    }
+
+
+    .Dashboard {
+        padding-top: 6rem;
+    }
+
+    .selectContainer, .Dashboard__addCityForm, .Dashboard__browseInput div {
+        margin: 0;
+    }
+
+    .selectContainer {
+        margin-bottom: 0.5rem !important;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
     .Dashboard__browseContainer {
+        width: 95%;
         display: flex;
         text-align: left;
     }
@@ -1313,7 +1450,7 @@ h3 a {
         border: 1px solid #EEE;
         border-radius: 6px;
         width: 80%;
-        height: 65%;
+        height: 80%;
     }
 
     .modalSelect {
@@ -1324,6 +1461,10 @@ h3 a {
         margin-right: 0.5rem;
     }
 
+    .MemberProfiles__image img {
+        width: 150px;
+        height: 150px;
+    }
 
 
     .messageAdd input {
@@ -1363,6 +1504,30 @@ h3 a {
     .messageAdd label {
         margin-right: 0.6rem;
     }
+
+    .LandingPage__header {
+        background: linear-gradient(rgba(0,0,0, 0.6), rgba(0, 0, 0, 0.6)), url('../../app-images/highway-landing.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    .MyProfile__userContainer {
+        text-align: center;
+        max-width: 500px;
+        border: 1px solid #EEE;
+    }
+
+    .modal-main h3 {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .Profile__locationBtn {
+        width: 400px;
+        font-size: 1rem;
+    }
     
 }
 
@@ -1371,15 +1536,6 @@ h3 a {
 
     .AddPost {
         margin: 2rem 0.5rem 1rem;
-    }
-    
-
-    .LandingPage__header {
-        background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.6)), url('../../app-images/highway-landing.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
     }
 
     .scroll-up-div a {
@@ -1395,6 +1551,10 @@ h3 a {
         z-index: 999;
         padding: 1rem;
     } */
+
+    .main__ul {
+        border-bottom: none;
+    }
 
 
     .Nav__footer {
@@ -1622,11 +1782,11 @@ h3 a {
         border: 0 !important; 
     }
     
-    .main-menu a:hover,
+    /* .main-menu a:hover,
     .main-menu a:focus {
         background: none; 
         color: #c00;
-    }
+    } */
 
 }
 
