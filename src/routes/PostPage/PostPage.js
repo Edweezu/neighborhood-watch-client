@@ -30,7 +30,8 @@ class PostPage extends React.Component {
           place_id: 1,
           show: false,
           uploading: false,
-          number_of_comments: null
+          number_of_comments: null,
+          formDataImage: null
       }
 
     static contextType = MainContext
@@ -147,11 +148,23 @@ class PostPage extends React.Component {
         }
     } 
 
-    handleImageChange = (e) => {
+    resetValues = (e) => {
+        e.target.value = null
+    }
+  
+    handleDeleteImage = (e) => {
         this.setState({
-            image: e.target.files[0]
+            image: null,
+            formDataImage: null
         })
     }
+
+    handleImageChange = (e) => {
+        this.setState({
+            image: URL.createObjectURL(e.target.files[0]),
+            formDataImage: e.target.files[0]
+        })
+     }
 
     handlePlaceChange = (e) => {
         this.setState({
@@ -268,7 +281,7 @@ class PostPage extends React.Component {
     render () {
 
         const { posts, comments=[], places } = this.context
-        const { uploading, show, subject, message, post_category, place_id, number_of_comments } = this.state
+        const { uploading, show, subject, message, post_category, place_id, number_of_comments, image } = this.state
         
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}
@@ -381,6 +394,22 @@ class PostPage extends React.Component {
                                                         <textarea type='text' id='message' name='message' value={message} onChange={this.handleMessageChange} required></textarea>
                                                     </div>
                                                 </div>
+                                                <div className='AddPost__imageContainer'>
+                                                    {!image ? 
+                                                        null
+                                                    :   
+                                                    <>
+                                                        <div className='AddPost__imageCancel'>
+                                                            <button type='button' onClick={this.handleDeleteImage}>
+                                                                <span className="fas fa-times" aria-hidden="true"></span>
+                                                            </button>
+                                                        </div>
+                                                        <label htmlFor="image" className='LoginForm__signupLabel'>
+                                                            <img className='EditImage__image' src={image} alt='user-icon' width='75' height='75px'/>
+                                                        </label>
+                                                    </>
+                                                    }
+                                                </div>
                                                 <div className='AddPost__submitContainer'>
                                                     <div className='AddPost__submitDiv'>
                                                         <div>
@@ -390,7 +419,7 @@ class PostPage extends React.Component {
                                                             </span>
                                                         </div>
                                                         <label className='AddPost__fileInputLabel'>
-                                                            <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange}/>
+                                                            <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange} onClick={this.resetValues}/>
                                                         </label>
                                                     </div>
                                                     <button className='btn' type='submit'>Submit</button>

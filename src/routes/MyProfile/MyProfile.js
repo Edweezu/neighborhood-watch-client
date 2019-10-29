@@ -34,6 +34,8 @@ class MyProfile extends React.Component {
     componentDidMount () {
         // console.log('show', localStorage.getItem('showLocationForm'))
 
+        console.log('component mounted')
+
         if (this.state.showLocationForm) {
             document.body.style.overflowY = 'hidden'
         }
@@ -53,7 +55,7 @@ class MyProfile extends React.Component {
         })
         .then(responseJson => {
             for (let item in responseJson) {
-                if (responseJson[item] === null) {
+                if (responseJson[item] == null || responseJson[item] === 'null') {
                     responseJson[item] = ''
                 }
             }
@@ -351,6 +353,8 @@ class MyProfile extends React.Component {
         // console.log('state', this.state)
         let { first_name, last_name,  state, city, email, occupation, interests, image , showImageModal } = this.state
         
+        console.log('image', image)
+
         return (
             <section className='MyProfile'>
                 

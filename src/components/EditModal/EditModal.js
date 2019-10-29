@@ -20,7 +20,8 @@ class EditModal extends React.Component {
         user_logged_in: null,
         post_user: null,
         likes: 0,
-        usersList: []
+        usersList: [],
+        formDataImage: null
     }
 
 
@@ -320,12 +321,6 @@ class EditModal extends React.Component {
 
     }
 
-    handleImageChange = (e) => {
-        this.setState({
-            image: e.target.files[0]
-        })
-    }
-
     handlePlaceChange = (e) => {
         this.setState({
             //only need e.target.value here because this function is already located inside the event target
@@ -351,20 +346,39 @@ class EditModal extends React.Component {
         })
     }
 
+    //need to reset input file value everytime you click the input button or else the onChnage function won't fire off because it'll be the same path technically
+    resetValues = (e) => {
+      e.target.value = null
+    }
+
+    handleDeleteImage = (e) => {
+      this.setState({
+          image: null,
+          formDataImage: null
+      })
+    }
+
+  handleImageChange = (e) => {
+    this.setState({
+        image: URL.createObjectURL(e.target.files[0]),
+        formDataImage: e.target.files[0]
+    })
+   }
+
     render () {
 
         const { places=[] } = this.context
         // const { hideModal, show } = this.props
         const { number_of_comments } = this.props
 
-        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList } = this.state
+        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList, image } = this.state
 
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
 
         // console.log('edit modal userlists', usersList)
 
         // console.log('user logged', this.state.user_logged_in)
-        // console.log('image', image)
+        console.log('image', image)
 
         return (
             <section className='EditModal'>
@@ -423,6 +437,22 @@ class EditModal extends React.Component {
                                     <textarea type='text' id='message' name='message' value={message} onChange={this.handleMessageChange} required></textarea>
                                 </div>
                             </div>
+                            <div className='AddPost__imageContainer'>
+                                    {!image ? 
+                                        null
+                                    :   
+                                    <>
+                                        <div className='AddPost__imageCancel'>
+                                            <button type='button' onClick={this.handleDeleteImage}>
+                                                <span className="fas fa-times" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <label htmlFor="image" className='LoginForm__signupLabel'>
+                                            <img className='EditImage__image' src={image} alt='user-icon' width='75' height='75px'/>
+                                        </label>
+                                    </>
+                                    }
+                            </div>
                             <div className='AddPost__submitContainer'>
                                 <div className='AddPost__submitDiv'>
                                     <div>
@@ -432,7 +462,7 @@ class EditModal extends React.Component {
                                         </span>
                                     </div>
                                     <label className='AddPost__fileInputLabel'>
-                                        <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange}/>
+                                        <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange} onClick={this.resetValues}/>
                                     </label>
                                 </div>
                                 <button className='btn' type='submit'>Submit</button>

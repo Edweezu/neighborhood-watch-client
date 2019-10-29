@@ -41,6 +41,12 @@ export default class EditProfileImage extends React.Component {
         })
         .then(responseJson => {
             console.log('get response', responseJson)
+            for (let item in responseJson) {
+                if (responseJson[item] === null || responseJson[item] === 'null') {
+                    responseJson[item] = ''
+                }
+            }
+
             this.setState({
                 image: responseJson.image
             })
@@ -53,6 +59,7 @@ export default class EditProfileImage extends React.Component {
         e.preventDefault()
         const { updateProfileImage } = this.props
         const { formDataImage } = this.state
+        console.log("submit initiated")
         
         this.setState({
             uploading: true
@@ -61,6 +68,8 @@ export default class EditProfileImage extends React.Component {
         // console.log('event target', e.target['image'].files[0])
 
         let formData = new FormData()
+
+        
 
         // formData.append('image', e.target['image'].files[0])
         formData.append('image', formDataImage)
@@ -73,6 +82,7 @@ export default class EditProfileImage extends React.Component {
             body: formData
         })
         .then(res => {
+            console.log("first res")
             if (!res.ok) {
                 return res.json().then(e => Promise.reject(e))
             }
@@ -102,6 +112,7 @@ export default class EditProfileImage extends React.Component {
     }
 
     handleImageChange = (e) => {
+        console.log('e target', e.target.files[0])
         this.setState({
             image: URL.createObjectURL(e.target.files[0]),
             formDataImage: e.target.files[0]
@@ -115,13 +126,18 @@ export default class EditProfileImage extends React.Component {
         })
     }
 
+    resetValues = (e) => {
+        e.target.value = null
+    }
+
     render () {
 
-        const { uploading, image } = this.state
+        const { uploading, image, formDataImage } = this.state
         // const showHideClassName = showCommentForm ? 'modal display-block' : 'modal display-none'
         const { showImageModal, handleHideImageModal } = this.props
 
         console.log('image', image)
+        console.log('formDataImage', formDataImage)
       
 
         return (
@@ -161,16 +177,17 @@ export default class EditProfileImage extends React.Component {
                                         <div className='AddPost__submitDiv'>
                                            
                                             {!image ? 
-                                                <div>
+                                                
                                                  <div>
                                                     <span>
                                                         <button className='btn' type='button'>Add Photo</button>
                                                     </span>
-                                                </div>
-                                                <label className='AddPost__fileInputLabel'>
-                                                    <input className='AddPost__fileInput' type='file' id='image'  name='image' onChange={this.handleImageChange}/>
+                                                    <label className='AddPost__fileInputLabel'>
+                                                    <input className='AddPost__fileInput' type='file' id='image'  name='image' onChange={this.handleImageChange} onClick={this.resetValues}/>
                                                 </label>
                                                 </div>
+                                                
+                                               
                                             :
                                                 <div>
                                                     {/* <label className='AddPost__fileInputLabel'>

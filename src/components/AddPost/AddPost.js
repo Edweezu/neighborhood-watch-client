@@ -7,11 +7,15 @@ import MainContext from '../../contexts/MainContext'
 import Spinner from '../Spinner/Spinner'
 
 class AddPost extends React.Component {
+    
+
+    static contextType = MainContext
 
     state = {
         showAddForm: false,
         image: null,
-        uploading: false
+        uploading: false,
+        formDataImage: null
     }
 
     handleAddPostOpen = () => {
@@ -30,7 +34,6 @@ class AddPost extends React.Component {
 
 
 
-    static contextType = MainContext
 
     handleSubmitForm = () => {
         this.setState({
@@ -52,7 +55,7 @@ class AddPost extends React.Component {
         formData.append('message', message.value)
         formData.append('post_category', post_category.value)
         formData.append('place_id', browse_cities.value)
-        formData.append('image', this.state.image)
+        formData.append('image', this.state.formDataImage)
        
 
         console.log('formdata', formData)
@@ -91,23 +94,39 @@ class AddPost extends React.Component {
         })
     }
 
-   
-    
+
       
       handleImageChange = (e) => {
+          console.log("handleimagechange")
           this.setState({
-            image: e.target.files[0]
+            image: URL.createObjectURL(e.target.files[0]),
+            formDataImage: e.target.files[0]
           })
       }
+
+      //need to reset input file value everytime you click the input button or else the onChnage function won't fire off because it'll be the same path technically
+      resetValues = (e) => {
+        e.target.value = null
+      }
+
+      handleDeleteImage = (e) => {
+        this.setState({
+            image: null,
+            formDataImage: null
+        })
+    }
 
 
     render () {
         // const { showForm } = this.state
         const { places } = this.context
 
-        const { uploading, showAddForm } = this.state
+        const { uploading, showAddForm, image, formDataImage } = this.state
 
         const showHideClassName = showAddForm ? 'modal display-block' : 'modal display-none'
+
+        // console.log('formdataimage', formDataImage)
+        // console.log('image', image)
 
         return (
             <section className='AddPost'>
@@ -190,6 +209,22 @@ class AddPost extends React.Component {
                                     <label htmlFor='message'>Message</label>
                                     <textarea type='text' id='message' name='message' required></textarea>
                                 </div> */}
+                                <div className='AddPost__imageContainer'>
+                                    {!image ? 
+                                        null
+                                    :   
+                                    <>
+                                        <div className='AddPost__imageCancel'>
+                                            <button type='button' onClick={this.handleDeleteImage}>
+                                                <span className="fas fa-times" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <label htmlFor="image" className='LoginForm__signupLabel'>
+                                            <img className='EditImage__image' src={image} alt='user-icon' width='75' height='75px'/>
+                                        </label>
+                                    </>
+                                    }
+                                </div>
                                 <div className='AddPost__submitContainer'>
                                     
                                     <div className='AddPost__submitDiv'>
@@ -200,7 +235,7 @@ class AddPost extends React.Component {
                                             </span>
                                         </div>
                                             <label className='AddPost__fileInputLabel'>
-                                                <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange}/>
+                                                <input className='AddPost__fileInput' type='file' id='image' name='image' onChange={this.handleImageChange} onClick={this.resetValues}/>
                                             </label>
                                     </div>
                                     <button className='btn' type='submit'>Submit</button>
