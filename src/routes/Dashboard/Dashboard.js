@@ -198,26 +198,28 @@ class Dashboard extends React.Component {
                                     </select>
                                 </div>  
                            
-                             <div>
+                             <div className='selectButtonContainer'>
                                  <button className='Dashboard__submit btn' type='submit'>Submit</button>
                              </div>  
                          </form>                    
                     </div>
                 </section>
-                <section className='DashMainPosts__header'>
-                    <AddPost />
-                    {/* <h2>{place.city}, {place.state}</h2> */}
-                    <h2>{place.city}</h2>
-                </section>
-                <section className='DashContainer'>
-                   
-                    <DashNav />
-                    <section className='DashMainPosts'>
-                       
-                        <PostList 
-                            categoryid={this.props.match.params.categoryId}
-                            posts={posts}
-                        />
+                <section className='Dashboard__Main'>
+                    <section className='DashMainPosts__header'>
+                        <AddPost />
+                        {/* <h2>{place.city}, {place.state}</h2> */}
+                        <h2>{place.city}</h2>
+                    </section>
+                    <section className='DashContainer'>
+                    
+                        <DashNav />
+                        <section className='DashMainPosts'>
+                        
+                            <PostList 
+                                categoryid={this.props.match.params.categoryId}
+                                posts={posts}
+                            />
+                        </section>
                     </section>
                 </section>
                 <div className='scroll-up-div'>

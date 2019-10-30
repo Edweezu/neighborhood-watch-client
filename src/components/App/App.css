@@ -809,6 +809,11 @@ html {
 }
 
 
+.Post:hover {
+    /* background: #eaf9fd; */
+    background: #F7FCFE;
+}
+
 
 /* .main-menu a {
   display: block;
@@ -898,7 +903,8 @@ html {
     /* height: 50px;
     width: 50px; */
     display: inline-block;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
     /* margin-right: 3rem; */
 }
 
@@ -1534,14 +1540,17 @@ h3 a {
 
 @media only screen and (min-width: 768px) {
 
-    .AddPost {
-        margin: 2rem 0.5rem 1rem;
-    }
+    /* .AddPost {
+        margin: 2rem 0 1rem;
+    } */
 
     .scroll-up-div a {
         bottom: 15px;
         right: 15px;
     }
+
+
+
 
       /* .AddPost__form {
         background-color: lightgrey;
@@ -1563,14 +1572,21 @@ h3 a {
 
     .DashMainPosts__header {
         display: flex;
+        margin-top: 0.5rem;
+        margin-left: 1.5%;
+        margin-bottom: 1.2rem;
     }
 
     .DashMainPosts__header h2 {
         margin: 0;
-        margin-top: 2rem;
-        font-size: 3rem;
+        margin-top: 0.2rem;
+        font-size: 2.4rem;
         flex: 1 1;
-        text-align: left;
+        text-align: center;
+    }
+
+    .Dashboard__browseInput {
+        flex: 0;
     }
   
 
@@ -1600,32 +1616,47 @@ h3 a {
     .Dashboard__browseContainer {
         display: flex;
         /* justify-content: space-between; */
+        max-width: 195px;
         margin: 0;
-        margin-left: 0.5rem;
-        /* padding-right: 1rem;
-        padding-left: 1rem; */
-        
+        margin-top: 4rem;
+        /* margin-left: 1rem; */
+        justify-content: flex-start;
+        flex-direction: column;
+        flex: 1 1;
+        border-top: 1px solid #EEE;
+        padding: 1.3rem 1rem;
+        background: linear-gradient(to left,#fefefe, 99%, #8c8c8d);
+    }
+
+    .Dashboard__Main {
+        flex: 3 1;
+    }
+
+    .Dashboard__browseInput div {
+        width: 100%;
     }
 
     .Dashboard__addCityForm {
-        display: flex;
+        /* display: flex; */
+        width: 100%;
     }
 
     .Dashboard__browseInput {
         /* display: flex */
-        margin-right: 5rem;
+        /* margin-right: 5rem; */
+        margin: 0;
+        margin-bottom: 1.5rem;
+        flex: 0;
     }
 
     .Dashboard__browseInput h4 {
         margin-right: 0.5rem;
+        font-size: 1.1rem;
     }
 
     .Dashboard__addCity h4 {
         margin-right: 0.5rem;
-    }
-
-    .Dashboard__browseInput {
-        margin: 0;
+        font-size: 1rem;
     }
 
     /* .Dashboard__addSelect {
@@ -1633,13 +1664,21 @@ h3 a {
     } */
 
     .Dashboard__addCity {
-        flex: 2 1;
+        flex: 0;
         /* display: flex;
         justify-content: flex-end; */
     }
 
     .selectContainer {
-        padding-right: 0.8rem;
+        margin: 0;  
+    }
+
+    .selectContainer select {
+        font-size: 11px;
+    }
+
+    .selectButtonContainer {
+        margin-top: 0.8rem;
     }
     
     
@@ -1648,9 +1687,15 @@ h3 a {
     }
 
     .PostPage {
-        height: calc(100vh - 152px);
+        /* height: calc(100vh - 152px); */
         overflow-y: auto;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0;
+        border: 1px solid #EEE;
+        margin-top: 4.5rem;
     }
+
 
     .Nav__logout {
         display: none;
@@ -1660,7 +1705,7 @@ h3 a {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        height: calc(100vh - 198px);
+        height: calc(100vh - 117px);
         /* margin-top: 1rem; */
         border: 1px solid #EEE;
     }
@@ -1683,12 +1728,12 @@ h3 a {
 
     .DashNav {
         display: flex;
-        flex: 0 0 135px;
+        flex: 0 0 165px;
         flex-flow: column nowrap;
         text-align: center;
         z-index: 30;
         background: #061e2a;
-        background: linear-gradient(to right,#fefefe, 99%, #8c8c8d);
+        background: linear-gradient(to right,#fefefe, 98%, #8c8c8d);
         /* padding: 1rem 0 0 0; */
         justify-content: flex-start;
         overflow-y: auto;
@@ -1718,7 +1763,8 @@ h3 a {
         font-weight: 500;
         font-size: 0.85rem;
         letter-spacing: 0.04rem;
-        color: rgb(0, 123, 255);
+        /* color: rgb(0, 123, 255); */
+        color: rgb(0, 154, 189);
         padding: 0.75rem 0.5rem;
         text-transform: uppercase;
     }
@@ -1749,6 +1795,7 @@ h3 a {
     }
 
     .main-menu ul {
+        font-size: 0.9rem;
         width: auto;
         background: rgb(0, 154, 189);
     }
@@ -1782,11 +1829,30 @@ h3 a {
         border: 0 !important; 
     }
     
-    /* .main-menu a:hover,
-    .main-menu a:focus {
-        background: none; 
-        color: #c00;
-    } */
+    .main-menu a:hover,
+    .main-menu a:focus,
+    .main__ul li:hover {
+        cursor: pointer;
+        background: none;
+        color: white;
+        /* color: #006b84; */
+    }
 
+    .fa-home {
+        margin-right: 0.5rem;
+    }
+
+    .Dashboard {
+        padding-top: 4.3rem;
+        flex-direction: row-reverse;
+        display: flex;
+    }
+
+    .modal-main {
+        width: 65%;
+    }
+
+    
+    
 }
 

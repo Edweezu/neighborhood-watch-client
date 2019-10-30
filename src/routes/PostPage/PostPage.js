@@ -45,6 +45,9 @@ class PostPage extends React.Component {
 
     componentDidMount () {
         const { postId } = this.props.match.params
+
+        document.body.style.overflowY = 'auto'
+
         Promise.all([
             fetch(`${config.API_ENDPOINT}/posts`, {
                 method: 'GET',
@@ -377,14 +380,14 @@ class PostPage extends React.Component {
                                                             </select>  
                                                         </div>           
                                                     </div>
-                                                    <div className='LoginForm__signupElement'>
+                                                </div>
+                                                <div className='LoginForm__signupElement'>
                                                         <div className='LoginForm__signupLabel'>
                                                             <label htmlFor='subject' className='LoginForm__signupLabel'>Subject</label>
                                                         </div>
                                                         <div className='LoginForm__signupLabel subjectLabel'>
                                                             <input type='text' id='subject' name='subject' required value={subject} onChange={this.handleSubjectChange}></input>
                                                         </div>
-                                                    </div>
                                                 </div>
                                                 <div className='LoginForm__signupElement'>
                                                     <div className='LoginForm__signupLabel'>

@@ -120,10 +120,10 @@ class Nav extends React.Component {
           </a>
           <ul className='main__ul'>
             <li> 
-                <a href='/register#main-menu-toggle'><i class="fas fa-user-plus"></i>Sign Up</a>
+                <a href='/register#main-menu-toggle'><i className="fas fa-user-plus"></i>Sign Up</a>
             </li>
             <li>
-              <a href='/login#main-menu-toggle'><i class="fas fa-sign-in-alt"></i>Login</a>
+              <a href='/login#main-menu-toggle'><i className="fas fa-sign-in-alt"></i>Login</a>
             </li>
           </ul>
           <div className='Nav__footer'>
