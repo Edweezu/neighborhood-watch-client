@@ -186,7 +186,7 @@ class ProfilePage extends React.Component {
                             </button>
                         </div>
                     </form>
-                    <Footer />
+                    <Footer long={'long'}/>
                 </section>
             </>
         )
