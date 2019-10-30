@@ -1277,13 +1277,14 @@ h3 a {
         border: 1px solid #EEE;
         border-radius: 6px;
         width: 80%;
-        height: 80%;
+        height: 85%;
     }
 
     .modal-mainTwo  {
         border: 1px solid #EEE;
         border-radius: 6px;
         width: 80%;
+        max-width: 700px;
     }
 
     .modalSelect {
@@ -1669,7 +1670,7 @@ h3 a {
         }
 
         .modal-main {
-            width: 50%;
+            width: 58%;
         }
     }
 
