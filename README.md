@@ -1,6 +1,6 @@
 # Neighborhood Watch
 
-Neighborhood Watch is a social community app that allows users to stay informed about what's going on in their city or other cities that they might be interested in. Users can search for upcoming events, stay on their toes about the latest crime, or search through the extensive Lost and Found section. Users can also connect with their fellow neighbors who choose to leave their profile on public. 
+Neighborhood Watch is a social community app that allows users to stay informed about what's going on in their city or other cities that they might be interested in. Users can search for upcoming events, stay on their toes about the latest local crime, or browse through our extensive Lost and Found section. Users can also connect with their fellow neighbors who choose to leave their profile on public and possibly make lifelong friendships.
 
 ## Demo
 
