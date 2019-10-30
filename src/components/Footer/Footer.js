@@ -3,7 +3,6 @@ import './Footer.css'
 
 export default class Footer extends React.Component {
     render () {
-
         let { nav, long } = this.props
 
         return (

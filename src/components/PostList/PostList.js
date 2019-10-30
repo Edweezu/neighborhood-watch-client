@@ -9,14 +9,9 @@ class PostList extends React.Component {
     static contextType = MainContext
 
     render () {
-
         const { place_id, posts=[] } = this.context
         const { categoryid } = this.props
         const postList = getPostsForCategory(posts, categoryid, place_id) || []
-        // console.log('posts', posts)
-        // console.log('place_id', place_id)
-        // console.log('categoryid', categoryid)
-        // console.log('postlist', postList)
 
         return (
             <section className='PostList'>

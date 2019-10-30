@@ -3,12 +3,10 @@ import config from '../../config'
 import TokenService from '../../services/token-service'
 import { withRouter } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext'
-// import { findPlace } from '../../helpers'
 import Spinner from '../Spinner/Spinner'
 
 class AddPost extends React.Component {
     
-
     static contextType = MainContext
 
     state = {
@@ -31,9 +29,6 @@ class AddPost extends React.Component {
             uploading: false
         })
     }
-
-
-
 
     handleSubmitForm = () => {
         this.setState({
@@ -63,10 +58,8 @@ class AddPost extends React.Component {
         return fetch(`${config.API_ENDPOINT}/posts`, {
             method: 'POST',
             headers: {
-                // 'content-type': 'application/json',
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
-        //    body: JSON.stringify(formData)
            body: formData
         })
         .then(res => {
@@ -76,18 +69,8 @@ class AddPost extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            // subject.value = ''
-            // message.value = ''
-            // this.handleSubmitForm()
-            // this.setState({
-            //     showForm: false
-            // })
-            console.log('new post', responseJson)
             this.context.addPost(responseJson)
             this.handleAddPostClose()
-            // this.props.history.push(`/category/${responseJson.post_category}#main-menu-toggle`)
-            // window.location.reload()
-            
         })
         .catch(err => {
             console.error(err)
@@ -118,15 +101,9 @@ class AddPost extends React.Component {
 
 
     render () {
-        // const { showForm } = this.state
         const { places } = this.context
-
-        const { uploading, showAddForm, image, formDataImage } = this.state
-
+        const { uploading, showAddForm, image } = this.state
         const showHideClassName = showAddForm ? 'modal display-block' : 'modal display-none'
-
-        // console.log('formdataimage', formDataImage)
-        // console.log('image', image)
 
         return (
             <section className='AddPost'>
@@ -143,14 +120,6 @@ class AddPost extends React.Component {
                                     </button>
                                 </div>
                                 <div className='AddPost__formContainer'>
-                                    {/* <div className='AddPost__formDiv selectModalDiv' >
-                                        <label htmlFor='browse_cities'>Active Page</label>
-                                            <select id='browse_cities' required>
-                                                {places.map(place => {
-                                                    return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
-                                                })}
-                                            </select>
-                                    </div> */}
                                      <div className='LoginForm__signupElement modalSelect'>
                                         <div className='LoginForm__signupLabel'>
                                             <label htmlFor="browse_cities" className='LoginForm__signupLabel'>Active Page</label>
@@ -175,19 +144,6 @@ class AddPost extends React.Component {
                                             </select>  
                                         </div>      
                                     </div>
-                                    {/* <div className='AddPost__formDiv selectModalDiv'>
-                                        <label htmlFor='post_category'>Category</label>
-                                        <select id='post_category' required>
-                                            <option value='Crime and Alerts'>Crime and Safety </option>
-                                            <option value='Upcoming Events'>Upcoming Events </option>
-                                            <option value='Lost and Found'>Lost and Found</option>
-                                        </select>  
-                                    </div> */}
-                                    
-                                    {/* <div className='AddPost__formDiv'>
-                                        <label htmlFor='subject'>Subject</label>
-                                        <input type='text' id='subject' name='subject'required></input>
-                                    </div> */}
                                 </div>
                                 <div className='LoginForm__signupElement'>
                                         <div className='LoginForm__signupLabel'>
@@ -205,10 +161,6 @@ class AddPost extends React.Component {
                                         <textarea type='text' id='message' name='message' required></textarea>
                                     </div>      
                                 </div>
-                                {/* <div className='messageAdd'>
-                                    <label htmlFor='message'>Message</label>
-                                    <textarea type='text' id='message' name='message' required></textarea>
-                                </div> */}
                                 <div className='AddPost__imageContainer'>
                                     {!image ? 
                                         null

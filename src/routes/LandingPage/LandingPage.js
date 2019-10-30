@@ -25,9 +25,6 @@ class LandingPage extends React.Component {
                                 <Link className="link login_btn" to='/login'>Login</Link>
                             </div>  
                         </header>
-                        {/* <h2 className='LandingPage__descriptHeader'>
-                            Neighborhood Watch Functionalities
-                        </h2> */}
                         <section className='LandingPage__descriptContainer'>
                             <section className='LandingPage__descriptOne'>
                                 <i className="fas fa-lock"></i>

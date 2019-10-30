@@ -17,7 +17,6 @@ export default class EditProfileImage extends React.Component {
         }
     }
 
-
     state = {
         image: null,
         uploading: false,
@@ -25,7 +24,6 @@ export default class EditProfileImage extends React.Component {
     }
 
     componentDidMount () {
-
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'GET',
             headers: {
@@ -40,7 +38,6 @@ export default class EditProfileImage extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            // console.log('get response', responseJson)
             for (let item in responseJson) {
                 if (responseJson[item] === null || responseJson[item] === 'null') {
                     responseJson[item] = ''
@@ -50,8 +47,7 @@ export default class EditProfileImage extends React.Component {
             this.setState({
                 image: responseJson.image
             })
-        })
-        
+        }) 
     }   
 
    
@@ -59,19 +55,12 @@ export default class EditProfileImage extends React.Component {
         e.preventDefault()
         const { updateProfileImage } = this.props
         const { formDataImage } = this.state
-        // console.log("submit initiated")
         
         this.setState({
             uploading: true
         })
 
-        // console.log('event target', e.target['image'].files[0])
-
         let formData = new FormData()
-
-        
-
-        // formData.append('image', e.target['image'].files[0])
         formData.append('image', formDataImage)
 
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
@@ -88,19 +77,12 @@ export default class EditProfileImage extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            //  console.log('patch responsejson', responseJson)
             this.setState({
                 uploading: false,
                 image: responseJson.image
             }, () => updateProfileImage(responseJson))
         })
     }
-    // showCommentModal = () => {
-    //     document.body.style.overflowY = 'hidden'
-    //     this.setState({
-    //         showCommentForm: true
-    //     })
-    // }
 
     hideCommentModal = () => {
         document.body.style.overflowY = 'auto'
@@ -130,12 +112,8 @@ export default class EditProfileImage extends React.Component {
 
     render () {
 
-        const { uploading, image, formDataImage } = this.state
-        // const showHideClassName = showCommentForm ? 'modal display-block' : 'modal display-none'
+        const { uploading, image } = this.state
         const { showImageModal, handleHideImageModal } = this.props
-
-        // console.log('image', image)
-        // console.log('formDataImage', formDataImage)
 
         return (
             <section>
@@ -172,9 +150,7 @@ export default class EditProfileImage extends React.Component {
                                                 }
                                         </div>
                                         <div className='AddPost__submitDiv'>
-                                           
                                             {!image ? 
-                                                
                                                  <div>
                                                     <span>
                                                         <button className='btn' type='button'>Add Photo</button>
@@ -182,23 +158,13 @@ export default class EditProfileImage extends React.Component {
                                                     <label className='AddPost__fileInputLabel'>
                                                     <input className='AddPost__fileInput' type='file' id='image'  name='image' onChange={this.handleImageChange} onClick={this.resetValues}/>
                                                 </label>
-                                                </div>
-                                                
-                                               
+                                                </div>  
                                             :
                                                 <div>
-                                                    {/* <label className='AddPost__fileInputLabel'>
-                                                        <input className='AddPost__fileInput' type='file' id='image'  name='image' onChange={this.handleImageChange}/>
-                                                    </label> */}
                                                     <button className='btn' type='button' onClick={this.handleDeleteImage}>Remove Photo</button>
                                                 </div>
                                             }       
                                         </div>
-                                         {/* <span>
-                                                        <i className="fas fa-image"></i>
-                                                        Add Photo
-                                                    </span> */}
-                                        {/* <input type='file' id='image' name='image' onChange={this.handleImageChange} /> */}
                                         <button className='btn' type='submit'>Submit</button>
                                     </form>
                                 </section> 

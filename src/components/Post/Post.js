@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import EditModal from '../EditModal/EditModal'
 import moment from 'moment'
-// import config from '../../config'
-// import TokenService from '../../services/token-service';
 
 class Post extends React.Component {
 
@@ -24,9 +22,6 @@ class Post extends React.Component {
 
     dateDiff = () => {
         let { date_created } = this.props
-
-
-        // let formattedDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
         let niceDate = moment(date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("MMM DD, YYYY")
 
         //how to change from provided server UTC time to local time so calculations are correct
@@ -38,7 +33,6 @@ class Post extends React.Component {
         //need to divide unix time by 86400 seconds in a day to find day diff
         let dateDiff = (todayUnix - dateUnix)/86400
 
-        // console.log('date diff', dateDiff)
         if (dateDiff > 6) {
             return `Posted on ${niceDate}`
         } else {
@@ -60,23 +54,10 @@ class Post extends React.Component {
         }
     }
 
-   
     render () {
-        
-        const { id, subject, message, user, image, number_of_comments, post_category } = this.props
-       
-
+        const { id, subject, message, user, image, number_of_comments } = this.props
         const nameCapitalized = user.username.charAt(0).toUpperCase() + user.username.slice(1)
-        // const { likes, usersList } = this.state
-        // console.log('post state', this.state)
 
-        // console.log('post state', this.state)
-
-        // console.log('post cat', post_category)
-
-        // console.log('image', image)
-
-        
         return (
             <section className='Post'>
                 <div className='Post__userInfo'>
@@ -93,28 +74,13 @@ class Post extends React.Component {
                         ): null}
                     </div>
                     <div className='Post__date'>
-                        {/* Need to instantiate a function when not using onClick, etc. */}
                         <p>{this.dateDiff()}</p>
                         <EditModal
-                            // show={this.state.show}
-                            // hideModal={this.hideModal}
                             number_of_comments={number_of_comments}
                             postid={id}
                         />  
                     </div>
-                 {/* <div>
-                     {(usersList.filter(user => user.user_id === user_logged_in).length) ? 
-                     (<button type='button' onClick={this.handleLike}><i className="fas fa-heart heartColor"></i>{likes > 0 ? likes : null}</button>) :
-                     (<button type='button' onClick={this.handleLike}><i className="far fa-heart"></i>{likes > 0 ? likes : null}</button>) }
-                    
-                    <span className='Post__commentContainer'>
-                        <i className="fas fa-comment"></i>
-                        <span className='Post__commentNumber'>{number_of_comments}</span>
-                    </span>
-                </div> */}
-
                 </div>
-
             </section>
         )
     }

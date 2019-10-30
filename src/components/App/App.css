@@ -3,7 +3,6 @@
 }
 
 .Comment {
-    /* border-bottom: 2px solid #EEE; */
     padding-left: 4%;
     padding-right: 4%;
     margin-bottom: 1.2rem;
@@ -14,7 +13,6 @@
     font-size: 0.8rem;
     font-weight: bold;
     color: rgb(0, 154, 189);
-    /* color: #797C81; */
 }
 
 .Comment__date p {
@@ -27,8 +25,6 @@
 .Comment__btn-div {
     font-size: 1rem;
 }
-
-
 
 .modal {
     position: fixed;
@@ -49,7 +45,6 @@
     left:50%;
     transform: translate(-50%,-50%);
 }
-
 
 .modal-mainTwo {
     position:fixed;
@@ -77,15 +72,10 @@
     font-weight: bold;
 }
 
-/* .closeModalDiv button:hover {
-    
-} */
-
 .fa-search, .fa-lock, .fa-city {
     font-size: 4rem;
     color: rgb(0, 154, 189);
 }
-
 
 .EditModal__form {
     max-width: 480px;
@@ -110,24 +100,9 @@
 }
 
 .Post__userInfo {
-    /* color: #797C81; */
     color: rgb( 0, 154, 189);
     font-size: 0.9rem;
 }
-
-
-
-
-/* .selectBox {
-    margin: 0.75rem;
-    font-size: 1rem;
-    display: flex;
-} 
-
-.selectBox label {
-    flex: 1;
-    margin-bottom: 0;
-} */
 
 .selectBox select, .subjectLabel input {
     font-size: 1rem;
@@ -141,7 +116,6 @@
     font-size: 1rem;
 }
 
-
 .heartColor {
     color: rgb(224, 36, 94);
 }
@@ -154,25 +128,17 @@
     color : #A6AAB0;
 }
 
-/* .fa-heart:hover {
-    color: rgb(224, 36, 94);
-} */
-
 .fa-heart {
     margin-right: 0.4rem
 }
 
 .fa-comment {
-    /* position: absolute; */
     top: 0;
     bottom: 0;
     right: 1rem;
     font-size: 20px;
     margin-right: 0.4rem
 }
-
-
-
 
 .scroll-up-div a {
     display: block;
@@ -193,8 +159,6 @@
 }
 
 .Post__commentContainer {
-    /* float: right;
-    position: relative; */
     color: #A6AAB0;
 }
 
@@ -202,18 +166,10 @@
     color: rgb(0, 154, 189);
 }
 
-
-
 .Post__commentNumber {
-    /* position: absolute;
-    color: white; */
     right: 1.7rem;
     font-weight: bold;
 }
-
-/* .EditModal__form {
-    
-} */
 
 .display-block {
     display: block;
@@ -289,35 +245,25 @@
     animation: spin 1.2s infinite linear;
 }
 
-
 body {
     margin: 0 auto;
     font-family: 'Helvetica Neue', 'Lato', 'Roboto', 'sans-serif';
-    /* font-family: 'Lato', 'Roboto', 'sans-serif'; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
     line-height: 1.5rem;
     text-align: center;
     color: #373a36;
     box-sizing: border-box;
-    /* overflow-y: hidden; */
-    /* width: 90%; */
-
 }
 
 .LandingPage__descriptOne, .LandingPage__descriptTwo {
     padding-bottom: 2rem;
 }
 
-
 .astrik {
     color: #ed5868;
     margin: 0 0 0 3px;
 }
-
-/* input[type=file] {
-    visibility: hidden;
-} */
 
 .CreateAccount, .LoginPage, .ProfilePage, .MyProfile {
     margin-top: 5rem;
@@ -330,11 +276,6 @@ body {
 .Dashboard {
     padding-top: 4.5rem;
 }
-
-/* .Nav {
-    display: flex;≈
-    flex-flow: row nowrap;
-} */
 
 .Nav__HeaderNotIn {
     flex: 1 0 auto;
@@ -367,8 +308,6 @@ body {
     margin-top: 0.5rem;
     margin-right: 4%;
     margin-left: 4%;
-    /* padding-right: 4%; */
-    /* display: block; */
 }
 
 .Profile__locationBtn {
@@ -408,10 +347,6 @@ body {
     margin-left: 0.5rem;
 }
 
-/* .Dashboard {
-   margin-top: 5.8rem;
-} */
-
 label {
     display: inline-block;
     margin-bottom: 0.5rem;
@@ -421,16 +356,11 @@ label {
     width: 100%;
     max-width: 420px;
     padding: 1rem 1rem 0;
-    /* padding-top: 0rem;
-    padding-bottom: 0rem; */
     margin: auto;
-    /* margin-bottom: 10rem; */
 }
 
 .MyProfile__userContainer {
     width: 100%;
-    /* max-width: 420px; */
-    /* padding: 1.3rem; */
     padding-top: 0rem;
     padding-bottom: 0rem;
     margin: auto;
@@ -438,7 +368,6 @@ label {
 
 .LoginForm__signupLabel {
     text-align: left;
-    /* display: inline-block; */
     margin-bottom: 0.3rem;
 }
 
@@ -473,10 +402,6 @@ label {
     color: red;
 }
 
-
-
-
-
 html {
     height: 100%;
     background-color: #fafafa;
@@ -484,8 +409,6 @@ html {
 
 .post_btn {
     color: white;
-    /* margin-top: 1rem;
-    margin-left: 0.5rem; */
     font-weight: 400;
     border-radius: 3px;
     width: auto;
@@ -495,7 +418,6 @@ html {
     cursor: pointer;
     background-color: rgb(0, 154, 189);
     font-size: 1rem;
-    /* margin-right: 1rem; */
 }
 
 .btn {
@@ -506,7 +428,6 @@ html {
     border-radius: 3px;
     border-width: 2px;
     padding: 0.5rem 0.8rem;
-    /* padding: 0.6rem 1.3rem; */
     border: none;
     font-size: 0.9rem;
 }
@@ -516,12 +437,10 @@ html {
     margin: 1.2rem auto;
 }
 
-
 .LoginForm__redirect a {
     color: rgb(0, 154, 189);
     font-weight: 500;
 }
-
 
 .register_btn {
     display: inline-block;
@@ -532,7 +451,6 @@ html {
     width: 90%;
     border-width: 2px;
     padding: 0.45rem;
-    /* font-size: 1.15rem; */
 }
 
 .register_btn:hover, .btn:hover, .post_btn:hover {
@@ -550,7 +468,6 @@ html {
     border-width: 2px;
     padding: 0.45rem;
     border: 1px solid rgb(0, 154, 189);
-    /* font-size: 1.15rem; */
 }
 
 .login_btn:hover {
@@ -564,8 +481,6 @@ html {
 }
 
 .LandingPage__header {
-    /* margin: 0 1rem; */
-    /* background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.7)), url('../../app-images/neighborhood-background.jpg'); */
     background: linear-gradient(rgba(0,0,0, 0.7), rgba(0, 0, 0, 0.7)), url('../../app-images/highway-landing.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -582,7 +497,6 @@ html {
 
 .LandingPage__header h1 {
     font-size: 22px;
-    /* letter-spacing: 1px; */
 }
 
 .LandingPage__header p {
@@ -609,8 +523,6 @@ html {
     padding-bottom: 0.5rem;
 }
 
-
-
 .LandingPage__btnContainer {
     margin-bottom: 0.8rem;
     width: 90%;
@@ -624,19 +536,12 @@ html {
     margin: 0 auto;
 }
 
-
- h4 {
-     margin: 0;
- }
-
-
-
+h4 {
+    margin: 0;
+}
 
 .Dashboard__addSelect {
-    /* width: 100%;
-    margin-bottom: 0.5rem; */
     display:block;
-    /* margin-right: 0.5rem; */
 }
 
 .ProfilePage__addSelect {
@@ -646,12 +551,6 @@ html {
 .ProfilePage__addSelect:not(:last-child) {
     margin-right: 0.5rem;
 }
-
-
-
-/* .image-upload > input, .image-upload > button {
-    display: none;
-} */
 
 .MemberProfiles__info {
     font-size: 14px;
@@ -673,18 +572,14 @@ html {
     text-align: left;
 }
 
-
 .MemberProfiles__image {
     display: flex;
     align-items: center;
 }
 
 .image-upload {
-    /* text-align: center; */
     margin: 0 auto;
     position: relative;
-    /* padding-left: 4%; */
-    /* padding-right: 4%; */ 
 }
 
 .MyProfile__image {
@@ -713,28 +608,15 @@ html {
     padding-right: 4%;
 }
 
-
-
-  /* .menu__toggle {
-        display: none;
-    } */
-
-/* .DashContainer {
-    border: 1px solid #EEE;
-} */
-
-
 .menu__toggle {
     display: initial;
 }
-
 
 .DashNav {
     display: none;
 }
 
-
-* Button styling */
+/* Button styling */
 .menu-toggle {
   display: inline-block;
   padding: .75em 15px;
@@ -748,7 +630,6 @@ html {
   color: #c3c3c3;
 }
 
-
 .main-menu {
   position: absolute;
   display: none;
@@ -760,13 +641,11 @@ html {
   transition: left 0.3s ease, box-shadow 0.3s ease;
   z-index: 999;
   background: white;
-
 }
 
 .main-menu ul {
   list-style: none;
   margin: 0;
-  
   width: 200px;
   background: white;
 }
@@ -775,20 +654,12 @@ html {
     padding: 2.5rem 0 0;
 }
 
-/* .main__ul li:hover {
-    color: rgb(0, 154, 189);
-} */
-
 .second__ul {
-    /* padding: 0.8rem; */
     border-bottom: 4px solid #EEE;
-    /* padding: 0.5rem 0; */
 }
 
 .btn-div {
-    /* padding-left: .8rem; */
     font-size: 20px;
-    /* margin-top: .3rem; */
 }
 
 .fa-edit {
@@ -806,35 +677,20 @@ html {
 }
 
 .fa-trash-alt:hover {
-    /* color: rgba(0,0,0,.6); */
     color: #d11a2a;
     cursor: pointer;
 }
-
 
 #main-menu-close {
     padding: 0.5rem;
 }
 
-
 .Post:hover {
-    /* background: #eaf9fd; */
     background: #F7FCFE;
 }
 
-
-/* .main-menu a {
-  display: block;
-  padding: 1rem 15px;
-  line-height: 1em;
-  font-size: 1em;
-  color: #373a36;
-  text-decoration: none;
-} */
-
 .main__ul a {
     display: block;
-    /* padding: .75em 15px; */
     padding: 1.1rem;
     line-height: 1em;
     font-size: 1em;
@@ -844,15 +700,12 @@ html {
 
 .second__ul a {
     display: block;
-    /* padding: .75em 15px; */
     padding: 1rem 15px;
     line-height: 1em;
     font-size: 1em;
     color: #373a36;
     text-decoration: none;
 }
-
-
 
 .main-menu li:first-child a {
   border-top: 4px solid #EEE;
@@ -867,7 +720,6 @@ html {
 .AddPost__fileInputLabel {
     position: absolute;
     cursor: pointer;
-    /* font-size: 100px; */
     width: 100%;
     height: 90%;
     top: 0;
@@ -892,11 +744,6 @@ html {
     position: relative;
 }
 
-/* .Nav__footer {
-    background: none !important;
-    padding: 0 !important;
-} */
-
 .AddPost__submitContainer {
     margin-top: 0.5rem;
     display: flex;
@@ -909,20 +756,14 @@ html {
 
 .main-menu a:hover,
 .main-menu a:focus {
-  /* background: #333; */
   color: rgb(0, 154, 189);
   background: rgba(0, 0, 0, 0.10);
-  /* background: rgb(0, 154, 189); */
-  /* text-decoration: underline; */
 }
 
 .back-btn {
-    /* height: 50px;
-    width: 50px; */
     display: inline-block;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
-    /* margin-right: 3rem; */
 }
 
 .PostPage__header {
@@ -934,20 +775,14 @@ html {
     display: inline-block;
 }
 
-
 .back-btn a  {
     display: block;
-    /* padding: .75em 15px; */
     line-height: 1rem;
     font-size: 1rem;
     color: rgb(0, 154, 189);
     text-decoration: none;
     border-radius: 50%;
 }
-
-/* .back-btn a:hover {
-    background: rgba(0, 0, 0, 0.10);
-} */
 
 .back-btn:hover {
     background: rgba(0, 0, 0, 0.10);
@@ -1001,7 +836,6 @@ html {
   }
 }
 
-
 *,
 *:before,
 *:after {
@@ -1053,16 +887,13 @@ article h2 {
 }
 
 .MyProfile__userImage {
-    /* border-radius: 50%; */
     text-align: left;
-    /* width: 75%; */
 }
 
 .user__image {
     border-radius: 50%;
     text-align: left;
 }
-
 
 .MemberProfiles__user {
     border: 1px solid #EEE;
@@ -1094,7 +925,6 @@ ul {
 }
 
 .Dashboard__browseInput {
-    /* margin: 1rem; */
     flex: 1 1;
     margin-bottom: 1.5rem;
 }
@@ -1112,8 +942,6 @@ ul {
     margin-top: 0.5rem;
 }
 
-
-
 .Dashboard__addCity h4 {
     font-size: 0.95rem;
 }
@@ -1123,18 +951,14 @@ ul {
     margin: 0 auto;
 }
 
-
 select {
-    /* margin: auto; */
     display: inline-block;
 }
 
 
 .selectContainer {
     padding: 0;
-    /* margin: 0; */
     border: 1px solid #ccc;
-    /* width: 120px; */
     border-radius: 0.2rem;
     overflow: hidden;
     background-color: #fff;
@@ -1177,11 +1001,8 @@ select {
 
 .selectModalDiv {
     padding: 0;
-    /* margin: 0; */
     border: none;
     border-style: inset;
-    /* border: 1px solid #ccc; */
-    /* width: 120px; */
     border-radius: 0.2rem;
     overflow: hidden;
     background-color: #fff;
@@ -1223,8 +1044,6 @@ select {
 }
 
 .Dashboard__browseContainer {
-    /* display: flex;
-    text-align: left; */
     width: 90%;
     margin: 0 auto;
 }
@@ -1257,7 +1076,6 @@ a {
 
 .Post__body p {
     font-size: 0.93rem;
-    /* margin-top: 0.3rem; */
 }
 
 .Post__body img {
@@ -1265,14 +1083,6 @@ a {
     max-height: 400px;
     max-width: 480px;
 }
-
-
-
-/* .Post p {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-} */
-
 
 h3 a {
     color: white;
@@ -1289,18 +1099,11 @@ h3 a {
     display:none;
 }
 
-
 .main__ul {
     border-bottom: 4px solid #EEE;
 }
 
-
-
 #createPostForm {
-  /* height:380px;
-  width:340px; */
-  /* top: 10%;
-  left: 10%; */
   width: 100%;
   background-color: white;
   padding: 3rem 1.5rem 1.5rem;
@@ -1323,10 +1126,7 @@ h3 a {
   position:absolute;
   top:3px;
   right:2px;
-  /* background:rgb(245,245,245); */
   color:#373a36;
-  /* height:30px;
-  width:35px; */
   font-size:1.25rem;
   text-decoration:none;
   text-align:center;
@@ -1338,7 +1138,6 @@ h3 a {
 .cancelForm:hover, .cancelForm:focus {
     background: rgba(0, 0, 0, 0.10);
 }
-
 
 .AddPost {
     margin: 4rem 0.5rem 1rem;
@@ -1361,7 +1160,6 @@ h3 a {
     height: 175px;
 }
 
-
 .MyProfile__hoverDiv {
     display: flex;
     flex-direction: column;
@@ -1378,16 +1176,11 @@ h3 a {
     margin-bottom: 0.5rem;
 }
 
-
-/* .MyProfile__hoverCamera, .MyProfile__hoverText {
-    display: inline-block;
-} */
-
 .fa-camera {
     font-size: 32px;
 }
 
-
+/* Responsive */
 @media only screen and (min-width: 480px) {
     .Dashboard__browseInput h4 {
         font-size: 1.4rem;
@@ -1426,8 +1219,6 @@ h3 a {
     }
 }
 
-
-
 @media only screen and (min-width: 640px) {
     .AddPost__formContainer {
         display: flex;
@@ -1461,7 +1252,6 @@ h3 a {
         padding-top: 0.8rem !important;
         padding-bottom: 0.8rem;
     }
-
 
     .Dashboard {
         padding-top: 6rem;
@@ -1508,7 +1298,6 @@ h3 a {
         width: 150px;
         height: 150px;
     }
-
 
     .messageAdd input {
         flex: 1
@@ -1575,16 +1364,10 @@ h3 a {
     .scroll-up-div a {
         bottom: 15px;
         right: 15px;
-    }
-    
+    }   
 }
 
-
 @media only screen and (min-width: 768px) {
-
-    /* .AddPost {
-        margin: 2rem 0 1rem;
-    } */
 
     .Dashboard__scroll {
         display: none;
@@ -1598,19 +1381,9 @@ h3 a {
         padding: 0;
     }
 
-      /* .AddPost__form {
-        background-color: lightgrey;
-        border-radius: 5px;
-        position: fixed;
-        left: 0.5rem;
-        z-index: 999;
-        padding: 1rem;
-    } */
-
     .main__ul {
         border-bottom: none;
     }
-
 
     .Nav__footer {
         display: none;
@@ -1635,12 +1408,9 @@ h3 a {
         flex: 0;
     }
   
-
     #createPostForm {
       top: 100%;
-      /* left: 30%; */
     }
-
 
     select {
         margin: 0;
@@ -1661,11 +1431,8 @@ h3 a {
 
     .Dashboard__browseContainer {
         display: flex;
-        /* justify-content: space-between; */
-        /* max-width: 195px; */
         margin: 0;
         margin-top: 4rem;
-        /* margin-left: 1rem; */
         justify-content: flex-start;
         flex-direction: column;
         flex: 1 1 26%;
@@ -1683,13 +1450,10 @@ h3 a {
     }
 
     .Dashboard__addCityForm {
-        /* display: flex; */
         width: 100%;
     }
 
     .Dashboard__browseInput {
-        /* display: flex */
-        /* margin-right: 5rem; */
         margin: 0;
         margin-bottom: 1.5rem;
         flex: 0;
@@ -1705,14 +1469,8 @@ h3 a {
         font-size: 1rem;
     }
 
-    /* .Dashboard__addSelect {
-        width: 22%;
-    } */
-
     .Dashboard__addCity {
         flex: 0;
-        /* display: flex;
-        justify-content: flex-end; */
     }
 
     .selectContainer {
@@ -1731,13 +1489,11 @@ h3 a {
         margin-top: 0.8rem;
     }
     
-    
     body {
         overflow-y: hidden;
     }
 
     .PostPage {
-        /* height: calc(100vh - 152px); */
         overflow-y: auto;
         max-width: 700px;
         margin: 0 auto;
@@ -1745,7 +1501,6 @@ h3 a {
         border: 1px solid #EEE;
         margin-top: 4.5rem;
     }
-
 
     .Nav__logout {
         display: none;
@@ -1756,19 +1511,8 @@ h3 a {
         flex-flow: row nowrap;
         justify-content: space-between;
         height: calc(100vh - 117px);
-        /* margin-top: 1rem; */
         border: 1px solid #EEE;
     }
-
-    /* .MemberContainer {
-        max-width: 900px;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        height: calc(100vh - 124px);
-        margin-top: 5rem;
-        border: 1px solid #EEE;
-    } */
 
     .MyProfile__userContainer, .MemberContainer {
         max-width: 900px;
@@ -1796,17 +1540,14 @@ h3 a {
         border-top: 1px solid #EEE;
     }
 
-
     .DashNav {
         display: flex;
-        /* flex: 0 0 165px; */
         flex: 1 1 25%;
         flex-flow: column nowrap;
         text-align: center;
         z-index: 30;
         background: #061e2a;
         background: linear-gradient(to right,#fefefe, 98%, #8c8c8d);
-        /* padding: 1rem 0 0 0; */
         justify-content: flex-start;
         overflow-y: auto;
     }
@@ -1826,7 +1567,6 @@ h3 a {
     .main-nav-link {
         transition: opacity .2s, visibility .2s;
         flex: 1 1 auto;
-        /* align-self: center; */
         text-align: left;
         display: flex;
         position: relative;
@@ -1836,7 +1576,6 @@ h3 a {
         font-weight: 500;
         font-size: 0.85rem;
         letter-spacing: 0.04rem;
-        /* color: rgb(0, 123, 255); */
         color: rgb(0, 154, 189);
         padding: 0.75rem 0.5rem;
         text-transform: uppercase;
@@ -1850,14 +1589,12 @@ h3 a {
     .MemberProfiles__userList {
         flex: 1 1 75%;
         overflow-y: auto;
-        /* height: calc(100vh - 124px); */
         margin-top: 0;
     }
 
     .MyProfile__userInfo {
         flex: 1 1 75%;
         overflow-y: auto;
-        /* height: calc(100vh - 124px); */
         margin-top: 1rem;
         padding: 1rem;
     }
@@ -1877,9 +1614,9 @@ h3 a {
     .main-menu {
         margin-right: 0.5rem;
         position: relative;
-            left: auto;
-            top: auto;
-            height: auto;
+        left: auto;
+        top: auto;
+        height: auto;
         display: block;
     }
     
@@ -1899,7 +1636,6 @@ h3 a {
     }
     
     .main-menu a {
-        /* color: rgb(0, 123, 255); */
         color: white;
         border: 0 !important; 
     }
@@ -1910,7 +1646,6 @@ h3 a {
         cursor: pointer;
         background: none;
         color: white;
-        /* color: #006b84; */
     }
 
     .fa-home {
@@ -1938,7 +1673,6 @@ h3 a {
         }
     }
 
-
     @media only screen and (min-width: 1100px) {
         .Nav__header {
             padding-left: 10%;
@@ -1958,8 +1692,7 @@ h3 a {
             padding-left: 19%;
             padding-right: 19%;
         }
-    }
-    
+    } 
 }
 
 

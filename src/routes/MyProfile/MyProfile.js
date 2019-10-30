@@ -1,14 +1,11 @@
 import React from 'react'
 import userIcon from '../../app-images/user icon.png'
-// import users from '../../data/users'
 import DashNav from '../../components/DashNav/DashNav'
 import MainContext from '../../contexts/MainContext'
 import config from '../../config'
 import TokenService from '../../services/token-service'
-// import Spinner from '../../components/Spinner/Spinner'
 import EditProfileForm from '../../components/EditProfileForm/EditProfileForm'
 import EditProfileImage from '../../components/EditImageModal/EditImageModal'
-import addPhotoIcon from '../../app-images/profile-add-photo.png'
 import Nav from '../../components/Nav/Nav'
 
 class MyProfile extends React.Component {
@@ -27,14 +24,12 @@ class MyProfile extends React.Component {
         interests: '',
         uploading: false,
         image: null,
-        //need to use eval here b/c getItem returns 'false' as a string which shows the modal because 'false' is converted to true
         showLocationForm: eval(localStorage.getItem('showLocationForm')) || false,
         showImageModal: false,
         isHovering: false
     }
 
     componentDidMount () {
-        // console.log('show', localStorage.getItem('showLocationForm'))
         if (this.state.showLocationForm) {
             document.body.style.overflowY = 'hidden'
         }
@@ -156,7 +151,6 @@ class MyProfile extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            // console.log('response basic', responseJson)
             this.setState({
                 first_name: responseJson.first_name,
                 last_name: responseJson.last_name,
@@ -169,14 +163,12 @@ class MyProfile extends React.Component {
         .catch(err => {
             console.error(err)
         })
-
     }
 
     showLocationModal = () => {
         this.setState({
             showLocationForm: true
         }, () => {
-            //setting true as local storage so state retrieves it when window reloads so modal stays open 
             localStorage.setItem('showLocationForm', this.state.showLocationForm)
             window.location.reload()
         }) 
@@ -188,7 +180,6 @@ class MyProfile extends React.Component {
             uploading: false,
             showLocationForm: false
         }, () => {
-            // console.log("hide bool", this.state)
             localStorage.setItem('showLocationForm', this.state.showLocationForm)
         })
     }
@@ -202,7 +193,6 @@ class MyProfile extends React.Component {
             state: responseJson.state,
             city: responseJson.city,
         }, () => {
-            // console.log("hide bool", this.state)
             localStorage.setItem('showLocationForm', this.state.showLocationForm)
         })
     }
@@ -236,8 +226,6 @@ class MyProfile extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            // console.log('submit response', responseJson)
-            // this.context.updateComment(responseJson)
             this.hideAndUpdateModal(responseJson)
         })
         .catch(err => {
@@ -252,10 +240,7 @@ class MyProfile extends React.Component {
             uploading: true
         })
 
-        // console.log('event target', e.target['image'].files[0])
-
         let formData = new FormData()
-
         formData.append('image', e.target['image'].files[0])
 
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
@@ -272,24 +257,13 @@ class MyProfile extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            //  console.log('patch responsejson', responseJson)
             this.setState({
                 uploading: false,
                 image: responseJson.image,
                 imageCopy: responseJson.image
             })
         })
-
     }
-
-    // showHideClassName = () => {
-    //     let { showLocationForm } = this.state
-    //     if (showLocationForm === "false" || showLocationForm == false) {
-    //         return 'modal display-none'
-    //     } else {
-    //         return 'modal display-block'
-    //     }
-    // }
 
     showHideClassName = () => {
         let { showLocationForm } = this.state
@@ -340,7 +314,6 @@ class MyProfile extends React.Component {
        })
    }
 
-  
    handleMouseLeave = () => {
        this.setState({
         isHovering: false
@@ -353,22 +326,14 @@ class MyProfile extends React.Component {
        })
    }
 
-
-//    <label htmlFor="image" className='MyProfile__image'></label>
-
     render () {
-      
-        // console.log('state', this.state)
         let { first_name, last_name,  state, city, email, occupation, interests, image , showImageModal, isHovering } = this.state
-        
-        // console.log('image', image)
 
         return (
             <>
                 <Nav />
                 <section className='MyProfile'> 
                     <section className='MyProfile__userContainer'>
-                        {/* <h1>My Profile</h1> */}
                         <DashNav />
                         <section className='MyProfile__userInfo'>
                             <form onSubmit={this.handleImageSubmit}>
@@ -377,8 +342,6 @@ class MyProfile extends React.Component {
                                         <div>
                                             {isHovering ?
                                                 <div className='MyProfile__hoverDiv'>
-                                                    {/* <img src={addPhotoIcon} alt='add-icon' width='175px' height='175px'>
-                                                    </img> */}
                                                     <div className='MyProfile__hoverCamera'>
                                                         <i className="fas fa-camera"></i>
                                                     </div>
@@ -437,11 +400,7 @@ class MyProfile extends React.Component {
                                                 </button>
                                             </div>
                                             <div className='LoginForm__signupElement modalSelect'>
-                                                {/* <div className='LoginForm__signupLabel'>
-                                                    <label className='LoginForm__signupLabel'>Update Location</label>
-                                                </div> */}
                                                 <h3>Update Location</h3>
-                                                {/* <div className='LoginForm__signupLabel'> */}
                                                 <div className='selectContainer MyProfile__imageSelect'>
                                                     <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.changeCountry} required>
                                                         <option value="">Select Country</option>

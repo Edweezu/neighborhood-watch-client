@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom'
-import Nav from '../Nav/Nav'
 import LandingPage from '../../routes/LandingPage/LandingPage'
 import './App.css'
 import CreateAccount from '../../routes/CreateAccount/CreateAccount'
@@ -41,9 +40,7 @@ class App extends React.Component {
       TokenService.queueCallbackBeforeExpiry(() => {
         UsersService.postRefreshToken()
       })
-    }
-   
-   
+    } 
   }
 
   setPosts = (posts) => {
@@ -63,21 +60,13 @@ class App extends React.Component {
       places
     })
   }
-  
-  // setUsers = (users) => {
-  //   this.setState({
-  //     users
-  //   })
-  // }
 
   componentWillUnmount() {
-    console.log("App unmounted")
     IdleService.unRegisterIdleResets()
     TokenService.clearCallbackBeforeExpiry()
   }
 
   logoutFromIdle = () => {
-    console.log('logging out')
     TokenService.clearAuthToken()
     TokenService.clearCallbackBeforeExpiry()
     IdleService.unRegisterIdleResets()
@@ -103,8 +92,6 @@ class App extends React.Component {
           city : e.target.value
       })
   }
-
-
 
   isLoggedIn = () => {
     this.setState({
@@ -146,8 +133,6 @@ class App extends React.Component {
       ],
     })
   }
-
-  
  
   addPlace = (place) => {
     this.setState({
@@ -192,12 +177,6 @@ class App extends React.Component {
     })
   }
 
-  // updatePost = (responseJson) => {
-  //   this.setState({
-  //     posts: this.state.posts.map(post => (responseJson.id !== post.id) ? post : responseJson)
-  //   })
-  // }
-
   updatePost = (responseJson) => {
     this.setState({
       posts: this.state.posts.map(post => {
@@ -210,16 +189,9 @@ class App extends React.Component {
     })
   }
  
-
   render () {
 
     const { place, posts, comments, users, cities, menuOpen,place_id, country, state, city, places } = this.state
-
-    // console.log('app post', posts)
-    // console.log('app cities', cities)
-    // console.log('country', country)
-    // console.log('state', state)
-    // console.log('city', city)
 
     const contextValue = {
       posts,
@@ -250,8 +222,6 @@ class App extends React.Component {
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
       places,
-      // handleAddPostOpen: this.handleAddPostOpen,
-      // handleAddPostClose: this.handleAddPostClose,
       updatePost: this.updatePost,
       updateComment: this.updateComment
     }

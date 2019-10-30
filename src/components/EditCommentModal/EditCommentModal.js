@@ -35,14 +35,12 @@ class EditCommentModal extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('get response', responseJson)
             this.setState({
                 text: responseJson.text,
                 user_logged_in: responseJson.user_logged_in,
                 comment_user: responseJson.user_id
             })
-        })
-        
+        })   
     }   
 
     handleSubmit = (e) => {
@@ -72,7 +70,6 @@ class EditCommentModal extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('submit response', responseJson)
             this.context.updateComment(responseJson)
             this.hideCommentModal()
         })
@@ -111,7 +108,6 @@ class EditCommentModal extends React.Component {
         .then(data => {
             this.context.deleteComment(commentId)
             deleteNumComment()
-            // window.location.reload()
         })
         .catch(err => {
             console.error(err)
@@ -148,9 +144,7 @@ class EditCommentModal extends React.Component {
     }
 
     render () {
-
         const { uploading, showCommentForm, text, comment_user, user_logged_in } = this.state
-        // const showHideClassName = showCommentForm ? 'modal display-block' : 'modal display-none'
 
         return (
             <section>
@@ -184,22 +178,12 @@ class EditCommentModal extends React.Component {
                          ) : null}
                     </div>
                 )}
-                
                 {user_logged_in === comment_user ? (
-                    // <div>
-                    //     <button type='button' onClick={this.showCommentModal}>
-                    //         Edit
-                    //     </button>
-                    //     <button type='button' onClick={this.handleDeleteForm}>
-                    //             Delete
-                    //     </button>
-                    //  </div>
                     <div className='Comment__btn-div'>
                              <i onClick={this.showCommentModal} className="far fa-edit"></i>
                              <i onClick={this.handleDeleteForm} className="fas fa-trash-alt"></i>
                     </div> 
                 ) : null}
-              
             </section>
         )
     }

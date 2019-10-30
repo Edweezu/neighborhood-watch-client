@@ -41,9 +41,7 @@ class EditModal extends React.Component {
     }
 
     componentDidMount () {
-        //grabs total lieks from server and displays in state
         const { postid } = this.props
-        // console.log('postid', id)
 
         Promise.all([
             fetch(`${config.API_ENDPOINT}/posts/${postid}/`, {
@@ -76,7 +74,6 @@ class EditModal extends React.Component {
             ])
         })
         .then(([totalLikesResJson, usersListResJson]) => {
-            //retrieve users who liked this post in state when component mounts in users array
             this.setState({
                 image: totalLikesResJson.image,
                 message: totalLikesResJson.message,
@@ -95,23 +92,16 @@ class EditModal extends React.Component {
     }
 
     handleLike = () => {
-        //restrict user to one like per post
-        //on click, sends patch to post route to increase by 1
-        //on click again, sends patch to  Post route to decrease by 1
-            //cant go below 0
         let { postid } = this.props
         let { likes, usersList, user_logged_in } = this.state
         let newBody = {}
         let whoLiked = {}
 
         let usersFilter = () => {
-            // console.log('userlist', usersList)
             return usersList.filter(user => {
                 return user.user_id === user_logged_in
             }).length
         }
-
-        // console.log('usersFilter', usersFilter())
 
         if (usersFilter()) {
             newBody = {
@@ -130,9 +120,6 @@ class EditModal extends React.Component {
         whoLiked.action = (usersFilter().length ? 'like': 'unlike')
 
         //if logged in user is contained in users array, then don't patch or post user in likes route
-        // console.log('likes body', newBody)
-        // console.log('whoLiked', whoLiked)
-
         if (usersFilter()) {
             Promise.all([
                 fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
@@ -167,7 +154,6 @@ class EditModal extends React.Component {
                 ])
             })
             .then(([totalLikesResJson, whoLikedResJson]) => {
-                // console.log("delete likes", totalLikesResJson.likes)
                 this.setState({
                     likes: totalLikesResJson.likes,
                     usersList: whoLikedResJson
@@ -214,7 +200,6 @@ class EditModal extends React.Component {
                 this.setState({
                     likes: totalLikesResJson.likes,
                     usersList: whoLikedResJson
-                    // usersList: this.state.usersList.map(user => whoLikedResJson)
                 })
             })
             .catch(err => {
@@ -223,14 +208,7 @@ class EditModal extends React.Component {
         } 
     }
 
-
-
-
-
-
     handleDeletePost = () => {
-
-        //forgot you can just take postid from props in any function in the component. don't need to pass it into the function
         let { postid } = this.props
 
         return fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
@@ -247,8 +225,6 @@ class EditModal extends React.Component {
         })
         .then(resp => {
             this.context.deletePost(postid)
-            //reset state with updated posts, one less post
-            // window.location.reload()
         })
         .catch(err => {
             console.error(err)
@@ -288,8 +264,6 @@ class EditModal extends React.Component {
             uploading: true
         })
 
-        // console.log('event target', e.target['image'].files[0])
-
         let formData = new FormData()
 
         formData.append('image', e.target['image'].files[0])
@@ -297,8 +271,6 @@ class EditModal extends React.Component {
         formData.append('post_category', post_category)
         formData.append('subject', subject)
         formData.append('place_id', place_id)
-
-        
 
         return fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
             method: 'PATCH',
@@ -314,7 +286,6 @@ class EditModal extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            //  console.log('patch responsejson', responseJson)
             this.context.updatePost(responseJson)
             this.hideModal()
         })
@@ -323,7 +294,6 @@ class EditModal extends React.Component {
 
     handlePlaceChange = (e) => {
         this.setState({
-            //only need e.target.value here because this function is already located inside the event target
             place_id: e.target.value
         })
     }
@@ -346,7 +316,6 @@ class EditModal extends React.Component {
         })
     }
 
-    //need to reset input file value everytime you click the input button or else the onChnage function won't fire off because it'll be the same path technically
     resetValues = (e) => {
       e.target.value = null
     }
@@ -358,27 +327,18 @@ class EditModal extends React.Component {
       })
     }
 
-  handleImageChange = (e) => {
-    this.setState({
-        image: URL.createObjectURL(e.target.files[0]),
-        formDataImage: e.target.files[0]
-    })
-   }
+    handleImageChange = (e) => {
+        this.setState({
+            image: URL.createObjectURL(e.target.files[0]),
+            formDataImage: e.target.files[0]
+        })
+    }
 
     render () {
-
         const { places=[] } = this.context
-        // const { hideModal, show } = this.props
         const { number_of_comments } = this.props
-
         const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList, image } = this.state
-
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
-
-        // console.log('edit modal userlists', usersList)
-
-        // console.log('user logged', this.state.user_logged_in)
-        // console.log('image', image)
 
         return (
             <section className='EditModal'>
@@ -475,14 +435,8 @@ class EditModal extends React.Component {
                     <div>   
                         {user_logged_in === post_user ? (
                             <div className='btn-div'>
-                                {/* <button type='button' onClick={this.showModal}>
-                                    <i className="far fa-edit"></i>
-                                </button> */}
                                 <i onClick={this.showModal} className="far fa-edit"></i>
                                 <i onClick={this.handleDeleteForm} className="fas fa-trash-alt"></i>
-                                {/* <button type='button' onClick={this.handleDeleteForm}>
-                                    <i className="fas fa-trash-alt"></i>
-                                </button>   */}
                             </div> 
                         ) : null}                     
                     </div>

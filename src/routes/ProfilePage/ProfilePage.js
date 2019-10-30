@@ -1,11 +1,7 @@
 /* global google */
 import React from 'react'
-// import { Link } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext';
-// import AutoComplete from '../../components/AutoComplete/AutoComplete'
 import Footer from '../../components/Footer/Footer'
-// import config from '../../config'
-// import TokenService from '../../services/token-service'
 import UsersApiService from '../../services/users-api-service'
 import Nav from '../../components/Nav/Nav'
 /* global google */
@@ -71,11 +67,9 @@ class ProfilePage extends React.Component {
     }
 
     componentDidMount () {
-        // console.log('hash outside func', window.location.hash)
         document.body.style.overflowY = 'auto'
 
         if(!window.location.hash) {
-            // console.log('hash in func', window.location.hash)
             window.location = window.location + '#loaded';
             window.location.reload();
         }
@@ -85,7 +79,6 @@ class ProfilePage extends React.Component {
         e.preventDefault()
         const { userId } = this.props.match.params
         const { country, state, cityinput, first_name, last_name, email } = this.state
-        //get user details from userId
 
         let userInfo = {
 
@@ -105,25 +98,10 @@ class ProfilePage extends React.Component {
             .catch(err => {
                 console.error(err)
             })
-
-
     }
-
-    
-
-
 
     render () {
         const { error, first_name, last_name, email } = this.state
-        // const { place, onPlaceChanged } = this.context
-    
-        // const AddressDetails = props => {
-        //     return (
-        //         <div>
-        //           <pre>{JSON.stringify(props.place, null, 2)}</pre>
-        //         </div>
-        //     )
-        //   };
 
         return (
             <>
@@ -207,8 +185,6 @@ class ProfilePage extends React.Component {
                                 Create an Account
                             </button>
                         </div>
-                        {/* <Link to='/category/1'>Log In</Link> */}
-                        {/* <a href='/category/1'>Log In</a> */}
                     </form>
                     <Footer />
                 </section>

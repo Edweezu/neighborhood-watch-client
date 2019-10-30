@@ -13,27 +13,20 @@ class CreateAccount extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        //get username and pw and submit
         const { username, password } = e.target
         const registeredUser = {
             username: username.value.toLowerCase(),
             password: password.value
         }
 
-        
-
         return UsersApiService.registerAccount(registeredUser)
             .then(responseJson => {
-                console.log('responseJson', responseJson)
-                console.log('responseJson', responseJson.id)
                 username.value = ''
                 password.value = ''
                 this.props.history.push(`/create-profile/${responseJson.id}`)
             })  
             .catch(responseJson => {
-                // console.log(' Error responseJson', responseJson)
                 this.setState({
-                    // error: responseJson.error
                     error: responseJson.error
                 })
                 console.error(responseJson)
@@ -47,7 +40,6 @@ class CreateAccount extends React.Component {
     render () {
 
         const { error } = this.state
-        console.log('state errorr', error)
 
         return (
             <section className='mainContent'>
@@ -102,8 +94,6 @@ class CreateAccount extends React.Component {
                                 Continue
                             </button>
                         </div>
-                        {/* <Link to='/create-profile'>Continue</Link> */}
-                        {/* <a href='/create-profile'>Continue</a> */}
                         <div className='LoginForm__signupDemo'>
                             <p>Password must be longer than 8 characters and contain one upper case, lower case, number and special character.</p>
                         </div>

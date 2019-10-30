@@ -45,7 +45,6 @@ class PostPage extends React.Component {
 
     componentDidMount () {
         const { postId } = this.props.match.params
-
         document.body.style.overflowY = 'auto'
 
         Promise.all([
@@ -56,7 +55,7 @@ class PostPage extends React.Component {
                     'authorization': `bearer ${TokenService.getAuthToken()}`
                 }
             }),
-      
+
             fetch(`${config.API_ENDPOINT}/comments`, {
                 method: 'GET',
                 headers: {
@@ -64,8 +63,7 @@ class PostPage extends React.Component {
                     'authorization': `bearer ${TokenService.getAuthToken()}`
                 }
             }),
-
-            
+        
             fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
                 method: 'GET',
                 headers: {
@@ -126,24 +124,17 @@ class PostPage extends React.Component {
     }
 
     dateDiff = () => {
-        const { posts } = this.context
-        
+        const { posts } = this.context       
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}
 
-        // let formattedDate = moment(post.date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("YYYYMMDD")
         let niceDate = moment(post.date_created, 'ddd MMM DD YYYY HH:mm:ss ZZ').format("MMM DD, YYYY")
-
-        //how to change from provided server UTC time to local time so calculations are correct
         let daysAgo = moment.utc(post.date_created).local().fromNow()
-
         let todayUnix = moment().unix()
         
         let dateUnix = moment(new Date(post.date_created)).unix()
-        //need to divide unix time by 86400 seconds in a day to find day diff
         let dateDiff = (todayUnix - dateUnix)/86400
 
-        // console.log('date diff', dateDiff)
         if (dateDiff > 6) {
             return `Posted on ${niceDate}`
         } else {
@@ -171,7 +162,6 @@ class PostPage extends React.Component {
 
     handlePlaceChange = (e) => {
         this.setState({
-            //only need e.target.value here because this function is already located inside the event target
             place_id: e.target.value
         })
     }
@@ -219,8 +209,6 @@ class PostPage extends React.Component {
             uploading: true
         })
 
-        console.log('event target', e.target['image'].files[0])
-
         let formData = new FormData()
 
         formData.append('image', e.target['image'].files[0])
@@ -243,11 +231,9 @@ class PostPage extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-             console.log('patch responsejson', responseJson)
             this.context.updatePost(responseJson)
             this.hideModal()
         })
-
     }
 
     postCategoryIcon = () => {
@@ -265,7 +251,6 @@ class PostPage extends React.Component {
     }
 
     addNumComment = () => {
-        // console.log('invoked')
         let { number_of_comments } = this.state
         this.setState({
             number_of_comments: parseInt(number_of_comments) + 1
@@ -273,39 +258,23 @@ class PostPage extends React.Component {
     }
 
     deleteNumComment = () => {
-        console.log('invoked')
         let { number_of_comments } = this.state
         this.setState({
             number_of_comments: parseInt(number_of_comments) - 1
         })
     }
    
-
     render () {
-
         const { posts, comments=[], places } = this.context
         const { uploading, show, subject, message, post_category, place_id, number_of_comments, image } = this.state
         
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}
         post.user = post.user || {}
-        // const user = findUser(users, post.user_id) || {}
-        // const commentUser = findCommentUser(users, post.user_id) || {}
+
         const correctComments = findComments(comments, postId) || []
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
        
-        // console.log('post', post)
-        // console.log('places', places)
-        // console.log('posts', posts)
-        console.log('post', post)
-        // console.log('comments', comments)
-        // console.log('postid', postId)
-        // console.log('correct comment', correctComments)
-        // console.log("error", this.state.error)
-        // console.log('post page state', this.state)
-
-        
-
         return (
             <section>
                 <Nav />
@@ -313,13 +282,9 @@ class PostPage extends React.Component {
                     
                     <section className='PostPage__postContainer'>
                         <div className='back-btn'>
-                                    {/* <button type='button' onClick={this.goBack}>Go Back</button> */}
                                     <a href='/category/1'><i className="fas fa-arrow-left"></i></a>
                                     
                         </div>
-                        {/* <div className='PostPage__header'>
-                            <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
-                        </div> */}
                         <div className='Post__userInfo'>
                             {this.postCategoryIcon()} {this.nameCapitalized(post.user.username)}, {post.user.city}
                         </div>
@@ -432,32 +397,28 @@ class PostPage extends React.Component {
                                         </section>
                                     </div>
                                 )}
-                                {/* <button type='button'><i className="fas fa-thumbs-up"></i></button> */}
-                                {/* <button type='button'><i className="fas fa-thumbs-down"></i></button> */}
                             </div>
                             <CommentTextBox 
                                 postId ={postId}
                                 addNumComment={() => this.addNumComment()}
-
                             />
-                        </div>
-                        
+                        </div>                  
                     </section>
                     <section className='PostPage__comments'>
                         <ul className='PostPage__commentList'>
                             {correctComments.map(comment => {
                                 return (<li key={comment.id}>
-                                
-                                <Comment 
-                                    id={comment.id}
-                                    user={comment.user}
-                                    text={comment.text}
-                                    date_created={comment.date_created}
-                                    nameCapitalized={this.nameCapitalized}
-                                    deleteNumComment={() => this.deleteNumComment()}
-                                />
-                            </li>)
-                            } 
+                                            <Comment 
+                                                id={comment.id}
+                                                user={comment.user}
+                                                text={comment.text}
+                                                date_created={comment.date_created}
+                                                nameCapitalized={this.nameCapitalized}
+                                                deleteNumComment={() => this.deleteNumComment()}
+                                            />
+                                        </li>
+                                        )
+                                } 
                             )}
                         </ul>
                         
@@ -470,7 +431,6 @@ class PostPage extends React.Component {
                 </section>) : 
                 <section className='PostPage'>
                     <div className='back-btn'>
-                        {/* <button type='button' onClick={this.goBack}>Go Back</button> */}
                         <a href='/category/1'>Go Back</a>
                     </div>
                     <p className='error'>

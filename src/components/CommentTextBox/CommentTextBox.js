@@ -9,7 +9,6 @@ class CommentTextBox extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const { postId, addNumComment } = this.props
-        //forgot this
         const text = e.target['CommentTextBox__text']
 
         const newComment = {
@@ -26,15 +25,12 @@ class CommentTextBox extends React.Component {
             body: JSON.stringify(newComment)
         })
         .then(res => {
-            console.log('intial res', res)
             if (!res.ok) {
                 return res.json().then(e => Promise.reject(e))
             }
             return res.json()
         })
         .then(responseJson => {
-            //forgot how to erase the value
-            console.log('comment responsejson', responseJson)
             text.value = ''
             this.context.addComment(responseJson)
             addNumComment()
@@ -42,8 +38,6 @@ class CommentTextBox extends React.Component {
         .catch(err => {
             console.error(err)
         })
-
-
     }
 
     render () {
@@ -61,7 +55,6 @@ class CommentTextBox extends React.Component {
                         placeholder='Type a comment...'
                     >
                     </textarea>
-                   
                     <div className='CommentTextBox__buttonDiv'>
                          <button className='btn' type='submit'>Comment</button>
                     </div>

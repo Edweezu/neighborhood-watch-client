@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext'
 import { NavLink } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
@@ -11,7 +10,6 @@ class Nav extends React.Component {
   static contextType = MainContext
 
     handleLogoutClick = () => {
-      // this.context.loggedOut()
       TokenService.clearAuthToken()
       TokenService.clearCallbackBeforeExpiry()
       IdleService.unRegisterIdleResets()
@@ -54,35 +52,15 @@ class Nav extends React.Component {
           <ul className='second__ul'>
             <li>
               <a href='/category/1#main-menu-toggle'><i className="fas fa-newspaper"></i>All Posts</a>
-              {/* <NavLink
-                  to={`/category/1#main-menu-toggle`}
-              >
-                All Posts
-              </NavLink> */}
             </li>
             <li>
               <a href='/category/Crime and Alerts#main-menu-toggle'><i className="fas fa-exclamation-triangle"></i>Crime and Alerts</a>
-              {/* <NavLink
-                  to={`/category/Crime and Alerts#main-menu-toggle`}
-              >
-                Crime and Alerts
-              </NavLink> */}
             </li>
             <li>
               <a href='/category/Upcoming Events#main-menu-toggle'><i className="fas fa-calendar-alt"></i>Upcoming Events</a>
-              {/* <NavLink
-                  to={`/category/Upcoming Events#main-menu-toggle`}
-              >
-                Upcoming Events
-              </NavLink> */}
             </li>
             <li>
               <a href='/category/Lost and Found#main-menu-toggle'><i className="fas fa-box-open"></i>Lost and Found</a>
-              {/* <NavLink
-                  to={`/category/Lost and Found#main-menu-toggle`}
-              >
-                Lost and Found
-              </NavLink> */}
             </li>
           </ul>
           <div className='Nav__footer'>
@@ -98,7 +76,6 @@ class Nav extends React.Component {
     }
 
     renderLoginLink () {
-
       return (
         <header className='Nav__headerReg'>
         <a href="#main-menu"
@@ -111,8 +88,7 @@ class Nav extends React.Component {
             <NavLink to ='/'><i className="fas fa-home"></i>
                 Neighborhood Watch
             </NavLink>
-        </h3>
-        
+        </h3>      
         <nav id="main-menu" className="main-menu" aria-label="Main menu">
           <a href="#main-menu-toggle"
              id="main-menu-close"
@@ -139,8 +115,6 @@ class Nav extends React.Component {
       </header> 
       )
     }
-
-
 
     render () {
         return (

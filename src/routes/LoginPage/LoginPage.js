@@ -18,14 +18,6 @@ class LoginPage extends React.Component {
     history.push(destination)
   }
 
-  // componentDidMount () {
-  //   document.body.style.overflowY = 'hidden'
-  // }
-
-  // componentWillUnmount() {
-  //   document.body.style.overflowY = 'auto'
-  // }
-
   render() {
     return (
       <>

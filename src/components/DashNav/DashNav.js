@@ -5,24 +5,11 @@ import Footer from '../Footer/Footer'
 
 class DashNav extends React.Component {
 
-
     static contextType = MainContext
 
     render () {
-
-        // const { categories } = this.context
-
      return (
             <section className='DashNav'>
-                {/* <div className='menu-container'>
-                    <div className='main-nav-link'>
-                        {categories.map(category => (
-                            <NavLink className='DashNav__folderLink' to={`/category/${category.id}`}>
-                                {category.name}
-                            </NavLink>
-                        ))}
-                    </div>
-                </div> */}
                  <div className='menu-container'>
                     <div className='main-nav-link'>
                         <NavLink
@@ -31,7 +18,6 @@ class DashNav extends React.Component {
                         >
                             All Posts
                         </NavLink>
-                        {/* <a className='DashNav__folderLink' href={`/category/1`}>All Posts</a> */}
                     </div>
                 </div>
                 <div className='menu-container'>
@@ -42,7 +28,6 @@ class DashNav extends React.Component {
                         >
                             Crime and Alerts
                         </NavLink>
-                        {/* <a className='DashNav__folderLink' href={`/category/2`}>Crime and Alerts</a> */}
                     </div>
                 </div>
                 <div className='menu-container'>
@@ -53,7 +38,6 @@ class DashNav extends React.Component {
                         >
                             Upcoming Events
                         </NavLink>
-                        {/* <a className='DashNav__folderLink' href={`/category/3`}>Upcoming Events</a> */}
                     </div>
                 </div>
                 <div className='menu-container'>
@@ -64,7 +48,6 @@ class DashNav extends React.Component {
                         >
                             Lost and Found
                         </NavLink>
-                        {/* <a className='DashNav__folderLink' href={`/category/4`}>Lost and Found</a> */}
                     </div>
                 </div>
                 <div className='Nav__logout'>

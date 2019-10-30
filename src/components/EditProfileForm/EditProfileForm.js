@@ -22,8 +22,6 @@ export default class EditProfileForm extends React.Component {
     }
 
     componentDidMount () {
-        // console.log('show', localStorage.getItem('showLocationForm'))
-
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'GET',
             headers: {
@@ -38,7 +36,6 @@ export default class EditProfileForm extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            // console.log('resp', responseJson)
             for (let item in responseJson) {
                 if (responseJson[item] === null) {
                     responseJson[item] = ''
@@ -102,7 +99,6 @@ export default class EditProfileForm extends React.Component {
         })
     }
 
-
     handleBasicSubmit = (e) => {
         const { updateProfileAbout } = this.props
         e.preventDefault()
@@ -121,8 +117,6 @@ export default class EditProfileForm extends React.Component {
             make_private
         }
 
-        console.log('before send patch', updatedProfile)
-
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'PATCH',
             headers: {
@@ -138,8 +132,6 @@ export default class EditProfileForm extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            console.log('response basic', responseJson)
-
             for (let item in responseJson) {
                 if (responseJson[item] === null) {
                     responseJson[item] = ''
@@ -166,7 +158,6 @@ export default class EditProfileForm extends React.Component {
 
     render () {
         const { first_name, last_name, email, occupation, interests, showProfileForm, make_private } = this.state
-        // console.log('make priv', make_private)
         return (
             <section>
                 <button className='btn' type='button' onClick={this.handleEditProfile}>

@@ -1,7 +1,6 @@
 import React from 'react'
 import '../../components/App/App.css'
 import DashNav from '../../components/DashNav/DashNav'
-// import cities from '../../data/cities'
 import AddPost from '../../components/AddPost/AddPost'
 import MainContext from '../../contexts/MainContext';
 import PostList from '../../components/PostList/PostList';
@@ -13,7 +12,6 @@ import Nav from '../../components/Nav/Nav'
 
 class Dashboard extends React.Component {
 
-    
     static contextType = MainContext
     static defaultProps = {
         match: {
@@ -32,14 +30,11 @@ class Dashboard extends React.Component {
     }
 
     handleClick = () => {
-
         this.setState({
             showForm: !this.state.showForm
         })
     }
 
-   
-  
     componentDidMount () {
         if (!window.location.hash) {
             window.location = window.location + '#loaded'
@@ -91,7 +86,6 @@ class Dashboard extends React.Component {
             ])
         })
         .then(([placesRespJson, postsRespJson, commentsRespJson]) => {
-            // console.log('places', placesRespJson)
              this.context.setPlaces(placesRespJson)
              this.context.setPosts(postsRespJson)
              this.context.setComments(commentsRespJson)
@@ -105,7 +99,6 @@ class Dashboard extends React.Component {
         e.preventDefault()
 
         const { country, state, city} = this.context
-        // const { cityId, stateId, countryId } = e.target
 
         const pageExists = {
             id: 99999999,
@@ -117,10 +110,6 @@ class Dashboard extends React.Component {
             state,
             city
         }
-
-        console.log('new place', newPlace)
-       
-        // console.log('option', countryId.option[0])
 
         return fetch(`${config.API_ENDPOINT}/places`, {
             method: 'POST',
@@ -137,7 +126,6 @@ class Dashboard extends React.Component {
             return res.json()
         })
         .then(responseJson => {
-            // console.log('resp', responseJson)
             
             if (JSON.stringify(responseJson) !== JSON.stringify(pageExists)) {
                 this.context.addPlace(responseJson)
@@ -154,13 +142,7 @@ class Dashboard extends React.Component {
 
     render () {
 
-        const { place_id, handleCityChange, places = [], posts = [], handleChangeCity, handleChangeState, handleChangeCountry  } = this.context
-
-        // console.log('showform', this.state.showForm)
-        // console.log('places state', this.context.places)
-
-        // console.log('posts', posts)
-
+        const { place_id, handleCityChange, places = [], posts = [], handleChangeCity, handleChangeState, handleChangeCountry } = this.context
         const place = findPlace (places, place_id) || {}
 
         return (
@@ -169,7 +151,6 @@ class Dashboard extends React.Component {
                 <section id='dashboard_top'  className='Dashboard'>
                     <section className='Dashboard__browseContainer'>
                         <div className='Dashboard__browseInput'>
-                            {/* <label htmlFor='browse-places'><strong>Browse places</strong></label> */}
                             <h4>Browse Active Pages</h4>
                             <div className='selectContainer'>
                                 <select value={place.id}id='browse-cities' onChange={handleCityChange}>
@@ -180,7 +161,6 @@ class Dashboard extends React.Component {
                             </div>  
                         </div>
                         <div className='Dashboard__addCity'>
-                            {/* <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4> */}
                             <h4>Dont See Your City? Start a New Page</h4>
                                 <form id='addCityForm' className='Dashboard__addCityForm' onSubmit={this.handleSubmitNewCity}>
                             
@@ -188,7 +168,6 @@ class Dashboard extends React.Component {
                                         <select name="countryId" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry} required>
                                             <option value="">Select Country</option>
                                         </select>
-                                        {/* <a href='#addCityForm' className='refresh'>Refresh</a> */}
                                     </div>
                                     <div className='selectContainer'>
                                         <select name="stateId" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState} required>
@@ -210,14 +189,11 @@ class Dashboard extends React.Component {
                     <section className='Dashboard__Main'>
                         <section className='DashMainPosts__header'>
                             <AddPost />
-                            {/* <h2>{place.city}, {place.state}</h2> */}
                             <h2>{place.city}</h2>
                         </section>
                         <section className='DashContainer'>
-                        
                             <DashNav />
                             <section className='DashMainPosts'>
-                            
                                 <PostList 
                                     categoryid={this.props.match.params.categoryId}
                                     posts={posts}

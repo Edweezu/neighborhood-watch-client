@@ -24,8 +24,6 @@ class LoginForm extends React.Component {
         })
 
         const { username, password } = e.target
-        // console.log('user', username.value)
-        // console.log('pw', password.value)
 
         return UsersApiService.postLogin({
             username: username.value,
@@ -34,21 +32,16 @@ class LoginForm extends React.Component {
             .then(responseJson => {
                 username.value = ''
                 password.value = ''
-                // this.context.loggedIn()
                 this.props.onLoginSuccess()
             })
             .catch(err => {
                 this.setState({
                     error: err.error
                 })
-                // console.error(err)
             })
-
-
     }
     
     render () {
-        // const { error, username, password } = this.state
         const { error } = this.state
 
         return (
@@ -65,9 +58,6 @@ class LoginForm extends React.Component {
                     <span className='astrik'>
                         *
                     </span>
-                
-                
-                    {/* <input id='username' name='username' type='text' placeholder='demo' value={username} onChange={this.handleChangeUser} required/> */}
                     <input id='username' name='username' type='text' placeholder='demo' required/> 
                 </div> 
             </div>
@@ -77,8 +67,6 @@ class LoginForm extends React.Component {
                         Password    
                     </label>
                     <span className='astrik'>*</span>
-                     
-                    {/* <input id='password' name='password' type='password' placeholder='Testing123!' value={password} onChange={this.handleChangePassword} required/> */}
                     <input id='password' name='password' type='password' placeholder='Testing123!'  required/> 
                 </div>
             </div>
@@ -87,8 +75,6 @@ class LoginForm extends React.Component {
                     Sign In 
                 </button>
             </div>
-            {/* <Link to='/category/1'>Sign In</Link> */}
-            {/* <a href={`/category/1`}>Sign In</a> */}
             <div className='LoginForm__loginDemo'>
                 <h4>Demo Account</h4>
                 <p>Username: demo</p>
