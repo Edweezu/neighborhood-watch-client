@@ -3,7 +3,6 @@ import { findPost, findComments } from '../../helpers'
 import { Link } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext';
 import CommentTextBox from '../../components/CommentTextBox/CommentTextBox'
-import Footer from '../../components/Footer/Footer'
 import config from '../../config'   
 import TokenService from '../../services/token-service'
 import Comment from '../../components/Comment/Comment'
@@ -438,7 +437,6 @@ class PostPage extends React.Component {
                     </p>
                 </section>
                }
-                <Footer long={'long'}/>
             </section>   
         )
     }
