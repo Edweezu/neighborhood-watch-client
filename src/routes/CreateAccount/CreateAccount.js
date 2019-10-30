@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 import UsersApiService from '../../services/users-api-service'
+import Nav from '../../components/Nav/Nav'
 
 class CreateAccount extends React.Component {
 
@@ -37,17 +38,11 @@ class CreateAccount extends React.Component {
                 })
                 console.error(responseJson)
             })
-
-
-
-
     }
 
-    // handleLoginSuccessful = () => {
-    //     const { history } = this.props
-    //     history.push(`/create-profile/${}`)
-    // }
-
+   componentDidMount () {
+        document.body.style.overflowY = 'auto'
+   }
 
     render () {
 
@@ -55,68 +50,69 @@ class CreateAccount extends React.Component {
         console.log('state errorr', error)
 
         return (
-            <section>
-            <section className='CreateAccount'>
-                <h2>
-                    Create an Account
-                </h2>
-                <form className='LoginForm' onSubmit={this.handleSubmit}>
-                    <div role='alert'>
-                        {error && <p className='red'>{error}</p>}
-                    </div>
-                    <div className='LoginForm__signupElement'>
-                        <div className='LoginForm__signupLabel'>
-                            <label htmlFor='username'>
-                                Username    
-                            </label>
-                            <span className='astrik'>
-                                *
-                            </span>
+            <section className='mainContent'>
+                <Nav />
+                <section className='CreateAccount'>
+                    <h2>
+                        Create an Account
+                    </h2>
+                    <form className='LoginForm' onSubmit={this.handleSubmit}>
+                        <div role='alert'>
+                            {error && <p className='red'>{error}</p>}
                         </div>
-                        <div className='LoginForm__signupLabel'>
-                            <input id='username' name='username' type='text'
-                            />
+                        <div className='LoginForm__signupElement'>
+                            <div className='LoginForm__signupLabel'>
+                                <label htmlFor='username'>
+                                    Username    
+                                </label>
+                                <span className='astrik'>
+                                    *
+                                </span>
+                            </div>
+                            <div className='LoginForm__signupLabel'>
+                                <input id='username' name='username' type='text'
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className='LoginForm__signupElement'>
-                        <div className='LoginForm__signupLabel'> 
-                            <label htmlFor='password'>
-                                Password    
-                            </label>
-                            <span className='astrik'>*</span>
+                        <div className='LoginForm__signupElement'>
+                            <div className='LoginForm__signupLabel'> 
+                                <label htmlFor='password'>
+                                    Password    
+                                </label>
+                                <span className='astrik'>*</span>
+                            </div>
+                            <div className='LoginForm__signupLabel'>
+                                <input id='password' name='password' type='password'
+                                />
+                            </div>
                         </div>
-                        <div className='LoginForm__signupLabel'>
-                            <input id='password' name='password' type='password'
-                            />
+                        <div className='LoginForm__signupElement'>
+                            <div className='LoginForm__signupLabel'>
+                                <label htmlFor='confirm-pw'>
+                                    Confirm Password    
+                                </label>
+                                <span className='astrik'>*</span>
+                            </div>
+                            <div className='LoginForm__signupLabel'>
+                                <input id='confirm-pw' name='confirm-pw' type='password' />
+                            </div>
                         </div>
-                    </div>
-                    <div className='LoginForm__signupElement'>
-                        <div className='LoginForm__signupLabel'>
-                            <label htmlFor='confirm-pw'>
-                                Confirm Password    
-                            </label>
-                            <span className='astrik'>*</span>
+                        <div className='signin-button'>
+                            <button className="btn btn_signIn" type='submit'> 
+                                Continue
+                            </button>
                         </div>
-                        <div className='LoginForm__signupLabel'>
-                            <input id='confirm-pw' name='confirm-pw' type='password' />
+                        {/* <Link to='/create-profile'>Continue</Link> */}
+                        {/* <a href='/create-profile'>Continue</a> */}
+                        <div className='LoginForm__signupDemo'>
+                            <p>Password must be longer than 8 characters and contain one upper case, lower case, number and special character.</p>
                         </div>
-                    </div>
-                    <div className='signin-button'>
-                        <button className="btn btn_signIn" type='submit'> 
-                            Continue
-                        </button>
-                    </div>
-                    {/* <Link to='/create-profile'>Continue</Link> */}
-                    {/* <a href='/create-profile'>Continue</a> */}
-                    <div className='LoginForm__signupDemo'>
-                        <p>Password must be longer than 8 characters and contain one upper case, lower case, number and special character.</p>
-                    </div>
-                    <div className='LoginForm__redirect'>
-                        <Link to='/login'>Already have an Account?</Link>
-                    </div>
-                </form>
-            </section>
-             <Footer />
+                        <div className='LoginForm__redirect'>
+                            <Link to='/login'>Already have an Account?</Link>
+                        </div>
+                    </form>
+                </section>
+                <Footer />
             </section>  
         )
     }

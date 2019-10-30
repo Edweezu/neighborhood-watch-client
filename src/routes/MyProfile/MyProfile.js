@@ -9,6 +9,7 @@ import TokenService from '../../services/token-service'
 import EditProfileForm from '../../components/EditProfileForm/EditProfileForm'
 import EditProfileImage from '../../components/EditImageModal/EditImageModal'
 import addPhotoIcon from '../../app-images/profile-add-photo.png'
+import Nav from '../../components/Nav/Nav'
 
 class MyProfile extends React.Component {
 
@@ -363,131 +364,133 @@ class MyProfile extends React.Component {
         // console.log('image', image)
 
         return (
-            <section className='MyProfile'>
-                
-                <section className='MyProfile__userContainer'>
-                    {/* <h1>My Profile</h1> */}
-                    <DashNav />
-                    <section className='MyProfile__userInfo'>
-                        <form onSubmit={this.handleImageSubmit}>
-                            <div className="image-upload" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                                {!image ? 
-                                    <div>
-                                        {isHovering ?
+            <>
+                <Nav />
+                <section className='MyProfile'> 
+                    <section className='MyProfile__userContainer'>
+                        {/* <h1>My Profile</h1> */}
+                        <DashNav />
+                        <section className='MyProfile__userInfo'>
+                            <form onSubmit={this.handleImageSubmit}>
+                                <div className="image-upload" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                                    {!image ? 
+                                        <div>
+                                            {isHovering ?
+                                                <div className='MyProfile__hoverDiv'>
+                                                    {/* <img src={addPhotoIcon} alt='add-icon' width='175px' height='175px'>
+                                                    </img> */}
+                                                    <div className='MyProfile__hoverCamera'>
+                                                        <i className="fas fa-camera"></i>
+                                                    </div>
+                                                    <div className='MyProfile__hoverText'>
+                                                        Update Photo
+                                                    </div>
+                                                    <button className='AddPost__fileInputLabel' type='button' onClick={this.handleShowImageModal}>
+                                                    </button> 
+                                                </div>
+                                            :  
+                                                <img src={userIcon} alt='user-icon' width='175px' height='175px'/>
+                                            }
+                                        </div>  : 
+                                        <div>
+                                            {isHovering ? 
                                             <div className='MyProfile__hoverDiv'>
-                                                {/* <img src={addPhotoIcon} alt='add-icon' width='175px' height='175px'>
-                                                </img> */}
                                                 <div className='MyProfile__hoverCamera'>
-                                                    <i className="fas fa-camera"></i>
-                                                </div>
-                                                <div className='MyProfile__hoverText'>
-                                                    Update Photo
-                                                </div>
+                                                        <i className="fas fa-camera"></i>
+                                                    </div>
+                                                    <div className='MyProfile__hoverText'>
+                                                        Update Photo
+                                                    </div>
                                                 <button className='AddPost__fileInputLabel' type='button' onClick={this.handleShowImageModal}>
-                                                </button> 
+                                                
+                                            </button> 
                                             </div>
-                                        :  
-                                            <img src={userIcon} alt='user-icon' width='175px' height='175px'/>
-                                        }
-                                    </div>  : 
-                                    <div>
-                                        {isHovering ? 
-                                        <div className='MyProfile__hoverDiv'>
-                                            <div className='MyProfile__hoverCamera'>
-                                                    <i className="fas fa-camera"></i>
-                                                </div>
-                                                <div className='MyProfile__hoverText'>
-                                                    Update Photo
-                                                </div>
-                                            <button className='AddPost__fileInputLabel' type='button' onClick={this.handleShowImageModal}>
-                                            
-                                        </button> 
+                                            :  
+                                                <img className='MyProfile__userImage' src={image} alt='user-icon' width='175px' height='175px' />
+                                            }
                                         </div>
-                                        :  
-                                            <img className='MyProfile__userImage' src={image} alt='user-icon' width='175px' height='175px' />
-                                        }
-                                    </div>
-                                }
+                                    }
+                                </div>
+                            </form>
+                            {showImageModal ? 
+                                <EditProfileImage  
+                                    showImageModal={showImageModal}
+                                    handleHideImageModal={this.handleHideImageModal}
+                                    updateProfileImage={this.updateProfileImage}
+                                /> 
+                                : null
+                            }
+                            <div className='MyProfile__headers'>
+                                <h2>{this.capitalizeName(first_name)} {this.capitalizeName(last_name)}</h2>
+                                <p>{city}, {state}</p>
+                                <button className='btn' type='button' onClick={this.showLocationModal}>
+                                    Edit Location
+                                </button>
                             </div>
-                        </form>
-                        {showImageModal ? 
-                            <EditProfileImage  
-                                showImageModal={showImageModal}
-                                handleHideImageModal={this.handleHideImageModal}
-                                updateProfileImage={this.updateProfileImage}
-                            /> 
-                            : null
-                        }
-                        <div className='MyProfile__headers'>
-                            <h2>{this.capitalizeName(first_name)} {this.capitalizeName(last_name)}</h2>
-                            <p>{city}, {state}</p>
-                            <button className='btn' type='button' onClick={this.showLocationModal}>
-                                Edit Location
-                            </button>
-                        </div>
-                        <section>
-                            <div className={this.showHideClassName()}>
-                                <section className='modal-main'>
-                                    <form className='EditModal__form' onSubmit={this.handleLocationSubmit}>
-                                        <div className='closeModalDiv'>
-                                            <button type='button' onClick={this.hideLocationModal}>
-                                                <span className="fas fa-times" aria-hidden="true"></span>
-                                            </button>
-                                        </div>
-                                        <div className='LoginForm__signupElement modalSelect'>
-                                            {/* <div className='LoginForm__signupLabel'>
-                                                <label className='LoginForm__signupLabel'>Update Location</label>
-                                            </div> */}
-                                            <h3>Update Location</h3>
-                                            {/* <div className='LoginForm__signupLabel'> */}
-                                            <div className='selectContainer'>
-                                                <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.changeCountry} required>
-                                                    <option value="">Select Country</option>
-                                                </select>
+                            <section>
+                                <div className={this.showHideClassName()}>
+                                    <section className='modal-main'>
+                                        <form className='EditModal__form' onSubmit={this.handleLocationSubmit}>
+                                            <div className='closeModalDiv'>
+                                                <button type='button' onClick={this.hideLocationModal}>
+                                                    <span className="fas fa-times" aria-hidden="true"></span>
+                                                </button>
                                             </div>
-                                            <div className='selectContainer'>
-                                                <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.changeState} required>
-                                                        <option value="">Select State</option>
-                                                </select>
+                                            <div className='LoginForm__signupElement modalSelect'>
+                                                {/* <div className='LoginForm__signupLabel'>
+                                                    <label className='LoginForm__signupLabel'>Update Location</label>
+                                                </div> */}
+                                                <h3>Update Location</h3>
+                                                {/* <div className='LoginForm__signupLabel'> */}
+                                                <div className='selectContainer MyProfile__imageSelect'>
+                                                    <select name="country" className="ProfilePage__addSelect countries" id="countryId" onChange={this.changeCountry} required>
+                                                        <option value="">Select Country</option>
+                                                    </select>
+                                                </div>
+                                                <div className='selectContainer MyProfile__imageSelect'>
+                                                    <select name="state" className="ProfilePage__addSelect states" id="stateId" onChange={this.changeState} required>
+                                                            <option value="">Select State</option>
+                                                    </select>
+                                                </div>
+                                                <div className='selectContainer MyProfile__imageSelect'>
+                                                    <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.changeCity} required>
+                                                        <option value="">Select City</option>
+                                                    </select>
+                                                </div>      
                                             </div>
-                                            <div className='selectContainer'>
-                                                <select name="city" className="ProfilePage__addSelect cities" id="cityId" onChange={this.changeCity} required>
-                                                    <option value="">Select City</option>
-                                                </select>
-                                            </div>      
-                                        </div>
-                                        <button className='Profile__locationBtn btn' type='submit'>Submit</button>
-                                    </form>
-                                </section> 
-                            </div>    
+                                            <button className='Profile__locationBtn btn' type='submit'>Submit</button>
+                                        </form>
+                                    </section> 
+                                </div>    
+                            </section>
+                            <div className='list-section'>
+                                <h3>About Me</h3>
+                                <div className={'list-info-div ' +  (!email ? 'display-none' : '') }>
+                                    <i className="fas fa-envelope"></i>
+                                    <span className='trip-details'>
+                                        {email}
+                                    </span>
+                                </div>
+                                <div className={'list-info-div ' +  (!occupation ? 'display-none' : '') }>
+                                    <i className="fas fa-suitcase"></i>
+                                    <span className='trip-details'>
+                                        {occupation}
+                                    </span>
+                                </div>
+                                <div className={'list-info-div ' +  (!interests ? 'display-none' : '') }>
+                                    <i className="far fa-futbol"></i>
+                                    <span className='trip-details'>
+                                        Enjoys {interests}
+                                    </span>
+                                </div>
+                            </div>
+                            <EditProfileForm 
+                                updateProfileAbout={this.updateProfileAbout}
+                            />    
                         </section>
-                        <div className='list-section'>
-                            <h3>About Me</h3>
-                            <div className={'list-info-div ' +  (!email ? 'display-none' : '') }>
-                                <i className="fas fa-envelope"></i>
-                                <span className='trip-details'>
-                                    {email}
-                                </span>
-                            </div>
-                            <div className={'list-info-div ' +  (!occupation ? 'display-none' : '') }>
-                                <i className="fas fa-suitcase"></i>
-                                <span className='trip-details'>
-                                    {occupation}
-                                </span>
-                            </div>
-                            <div className={'list-info-div ' +  (!interests ? 'display-none' : '') }>
-                                <i className="far fa-futbol"></i>
-                                <span className='trip-details'>
-                                    Enjoys {interests}
-                                </span>
-                            </div>
-                        </div>
-                        <EditProfileForm 
-                            updateProfileAbout={this.updateProfileAbout}
-                        />    
                     </section>
                 </section>
-            </section>       
+            </>   
         )
     }
 }

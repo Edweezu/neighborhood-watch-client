@@ -258,19 +258,18 @@ class App extends React.Component {
 
     return (
       <main className="App">
-        <MainContext.Provider value={contextValue}>
-          <Nav />
-          <Switch>
-            <Route exact path={'/'} component={LandingPage}/>
-            <Route path ={'/register'} component ={CreateAccount}/>
-            <Route path ={'/login'} component ={LoginPage}/>
-            <Route path ={'/create-profile/:userId'} component ={ProfilePage}/>
-            <Route path ={'/category/:categoryId'} component ={Dashboard}/>
-            <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
-            <Route path ={'/my-profile'} component ={MyProfile}/>
-            <Route path ={'/post-page/:postId'} component ={PostPage}/>
-          </Switch>
-        </MainContext.Provider>
+          <MainContext.Provider value={contextValue}>
+            <Switch>
+              <Route exact path={'/'} component={LandingPage}/>
+              <Route path ={'/register'} component ={CreateAccount}/>
+              <Route path ={'/login'} component ={LoginPage}/>
+              <Route path ={'/create-profile/:userId'} component ={ProfilePage}/>
+              <Route path ={'/category/:categoryId'} component ={Dashboard}/>
+              <Route path ={'/mem-profiles'} component ={MemberProfiles}/>
+              <Route path ={'/my-profile'} component ={MyProfile}/>
+              <Route path ={'/post-page/:postId'} component ={PostPage}/>
+            </Switch>
+          </MainContext.Provider>
       </main>
     );
   }

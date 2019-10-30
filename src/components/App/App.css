@@ -171,6 +171,9 @@
     margin-right: 0.4rem
 }
 
+
+
+
 .scroll-up-div a {
     display: block;
     position: fixed;
@@ -316,8 +319,12 @@ body {
     visibility: hidden;
 } */
 
-.CreateAccount, .LoginPage, .ProfilePage, .MemberProfiles, .MyProfile {
+.CreateAccount, .LoginPage, .ProfilePage, .MyProfile {
     margin-top: 5rem;
+}
+
+.MemberProfiles {
+    padding-top: 5rem;
 }
 
 .Dashboard {
@@ -417,6 +424,7 @@ label {
     /* padding-top: 0rem;
     padding-bottom: 0rem; */
     margin: auto;
+    /* margin-bottom: 10rem; */
 }
 
 .MyProfile__userContainer {
@@ -879,6 +887,15 @@ html {
     font-size: 1.25rem;
 }
 
+.mainContent {
+    min-height: calc(100vh - 79px);
+    position: relative;
+}
+
+/* .Nav__footer {
+    background: none !important;
+    padding: 0 !important;
+} */
 
 .AddPost__submitContainer {
     margin-top: 0.5rem;
@@ -991,6 +1008,19 @@ html {
   box-sizing: border-box;
 }
 
+.Nav__headerReg {
+    padding: 0.8rem 0.5rem;
+    display: flex;
+    align-items: baseline;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 154, 189);
+    width: 100%;
+    z-index: 999;
+}
+
 .Nav__header {
   padding: 0.8rem 0.5rem;
   display: flex;
@@ -1089,7 +1119,7 @@ ul {
 }
 
 .Dashboard__addCityForm {
-    width: 85%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -1429,6 +1459,7 @@ h3 a {
     .EditModal__form {
         padding: 0;
         padding-top: 0.8rem !important;
+        padding-bottom: 0.8rem;
     }
 
 
@@ -1457,6 +1488,12 @@ h3 a {
         border-radius: 6px;
         width: 80%;
         height: 80%;
+    }
+
+    .modal-mainTwo  {
+        border: 1px solid #EEE;
+        border-radius: 6px;
+        width: 80%;
     }
 
     .modalSelect {
@@ -1534,6 +1571,11 @@ h3 a {
         width: 400px;
         font-size: 1rem;
     }
+
+    .scroll-up-div a {
+        bottom: 15px;
+        right: 15px;
+    }
     
 }
 
@@ -1544,13 +1586,17 @@ h3 a {
         margin: 2rem 0 1rem;
     } */
 
-    .scroll-up-div a {
-        bottom: 15px;
-        right: 15px;
+    .Dashboard__scroll {
+        display: none;
     }
 
+    .MyProfile, .MemberProfiles {
+        margin-top: 4rem;
+    }
 
-
+    .MemberProfiles{
+        padding: 0;
+    }
 
       /* .AddPost__form {
         background-color: lightgrey;
@@ -1602,7 +1648,7 @@ h3 a {
     }
 
     .logo {
-        margin-left: 0;
+        margin-left: 0.5rem;
     }
 
     .main-menu li:first-child a {
@@ -1616,20 +1662,20 @@ h3 a {
     .Dashboard__browseContainer {
         display: flex;
         /* justify-content: space-between; */
-        max-width: 195px;
+        /* max-width: 195px; */
         margin: 0;
         margin-top: 4rem;
         /* margin-left: 1rem; */
         justify-content: flex-start;
         flex-direction: column;
-        flex: 1 1;
+        flex: 1 1 26%;
         border-top: 1px solid #EEE;
         padding: 1.3rem 1rem;
         background: linear-gradient(to left,#fefefe, 99%, #8c8c8d);
     }
 
     .Dashboard__Main {
-        flex: 3 1;
+        flex: 1 1 74%;
     }
 
     .Dashboard__browseInput div {
@@ -1673,6 +1719,10 @@ h3 a {
         margin: 0;  
     }
 
+    .MyProfile__imageSelect {
+        margin: 0 auto;
+    }
+
     .selectContainer select {
         font-size: 11px;
     }
@@ -1710,25 +1760,47 @@ h3 a {
         border: 1px solid #EEE;
     }
 
-    .MemberContainer, .MyProfile__userContainer {
+    /* .MemberContainer {
+        max-width: 900px;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
         height: calc(100vh - 124px);
-        /* margin-top: 5rem; */
+        margin-top: 5rem;
+        border: 1px solid #EEE;
+    } */
+
+    .MyProfile__userContainer, .MemberContainer {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        height: calc(100vh - 64px);
         border: 1px solid #EEE;
     }
 
-    .MyProfile__userContainer {
-        max-width: none;
+    .MemberProfiles__user:first-child {
+        margin-top: 0;
+    }
+
+    .MemberProfiles__user {
+        border: 0;
+        border-top: 8px solid #EEE;
+        border-bottom: 2px solid #c3c3c3;
         margin: 0;
-        padding: 0;
+    }
+
+    .MemberProfiles__user:first-child {
+        border-top: 1px solid #EEE;
     }
 
 
     .DashNav {
         display: flex;
-        flex: 0 0 165px;
+        /* flex: 0 0 165px; */
+        flex: 1 1 25%;
         flex-flow: column nowrap;
         text-align: center;
         z-index: 30;
@@ -1744,6 +1816,7 @@ h3 a {
         flex-flow: column wrap;
         justify-content: space-between;
         padding: 0.75rem;
+        border-bottom: 3px solid #eee;
     }
 
     .menu-container:hover, .menu-container:focus {
@@ -1795,12 +1868,14 @@ h3 a {
     }
 
     .main-menu ul {
+        font-weight: bold;
         font-size: 0.9rem;
         width: auto;
         background: rgb(0, 154, 189);
     }
   
     .main-menu {
+        margin-right: 0.5rem;
         position: relative;
             left: auto;
             top: auto;
@@ -1852,7 +1927,39 @@ h3 a {
         width: 65%;
     }
 
-    
+    @media only screen and (min-width: 950px) {
+        .Nav__header {
+            padding-left: 4%;
+            padding-right: 4%;
+        }
+
+        .modal-main {
+            width: 50%;
+        }
+    }
+
+
+    @media only screen and (min-width: 1100px) {
+        .Nav__header {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+    }
+
+    @media only screen and (min-width: 1190px) {
+        .Nav__header {
+            padding-left: 14%;
+            padding-right: 14%;
+        }
+    }
+
+    @media only screen and (min-width: 1250px) {
+        .Nav__header {
+            padding-left: 19%;
+            padding-right: 19%;
+        }
+    }
     
 }
+
 

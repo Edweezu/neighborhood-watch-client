@@ -8,6 +8,7 @@ import PostList from '../../components/PostList/PostList';
 import { findPlace } from '../../helpers'
 import config from '../../config'
 import TokenService from '../../services/token-service'
+import Nav from '../../components/Nav/Nav'
 
 
 class Dashboard extends React.Component {
@@ -163,71 +164,74 @@ class Dashboard extends React.Component {
         const place = findPlace (places, place_id) || {}
 
         return (
-            <section id='dashboard_top'  className='Dashboard'>
-                <section className='Dashboard__browseContainer'>
-                    <div className='Dashboard__browseInput'>
-                        {/* <label htmlFor='browse-places'><strong>Browse places</strong></label> */}
-                        <h4>Browse Active Pages</h4>
-                        <div className='selectContainer'>
-                            <select value={place.id}id='browse-cities' onChange={handleCityChange}>
-                                {places.map(place => {
-                                    return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
-                                })}
-                            </select>
-                        </div>  
-                    </div>
-                    <div className='Dashboard__addCity'>
-                        {/* <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4> */}
-                        <h4>Dont See Your City? Start a New Page</h4>
-                             <form id='addCityForm' className='Dashboard__addCityForm' onSubmit={this.handleSubmitNewCity}>
-                           
-                                <div className='selectContainer'>
-                                    <select name="countryId" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry} required>
-                                        <option value="">Select Country</option>
-                                    </select>
-                                    {/* <a href='#addCityForm' className='refresh'>Refresh</a> */}
-                                </div>
-                                <div className='selectContainer'>
-                                    <select name="stateId" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState} required>
-                                        <option value="">Select State</option>
-                                    </select>
-                                </div>
-                                <div className='selectContainer'>
-                                    <select name="cityId" className="Dashboard__addSelect cities" id="cityId" onChange={handleChangeCity} required>
-                                        <option value="">Select City</option>
-                                    </select>
+            <>
+                <Nav reg={'reg'}/>
+                <section id='dashboard_top'  className='Dashboard'>
+                    <section className='Dashboard__browseContainer'>
+                        <div className='Dashboard__browseInput'>
+                            {/* <label htmlFor='browse-places'><strong>Browse places</strong></label> */}
+                            <h4>Browse Active Pages</h4>
+                            <div className='selectContainer'>
+                                <select value={place.id}id='browse-cities' onChange={handleCityChange}>
+                                    {places.map(place => {
+                                        return <option key={place.id} value={place.id}>{place.city}, {place.state}</option>
+                                    })}
+                                </select>
+                            </div>  
+                        </div>
+                        <div className='Dashboard__addCity'>
+                            {/* <h4>Add a City <i className="fas fa-plus-circle" onClick={this.handleClick}></i></h4> */}
+                            <h4>Dont See Your City? Start a New Page</h4>
+                                <form id='addCityForm' className='Dashboard__addCityForm' onSubmit={this.handleSubmitNewCity}>
+                            
+                                    <div className='selectContainer'>
+                                        <select name="countryId" className="Dashboard__addSelect countries" id="countryId" onChange={handleChangeCountry} required>
+                                            <option value="">Select Country</option>
+                                        </select>
+                                        {/* <a href='#addCityForm' className='refresh'>Refresh</a> */}
+                                    </div>
+                                    <div className='selectContainer'>
+                                        <select name="stateId" className="Dashboard__addSelect states" id="stateId" onChange={handleChangeState} required>
+                                            <option value="">Select State</option>
+                                        </select>
+                                    </div>
+                                    <div className='selectContainer'>
+                                        <select name="cityId" className="Dashboard__addSelect cities" id="cityId" onChange={handleChangeCity} required>
+                                            <option value="">Select City</option>
+                                        </select>
+                                    </div>  
+                            
+                                <div className='selectButtonContainer'>
+                                    <button className='Dashboard__submit btn' type='submit'>Submit</button>
                                 </div>  
-                           
-                             <div className='selectButtonContainer'>
-                                 <button className='Dashboard__submit btn' type='submit'>Submit</button>
-                             </div>  
-                         </form>                    
-                    </div>
-                </section>
-                <section className='Dashboard__Main'>
-                    <section className='DashMainPosts__header'>
-                        <AddPost />
-                        {/* <h2>{place.city}, {place.state}</h2> */}
-                        <h2>{place.city}</h2>
+                            </form>                    
+                        </div>
                     </section>
-                    <section className='DashContainer'>
-                    
-                        <DashNav />
-                        <section className='DashMainPosts'>
+                    <section className='Dashboard__Main'>
+                        <section className='DashMainPosts__header'>
+                            <AddPost />
+                            {/* <h2>{place.city}, {place.state}</h2> */}
+                            <h2>{place.city}</h2>
+                        </section>
+                        <section className='DashContainer'>
                         
-                            <PostList 
-                                categoryid={this.props.match.params.categoryId}
-                                posts={posts}
-                            />
+                            <DashNav />
+                            <section className='DashMainPosts'>
+                            
+                                <PostList 
+                                    categoryid={this.props.match.params.categoryId}
+                                    posts={posts}
+                                />
+                            </section>
                         </section>
                     </section>
+                    <div className='scroll-up-div Dashboard__scroll'>
+                        <a href="#dashboard_top">
+                        <i className="fa fa-chevron-up"></i>          
+                        </a>                   
+                    </div>
                 </section>
-                <div className='scroll-up-div'>
-                    <a href="#dashboard_top">
-                       <i className="fa fa-chevron-up"></i>          
-                    </a>                   
-                </div>
-            </section>           
+            </>       
         )
     }
 }

@@ -18,8 +18,9 @@ class Nav extends React.Component {
     }
 
     renderLogoutLink () {
+      const { reg } = this.props
       return (
-        <header className='Nav__header'>
+        <header className={`${!reg ? 'Nav__header' : 'Nav__headerReg'}`}>
         <a href="#main-menu"
            id="main-menu-toggle"
            className="menu-toggle"
@@ -85,7 +86,7 @@ class Nav extends React.Component {
             </li>
           </ul>
           <div className='Nav__footer'>
-            <Footer />
+            <Footer  nav={'nav'}/>
           </div>
         </nav>
         <a href="#main-menu-toggle"
@@ -97,8 +98,9 @@ class Nav extends React.Component {
     }
 
     renderLoginLink () {
+
       return (
-        <header className='Nav__header'>
+        <header className='Nav__headerReg'>
         <a href="#main-menu"
            id="main-menu-toggle"
            className="menu-toggle"
@@ -127,7 +129,7 @@ class Nav extends React.Component {
             </li>
           </ul>
           <div className='Nav__footer'>
-            <Footer />
+            <Footer nav={'nav'}/>
           </div>
         </nav>
         <a href="#main-menu-toggle"

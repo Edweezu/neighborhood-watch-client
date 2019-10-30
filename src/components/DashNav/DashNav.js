@@ -77,7 +77,7 @@ class DashNav extends React.Component {
                         </NavLink>
                     </div>
                 </div> 
-                <Footer />   
+                <Footer nav={'nav'}/>   
             </section>
                       
         )

@@ -9,7 +9,7 @@ import TokenService from '../../services/token-service'
 import Comment from '../../components/Comment/Comment'
 import moment from 'moment'
 import Spinner from '../../components/Spinner/Spinner'
-
+import Nav from '../../components/Nav/Nav'
 
 class PostPage extends React.Component {
     static defaultProps = {
@@ -308,6 +308,7 @@ class PostPage extends React.Component {
 
         return (
             <section>
+                <Nav />
                 {(post.hasOwnProperty('message')) ? (<section className='PostPage' id='PostPage__top'>
                     
                     <section className='PostPage__postContainer'>
@@ -477,7 +478,7 @@ class PostPage extends React.Component {
                     </p>
                 </section>
                }
-                <Footer />
+                <Footer long={'long'}/>
             </section>   
         )
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
+import Nav from '../../components/Nav/Nav'
 
 
 class LoginPage extends React.Component {
@@ -17,14 +18,25 @@ class LoginPage extends React.Component {
     history.push(destination)
   }
 
+  // componentDidMount () {
+  //   document.body.style.overflowY = 'hidden'
+  // }
+
+  // componentWillUnmount() {
+  //   document.body.style.overflowY = 'auto'
+  // }
+
   render() {
     return (
-      <section className='LoginPage'>
-        <h2>Login</h2>
-        <LoginForm
-          onLoginSuccess={this.handleLoginSuccess}
-        />
-      </section>
+      <>
+        <Nav />
+        <section className='LoginPage'>
+          <h2>Login</h2>
+          <LoginForm
+            onLoginSuccess={this.handleLoginSuccess}
+          />
+        </section>
+      </>
     )
   }
 }
