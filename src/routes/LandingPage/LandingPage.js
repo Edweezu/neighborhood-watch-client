@@ -30,18 +30,18 @@ class LandingPage extends React.Component {
                                 <i className="fas fa-lock"></i>
                                 <h3>Secure</h3> 
                                 <p className='LandingPage__landingDescript'>
-                                Create a profile page and join our network with 100% verified members.
+                                Create a profile and join our network with members that are 100% verified.
                                 </p>
                             </section>
                             <section className='LandingPage__descriptTwo'>
                                 <i className="fas fa-search"></i>
                                 <h3>Discover</h3>
-                                <p className='LandingPage__landingDescript'>Find out about upcoming local events, crimes and statistics, and much more.</p>
+                                <p className='LandingPage__landingDescript'>Stay up to date on upcoming local events, the latest local crime, and much more.</p>
                             </section>
                             <section className='LandingPage__descriptTwo'>
                                 <i className="fas fa-city"></i>
                                 <h3>Connect</h3>
-                                <p className='LandingPage__landingDescript'>Make Connections with your fellow neighbors and grow your city's page.</p>
+                                <p className='LandingPage__landingDescript'>Make lasting connections with your fellow neighbors and help grow your city's page.</p>
                             </section>
                             <div className='LandingPage__btnReminder'>
                                 <Link className="link register_btn" to='/register'>Sign Up</Link>

@@ -339,7 +339,7 @@ class PostPage extends React.Component {
                                                         </div>
                                                         <div className='LoginForm__signupLabel selectModalDiv'>
                                                             <select id='post_category' value={post_category} onChange={this.handleCategoryChange} required>
-                                                                <option value='Crime and Alerts'>Crime and Safety </option>
+                                                                <option value='Crime and Alerts'>Crime and Alerts </option>
                                                                 <option value='Upcoming Events'>Upcoming Events </option>
                                                                 <option value='Lost and Found'>Lost and Found</option>
                                                             </select>  
