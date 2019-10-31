@@ -48,7 +48,7 @@ class MemberProfiles extends React.Component {
                         <DashNav />
                         <section className='MemberProfiles__userList'>
                             {users.map(user => {
-                                    if (!user.make_private) {
+                                    if (!user.make_private && user.first_name && user.email) {
                                         return (
                                             <div key= {user.id}className='MemberProfiles__user'>
                                                 <div className='MemberProfiles__flexBox'>

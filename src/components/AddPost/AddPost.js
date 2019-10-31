@@ -13,7 +13,28 @@ class AddPost extends React.Component {
         showAddForm: false,
         image: null,
         uploading: false,
-        formDataImage: null
+        formDataImage: null,
+        isMobile: true
+    }
+
+
+    componentDidMount () {
+        window.addEventListener('overflow', this.overflowCheck)
+        this.overflowCheck()
+    }
+
+    componentWillUnmount () {
+        window.removeEventListener('overflow', this.overflowCheck)
+    }
+
+    overflowCheck = () => {
+        let currentWidth = (window.innerWidth < 768)
+
+        if (currentWidth !== this.state.isMobile) {
+            this.setState({
+                isMobile: currentWidth
+            })
+        }
     }
 
     handleAddPostOpen = () => {
@@ -23,11 +44,13 @@ class AddPost extends React.Component {
         })
     }
       handleAddPostClose = () => {
-        document.body.style.overflowY = 'auto'
+        
+        this.state.isMobile ? document.body.style.overflowY = 'auto' : document.body.style.overFlow = 'hidden'
+        
         this.setState({
             showAddForm: false,
             uploading: false
-        })
+        }, () => window.location.reload())
     }
 
     handleSubmitForm = () => {

@@ -21,7 +21,8 @@ class EditModal extends React.Component {
         post_user: null,
         likes: 0,
         usersList: [],
-        formDataImage: null
+        formDataImage: null,
+        isMobile: true
     }
 
 
@@ -33,15 +34,35 @@ class EditModal extends React.Component {
     }
 
     hideModal = () => {
-        document.body.style.overflowY = 'auto'
+        const { isMobile } = this.state
+
+        if (isMobile) {
+            document.body.style.overflowY = 'auto'
+        } else {
+            document.body.style.overflowY = 'hidden'
+        }
+
         this.setState({
             show: false,
             uploading: false
-        })
+        }, () => window.location.reload())
+    }
+
+    overflowCheck = () => {
+        let currentWidth = (window.innerWidth < 768)
+
+        if (currentWidth !== this.state.isMobile) {
+            this.setState({
+                isMobile: currentWidth
+            })
+        }
     }
 
     componentDidMount () {
         const { postid } = this.props
+
+        window.addEventListener('overflow', this.overflowCheck)
+        this.overflowCheck()
 
         Promise.all([
             fetch(`${config.API_ENDPOINT}/posts/${postid}/`, {
@@ -208,6 +229,10 @@ class EditModal extends React.Component {
         } 
     }
 
+    componentWillUnmount () {
+        window.removeEventListener('overflow', this.overflowCheck)
+    }
+
     handleDeletePost = () => {
         let { postid } = this.props
 
@@ -337,8 +362,10 @@ class EditModal extends React.Component {
     render () {
         const { places=[] } = this.context
         const { number_of_comments } = this.props
-        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList, image } = this.state
+        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList, image, isMobile } = this.state
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
+
+        console.log("is mobile", isMobile)
 
         return (
             <section className='EditModal'>
