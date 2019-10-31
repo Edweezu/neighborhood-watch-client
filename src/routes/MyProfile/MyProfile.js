@@ -338,7 +338,7 @@ class MyProfile extends React.Component {
                         <section className='MyProfile__userInfo'>
                             <form onSubmit={this.handleImageSubmit}>
                                 <div className="image-upload" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                                    {!image ? 
+                                    {!image || image === 'undefined' ? 
                                         <div>
                                             {isHovering ?
                                                 <div className='MyProfile__hoverDiv'>

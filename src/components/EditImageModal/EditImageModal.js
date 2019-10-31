@@ -54,14 +54,20 @@ export default class EditProfileImage extends React.Component {
     handleImageSubmit = (e) => {
         e.preventDefault()
         const { updateProfileImage } = this.props
-        const { formDataImage } = this.state
+        const { formDataImage, image } = this.state
         
         this.setState({
             uploading: true
         })
 
         let formData = new FormData()
-        formData.append('image', formDataImage)
+        if (image && !formDataImage) {
+            formData.append('nothing', 'nothing')
+        } else if (image && formDataImage) {
+            formData.append('image', formDataImage)
+        } else {
+            formData.append('image', undefined)
+        }
 
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'PATCH',
@@ -133,7 +139,7 @@ export default class EditProfileImage extends React.Component {
                                             </button>
                                         </div>     
                                         <div>
-                                                {!image ? 
+                                                {!image || image === 'undefined' ? 
                                                     <label htmlFor="image" className='LoginForm__signupLabel'>
                                                         <img className='EditImage__image' src={userIcon} alt='user-icon' width='200' height='200px'/>
                                                         <p className='image-text'>
@@ -150,7 +156,7 @@ export default class EditProfileImage extends React.Component {
                                                 }
                                         </div>
                                         <div className='AddPost__submitDiv'>
-                                            {!image ? 
+                                            {!image || image === 'undefined' ? 
                                                  <div>
                                                     <span>
                                                         <button className='btn' type='button'>Add Photo</button>

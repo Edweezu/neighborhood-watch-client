@@ -202,7 +202,7 @@ class PostPage extends React.Component {
         e.preventDefault()
 
         let { postId } = this.props.match.params
-        let { message, post_category, subject, place_id } = this.state
+        let { message, post_category, subject, place_id, image, formDataImage } = this.state
 
         this.setState({
             uploading: true
@@ -210,11 +210,24 @@ class PostPage extends React.Component {
 
         let formData = new FormData()
 
-        formData.append('image', e.target['image'].files[0])
-        formData.append('message', message)
-        formData.append('post_category', post_category)
-        formData.append('subject', subject)
-        formData.append('place_id', place_id)
+        if (image && !formDataImage) {
+            formData.append('message', message)
+            formData.append('post_category', post_category)
+            formData.append('subject', subject)
+            formData.append('place_id', place_id)
+        } else if (image && formDataImage) {
+            formData.append('message', message)
+            formData.append('post_category', post_category)
+            formData.append('subject', subject)
+            formData.append('place_id', place_id)
+            formData.append('image', formDataImage)
+        } else {
+            formData.append('message', message)
+            formData.append('post_category', post_category)
+            formData.append('subject', subject)
+            formData.append('place_id', place_id)
+            formData.append('image', undefined)
+        }
 
         return fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
             method: 'PATCH',
@@ -265,7 +278,7 @@ class PostPage extends React.Component {
    
     render () {
         const { posts, comments=[], places } = this.context
-        const { uploading, show, subject, message, post_category, place_id, number_of_comments, image } = this.state
+        const { uploading, show, subject, message, post_category, place_id, number_of_comments, image, formDataImage } = this.state
         
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}
@@ -291,7 +304,7 @@ class PostPage extends React.Component {
                             <div className='Post__body'> 
                                 <h4><Link to={`/post-page/${postId}`}>{post.subject}</Link></h4>
                                 <p>{post.message}</p>
-                                <img src={post.image} alt='default icon' className={ post.image ? null : 'display-none'}/>
+                                <img src={post.image} alt='default icon' className={ !post.image || post.image === 'undefined' ? 'display-none' : null}/>
                             </div>
                             <div>
                                 <div className='Post__date'>
@@ -363,7 +376,7 @@ class PostPage extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div className='AddPost__imageContainer'>
-                                                    {!image ? 
+                                                    {!image || image === 'undefined' ? 
                                                         null
                                                     :   
                                                     <>
