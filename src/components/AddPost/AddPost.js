@@ -75,9 +75,6 @@ class AddPost extends React.Component {
         formData.append('place_id', browse_cities.value)
         formData.append('image', this.state.formDataImage)
        
-
-        console.log('formdata', formData)
-
         return fetch(`${config.API_ENDPOINT}/posts`, {
             method: 'POST',
             headers: {
@@ -103,7 +100,6 @@ class AddPost extends React.Component {
 
       
       handleImageChange = (e) => {
-          console.log("handleimagechange")
           this.setState({
             image: URL.createObjectURL(e.target.files[0]),
             formDataImage: e.target.files[0]

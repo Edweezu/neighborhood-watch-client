@@ -365,8 +365,6 @@ class EditModal extends React.Component {
         const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList, image, isMobile } = this.state
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
 
-        console.log("is mobile", isMobile)
-
         return (
             <section className='EditModal'>
                 {uploading ? 
