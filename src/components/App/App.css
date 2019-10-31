@@ -1516,7 +1516,7 @@ h3 a {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        height: calc(100vh - 117px);
+        height: calc(100vh - 130px);
         border: 1px solid #EEE;
     }
 
@@ -1679,7 +1679,14 @@ h3 a {
         }
     }
 
-    @media only screen and (min-width: 1100px) {
+    @media only screen and (min-width: 1030px) {
+        .Nav__header {
+            padding-left: 7%;
+            padding-right: 7%;
+        }
+    }
+
+    @media only screen and (min-width: 1110px) {
         .Nav__header {
             padding-left: 10%;
             padding-right: 10%;
@@ -1688,15 +1695,41 @@ h3 a {
 
     @media only screen and (min-width: 1190px) {
         .Nav__header {
-            padding-left: 14%;
-            padding-right: 14%;
+            padding-left: 13%;
+            padding-right: 13%;
         }
     }
 
-    @media only screen and (min-width: 1250px) {
+    @media only screen and (min-width: 1270px) {
+        .Nav__header {
+            padding-left: 16%;
+            padding-right: 16%;
+        }
+    }
+
+    @media only screen and (min-width: 1350px) {
         .Nav__header {
             padding-left: 19%;
             padding-right: 19%;
+        }
+    } 
+    @media only screen and (min-width: 1430px) {
+        .Nav__header {
+            padding-left: 22;
+            padding-right: 22;
+        }
+    } 
+
+    @media only screen and (min-width: 1510px) {
+        .Nav__header {
+            padding-left: 25%;
+            padding-right: 25%;
+        }
+    } 
+    @media only screen and (min-width: 1590px) {
+        .Nav__header {
+            padding-left: 28%;
+            padding-right: 28%;
         }
     } 
 }
