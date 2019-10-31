@@ -67,11 +67,9 @@ class Post extends React.Component {
                     <div className='Post__body'>   
                         <h4><Link to={`/post-page/${id}`}>{subject}</Link></h4>
                         <p>{message}</p>
-                        {image ? (
-
-                            <img src={image} alt='default icon'/>
-                            
-                        ): null}
+                        {!image || image === 'undefined' ? (
+                            null               
+                        ): <img src={image} alt='default icon'/>}
                     </div>
                     <div className='Post__date'>
                         <p>{this.dateDiff()}</p>

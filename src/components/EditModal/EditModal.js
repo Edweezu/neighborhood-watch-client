@@ -283,7 +283,7 @@ class EditModal extends React.Component {
         e.preventDefault()
 
         let { postid } = this.props
-        let { message, post_category, subject, place_id } = this.state
+        let { message, post_category, subject, place_id, image, formDataImage } = this.state
 
         this.setState({
             uploading: true
@@ -291,11 +291,24 @@ class EditModal extends React.Component {
 
         let formData = new FormData()
 
-        formData.append('image', e.target['image'].files[0])
-        formData.append('message', message)
-        formData.append('post_category', post_category)
-        formData.append('subject', subject)
-        formData.append('place_id', place_id)
+        if (image && !formDataImage) {
+            formData.append('message', message)
+            formData.append('post_category', post_category)
+            formData.append('subject', subject)
+            formData.append('place_id', place_id)
+        } else if (image && formDataImage) {
+            formData.append('message', message)
+            formData.append('post_category', post_category)
+            formData.append('subject', subject)
+            formData.append('place_id', place_id)
+            formData.append('image', e.target['image'].files[0])
+        } else {
+            formData.append('message', message)
+            formData.append('post_category', post_category)
+            formData.append('subject', subject)
+            formData.append('place_id', place_id)
+            formData.append('image', undefined)
+        }
 
         return fetch(`${config.API_ENDPOINT}/posts/${postid}`, {
             method: 'PATCH',
@@ -311,6 +324,12 @@ class EditModal extends React.Component {
             return res.json()
         })
         .then(responseJson => {
+            for (let item in responseJson) {
+                if (responseJson[item] == null || responseJson[item] === 'null' || responseJson[item] === 'undefined') {
+                    responseJson[item] = ''
+                }
+            }
+
             this.context.updatePost(responseJson)
             this.hideModal()
         })
@@ -362,7 +381,7 @@ class EditModal extends React.Component {
     render () {
         const { places=[] } = this.context
         const { number_of_comments } = this.props
-        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList, image, isMobile } = this.state
+        const { message, post_category, subject, place_id, show, uploading, user_logged_in, post_user, likes, usersList, image } = this.state
         const showHideClassName = show ? 'modal display-block' : 'modal display-none'
 
         return (
@@ -423,7 +442,7 @@ class EditModal extends React.Component {
                                 </div>
                             </div>
                             <div className='AddPost__imageContainer'>
-                                    {!image ? 
+                                    {!image || image === 'undefined' ? 
                                         null
                                     :   
                                     <>
