@@ -43,10 +43,10 @@ class LandingPage extends React.Component {
                                 <h3>Connect</h3>
                                 <p className='LandingPage__landingDescript'>Make lasting connections with your fellow neighbors and help grow your city's page.</p>
                             </section>
-                            <div className='LandingPage__btnReminder'>
-                                <Link className="link register_btn" to='/register'>Sign Up</Link>
-                            </div>
-                        </section>   
+                        </section> 
+                        <div className='LandingPage__btnReminder'>
+                            <Link className="link register_btn" to='/register'>Sign Up</Link>
+                        </div> 
                     </section>  
                 </section>
                 <Footer long={'long'}/>

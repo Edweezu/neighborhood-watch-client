@@ -1379,6 +1379,20 @@ h3 a {
         display: none;
     }
 
+    .LandingPage__descriptContainer {
+        display: flex;
+        width: 95%;
+        max-width: 1000px;
+    }
+
+    .LandingPage__descriptOne {
+        margin-right: 1.5rem;
+    }
+
+    .LandingPage__descriptTwo {
+        margin-right: 1.5rem;
+    }
+
     .MyProfile, .MemberProfiles {
         margin-top: 4rem;
     }
