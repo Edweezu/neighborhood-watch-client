@@ -1393,6 +1393,10 @@ h3 a {
         margin-right: 1.5rem;
     }
 
+    .LandingPage__descriptTwo:last-of-type {
+        margin-right: 0;
+    }
+
     .MyProfile, .MemberProfiles {
         margin-top: 4rem;
     }
