@@ -278,7 +278,7 @@ class PostPage extends React.Component {
    
     render () {
         const { posts, comments=[], places } = this.context
-        const { uploading, show, subject, message, post_category, place_id, number_of_comments, image, formDataImage } = this.state
+        const { uploading, show, subject, message, post_category, place_id, number_of_comments, image } = this.state
         
         const { postId } = this.props.match.params
         const post = findPost(posts, postId) || {}
@@ -291,11 +291,9 @@ class PostPage extends React.Component {
             <section>
                 <Nav />
                 {(post.hasOwnProperty('message')) ? (<section className='PostPage' id='PostPage__top'>
-                    
                     <section className='PostPage__postContainer'>
                         <div className='back-btn'>
-                                    <a href='/category/1'><i className="fas fa-arrow-left"></i></a>
-                                    
+                            <a href='/category/1'><i className="fas fa-arrow-left"></i></a>         
                         </div>
                         <div className='Post__userInfo'>
                             {this.postCategoryIcon()} {this.nameCapitalized(post.user.username)}, {post.user.city}
@@ -430,10 +428,8 @@ class PostPage extends React.Component {
                                             />
                                         </li>
                                         )
-                                } 
-                            )}
-                        </ul>
-                        
+                            })}
+                        </ul>    
                     </section>
                     <div className='scroll-up-div'>
                         <a href="#PostPage__top">

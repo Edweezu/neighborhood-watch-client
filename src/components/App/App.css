@@ -1,3 +1,45 @@
+html {
+    height: 100%;
+    background-color: #fafafa;
+}
+
+body {
+    margin: 0 auto;
+    font-family: 'Helvetica Neue', 'Lato', 'Roboto', 'sans-serif';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    line-height: 1.5rem;
+    text-align: center;
+    color: #373a36;
+    box-sizing: border-box;
+    overflow-y: visible;
+}
+
+h4 {
+    margin: 0;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+figcaption {
+    font-size: 0.7rem;
+}
+
+ul {
+    padding: 0;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
+
 .nav a {
     display: inline-block;
 }
@@ -67,16 +109,6 @@
     cursor: pointer;
 }
 
-.red {
-    color: red;
-    font-weight: bold;
-}
-
-.fa-search, .fa-lock, .fa-city {
-    font-size: 4rem;
-    color: rgb(0, 154, 189);
-}
-
 .EditModal__form {
     max-width: 480px;
     padding: 0.75rem;
@@ -87,6 +119,10 @@
     display: flex;
     justify-content: space-between;
     width: 95%;
+}
+
+.EditModal__likesDiv {
+    color : #A6AAB0;
 }
 
 .Post__likeButton {
@@ -124,12 +160,22 @@
     color: rgb(224, 36, 94);
 }
 
-.EditModal__likesDiv {
-    color : #A6AAB0;
+.fa-edit {
+    margin-left: 0.2rem;
+    color: rgb(0, 154, 189);
+}
+
+.fa-search, .fa-lock, .fa-city {
+    font-size: 4rem;
+    color: rgb(0, 154, 189);
 }
 
 .fa-heart {
     margin-right: 0.4rem
+}
+
+.fa-camera {
+    font-size: 32px;
 }
 
 .fa-comment {
@@ -138,6 +184,34 @@
     right: 1rem;
     font-size: 20px;
     margin-right: 0.4rem
+}
+
+.fa-edit:hover {
+    color:  #006b84;
+}
+
+.fa-trash-alt {
+    color: #A6AAB0;
+    margin-left: 0.8rem;
+}
+
+.fa-trash-alt:hover {
+    color: #d11a2a;
+    cursor: pointer;
+}
+
+.fa-home {
+    margin-right: 0.4rem;
+}
+
+.fa-image {
+    width: 2rem;
+    font-size: 1.25rem;
+}
+
+.fa-bowling-ball {
+    font-size: 32px;
+    animation: spin 1.2s infinite linear;
 }
 
 .scroll-up-div a {
@@ -169,14 +243,6 @@
 .Post__commentNumber {
     right: 1.7rem;
     font-weight: bold;
-}
-
-.display-block {
-    display: block;
-}
-
-.display-none {
-    display: none;
 }
 
 .MyProfile {
@@ -238,23 +304,6 @@
     100% {
         -webkit-transform: rotate(360deg)
     }   
-}
-
-.fa-bowling-ball {
-    font-size: 32px;
-    animation: spin 1.2s infinite linear;
-}
-
-body {
-    margin: 0 auto;
-    font-family: 'Helvetica Neue', 'Lato', 'Roboto', 'sans-serif';
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; 
-    line-height: 1.5rem;
-    text-align: center;
-    color: #373a36;
-    box-sizing: border-box;
-    overflow-y: visible;
 }
 
 .LandingPage__descriptOne, .LandingPage__descriptTwo {
@@ -403,11 +452,6 @@ label {
     color: red;
 }
 
-html {
-    height: 100%;
-    background-color: #fafafa;
-}
-
 .post_btn {
     color: white;
     font-weight: 400;
@@ -537,10 +581,6 @@ html {
     margin: 0 auto;
 }
 
-h4 {
-    margin: 0;
-}
-
 .Dashboard__addSelect {
     display:block;
 }
@@ -663,29 +703,6 @@ h4 {
     font-size: 20px;
 }
 
-.fa-edit {
-    margin-left: 0.2rem;
-    color: rgb(0, 154, 189);
-}
-
-.fa-edit:hover {
-    color:  #006b84;
-}
-
-.fa-trash-alt {
-    color: #A6AAB0;
-    margin-left: 0.8rem;
-}
-
-.fa-trash-alt:hover {
-    color: #d11a2a;
-    cursor: pointer;
-}
-
-.fa-home {
-    margin-right: 0.4rem;
-}
-
 #main-menu-close {
     padding: 0.5rem;
 }
@@ -737,11 +754,6 @@ h4 {
     width: 100%;
     height: 90%;
     cursor: pointer;
-}
-
-.fa-image {
-    width: 2rem;
-    font-size: 1.25rem;
 }
 
 .mainContent {
@@ -919,14 +931,6 @@ article h2 {
 .PostPage {
     text-align: left;
     padding-top: 4rem;
-}
-
-figcaption {
-    font-size: 0.7rem;
-}
-
-ul {
-    padding: 0;
 }
 
 .Dashboard__browseInput {
@@ -1181,9 +1185,6 @@ h3 a {
     margin-bottom: 0.5rem;
 }
 
-.fa-camera {
-    font-size: 32px;
-}
 
 /* Responsive */
 @media only screen and (min-width: 480px) {
