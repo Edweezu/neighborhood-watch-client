@@ -12,10 +12,19 @@ class PostList extends React.Component {
         const { place_id, posts=[] } = this.context
         const { categoryid } = this.props
         const postList = getPostsForCategory(posts, categoryid, place_id) || []
-
+       
         return (
             <section className='PostList'>
-                {postList.map(post => (
+                {postList.length === 0 ? 
+                    <section className='Post__noPost'>
+                         <div className='Post'>
+                            <div className='Post__body'>
+                                <h4>Nothing posted yet for this category. Be the first to create a post!</h4>
+                            </div>
+                        </div>
+                    </section>
+                    :
+                    postList.map(post => (
                     <li key={post.id}>
                         <Post 
                             id={post.id}
