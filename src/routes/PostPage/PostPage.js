@@ -1,6 +1,6 @@
 import React from 'react'
 import { findPost, findComments } from '../../helpers'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import MainContext from '../../contexts/MainContext';
 import CommentTextBox from '../../components/CommentTextBox/CommentTextBox'
 import config from '../../config'   
@@ -293,7 +293,7 @@ class PostPage extends React.Component {
                 {(post.hasOwnProperty('message')) ? (<section className='PostPage' id='PostPage__top'>
                     <section className='PostPage__postContainer'>
                         <div className='back-btn'>
-                            <a href='/category/1'><i className="fas fa-arrow-left"></i></a>         
+                            <NavLink to='/category/1'><i className="fas fa-arrow-left"></i></NavLink>        
                         </div>
                         <div className='Post__userInfo'>
                             {this.postCategoryIcon()} {this.nameCapitalized(post.user.username)}, {post.user.city}

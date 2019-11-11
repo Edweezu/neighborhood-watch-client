@@ -35,11 +35,25 @@ class Dashboard extends React.Component {
         })
     }
 
+    appendJquery =  () => {
+        let jQueryScript = document.createElement("script")
+        jQueryScript.src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        jQueryScript.className = "jQuery"
+        document.head.appendChild(jQueryScript)
+    }
+
+    appendGeoData = () => {
+        let geoDataScript = document.createElement("script")
+        geoDataScript.defer = true
+        geoDataScript.src = "//geodata.solutions/includes/countrystatecity.js"
+        geoDataScript.className = "geoData"
+        document.head.appendChild(geoDataScript)
+    }
+
     componentDidMount () {
-        if (!window.location.hash) {
-            window.location = window.location + '#loaded'
-            window.location.reload()
-        }
+
+        this.appendJquery()
+        this.appendGeoData()
 
         Promise.all([
             fetch(`${config.API_ENDPOINT}/places`, {
@@ -93,6 +107,13 @@ class Dashboard extends React.Component {
         .catch(err => {
             console.error(err)
         })
+    }
+
+    componentWillUnmount() {
+        let jQuery = document.head.querySelector('.jQuery')
+        let geoData = document.head.querySelector('.geoData')
+        document.head.removeChild(jQuery)
+        document.head.removeChild(geoData)
     }
 
     handleSubmitNewCity = (e) => {

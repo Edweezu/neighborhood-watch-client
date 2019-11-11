@@ -29,10 +29,28 @@ class MyProfile extends React.Component {
         isHovering: false
     }
 
+    appendJquery =  () => {
+        let jQueryScript = document.createElement("script")
+        jQueryScript.src = "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        jQueryScript.className = "jQuery"
+        document.head.appendChild(jQueryScript)
+    }
+
+    appendGeoData = () => {
+        let geoDataScript = document.createElement("script")
+        geoDataScript.defer = true
+        geoDataScript.src = "//geodata.solutions/includes/countrystatecity.js"
+        geoDataScript.className = "geoData"
+        document.head.appendChild(geoDataScript)
+    }
+
     componentDidMount () {
         if (this.state.showLocationForm) {
             document.body.style.overflowY = 'hidden'
         }
+
+        this.appendJquery()
+        this.appendGeoData()
 
         return fetch(`${config.API_ENDPOINT}/users/profile`, {
             method: 'GET',
@@ -66,6 +84,13 @@ class MyProfile extends React.Component {
                 image: responseJson.image,
             })
         })
+    }
+
+    componentWillUnmount() {
+        let jQuery = document.head.querySelector('.jQuery')
+        let geoData = document.head.querySelector('.geoData')
+        document.head.removeChild(jQuery)
+        document.head.removeChild(geoData)
     }
 
     changeFirstName = (e) => {
@@ -170,7 +195,7 @@ class MyProfile extends React.Component {
             showLocationForm: true
         }, () => {
             localStorage.setItem('showLocationForm', this.state.showLocationForm)
-            window.location.reload()
+            // window.location.reload()
         }) 
     }
 
