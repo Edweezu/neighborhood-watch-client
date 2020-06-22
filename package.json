@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "now ./build",
-    "postdeploy": "now alias -A ./build/now.json"
+    "postdeploy": "now alias -A ./build/vercel.json"
   },
   "eslintConfig": {
     "extends": "react-app"
