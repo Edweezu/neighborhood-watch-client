@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cloudinary": "^1.15.0",
+    "cloudinary": "^1.22.0",
     "jwt-decode": "^2.2.0",
-    "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-confirm-alert": "^2.4.1",
+    "react": "^16.13.1",
+    "react-confirm-alert": "^2.6.1",
     "react-devtools": "^3.6.3",
-    "react-dom": "^16.9.0",
+    "react-dom": "^16.13.1",
     "react-native-scalable-image": "^1.0.0",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.1.1",
     "unix-timestamp": "^0.2.0"
   },
@@ -42,8 +42,8 @@
     ]
   },
   "devDependencies": {
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.4.0"
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0"
   }
 }
