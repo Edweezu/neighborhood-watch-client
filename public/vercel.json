@@ -1,7 +1,7 @@
 {
     "version": 2,
     "alias": "neighborhood-watch-client",
-    "name": "neighborhood-watch-client",
+    "name": "neighborhood-watch-client.now.sh",
     "routes": [
       {
         "src": "^/static/(.*)",
