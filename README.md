@@ -4,7 +4,7 @@ Neighborhood Watch is a social community app that allows users to stay informed 
 
 ## Demo
 
-- Live Preview can be found at : https://neighborhood-watch-client.now.sh/
+- Live Preview can be found at : https://neighborhood-watch-client.edwinqiu93.vercel.app/
 
 
 ## Server Side Github Repo
